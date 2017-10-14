@@ -1,0 +1,279 @@
+﻿@model WEE_WEB_API.Models.AD_User
+<div class="row">
+    <div class="col-md-3">
+        <div class="portlet light profile-sidebar-portlet" style="border:1px solid #e7ecf1">
+            <!-- SIDEBAR USERPIC -->
+            <div class="profile-userpic">
+                <img src="@Url.Content("~/Content/assets/pages/media/profile/profile_user.jpg")" class="img-responsive" alt="">
+            </div>
+            <!-- END SIDEBAR USERPIC -->
+            <!-- SIDEBAR USER TITLE -->
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name"> Nick</div>
+                <div class="profile-usertitle-job"> Developer </div>
+            </div>
+            <!-- END SIDEBAR USER TITLE -->
+            <!-- SIDEBAR BUTTONS -->
+            @*<div class="profile-userbuttons">
+                <button type="button" class="btn btn-circle green btn-sm">Follow</button>
+                <button type="button" class="btn btn-circle red btn-sm">Message</button>
+            </div>*@
+            <!-- END SIDEBAR BUTTONS -->
+            <!-- SIDEBAR MENU -->
+            <div class="profile-usermenu">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">
+                            <i class="icon-home"></i>Thông tin tài khoản
+                        </a>
+                    </li>
+                    <li >
+                        <a href="#">
+                            <i class="icon-settings"></i> Đổi mật khẩu
+                        </a>
+                    </li>
+                    @*<li>
+                        <a href="#">
+                            <i class="icon-info"></i> 
+                        </a>
+                    </li>*@
+                </ul>
+            </div>
+            <!-- END MENU -->
+        </div>
+    </div>
+    <div class="col-md-9">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject font-dark sbold uppercase">Thông tin tài khoản</span>
+                </div>
+                @*<div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Actions</label>
+                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Settings</label>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="#" id="form_sample_3" class="form-horizontal">
+                    <div class="form-body">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                        </div>
+                        <div class="alert alert-success display-hide">
+                            <button class="close" data-close="alert"></button> Your form validation is successful!
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    UserID
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" name ="UserID" class="form-control" placeholder="UserID" id="UserID" value="admin" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Password
+
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock fa-fw"></i>
+                                        </span>
+                                        <input type="password" name="Password" class="form-control" placeholder="Password" id="Password" value="123456" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    UserName
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="UserName" data-required="1" class="form-control" id="UserName" value="@Model.UserName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    Email
+
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="email" name="Email" class="form-control" placeholder="Email Address" id="Email" value="@Model.Email"/> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Title
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="Title" data-required="1" class="form-control" id="Title" value=" @Model.Title"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    PositionTitle
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="PositionTitle" data-required="1" class="form-control" id="PositionTitle" value="@Model.PositionTitle" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    HomePhone
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="HomePhone" data-required="1" class="form-control" id="HomePhone" value="@Model.HomePhone"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    HandPhone
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="HandPhone" data-required="1" class="form-control" id="HandPhone" value="@Model.HandPhone" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    OfficePhone
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="name" data-required="1" class="form-control" id="OfficePhone" value="@Model.OfficePhone" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Birthday</label>
+                                <div class="col-md-8">
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                        <input type="text" class="form-control" readonly name="BirthDay" id="datepicker1" value="@Model.BirthDay">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Anniversary</label>
+                                <div class="col-md-8">
+                                    <div class="input-group date date-picker">
+                                        <input type="text" class="form-control" readonly name="Anniversary" id="datepicker2" data-date-format="dd-mm-yyyy" value="@Model.Anniversary">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    City
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="City" data-required="1" class="form-control" id="City" value="@Model.City"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    Country
+
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" name="Country" data-required="1" class="form-control" id="Country" value="@Model.Country" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group last">
+                            <label class="control-label col-md-2">
+                                Address
+
+                            </label>
+                            <div class="col-md-10">
+                                <textarea class="ckeditor form-control" name="Address" rows="6" data-error-container="#editor2_error" id="Address">@Model.Address</textarea>
+                                <div id="editor2_error"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" class="btn green" onclick="SaveUser()">Lưu lại</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+    $('#datepicker1').datepicker({
+        minDate: new Date(currentDate, currentMonth, currentYear),
+        dateFormat: 'dd-mm-yyyy'
+    });
+    $('#datepicker2').datepicker({
+        minDate: new Date(currentDate, currentMonth, currentYear),
+        dateFormat: 'dd-mm-yyyy'
+    });
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+    function SaveUser() { 
+
+        $.ajax({
+            url:'@Url.Action("EditUser")',
+            type:'POST',
+            data: $("#form_sample_3").serialize(),
+            success: function (response) {
+                if (response.Result === "success") {
+                    toastr.success(response.Message);
+                }
+                if (response.Result === "error") {
+                    toastr.error(response.Message);
+                }
+            }
+        });
+    }
+    </script>
+}

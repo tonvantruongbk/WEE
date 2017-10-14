@@ -1,0 +1,141 @@
+﻿@model List<WEE_WEB_API.ViewModel.AccessMatrixViewModel>
+<style>
+    #tblRoles td :hover {
+        cursor: pointer;
+    }
+
+    .table-striped > tbody > tr > td,
+    .table-striped > tfoot > tr > td,
+    .table-striped > thead > tr > td {
+        padding: 0 8px;
+    }
+
+    .AccessDesc {
+        font-weight: bold;
+        padding-top: 10px;
+    }
+</style>
+
+@using (Html.BeginForm("SubmitFormAccessMatrix", "Permission", FormMethod.Post, new
+{
+    @id= "AccessMatrixForm"
+})){
+    <table id="tblRoles" class="table table-striped table-bordered">
+        <tr>
+            <th><button class="btn btn-success" type="submit">LƯU</button></th>
+            <th>
+                <select class="selectChange input-group form-control" data-target="RoleView">
+                    <option value="">View</option>
+                    <option value="CheckAll">Check All</option>
+                    <option value="UncheckAll">Un-Check All</option>
+                    <option value="Invert">Invert</option>
+                </select>
+            </th>
+            <th>
+                <select class="selectChange input-group form-control" data-target="RoleEdit">
+                    <option value="">Edit</option>
+                    <option value="CheckAll">Check All</option>
+                    <option value="UncheckAll">Un-Check All</option>
+                    <option value="Invert">Invert</option>
+                </select>
+            </th>
+            <th>
+                <select class="selectChange input-group form-control" data-target="RoleAdd">
+                    <option value="">Add</option>
+                    <option value="CheckAll">Check All</option>
+                    <option value="UncheckAll">Un-Check All</option>
+                    <option value="Invert">Invert</option>
+                </select>
+            </th>
+            <th>
+                <select class="selectChange input-group form-control" data-target="RoleDel">
+                    <option value="">Del</option>
+                    <option value="CheckAll">Check All</option>
+                    <option value="UncheckAll">Un-Check All</option>
+                    <option value="Invert">Invert</option>
+                </select>
+            </th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>
+                    <div class="AccessDesc">
+                        @Model[i].MenuText
+                    </div>
+                    @Html.HiddenFor(m => Model[i].MenuID)
+                    @Html.HiddenFor(m => Model[i].UserID)
+                </td>
+                <td>
+
+                    <div class="checkbox checkbox-primary">
+                        @Html.CheckBoxFor(m => Model[i].View, new { @class = "RoleView", type = "checkbox" })
+                        <label for="View"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        @Html.CheckBoxFor(m => Model[i].Edit, new { @class = "RoleEdit", type = "checkbox" })
+                        <label for="Edit"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        @Html.CheckBoxFor(m => Model[i].Add, new { @class = "RoleAdd", type = "checkbox" })
+                        <label for="Add"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        @Html.CheckBoxFor(m => Model[i].Delete, new { @class = "RoleDel", type = "checkbox" })
+                        <label for="Del"></label>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+    
+<script>
+
+    $(function () {
+        $('#AccessMatrixForm').submit(function(e){
+            e.preventDefault();
+            var form = $(this); 
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SubmitFormAccessMatrix", "Permission")',
+                data: form.serialize()  ,
+                success: function(response) {
+                    if (response != undefined) {
+                        toastr.success(response.Message, "Thông báo");
+                    }
+                }
+            });
+            return false;
+        });
+
+        $('.selectChange').on('change', function () {
+            var selector = $(this).data('target');
+            var value = $(this).val();
+            if (value === "CheckAll")
+                $("." + selector).prop("checked", true);
+            else if (value === "UncheckAll")
+                $("." + selector).prop("checked", false);
+            else if (value === "Invert") {
+                $("." + selector).each(function () {
+                    $(this).prop('checked', !$(this).prop('checked'));
+                });
+            };
+            $(this).val($(this).find('option:first').val());
+        });
+
+        $('td').click(function (event) {
+            if (!$(event.target).is('input')) {
+                $('input:checkbox', this).prop('checked', function (i, value) {
+                    return !value;
+                });
+            }
+        });
+    });
+</script>

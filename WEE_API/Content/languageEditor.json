@@ -1,0 +1,35 @@
+﻿{
+  "create": {
+    "button": "<i class='fa fa-plus-square editorButton'></i>THÊM",
+    "title": "Thêm dữ liệu mới",
+    "submit": "<i class='fa fa-save editorButton'></i>THÊM"
+  },
+  "edit": {
+    "button": "<i class='fa fa-edit editorButton'></i>SỬA",
+    "title": "Sửa dữ liệu hiện tại",
+    "submit": "<i class='fa fa-save editorButton'></i>LƯU LẠI"
+  },
+  "remove": {
+    "button": "<i class='fa fa-remove editorButton'></i>XÓA",
+    "title": "Xóa dữ liệu",
+    "submit": "<i class='fa fa-remove editorButton'></i>XÓA",
+    "confirm": {
+      "_": "Bạn có chắc chắn muốn xóa %d dòng này không?",
+      "1": "Bạn có chắc chắn muốn xóa dữ liệu này không?"
+    }
+  },
+  "error": {
+    "system": "Có lỗi xảy ra, hãy liên hệ quản trị hệ thống để sửa lỗi!"
+  },
+  "multi": {
+    "title": "Sửa nhiều giá trị cùng lúc",
+    "info": "Các yếu tố được lựa chọn chứa các giá trị khác nhau cho cụm từ này. Để chỉnh sửa và di chuyển tất cả các yếu tố cho mục này cho cùng giá trị, nhấp chuột hoặc bấm vào đây, nếu không họ sẽ giữ lại các giá trị cá nhân của họ.",
+    "restore": "Hủy bỏ thay đổi"
+  },
+  "datetime": {
+    "previous": "Trước",
+    "next": "Sau",
+    "months": [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng Mười", "Tháng 11", "Tháng 12" ],
+    "weekdays": [ "Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7" ]
+  }
+}

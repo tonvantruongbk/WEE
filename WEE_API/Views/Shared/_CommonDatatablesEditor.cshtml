@@ -1,0 +1,462 @@
+﻿@model WEE_WEB_API.ViewModel.DatatablesEditorViewModel
+<script>
+    editorFor@(Model.Controller) = new $.fn.dataTable.Editor({
+        table: "#@(Model.TableID)",
+        i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
+        ajax: function (method, url, d, successCallback, errorCallback) {
+            var newvalue;
+            $.each(d.data,function(key, value) {
+                value.Id = key;
+                newvalue = value;
+            });
+            var action = '';
+            if (d.action === 'create') { action = '@Url.Action("Create",Model.Controller+"")'; }
+            else if (d.action === 'edit') { action = '@Url.Action("Edit", Model.Controller + "")'; }
+            else if (d.action === 'remove') {action = '@Url.Action("Delete", Model.Controller + "")';}
+            $.ajax({
+                type: 'POST',
+                url: action,
+                data: newvalue,
+                success: function(response) {
+                    if (response != undefined) {
+                        toastr.success(response.Message, "Thông báo");
+                    }
+                    successCallback({ data: newvalue });
+                }
+            });
+        },
+        idSrc: '@Model.FieldID',
+        formOptions: {
+            inline: {
+                submitOnBlur: true
+            }
+        },
+        fields: generateFields("@Model.TableID")
+    });
+
+
+    var cbuttons = [
+        @*{
+                    text: 'submit',
+                    action: function(e, dt, node, config) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("SaveData")\?abc=' + key,
+                            data: { data: output1 },
+                            dataType: "json",
+                            success: function(json) {
+                                output.data.push(json);
+                                success(output);
+                            },
+                            error: function(xhr, error, thrown) {
+                                error(xhr, error, thrown);
+                            }
+                        });
+                    }
+                },*@
+        {
+            extend: 'create',
+            editor: editorFor@(Model.Controller)
+        }, {
+            extend: 'edit',
+            editor: editorFor@(Model.Controller)
+
+        }, {
+            extend: 'remove',
+            editor: editorFor@(Model.Controller)
+        }, {
+            extend: 'excelHtml5',
+            columns: ':visible',
+            test: 'Save current page',
+            text: '<i class="fa fa-file-excel-o editorButton"></i>EXCEL',
+            footer: true,
+            header: true,
+            customize: function(xlsx) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                var numrows = 3;
+                var clR = $('row', sheet);
+                //update Row
+                clR.each(function() {
+                    var attr = $(this).attr('r');
+                    var ind = parseInt(attr);
+                    ind = ind + numrows;
+                    $(this).attr("r", ind);
+                });
+                // Create row before data
+                $('row c ', sheet).each(function() {
+                    var attr = $(this).attr('r');
+                    var pre = attr.substring(0, 1);
+                    var ind = parseInt(attr.substring(1, attr.length));
+                    ind = ind + numrows;
+                    $(this).attr("r", pre + ind);
+                });
+
+                function Addrow(index, data, attr) {
+                    var msg = '<row r="' + index + '">';
+                    for (i = 0; i < data.length; i++) {
+                        var key = data[i].key;
+                        var value = data[i].value;
+                        msg += '<c t="inlineStr" r="' + key + index + '" s="42">';
+                        msg += '<is>';
+                        msg += '<t>' + value + '</t>';
+                        msg += '</is>';
+                        msg += '</c>';
+                    }
+                    msg += '</row>';
+                    return msg;
+                }
+
+                //insert
+                var r1 = Addrow(1,
+                    [
+                        {
+                            key: 'A',
+                            value: 'bsdsb',
+
+                        }, {
+                            key: 'B',
+                            value: 'sdbdsb'
+                        }
+                    ]);
+                var r2 = Addrow(2,
+                    [
+                        {
+                            key: 'A',
+                            value: 'bbbb'
+                        }, {
+                            key: 'B',
+                            value: ''
+                        }
+                    ]);
+                var r3 = Addrow(3,
+                    [
+                        {
+                            key: 'A',
+                            value: ''
+                        }, {
+                            key: 'B',
+                            value: ''
+                        }
+                    ]);
+                sheet.childNodes[0].childNodes[1].innerHTML =
+                    r1 + r2 + r3 + sheet.childNodes[0].childNodes[1].innerHTML;
+            },
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }, {
+            extend: 'pdfHtml5',
+            columns: ':visible',
+            text: '<i class="fa fa-file-pdf-o editorButton"></i>PDF',
+            footer: true,
+            header: true,
+            orientation: 'portrait',
+            customize: function(doc) {
+
+                //doc.content[1].layout = 'lightHorizontalLines';
+                doc.content[1].layout = {
+                    hLineWidth: function(i, node) {
+                        return (i === 0 || i === node.table.body.length) ? 1 : .5;
+                    },
+                    vLineWidth: function(i, node) {
+                        return (i === 0 || i === node.table.widths.length) ? 1 : .5;
+                    },
+                    hLineColor: function(i, node) {
+                        return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';
+                    },
+                    vLineColor: function(i, node) {
+                        return (i === 0 || i === node.table.widths.length) ? 'black' : 'gray';
+                    }
+                };
+
+                var lastColX = null;
+                var lastColY = null;
+                var bod = []; // this will become our new body (an array of arrays(lines))
+                //Loop over all lines in the table
+                doc.content[1].table.body.forEach(function(line, i) {
+                    //Group based on first column (ignore empty cells)
+                    if (lastColX != line[2].text && line[2].text !== '') {
+                        //Add line with group header
+                        bod.push([
+                            {
+                                text: line[2].text,
+                                style: 'tableHeader'
+                            }, '', '', '', '', ''
+                        ]);
+                        //Update last
+                        lastColX = line[2].text;
+                    }
+                    //Group based on second column (ignore empty cells) with different styling
+                    //if (lastColY != line[1].text && line[1].text !== '') {
+                    //    //Add line with group header
+                    //    bod.push(['', {
+                    //        text: line[1].text,
+                    //        style: 'subheader'
+                    //    }, '', '', '']);
+                    //    //Update last
+                    //    lastColY = line[1].text;
+                    //}
+                    //Add line with data except grouped data
+                    //   if (i < doc.content[1].table.body.length - 1) {
+                    bod.push([
+                        {
+                            text: line[0].text,
+                            style: 'defaultStyle'
+                        }, {
+                            text: line[1].text,
+                            style: 'defaultStyle'
+                        }, {
+                            text: line[2].text,
+                            style: 'defaultStyle'
+                        }, {
+                            text: line[3].text,
+                            style: 'defaultStyle'
+                        }, {
+                            text: line[4].text,
+                            style: 'defaultStyle'
+                        }, {
+                            text: line[5].text,
+                            style: 'defaultStyle'
+                        }
+                    ]);
+                    //                         }
+                    //                         //Make last line bold, blue and a bit larger
+                    //                         else {
+                    //                             bod.push(['', '',
+                    //                                 {
+                    //                                     text: line[2].text,
+                    //                                     style: 'lastLine'
+                    //                                 },
+                    //                                 {
+                    //                                     text: line[3].text,
+                    //                                     style: 'lastLine'
+                    //                                 },
+                    //                                 {
+                    //                                     text: line[4].text,
+                    //                                     style: 'lastLine'
+                    //                                 }
+                    //                             ]);
+                    //                         }
+                });
+                //Overwrite the old table body with the new one.
+                doc.content[1].table.headerRows = 1;
+                doc.content[1].table.widths = [100, '*', 80, 30, 50, 40];
+                doc.content[1].table.body = bod;
+
+                var rowCount = document.getElementById("@Model.TableID").rows.length;
+                for (var i = 0; i < rowCount; i++) {
+                    if (doc.content[1].table.body[i] != undefined) {
+                        doc.content[1].table.body[i][5].alignment = 'right';
+                    }
+                };
+
+                doc.styles = {
+                    subheader: {
+                        fontSize: 12,
+                        bold: true,
+                        color: 'black'
+                    },
+                    tableHeader: {
+                        bold: true,
+                        fontSize: 12,
+                        color: 'black'
+                    },
+                    lastLine: {
+                        bold: true,
+                        fontSize: 11,
+                        color: 'blue'
+                    },
+                    defaultStyle: {
+                        fontSize: 10,
+                        color: 'black'
+                    }
+                };
+            }
+        }, {
+            extend: 'print',
+            columns: ':visible',
+            text: '<i class="fa fa-print editorButton"></i>Print',
+            autoPrint: true
+        }
+    ];
+
+    //editor.on('preSubmit', function (e, data, action) {
+    //    if (action === 'edit') {
+    //        var salary = parseInt(this.field('salary').val());
+    //        var extn = parseInt(this.field('extn').val());
+    //        console.log(salary);
+    //        console.log(extn);
+    //        var isnum = /^\d+$/.test(this.field('salary').val());
+    //        if (isnum === false  )
+    //        {
+    //            alert('The salary must be number');
+    //            this.field('salary').val(0);
+    //            data.data[1].salary = 0;
+    //            return false; }
+
+    //        if (salary > extn)
+    //        {
+    //            alert('The salary must be less than extn');
+    //            this.field('salary').val(0);
+    //            return false;    }
+
+    //        // If any error was reported, cancel the submission so it can be corrected
+    //        if (this.inError()) {
+    //            return false;
+    //        }
+    //    }
+    //});
+
+    //// Activate an inline edit on click of a table cell
+    //$('#example').on('click',
+    //    'tbody td.editable',
+    //    function(e) {
+    //        editor.inline(this, { submit: 'allIfChanged' });
+    //    });
+
+    //editor.on('preSubmit', function (e, o, action) {
+    //    if (action !== 'edit') {
+    //        alert('đã submit');
+    //    }
+    //});
+
+    tableFor@(Model.Controller) = $('#@(Model.TableID)').DataTable({
+        dom: $("#@Model.TableID").data('dom')  ||  'fBrtlpi',
+        ajax: {
+            "type": "POST",
+            "url": '@Url.Action("DataHandler", Model.Controller + "")',
+            "contentType": 'application/json; charset=utf-8',
+            'data': function(data) {
+                data.FilterBase = generateFilterBase("@Model.TableID");
+                return JSON.stringify(data);
+            }
+        },
+        columns: generateColumns("@Model.TableID"),
+        select: $("#@Model.TableID").data('select') || false,
+        order: $("#@Model.TableID").data('orders') || "",
+        @if (!Model.buttonExternal)
+        {
+            @Html.Raw("buttons: cbuttons ,")
+        }
+        //rowGroup: {
+        //    dataSrc: "office",
+        //    endRender: function(rows, group) {
+        //        var container = $('<tr />');
+        //        container.append('<td colspan="5"> ' + group + ' (Đếm = ' + rows.count() + ')' + '</td>');
+
+        //        var hourSum = rows.data().pluck("salary").reduce(function (a, b) { return a + b ;},0);
+        //        container.append('<td class="dt-body-right">Tổng=' + hourSum + '</td>');
+        //        return $(container);
+        //    }
+        //},
+        //   "drawCallback": function (settings) {
+        //         var api = this.api();
+        //         var rows = api.rows({
+        //             page: 'current'
+        //         }).nodes();
+        //         var last = null;
+        //         api.column(2, {
+        //             page: 'current'
+        //         }).data().each(function (group, i) {
+        //             if (last !== group) {
+        //                 $(rows).eq(i).before(
+
+        //                     $("<tr></tr>", {
+        //                 "class": "group",
+        //                 "data-id": group
+        //             }).append($("<td></td>", {
+        //                 "colspan": 5,
+        //                 "class": "pocell",
+        //                 "text": "PO # " + group
+        //             }) .prop('outerHTML'))
+
+        //                 );
+        //                 last = group;
+        //             }
+        //         });
+        //     },
+        //footerCallback: function(row, data, start, end, display) {
+        //    var api = this.api();
+        //    // Remove the formatting to get integer data for summation
+        //    var intVal = function(i) {
+        //        return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+        //    };
+        //    // Total over all pages
+        //    total = api
+        //        .column(5)
+        //        .data()
+        //        .reduce(function(a, b) {
+        //                return intVal(a) + intVal(b);
+        //            },
+        //            0);
+        //    // Total over this page
+        //    pageTotal = api
+        //        .column(5,
+        //            {
+        //                page: 'current'
+        //            })
+        //        .data()
+        //        .reduce(function(a, b) {
+        //                return intVal(a) + intVal(b);
+        //            },
+        //            0);
+        //    // Update footer
+        //    $(api.column(5).footer()).html(
+        //        '$' + pageTotal + ' ( $' + total + ' total)'
+        //    );
+        //}
+
+        //        column_number: 0,
+        //        filter_type: 'auto_complete',
+        //        filter_container_id: "e0"
+        //    }, {
+        //        column_number: 1,
+        //        filter_type: "multi_select",
+        //        select_type: "select2",
+        //        filter_container_id: "e1"
+        //    }, {
+        //        column_number: 2,
+        //        filter_type: "select",
+        //        select_type: "select2",
+        //        filter_container_id: "e2"
+        //    }, {
+        //        column_number: 3,
+        //        filter_type: "range_number_slider",
+        //        filter_container_id: "e3"
+        //    }, {
+        //        column_number: 4,
+        //        filter_type: "range_date",
+        //        date_format: "yyyy/mm/dd",
+        //        moment_date_format: "YYYY/MM/DD",
+        //        datepicker_type: 'bootstrap-datetimepicker',
+        //        filter_plugin_options: datepickerDefaults,
+        //        filter_container_id: "e4"
+        //    }, {
+        //        column_number: 5,
+        //        filter_type: "range_number",
+        //        filter_container_id: "e5"
+        //    }]
+        //    ,{ externally_triggered: true }
+        //);
+    });
+
+    @if(Model.buttonExternal){
+      @Html.Raw(  "var buttons = new $.fn.dataTable.Buttons(tableFor" +Model.Controller+","+
+        "{" +
+        "    button: cbuttons " +
+        "}).container().appendTo($('#" + Model.ButtonPlaceID + "'));")
+    }
+
+
+    @if (Model.Ydacf== "HeaderFilter")
+    {
+        @Html.Raw("yadcf.init(tableFor"+Model.Controller+", generateYdacf(\""+Model.TableID+"\",\"HeaderFilter\"))")
+    }
+    else
+    {
+        @Html.Raw("yadcf.init(tableFor"+Model.Controller+", generateYdacf(\""+Model.TableID+ "\",\""+ Model.Ydacf + "\"),{ externally_triggered: true })")
+    }
+
+</script>

@@ -1,0 +1,120 @@
+﻿
+@using WEE_WEB_API.Models
+@using WEE_WEB_API.ViewModel
+@{
+    ViewBag.Title = "Permission";
+    var ViewDT = new ViewDataDictionary<AD_User>();
+}
+@section PageStyles
+{
+    <style>
+    </style>
+}
+@Html.Partial("_Breadcrumbs", new List<string> { "Permission", "Permission" })
+
+<div class="col-md-4 ">
+    <!-- BEGIN Portlet PORTLET-->
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+            </div>
+            <div id="actions">
+                &nbsp;
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table id="DataTableAD_User"
+                   class=" compact table table-bordered table-hover table-header-fixed no-footer order-column"
+                   data-orders='[[0, "asc"]]'
+                   data-select="true"
+                   data-dom="rtl">
+                <thead>
+                    <tr>
+                        <th data-filter_type="auto_complete" data-data="UserID" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.UserID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserID, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="Password" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Password, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Password, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="Title" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Title, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Title, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="UserName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="PositionTitle" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.PositionTitle, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PositionTitle, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="Email" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="Address" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="range_date" data-data="BirthDay" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.BirthDay, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.BirthDay, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="range_date" data-data="Anniversary" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Anniversary, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Anniversary, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="OfficePhone" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.OfficePhone, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.OfficePhone, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="HandPhone" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.HandPhone, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.HandPhone, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="HomePhone" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.HomePhone, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.HomePhone, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="City" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.City, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.City, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="auto_complete" data-data="Country" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Country, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Country, ViewDT).PropertyName)
+                        </th>
+                        <th data-filter_type="" data-data="CanDelete" data-type="bool?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.CanDelete, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CanDelete, ViewDT).PropertyName)
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!-- END Portlet PORTLET-->
+</div>
+<div class="col-md-8">
+    <div id="GridAccessMatrix"></div>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+{
+    Controller = "Permission",
+    TableID = "DataTableAD_User",
+    FieldID = "UserID",
+    ButtonPlaceID = "actions",
+    Ydacf = ""//"HeaderFilter"
+})
+
+    <script>
+
+        tableForPermission.on('select',
+            function(e, dt, type, indexes) {
+                if (type === 'row') {
+                    var data = tableForPermission.rows(indexes).data().pluck('UserID')[0];
+                    ViewAccessMatrix(data);
+                }
+            });
+
+        function ViewAccessMatrix(uID) {
+            $.ajax({
+                type: 'POST',
+                data: { UserID: uID },
+                url: '@Url.Action("PopulateAccessRight")',
+                success: function(response) {
+                    $('#GridAccessMatrix').html(response);
+                }
+            });
+        }
+
+    </script>
+}

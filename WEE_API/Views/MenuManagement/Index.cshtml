@@ -1,0 +1,337 @@
+﻿@{
+    ViewBag.Title = "title";
+}
+@section PageStyles{
+    <link href="~/Scripts/jquery-easyui-1.5.2/themes/material/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-easyui-1.5.2/themes/icon.css" rel="stylesheet" />
+
+}
+
+<h2>Menu Management</h2>
+
+<div class="col-md-12">
+    <div class="portlet red-pink box">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-tasks"></i>Contextual Menu with Drag &amp; Drop
+            </div>
+        </div>
+        <div class="portlet-body">
+            <h2>TreeGrid Actions</h2>
+            <p>Click the buttons below to perform actions.</p>
+            <div style="margin: 20px 0;">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">Edit</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">Save</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">Cancel</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="collapseAll()">CollapseAll</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="expandAll()">ExpandAll</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="expandTo()">ExpandTo</a>
+            </div>
+            <table id="tg" class="easyui-treegrid" style="width:900px; height: auto;"
+                   data-options="
+				iconCls: 'icon-ok',
+				rownumbers: false,
+				animate: true,
+				collapsible: true,
+				fitColumns: true,
+				url: '@Url.Action("List")',
+				method: 'get',
+				idField: 'id',
+				treeField: 'name',
+                onContextMenu: onContextMenu,
+                onDblClickCell: onDblClickCell,
+                onLoadSuccess: onLoadSuccess,
+                onAfterEdit: onAfterEdit,
+                onDrop: onDrop
+			">
+                <thead>
+                    <tr>
+                        <th data-options="field:'id',width:80,editor:'text'">Menu ID</th>
+                        <th data-options="field:'name',width:360,align:'left',editor:'text'">Menu Name</th>
+                        <th data-options="field:'_parentId',width:80,editor:'text'">Parent ID</th>
+                        <th data-options="field:'iconCls',width:180,editor:'text'">Icon</th>
+                        <th data-options="field:'action',width:180,editor:'text'">UrlAction</th>
+                        <th data-options="field:'order',width:180,editor:'text'">order</th>
+                        @*<th data-options="field:'MenuIcon',width:'180',
+                                          editor:{
+                                                      type:'combobox',
+                                                      options:{
+                                                          mode:'remote',
+                                                          valueField:'categoryName',
+                                                          textField:'categoryName',
+                                                          method:'get',
+                                                          url:'category.json',
+                                                          required:true,
+                                                          onSelect: onSelect
+                                                      }
+                                           }">
+                                MenuIcon
+                            </th>*@
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="mm" class="easyui-menu" style="width:120px;">
+    <div onclick="append()" data-options="iconCls:'icon-add'">Append</div>
+    <div onclick="removeIt()" data-options="iconCls:'icon-remove'">Remove</div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.5.2/treegrid-dnd.js"></script>
+    <script type="text/javascript">
+
+        //$(document).ready(function() {
+        //    $('#tg').treegrid('sort', {	 
+        //        sortName: 'order',
+        //        sortOrder: 'asc'
+        //    });
+        //});
+        var maxLeafLevel = 3;
+        $.extend($.fn.treegrid.methods,
+            {
+                editCell: function(jq, param) {
+                    return jq.each(function() {
+                        var fields = $(this).treegrid('getColumnFields', true)
+                            .concat($(this).treegrid('getColumnFields'));
+                        for (var i = 0; i < fields.length; i++) {
+                            var col = $(this).treegrid('getColumnOption', fields);
+                            if (!!col) {
+                                col.editor1 = col.editor;
+                                if (fields !== param.field) {
+                                    col.editor = null;
+                                }
+                            }
+                        }
+                        $(this).treegrid('beginEdit', param.index);
+                        for (var j = 0; j < fields.length; j++) {
+                            var col1 = $(this).treegrid('getColumnOption', fields);
+                            if (!!col1) {
+                                col1.editor = col1.editor1;
+                            }
+                        }
+                    });
+                },
+                disableDnd: function(jq, index) {
+                    return jq.each(function() {
+                        var opts = $(this).datagrid('options');
+                        var trs;
+                        if (!!index) {
+                            trs = opts.finder.getTr(this, index);
+                        } else {
+                            trs = opts.finder.getTr(this, 0, 'allbody');
+                        }
+                        trs.draggable('disable');
+                    });
+                }
+            });
+
+        function onContextMenu(e, row) {
+            e.preventDefault();
+            $(this).treegrid('select', row.id);
+            $('#mm').menu('show',
+                {
+                    left: e.pageX,
+                    top: e.pageY
+                });
+        }
+
+        function append() {
+            var tree = $('#tg');
+            var node = tree.treegrid('getSelected');
+            var currentLevel = getLevel(node);
+            if (currentLevel < maxLeafLevel) {
+                var children = tree.treegrid('getChildren', node.id);
+                var childrenNo = children.length;
+                childrenNo++;
+                tree.treegrid('append',
+                    {
+                        parent: node.id,
+                        data: [
+                            {
+                                id: node.id * 10 + childrenNo,
+                                name: 'New Task' + node.id + '.' + childrenNo
+                            }
+                        ]
+                    });
+            }
+        }
+
+        function removeIt() {
+            var node = $('#tg').treegrid('getSelected');
+            if (node) {
+                $('#tg').treegrid('remove', node.id);
+            }
+        }
+
+        var editingId;
+
+        function edit() {
+            $('#tg').treegrid('disableDnd');
+            if (editingId !== undefined) {
+                $('#tg').treegrid('select', editingId);
+                return;
+            }
+            var row = $('#tg').treegrid('getSelected');
+            var currentLevel = getLevel(row);
+            if (row) {
+
+                if (currentLevel === maxLeafLevel) {
+                    editingId = row.id;
+                    $('#tg').treegrid('beginEdit', editingId);
+                    enableEdit(editingId);
+                } else {
+                    onDblClickCell('name', row);
+                }
+            }
+        }
+
+        function save() {
+            if (editingId !== undefined) {
+                $('#tg').treegrid('endEdit', editingId);
+                editingId = undefined;
+                $('#tg').treegrid('enableDnd', null);
+            }
+        }
+
+        function cancel() {
+            if (editingId !== undefined) {
+                $('#tg').treegrid('cancelEdit', editingId);
+                editingId = undefined;
+            }
+            $('#tg').treegrid('enableDnd', null);
+        }
+
+        function endEditing() {
+            if (editingId === undefined) {
+                return true;
+            }
+            if ($('#tg').treegrid('validateRow', editingId)) {
+                $('#tg').treegrid('endEdit', editingId);
+                editingId = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function onDblClickCell(field, row) {
+            $('#tg').treegrid('disableDnd');
+            if (endEditing()) {
+                var currentLevel = getLevel(row);
+                if (currentLevel === maxLeafLevel || field === 'name') {
+                    $('#tg').treegrid('select', row.id)
+                        .treegrid('editCell', { index: row.id, field: field });
+                    editingId = row.id;
+                    enableEdit(editingId);
+                }
+            }
+        }
+
+        function enableEdit(id) {
+            if (id) {
+                var t = $('#tg');
+                var eds = t.treegrid('getEditors', id);
+                for (var i = 0; i < eds.length; i++) {
+                    $(eds.target).bind('mousedown',
+                        function(e) {
+                            e.stopPropagation();
+                        });
+                }
+            }
+        }
+
+        function getLevel(row) {
+            var currentLevel = $('#tg').treegrid('getLevel', row.id);
+            return currentLevel;
+        }
+
+        function onLoadSuccess(row, param) {
+            $(this).treegrid('enableDnd', row ? row.id : null);
+            var roots = $('#tg').treegrid('getRoots');
+            for (var j = 0; j < roots.length; j++) {
+                $('#tg').treegrid('refresh', roots[j].id);
+                var children = $('#tg').treegrid('getChildren', roots[j].id);
+                for (var i = 0; i < children.length; i++) {
+                    if (!!children[i].id) {
+                        $('#tg').treegrid('refresh', children[i].id);
+                    }
+                };
+            };
+        }
+
+        function onSelect(param) {
+            var row = $('#tg').treegrid('getSelected');
+            row.categoryid = param.categoryid;
+            row.categoryname = param.categoryname;
+        }
+
+        function onBeforeDrop(targetRow, sourceRow, point) {
+            var tl = getLevel(targetRow);
+            var sl = getLevel(sourceRow);
+
+            if (tl === sl && point !== 'append') {
+                return true;
+            }
+
+            if (tl === sl - 1 && point === 'append') {
+                return true;
+            }
+
+            return false;
+        }
+
+        function onDragEnter(targetRow, sourceRow) {
+            var tl = getLevel(targetRow);
+            var sl = getLevel(sourceRow);
+            if (tl === sl || tl === (sl - 1)) {
+                return true;
+            }
+            return false;
+        }
+        
+        function onDrop(targetNode, source, point) {
+            $('#tg').treegrid('selectAll');
+            var rows = $('#tg').treegrid('getSelections');
+            for (var i = 0; i < rows.length; i++) {
+                rows[i].order = i + 1;
+            }
+            saveAjaxCall(rows);
+            $('#tg').datagrid('unselectAll');
+        }
+
+        function onAfterEdit(row, changes) {
+            saveAjaxCall(row);
+        }
+
+        function saveAjaxCall(data) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SaveData")',
+                data: { json: JSON.stringify(data)  } ,
+                traditional: true,
+                success: function(response) {
+                    if (!!response) {
+                        toastr.success(response.Message, "Thông báo");
+                    }
+                }
+            });
+        }
+
+        function collapseAll() {
+            $('#tg').treegrid('collapseAll');
+        }
+
+        function expandAll() {
+            $('#tg').treegrid('expandAll');
+        }
+
+        function expandTo() {
+            $('#tg').treegrid('expandTo', 21)
+                .treegrid('select', 21);
+        }
+
+    </script>
+}

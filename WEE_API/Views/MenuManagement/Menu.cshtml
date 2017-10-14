@@ -1,0 +1,52 @@
+﻿@using WEE_WEB_API.Models
+@model List<AD_Menu>
+
+@helper GetSubMenus(IEnumerable<AD_Menu> siteMenu, int? parentID)
+{
+foreach (var adMenu in Model.Where(a => a.MenuParentID == parentID))
+{
+    var menu = adMenu;
+    var isParrent = Model.Any(a => a.MenuParentID == menu.MenuID);
+        <li class="nav-item start ">
+            <a href="@(!isParrent? adMenu.URLAction  : "javascript:;" )" class="nav-link @( !isParrent ? "":"nav-toggle")">
+                <i class="@adMenu.MenuIcon" aria-hidden="true"></i>
+                <span class="title">@adMenu.MenuText</span>
+                @if (isParrent)
+                {
+                    <span class="arrow"></span>
+                }
+                else
+                {
+                    <span class="selected"></span>
+                }
+            </a>
+            @if (isParrent)
+            {
+                <ul class="sub-menu">
+                    @GetSubMenus(siteMenu, adMenu.MenuID)
+                </ul>
+            }
+        </li>
+}
+}
+<div class="page-sidebar-wrapper">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar navbar-collapse collapse" data-auto-scroll="false">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu  page-header-fixed " data-auto-scroll="false" data-keep-expanded="true" data-slide-speed="200" style="padding-top: 20px">
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            <li class="sidebar-toggler-wrapper hide">
+                <div class="sidebar-toggler">
+                    <span></span>
+                </div>
+            </li>
+            <!-- END SIDEBAR TOGGLER BUTTON -->
+            <li class="heading">
+                <h3 class="uppercase">CHỨC NĂNG PHẦN MỀM</h3>
+            </li>
+            @GetSubMenus(Model, null)
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+    <!-- END SIDEBAR -->
+</div>
