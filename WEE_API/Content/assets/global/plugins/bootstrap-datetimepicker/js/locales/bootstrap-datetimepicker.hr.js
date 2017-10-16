@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Croatian localisation
  */
 ;(function($){

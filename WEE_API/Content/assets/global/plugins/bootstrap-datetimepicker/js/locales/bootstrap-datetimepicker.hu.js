@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Hungarian translation for bootstrap-datetimepicker
  * darevish <http://github.com/darevish>
  */

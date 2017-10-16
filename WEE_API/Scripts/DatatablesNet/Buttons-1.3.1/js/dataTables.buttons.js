@@ -1,4 +1,4 @@
-/*! Buttons for DataTables 1.3.1
+﻿/*! Buttons for DataTables 1.3.1
  * ©2016 SpryMedia Ltd - datatables.net/license
  */
 

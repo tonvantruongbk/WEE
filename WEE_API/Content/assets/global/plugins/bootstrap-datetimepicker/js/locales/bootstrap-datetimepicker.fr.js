@@ -1,4 +1,4 @@
-/**
+﻿/**
  * French translation for bootstrap-datetimepicker
  * Nico Mollet <nico.mollet@gmail.com>
  */

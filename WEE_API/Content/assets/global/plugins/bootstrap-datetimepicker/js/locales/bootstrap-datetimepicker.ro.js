@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Romanian translation for bootstrap-datetimepicker
  * Cristian Vasile <cristi.mie@gmail.com>
  */

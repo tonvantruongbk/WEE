@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bulgarian translation for bootstrap-datetimepicker
  * Apostol Apostolov <apostol.s.apostolov@gmail.com>
  */

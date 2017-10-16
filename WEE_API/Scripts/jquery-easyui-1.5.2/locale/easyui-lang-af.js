@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'Bladsy';
 	$.fn.pagination.defaults.afterPageText = 'Van {pages}';
 	$.fn.pagination.defaults.displayMsg = 'Wys (from) tot (to) van (total) items';

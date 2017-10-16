@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Swedish translation for bootstrap-datetimepicker
  * Patrik Ragnarsson <patrik@starkast.net>
  */

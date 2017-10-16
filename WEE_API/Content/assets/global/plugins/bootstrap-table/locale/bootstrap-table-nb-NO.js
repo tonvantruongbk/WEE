@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table norwegian translation
  * Author: Jim Nordbø, jim@nordb.no
  */

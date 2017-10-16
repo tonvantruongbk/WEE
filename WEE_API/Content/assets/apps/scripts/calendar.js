@@ -1,4 +1,4 @@
-var AppCalendar = function() {
+﻿var AppCalendar = function() {
 
     return {
         //main function to initiate the module

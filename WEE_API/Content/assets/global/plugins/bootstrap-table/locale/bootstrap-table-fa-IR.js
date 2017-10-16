@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Persian translation
  * Author: MJ Vakili <mjv.1989@Gmail.com>
  */

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Turkish translation for bootstrap-markdown
  * Serkan Algur <info@wpadami.com>
  */

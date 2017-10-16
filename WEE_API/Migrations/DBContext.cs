@@ -7,18 +7,18 @@ using System.Data.Entity.Validation;
 using System.Text;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using WEE_WEB_API.Models;
 using WEE_API.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WEE_API.Migrations;
 
-namespace WEE_WEB_API.Models
+namespace WEE_API.Models
 {
 
     public class DBContext : DbContext
     {
         public DBContext() : base("name=DBConnectionString")
         {
-            Database.SetInitializer<DBContext>(new CreateDatabaseIfNotExists<DBContext>());
+            Database.SetInitializer<DBContext>(new DropCreateDatabaseIfModelChanges<DBContext>());
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
@@ -33,12 +33,14 @@ namespace WEE_WEB_API.Models
         public virtual DbSet<Job> Job { get; set; }
         public virtual DbSet<JobType> JobType { get; set; }
         public virtual DbSet<Question> Question { get; set; }
-        public virtual DbSet<UserRatingCompany> QuestionType { get; set; }
+        public virtual DbSet<UserRatingCompany> UserRatingCompany { get; set; }
         public virtual DbSet<CompanyJob> CompanyJob { get; set; }
         public virtual DbSet<Zone> Zone { get; set; }
+        public virtual DbSet<QuestionType> QuestionType { get; set; }
 
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
+         
 
         //public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 

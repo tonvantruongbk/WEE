@@ -1,4 +1,4 @@
-/**
+﻿/**
  * jquery.plupload.queue.js
  *
  * Copyright 2009, Moxiecode Systems AB

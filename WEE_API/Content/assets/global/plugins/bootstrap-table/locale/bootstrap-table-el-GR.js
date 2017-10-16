@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Greek translation
  * Author: giannisdallas
  */

@@ -1,4 +1,4 @@
-if ($.fn.pagination) {
+﻿if ($.fn.pagination) {
     $.fn.pagination.defaults.beforePageText = 'Sida';
     $.fn.pagination.defaults.afterPageText = 'av {pages}';
     $.fn.pagination.defaults.displayMsg = 'Visar {from} till {to} av {total} poster';

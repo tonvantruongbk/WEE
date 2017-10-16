@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Polish translation
  * Author: zergu <michal.zagdan @ gmail com>
  */

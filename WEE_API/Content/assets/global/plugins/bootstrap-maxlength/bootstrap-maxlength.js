@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
   'use strict';
   /**
    * We need an event when the elements are destroyed

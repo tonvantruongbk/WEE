@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Cube Portfolio - Responsive jQuery Grid Plugin
  *
  * version: 3.5.2 (11 February, 2016)

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Norwegian bokmål translation for bootstrap-markdown
  * Tobias Bohwalli <hi@futhr.io>
  */

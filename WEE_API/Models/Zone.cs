@@ -8,6 +8,7 @@ namespace WEE_API.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ZoneID { get; set; }
+        [MaxLength(300)]
         public string ZoneName { get; set; }
     }
 

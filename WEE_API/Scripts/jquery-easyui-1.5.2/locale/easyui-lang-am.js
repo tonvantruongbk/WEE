@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'Էջ';
 	$.fn.pagination.defaults.afterPageText = 'ից {pages}';
 	$.fn.pagination.defaults.displayMsg = 'Դիտել {from}-ից {to}-ը {total} գրառումից';

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Romanian translation
  * Author: cristake <cristianiosif@me.com>
  */

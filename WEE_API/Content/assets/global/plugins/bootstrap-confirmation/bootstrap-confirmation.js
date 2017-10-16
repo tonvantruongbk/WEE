@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap Confirmation
  * Copyright 2013 Nimit Suwannagate <ethaizone@hotmail.com>
  * Copyright 2014-2016 Damien "Mistic" Sorel <http://www.strangeplanet.fr>

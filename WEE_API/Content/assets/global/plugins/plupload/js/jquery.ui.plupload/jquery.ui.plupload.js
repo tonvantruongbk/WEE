@@ -1,4 +1,4 @@
-/**
+﻿/**
  * jquery.ui.plupload.js
  *
  * Copyright 2013, Moxiecode Systems AB

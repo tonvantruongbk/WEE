@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @preserve 
  * bootpag - jQuery plugin for dynamic pagination
  *

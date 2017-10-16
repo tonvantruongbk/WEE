@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bangla(Bangladesh) translation for bootstrap-datetimepicker
  * Mahbub Rabbani <mahbub [dot] rucse [at] gmail.com>
  */

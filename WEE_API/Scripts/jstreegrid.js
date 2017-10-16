@@ -1,4 +1,4 @@
-/*
+﻿/*
  * http://github.com/deitch/jstree-grid
  *
  * This plugin handles adding a grid to a tree to display additional data

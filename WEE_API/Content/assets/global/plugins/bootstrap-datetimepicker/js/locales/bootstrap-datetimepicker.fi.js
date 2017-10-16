@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Finnish translation for bootstrap-datetimepicker
  * Jaakko Salonen <https://github.com/jsalonen>
  */

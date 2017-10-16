@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEE_API.Models
 {
-    public class Type
+    public class QuestionType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TypeID { get; set; }
+        public int QuestionTypeID { get; set; }
         
-        public string TypeName { get; set; }
+        [MaxLength(500)]
+        public string QuestionTypeName { get; set; }
     }
 }

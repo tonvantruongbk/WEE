@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Estonian translation for bootstrap-datetimepicker
  * Rene Korss <http://rene.korss.ee> 
  */

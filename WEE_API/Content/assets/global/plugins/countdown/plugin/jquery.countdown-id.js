@@ -1,4 +1,4 @@
-/* http://keith-wood.name/countdown.html
+﻿/* http://keith-wood.name/countdown.html
    Indonesian initialisation for the jQuery countdown extension
    Written by Erwin Yonathan Jan 2009. */
 (function($) {

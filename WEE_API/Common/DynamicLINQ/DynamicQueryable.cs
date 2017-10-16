@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading;
 
-namespace WEE_WEB_API.Common.DynamicLINQ
+namespace WEE_API.Common.DynamicLINQ
 {
     public static partial class DynamicQueryable
     {

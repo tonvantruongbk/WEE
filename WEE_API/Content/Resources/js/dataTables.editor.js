@@ -1,4 +1,4 @@
-/*! DataTables Editor v1.6.3
+﻿/*! DataTables Editor v1.6.3
  *
  * ©2012-2017 SpryMedia Ltd, all rights reserved.
  * License: editor.datatables.net/license

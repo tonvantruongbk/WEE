@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Korean translation
  * Author: Yi Tae-Hyeong (jsonobject@gmail.com)
  */

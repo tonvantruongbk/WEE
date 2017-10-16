@@ -1,4 +1,4 @@
-﻿@model WEE_WEB_API.ViewModel.DatatablesEditorViewModel
+﻿@model WEE_API.ViewModel.DatatablesEditorViewModel
 <script>
     editorFor@(Model.Controller) = new $.fn.dataTable.Editor({
         table: "#@(Model.TableID)",
@@ -64,7 +64,9 @@
         }, {
             extend: 'remove',
             editor: editorFor@(Model.Controller)
-        }, {
+        }
+        
+        @*, {
             extend: 'excelHtml5',
             columns: ':visible',
             test: 'Save current page',
@@ -73,7 +75,7 @@
             header: true,
             customize: function(xlsx) {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                var numrows = 3;
+                var numrows = 1;
                 var clR = $('row', sheet);
                 //update Row
                 clR.each(function() {
@@ -90,56 +92,6 @@
                     ind = ind + numrows;
                     $(this).attr("r", pre + ind);
                 });
-
-                function Addrow(index, data, attr) {
-                    var msg = '<row r="' + index + '">';
-                    for (i = 0; i < data.length; i++) {
-                        var key = data[i].key;
-                        var value = data[i].value;
-                        msg += '<c t="inlineStr" r="' + key + index + '" s="42">';
-                        msg += '<is>';
-                        msg += '<t>' + value + '</t>';
-                        msg += '</is>';
-                        msg += '</c>';
-                    }
-                    msg += '</row>';
-                    return msg;
-                }
-
-                //insert
-                var r1 = Addrow(1,
-                    [
-                        {
-                            key: 'A',
-                            value: 'bsdsb',
-
-                        }, {
-                            key: 'B',
-                            value: 'sdbdsb'
-                        }
-                    ]);
-                var r2 = Addrow(2,
-                    [
-                        {
-                            key: 'A',
-                            value: 'bbbb'
-                        }, {
-                            key: 'B',
-                            value: ''
-                        }
-                    ]);
-                var r3 = Addrow(3,
-                    [
-                        {
-                            key: 'A',
-                            value: ''
-                        }, {
-                            key: 'B',
-                            value: ''
-                        }
-                    ]);
-                sheet.childNodes[0].childNodes[1].innerHTML =
-                    r1 + r2 + r3 + sheet.childNodes[0].childNodes[1].innerHTML;
             },
             exportOptions: {
                 modifier: {
@@ -279,7 +231,7 @@
             columns: ':visible',
             text: '<i class="fa fa-print editorButton"></i>Print',
             autoPrint: true
-        }
+        }*@
     ];
 
     //editor.on('preSubmit', function (e, data, action) {

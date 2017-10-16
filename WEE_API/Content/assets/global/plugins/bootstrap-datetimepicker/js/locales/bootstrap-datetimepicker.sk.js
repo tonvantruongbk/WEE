@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Slovak translation for bootstrap-datetimepicker
  * Marek Lichtner <marek@licht.sk>
  * Fixes by Michal Remiš <michal.remis@gmail.com>

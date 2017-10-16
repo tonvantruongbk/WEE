@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Ukrainian translation for bootstrap-datetimepicker
  * Andrey Vityuk <andrey [dot] vityuk [at] gmail.com>
  */

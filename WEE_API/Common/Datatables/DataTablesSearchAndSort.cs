@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using WEE_WEB_API.Common.DynamicLINQ;
+using WEE_API.Common.DynamicLINQ;
 using System.Data.Entity.SqlServer;
 using System.Reflection;
 
-namespace WEE_WEB_API.Common.Datatables
+namespace WEE_API.Common.Datatables
 
 {
     public static class DataTablesSearchAndSort

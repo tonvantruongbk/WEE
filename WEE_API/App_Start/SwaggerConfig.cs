@@ -1,4 +1,4 @@
-using System.Web.Http;
+﻿using System.Web.Http;
 using WebActivatorEx;
 using WEE_API;
 using Swashbuckle.Application;
@@ -57,17 +57,16 @@ namespace WEE_API
                         // at the document or operation level to indicate which schemes are required for an operation. To do this,
                         // you'll need to implement a custom IDocumentFilter and/or IOperationFilter to set these properties
                         // according to your specific authorization implementation
-                        ////
-
+                        //
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
-
-                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
-                        c.ApiKey("apiKey")
-                            .Description("API Key Authentication")
-                            .Name("apiKey")
-                            .In("header");
-
+                        //
+						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        //c.ApiKey("apiKey")
+                        //    .Description("API Key Authentication")
+                        //    .Name("apiKey")
+                        //    .In("header");
+                        //
                         //c.OAuth2("oauth2")
                         //    .Description("OAuth2 Implicit Grant")
                         //    .Flow("implicit")
@@ -183,14 +182,14 @@ namespace WEE_API
                         // Use the "DocumentTitle" option to change the Document title.
                         // Very helpful when you have multiple Swagger pages open, to tell them apart.
                         //
-                        c.DocumentTitle("API for WEE");
-                        //CUSTOM BEARER
-                        c.InjectJavaScript(thisAssembly, "WEE_API.App_Start.basic-auth.js");
+                        //c.DocumentTitle("My Swagger UI");
+
                         // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's
                         // "Logical Name" is passed to the method as shown below.
                         //
-                        //c.InjectStylesheet(containingAssembly, "Swashbuckle.Dummy.SwaggerExtensions.testStyles1.css");
+                        c.InjectJavaScript(thisAssembly, "WEE_API.App_Start.basic-auth.js");
+
 
                         // Use the "InjectJavaScript" option to invoke one or more custom JavaScripts after the swagger-ui
                         // has loaded. The file must be included in your project as an "Embedded Resource", and then the resource's

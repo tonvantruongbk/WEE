@@ -1,4 +1,4 @@
-var AppInbox = function () {
+﻿var AppInbox = function () {
 
     var content = $('.inbox-content');
     var listListing = '';

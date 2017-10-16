@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Portuguese Portugal Translation
  * Author: Burnspirit<burnspirit@gmail.com>
  */

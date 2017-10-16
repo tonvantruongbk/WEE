@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Norwegian (bokmål) translation for bootstrap-datetimepicker
  * Fredrik Sundmyhr <http://github.com/fsundmyhr>
  */

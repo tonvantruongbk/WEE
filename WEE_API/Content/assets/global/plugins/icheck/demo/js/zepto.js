@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Zepto v1.0 zeptojs.com | MIT licensed
  * Modules: zepto, polyfill, event, data, stack
  */

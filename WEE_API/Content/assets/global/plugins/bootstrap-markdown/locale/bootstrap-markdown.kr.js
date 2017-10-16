@@ -1,4 +1,4 @@
-/**
+﻿/**
  + * Korean translation for bootstrap-markdown
  + * WoongBi Kim <ssinss@gmail.com>
  + */

@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 * jquery.counterup.js 1.0
 *
 * Copyright 2013, Benjamin Intal http://gambit.ph @bfintal

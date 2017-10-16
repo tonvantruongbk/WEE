@@ -22,7 +22,7 @@
             case 'DateTime?':
                 field = $.extend(true, field, {
                     type: 'datetime',
-                    format: 'DD/MM/YYYY'
+                    format: 'DD/MM/YYYY' 
                 });
                 break;
         };
@@ -104,8 +104,8 @@ var generateYdacf = function (tableID, filterMode) {
     $("#" + filterMode).parent().append(
         "<div id='externaly_triggered_wrapper-controls' style='float:right;'>" +
         "	<div>" +
-          "		<input type='button' onclick='yadcf.exFilterExternallyTriggered(tableFor" + tableID.replace('DataTable','')+");' value='Filter' class='btn btn-info'>" +
-        "		<input type='button' onclick='yadcf.exResetAllFilters(tableFor" + tableID.replace('DataTable', '') +");' value='Reset' class='btn btn-warning'>" +
+          "		<input type='button' onclick='yadcf.exFilterExternallyTriggered(tableFor" + tableID.replace('DataTable','')+");' value='Tìm kiếm' class='btn btn-info'>" +
+        "		<input type='button' onclick='yadcf.exResetAllFilters(tableFor" + tableID.replace('DataTable', '') +");' value='Xóa' class='btn btn-warning'>" +
         "	</div>" +
           "</div>"
       );

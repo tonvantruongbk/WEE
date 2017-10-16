@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using WEE_API.Models;
-using WEE_WEB_API.Models;
+using WEE_API.Models;
 
 namespace WEE_API
 {

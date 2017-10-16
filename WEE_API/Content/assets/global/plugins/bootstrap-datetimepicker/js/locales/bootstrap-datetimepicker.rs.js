@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Serbian cyrillic translation for bootstrap-datetimepicker
  * Bojan Milosavlević <milboj@gmail.com>
  */

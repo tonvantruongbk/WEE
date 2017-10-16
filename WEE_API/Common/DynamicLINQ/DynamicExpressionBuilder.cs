@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace WEE_WEB_API.Common.DynamicLINQ
+namespace WEE_API.Common.DynamicLINQ
 {
     public class DynamicExpressionBuilder : DynamicObject
     {

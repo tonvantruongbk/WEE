@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Afrikaans translation
  * Author: Phillip Kruger <phillip.kruger@gmail.com>
  */

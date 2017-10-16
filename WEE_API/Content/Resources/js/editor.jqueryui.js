@@ -1,4 +1,4 @@
-/*! jQuery UI integration for DataTables' Editor
+﻿/*! jQuery UI integration for DataTables' Editor
  * ©2015 SpryMedia Ltd - datatables.net/license
  */
 

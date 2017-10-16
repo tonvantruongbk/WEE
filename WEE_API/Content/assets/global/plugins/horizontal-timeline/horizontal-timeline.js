@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+﻿jQuery(document).ready(function($){
 	var timelines = $('.cd-horizontal-timeline');
 	var eventsMinDistance;
 

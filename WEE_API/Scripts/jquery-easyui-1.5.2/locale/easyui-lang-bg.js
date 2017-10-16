@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'Страница';
 	$.fn.pagination.defaults.afterPageText = 'от {pages}';
 	$.fn.pagination.defaults.displayMsg = 'Показани {from} за {to} от {total} продукти';

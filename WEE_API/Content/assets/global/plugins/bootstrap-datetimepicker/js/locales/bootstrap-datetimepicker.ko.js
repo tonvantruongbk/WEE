@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Korean translation for bootstrap-datetimepicker
  * Gu Youn <http://github.com/guyoun>
  * Baekjoon Choi <http://github.com/Baekjoon>

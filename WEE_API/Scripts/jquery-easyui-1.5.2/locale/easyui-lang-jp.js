@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'ページ';
 	$.fn.pagination.defaults.afterPageText = '{pages} 中';
 	$.fn.pagination.defaults.displayMsg = '全 {total} アイテム中 {from} から {to} を表示中';

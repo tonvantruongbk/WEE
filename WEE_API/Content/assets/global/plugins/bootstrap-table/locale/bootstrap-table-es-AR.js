@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Spanish (Argentina) translation
  * Author: Felix Vera (felix.vera@gmail.com)
  */

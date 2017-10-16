@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Vietnamese translation
  * Author: Duc N. PHAM <pngduc@gmail.com>
  */

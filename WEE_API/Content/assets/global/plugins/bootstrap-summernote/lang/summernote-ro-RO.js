@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
   $.extend($.summernote.lang, {
     'ro-RO': {
       font: {

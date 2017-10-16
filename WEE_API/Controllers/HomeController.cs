@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WEE_WEB_API.Controllers
+namespace WEE_API.Controllers
 {
     public class HomeController : Controller
     {

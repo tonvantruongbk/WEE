@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Spanish translation for bootstrap-markdown
  * by Leandro Poblet <leandrodrhouse@gmail.com>
  */

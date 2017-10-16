@@ -9,6 +9,7 @@ namespace WEE_API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LocationID { get; set; }
 
+        [MaxLength(100)]
         public string LocationName { get; set; }
     }
 }

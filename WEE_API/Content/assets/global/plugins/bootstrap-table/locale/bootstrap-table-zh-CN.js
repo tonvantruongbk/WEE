@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Chinese translation
  * Author: Zhixin Wen<wenzhixin2010@gmail.com>
  */

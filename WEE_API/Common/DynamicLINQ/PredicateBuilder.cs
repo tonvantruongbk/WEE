@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace WEE_WEB_API.Common.DynamicLINQ
+namespace WEE_API.Common.DynamicLINQ
 {
     public static class PredicateBuilder
     {

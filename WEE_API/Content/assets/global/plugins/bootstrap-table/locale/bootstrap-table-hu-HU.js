@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Hungarian translation
  * Author: Nagy Gergely <info@nagygergely.eu>
  */

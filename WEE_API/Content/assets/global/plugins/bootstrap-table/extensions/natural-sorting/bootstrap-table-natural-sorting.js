@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @author: Brian Huisman
  * @webSite: http://www.greywyvern.com
  * @version: v1.0.0

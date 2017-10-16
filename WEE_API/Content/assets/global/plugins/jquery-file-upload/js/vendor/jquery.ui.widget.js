@@ -1,4 +1,4 @@
-/*! jQuery UI - v1.11.4+CommonJS - 2015-08-28
+﻿/*! jQuery UI - v1.11.4+CommonJS - 2015-08-28
 * http://jqueryui.com
 * Includes: widget.js
 * Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table danish translation
  * Author: Your Name Jan Borup Coyle, github@coyle.dk
  */

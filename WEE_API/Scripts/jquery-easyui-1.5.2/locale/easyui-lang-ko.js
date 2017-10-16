@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = '페이지';
 	$.fn.pagination.defaults.afterPageText = '{pages} 중';
 	$.fn.pagination.defaults.displayMsg = '전체 {total} 항목 중 {from}부터 {to}번째';

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Russian translation for bootstrap-datetimepicker
  * Victor Taranenko <darwin@snowdale.com>
  */

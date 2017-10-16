@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'صفحة';
 	$.fn.pagination.defaults.afterPageText = 'من {pages}';
 	$.fn.pagination.defaults.displayMsg = 'عرض {from} إلى {to} من {total} عنصر';

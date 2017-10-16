@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WEE_WEB_API.Common.Datatables
+namespace WEE_API.Common.Datatables
 {
     /// <summary>
     /// A full result, as understood by jQuery DataTables.

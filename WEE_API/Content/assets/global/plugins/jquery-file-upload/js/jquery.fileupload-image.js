@@ -1,4 +1,4 @@
-/*
+﻿/*
  * jQuery File Upload Image Preview & Resize Plugin
  * https://github.com/blueimp/jQuery-File-Upload
  *

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table French (France) translation
  * Author: Dennis Hernández (http://djhvscf.github.io/Blog/)
  * Modification: Tidalf (https://github.com/TidalfFR)

@@ -19,5 +19,12 @@ namespace WEE_API.Models
         public int LocationID { get; set; }
         public decimal AverageScore { get; set; }
         public int   TotalUserRate { get; set; }
+
+        [ForeignKey("ZoneID")]
+        public Zone Zone { get; set; }
+
+        [ForeignKey("LocationID")]
+        public Location Location { get; set; }
+
     }
 }

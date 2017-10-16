@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Latvian translation for bootstrap-datetimepicker
  * Artis Avotins <artis@apit.lv>
  */

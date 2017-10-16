@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Brazilian Portuguese Translation
  * Author: Eduardo Cerqueira<egcerqueira@gmail.com>
  * Update: João Mello<jmello@hotmail.com.br>

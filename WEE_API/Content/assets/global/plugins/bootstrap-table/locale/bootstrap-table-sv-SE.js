@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Swedish translation
  * Author: C Bratt <bratt@inix.se>
  */

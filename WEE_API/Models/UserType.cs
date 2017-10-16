@@ -9,6 +9,7 @@ namespace WEE_API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserTypeID { get; set; }
 
+        [MaxLength(200)]
         public string UserTypeName { get; set; }
     }
 }

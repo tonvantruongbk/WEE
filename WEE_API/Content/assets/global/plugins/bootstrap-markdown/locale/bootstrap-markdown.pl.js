@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Polish translation for bootstrap-markdown
  * Marek Kaput
  */

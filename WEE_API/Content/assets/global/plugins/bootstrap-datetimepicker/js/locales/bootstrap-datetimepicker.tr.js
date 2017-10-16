@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Turkish translation for bootstrap-datetimepicker
  * Serkan Algur <kaisercrazy_2@hotmail.com>
  */

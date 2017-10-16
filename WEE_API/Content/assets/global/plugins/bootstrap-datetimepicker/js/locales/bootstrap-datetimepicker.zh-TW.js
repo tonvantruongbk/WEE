@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Traditional Chinese translation for bootstrap-datetimepicker
  * Rung-Sheng Jang <daniel@i-trend.co.cc>
  */

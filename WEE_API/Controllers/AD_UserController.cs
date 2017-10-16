@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WEE_WEB_API.Models;
+using WEE_API.Models;
 
-namespace WEE_WEB_API.Controllers
+namespace WEE_API.Controllers
 {
     public class AD_UserController : Controller
     {

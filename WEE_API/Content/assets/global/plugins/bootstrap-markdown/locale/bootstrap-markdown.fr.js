@@ -1,4 +1,4 @@
-/**
+﻿/**
  * French translation for bootstrap-markdown
  * Benoît Bourgeois <bierdok@gmail.com>
  */

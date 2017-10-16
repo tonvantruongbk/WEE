@@ -12,6 +12,7 @@ namespace WEE_API.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int QuestionID { get; set; }
+        [MaxLength(1000)]
         public string QuestionName { get; set; }
 
     }

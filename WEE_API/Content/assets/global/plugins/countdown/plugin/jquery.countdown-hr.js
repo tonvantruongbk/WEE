@@ -1,4 +1,4 @@
-/* http://keith-wood.name/countdown.html
+﻿/* http://keith-wood.name/countdown.html
  * Croatian Latin initialisation for the jQuery countdown extension
  * Written by Dejan Broz info@hqfactory.com (2011) */
 (function($) {

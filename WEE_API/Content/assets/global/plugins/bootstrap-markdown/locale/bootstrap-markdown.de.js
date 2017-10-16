@@ -1,4 +1,4 @@
-/**
+﻿/**
  * German translation for bootstrap-markdown
  * Tobias Nitsche <tobias-nitsche@gmx.net>
  */

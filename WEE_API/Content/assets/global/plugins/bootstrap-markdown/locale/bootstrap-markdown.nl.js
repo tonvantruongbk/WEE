@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Dutch translation for bootstrap-markdown
  * Jeroen Thora <jeroenthora@gmail.com>
  */

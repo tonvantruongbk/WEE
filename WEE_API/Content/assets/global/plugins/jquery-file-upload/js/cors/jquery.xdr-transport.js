@@ -1,4 +1,4 @@
-/*
+﻿/*
  * jQuery XDomainRequest Transport Plugin
  * https://github.com/blueimp/jQuery-File-Upload
  *

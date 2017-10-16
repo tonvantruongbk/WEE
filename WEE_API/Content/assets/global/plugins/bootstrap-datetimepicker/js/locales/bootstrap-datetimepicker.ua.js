@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Ukrainian translation for bootstrap-datepicker
  * Igor Polynets
  */

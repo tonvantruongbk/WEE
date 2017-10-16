@@ -1,4 +1,4 @@
-(function($){
+﻿(function($){
 	$.extend($.fn.treegrid.defaults, {
 		dropAccept:'tr[node-id]',
 		onBeforeDrag: function(row){},	// return false to deny drag

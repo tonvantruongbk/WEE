@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Arabic translation for bootstrap-markdown
  * George Ajam <george.ejaam@gmail.com>
  */

@@ -1,4 +1,4 @@
-/*! Select for DataTables 1.2.2
+﻿/*! Select for DataTables 1.2.2
  * 2015-2016 SpryMedia Ltd - datatables.net/license/mit
  */
 

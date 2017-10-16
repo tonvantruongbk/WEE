@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WEE_WEB_API.ViewModel
+namespace WEE_API.ViewModel
 {
     public class MenuViewModel
     {

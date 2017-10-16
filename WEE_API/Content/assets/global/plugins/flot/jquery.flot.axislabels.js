@@ -1,4 +1,4 @@
-/*
+﻿/*
 Axis Labels Plugin for flot.
 http://github.com/markrcote/flot-axislabels
 Original code is Copyright (c) 2010 Xuan Luo.

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Dutch translation
  * Author: Your Name <info@a2hankes.nl>
  */

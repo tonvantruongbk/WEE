@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace WEE_WEB_API.Common
+namespace WEE_API.Common
 {
     public static class CommonFunction
     {

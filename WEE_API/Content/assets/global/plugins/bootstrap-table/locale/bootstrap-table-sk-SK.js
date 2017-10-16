@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Slovak translation
  * Author: Jozef Dúc<jozef.d13@gmail.com>
  */

@@ -10,7 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using WEE_API.Providers;
 using WEE_API.Models;
-using WEE_WEB_API.Models;
+using WEE_API.Models;
 
 namespace WEE_API
 {

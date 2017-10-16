@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * clipboard.js v1.5.12
  * https://zenorocha.github.io/clipboard.js
  *

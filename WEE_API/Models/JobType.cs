@@ -8,6 +8,8 @@ namespace WEE_API.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int JobTypeID { get; set; }
+
+        [MaxLength(300)]
         public string JobTypeName { get; set; }
     }
 

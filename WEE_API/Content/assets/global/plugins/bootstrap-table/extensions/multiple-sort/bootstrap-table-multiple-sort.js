@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @author Nadim Basalamah <dimbslmh@gmail.com>
  * @version: v1.0.0
  * https://github.com/dimbslmh/bootstrap-table/tree/master/src/extensions/multiple-sort/bootstrap-table-multiple-sort.js

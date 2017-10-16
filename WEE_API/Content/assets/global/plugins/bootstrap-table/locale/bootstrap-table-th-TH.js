@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Thai translation
  * Author: Monchai S.<monchais@gmail.com>
  */

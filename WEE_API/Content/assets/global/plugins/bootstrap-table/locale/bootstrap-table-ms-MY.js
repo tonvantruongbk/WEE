@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Malay translation
  * Author: Azamshul Azizy <azamshul@gmail.com>
  */

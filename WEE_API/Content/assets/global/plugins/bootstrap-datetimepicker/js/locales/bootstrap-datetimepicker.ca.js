@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Catalan translation for bootstrap-datetimepicker
  * J. Garcia <jogaco.en@gmail.com>
  */

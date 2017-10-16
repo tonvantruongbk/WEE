@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Hebrew translation for bootstrap-datetimepicker
  * Sagie Maoz <sagie@maoz.info>
  */

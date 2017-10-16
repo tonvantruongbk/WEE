@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Brazilian translation for bootstrap-datetimepicker
  * Cauan Cabral <cauan@radig.com.br>
  */

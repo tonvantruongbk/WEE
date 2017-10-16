@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap Context Menu
  * Author: @sydcanem
  * https://github.com/sydcanem/bootstrap-contextmenu

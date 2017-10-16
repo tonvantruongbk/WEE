@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Azerbaijani translation for bootstrap-datetimepicker
  * Konstantin Kaluzhnikov <k.kaluzhnikov@gmail.com>
  */

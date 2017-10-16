@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Italian translation
  * Author: Davide Renzi<davide.renzi@gmail.com>
  * Author: Davide Borsatto <davide.borsatto@gmail.com>

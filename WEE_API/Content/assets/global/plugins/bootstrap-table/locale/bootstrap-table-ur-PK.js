@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Urdu translation
  * Author: Malik <me@malikrizwan.com>
  */

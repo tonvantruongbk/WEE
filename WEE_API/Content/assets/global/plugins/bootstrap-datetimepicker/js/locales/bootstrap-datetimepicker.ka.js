@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Georgian translation for bootstrap-datetimepicker
  * Zura Jijavadze <mailzura@gmail.com>
  */

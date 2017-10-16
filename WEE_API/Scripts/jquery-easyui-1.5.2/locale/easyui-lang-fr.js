@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'Page';
 	$.fn.pagination.defaults.afterPageText = 'de {pages}';
 	$.fn.pagination.defaults.displayMsg = 'Affichage de {from} et {to} au {total} des articles';

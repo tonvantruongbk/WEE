@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace WEE_WEB_API.Common
+namespace WEE_API.Common
 {
     public class JsonNetResult : JsonResult
     {

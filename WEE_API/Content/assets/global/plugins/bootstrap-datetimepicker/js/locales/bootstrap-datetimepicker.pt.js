@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Portuguese translation for bootstrap-datetimepicker
  * Original code: Cauan Cabral <cauan@radig.com.br>
  * Tiago Melo <tiago.blackcode@gmail.com>

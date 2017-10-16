@@ -10,7 +10,7 @@
 
         $("#explore").unbind().click( function () {
             $.ajax({
-                url: "http://localhost:28949/token",
+                url: "http://localhost:15360/token",
                 type: "post",
                 contenttype: 'x-www-form-urlencoded',
                 data: "grant_type=password&username=" + $('#input_username').val() + "&password=" + $('#input_password').val(),

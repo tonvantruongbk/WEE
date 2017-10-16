@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Spanish translation for bootstrap-datetimepicker
  * Bruno Bonamin <bruno.bonamin@gmail.com>
  */

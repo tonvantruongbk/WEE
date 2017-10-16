@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
-using WEE_WEB_API.Models;
-using WEE_WEB_API.ViewModel;
+using WEE_API.Models;
+using WEE_API.ViewModel;
 
-namespace WEE_WEB_API.Controllers
+namespace WEE_API.Controllers
 {
     public class AccessMatrixController : Controller
     {

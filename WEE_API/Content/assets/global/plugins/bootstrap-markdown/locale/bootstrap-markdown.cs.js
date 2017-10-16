@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Czech translation for bootstrap-markdown
  * Vít Kabele <vit@kabele.me>
  */

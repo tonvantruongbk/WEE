@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Estonian translation
  * Author: kristjan@logist.it>
  */

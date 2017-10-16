@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Spanish (España) translation
  * Author: Antonio Pérez <anpegar@gmail.com>
  */

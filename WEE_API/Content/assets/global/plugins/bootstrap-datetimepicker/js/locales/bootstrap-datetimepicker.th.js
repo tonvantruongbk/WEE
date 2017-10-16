@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Thai translation for bootstrap-datetimepicker
  * Suchau Jiraprapot <seroz24@gmail.com>
  */

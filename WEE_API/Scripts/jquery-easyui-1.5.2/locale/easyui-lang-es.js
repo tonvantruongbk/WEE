@@ -1,4 +1,4 @@
-if ($.fn.pagination){
+﻿if ($.fn.pagination){
 	$.fn.pagination.defaults.beforePageText = 'P&aacute;gina';
 	$.fn.pagination.defaults.afterPageText = 'de {pages}';
 	$.fn.pagination.defaults.displayMsg = 'Mostrando {from} a {to} de {total} elementos';

@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Datepicker for Bootstrap v1.5.1 (https://github.com/eternicode/bootstrap-datepicker)
  *
  * Copyright 2012 Stefan Petre

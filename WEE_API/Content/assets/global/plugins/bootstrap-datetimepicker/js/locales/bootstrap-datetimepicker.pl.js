@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Polish translation for bootstrap-datetimepicker
  * Robert <rtpm@gazeta.pl>
  */

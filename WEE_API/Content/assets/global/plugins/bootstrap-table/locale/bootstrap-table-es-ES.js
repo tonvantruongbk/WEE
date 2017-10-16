@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Spanish Spain translation
  * Author: Marc Pina<iwalkalone69@gmail.com>
  */

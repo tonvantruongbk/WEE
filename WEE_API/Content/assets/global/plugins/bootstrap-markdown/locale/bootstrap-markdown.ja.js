@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Japanese translation for bootstrap-markdown
  * Kenta Murakami <kntmrkm@gmail.com>
  */

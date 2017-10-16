@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Turkish translation
  * Author: Emin Şen
  * Author: Sercan Cakir <srcnckr@gmail.com>

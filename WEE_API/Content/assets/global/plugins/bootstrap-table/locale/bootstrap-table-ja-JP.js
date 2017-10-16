@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Japanese translation
  * Author: Azamshul Azizy <azamshul@gmail.com>
  */

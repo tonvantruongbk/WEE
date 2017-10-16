@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table French (Belgium) translation
  * Author: Julien Bisconti (julien.bisconti@gmail.com)
  */

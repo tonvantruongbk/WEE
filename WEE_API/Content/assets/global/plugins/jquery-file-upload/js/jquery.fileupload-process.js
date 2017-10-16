@@ -1,4 +1,4 @@
-/*
+﻿/*
  * jQuery File Upload Processing Plugin
  * https://github.com/blueimp/jQuery-File-Upload
  *

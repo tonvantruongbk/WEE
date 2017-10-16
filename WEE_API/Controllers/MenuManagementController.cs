@@ -6,10 +6,10 @@ using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using WEE_WEB_API.Models;
-using WEE_WEB_API.ViewModel;
+using WEE_API.Models;
+using WEE_API.ViewModel;
 
-namespace WEE_WEB_API.Controllers
+namespace WEE_API.Controllers
 {
     public class MenuManagementController : Controller
     {

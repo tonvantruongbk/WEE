@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Arabic translation for bootstrap-datetimepicker
 * Ala' Mohammad <amohammad@birzeit.ecu>
 */

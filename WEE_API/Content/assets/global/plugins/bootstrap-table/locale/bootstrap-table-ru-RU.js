@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Russian translation
  * Author: Dunaevsky Maxim <dunmaksim@yandex.ru>
  */

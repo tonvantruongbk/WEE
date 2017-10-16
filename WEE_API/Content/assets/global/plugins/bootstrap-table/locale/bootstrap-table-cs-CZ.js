@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Czech translation
  * Author: Lukas Kral (monarcha@seznam.cz)
  * Author: Jakub Svestka <svestka1999@gmail.com>

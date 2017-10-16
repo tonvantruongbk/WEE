@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Slovene translation for bootstrap-datetimepicker
  * Gregor Rudolf <gregor.rudolf@gmail.com>
  */

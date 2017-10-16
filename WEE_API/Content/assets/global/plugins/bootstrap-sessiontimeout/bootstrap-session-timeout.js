@@ -1,4 +1,4 @@
-/*
+﻿/*
  * bootstrap-session-timeout
  * www.orangehilldev.com
  *

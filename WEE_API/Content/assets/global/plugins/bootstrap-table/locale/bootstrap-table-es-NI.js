@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Spanish (Nicaragua) translation
  * Author: Dennis Hernández (http://djhvscf.github.io/Blog/)
  */

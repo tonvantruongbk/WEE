@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
-using WEE_WEB_API.Models;
+using WEE_API.Models;
 
 namespace WEE_API.Models
 { 

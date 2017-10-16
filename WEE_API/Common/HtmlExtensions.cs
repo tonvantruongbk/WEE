@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WEE_WEB_API.Common
+namespace WEE_API.Common
 {
     public static class HtmlExtensions
     {

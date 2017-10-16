@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Slovenian translation for bootstrap-markdown
  * Davor Padovan <davor.padovan@gmail.com>
  */

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WEE_WEB_API.Models
+namespace WEE_API.Models
 {
     public class AD_User_Menu
     {

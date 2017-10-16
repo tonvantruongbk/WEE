@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Georgian translation
  * Author: Levan Lotuashvili <l.lotuashvili@gmail.com>
  */

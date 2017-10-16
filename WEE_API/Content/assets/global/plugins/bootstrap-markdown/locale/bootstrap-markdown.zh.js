@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Chinese translation for bootstrap-markdown
  * benhaile <denghaier@163.com>
  */

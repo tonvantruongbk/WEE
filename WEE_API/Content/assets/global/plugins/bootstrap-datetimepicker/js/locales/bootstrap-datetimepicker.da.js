@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Danish translation for bootstrap-datetimepicker
  * Christian Pedersen <http://github.com/chripede>
  */

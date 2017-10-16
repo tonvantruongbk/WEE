@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bootstrap Table Ukrainian translation
  * Author: Vitaliy Timchenko <vitaliy.timchenko@gmail.com>
  */

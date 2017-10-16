@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Danish translation for bootstrap-markdown
  * Dan Storm <storm@catalystcode.net>
  */
