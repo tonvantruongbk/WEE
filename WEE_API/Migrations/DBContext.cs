@@ -10,14 +10,16 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using WEE_API.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WEE_API.Migrations;
+using WEE_API.RBAC;
 
 namespace WEE_API.Models
 {
 
-    public class DBContext : DbContext
+    public class DBContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public DBContext() : base("name=DBConnectionString")
         {
+            Database.SetInitializer(new DBInitializer());
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
@@ -39,13 +41,29 @@ namespace WEE_API.Models
 
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
-         
+
+        public DbSet<PERMISSION> PERMISSIONS { get; set; }
 
         //public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ApplicationUser>().ToTable("USERS").Property(p => p.Id).HasColumnName("UserId");
+            modelBuilder.Entity<ApplicationRole>().ToTable("ROLES").Property(p => p.Id).HasColumnName("RoleId");
+            modelBuilder.Entity<ApplicationUserRole>().ToTable("LNK_USER_ROLE");
+
+            modelBuilder.Entity<ApplicationRole>().
+                HasMany(c => c.PERMISSIONS).
+                WithMany(p => p.ROLES).
+                Map(
+                    m =>
+                    {
+                        m.MapLeftKey("RoleId");
+                        m.MapRightKey("PermissionId");
+                        m.ToTable("LNK_ROLE_PERMISSION");
+                    });
         }
 
         public static DBContext Create()

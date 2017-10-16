@@ -34,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\WEE_API.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -55,6 +56,10 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JWT, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.1.3.4\lib\3.5\JWT.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -190,6 +195,10 @@
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Twilio, Version=5.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.7.2\lib\net35\Twilio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -200,6 +209,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action Filters\RBACAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -215,9 +225,12 @@
     <Compile Include="Common\DynamicLINQ\PredicateBuilder.cs" />
     <Compile Include="Common\HtmlExtensions.cs" />
     <Compile Include="Common\JsonNetResult.cs" />
-    <Compile Include="Controllers\AccessMatrixController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AD_UserController.cs" />
+    <Compile Include="Migrations\DBInitializer.cs" />
+    <Compile Include="RBAC\RBAC_ExtendedMethods.cs" />
+    <Compile Include="RBAC\RBAC_IdentityExtendedMethods.cs" />
+    <Compile Include="Controllers\ADM\AccountController.cs" />
+    <Compile Include="Controllers\ADM\AdminController.cs" />
+    <Compile Include="Controllers\ADM\AD_UserController.cs" />
     <Compile Include="Controllers\API\CompanyController.cs" />
     <Compile Include="Controllers\API\CompanyJobController.cs" />
     <Compile Include="Controllers\API\JobController.cs" />
@@ -228,26 +241,28 @@
     <Compile Include="Controllers\API\UserRatingCompanyController.cs" />
     <Compile Include="Controllers\API\UserTypeController.cs" />
     <Compile Include="Controllers\API\ZoneController.cs" />
-    <Compile Include="Controllers\BatchEditController.cs" />
+    <Compile Include="Controllers\ADM\BatchEditController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ADM\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobTypeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
-    <Compile Include="Controllers\MenuManagementController.cs" />
-    <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\ADM\ManageController.cs" />
+    <Compile Include="Controllers\ADM\MenuManagementController.cs" />
+    <Compile Include="Controllers\ADM\PermissionController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionTypeController.cs" />
+    <Compile Include="Controllers\ADM\UnauthorisedController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ADM\ValuesController.cs" />
     <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DBContext.cs" />
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="RBAC\AccountBindingModels.cs" />
+    <Compile Include="RBAC\AccountViewModels.cs" />
     <Compile Include="Models\AD_AuditLog.cs" />
     <Compile Include="Models\AD_History.cs" />
     <Compile Include="Models\AD_Menu.cs" />
@@ -255,10 +270,11 @@
     <Compile Include="Models\AD_User_Menu.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyJob.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="RBAC\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobType.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\UserRatingCompany.cs" />
@@ -4284,12 +4300,26 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Views\AD_User\Index.cshtml" />
+    <Content Include="Views\BatchEdit\Index.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\JobType\Index.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\MenuManagement\Index.cshtml" />
+    <Content Include="Views\MenuManagement\Menu.cshtml" />
+    <Content Include="Views\Permission\Index.cshtml" />
+    <Content Include="Views\Permission\_Matrix.cshtml" />
+    <Content Include="Views\QuestionType\Index.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Breadcrumbs.cshtml" />
     <Content Include="Views\Shared\_CommonDatatablesEditor.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\UserType\Index.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Zone\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4298,22 +4328,56 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\AccessMatrix\Index.cshtml" />
-    <Content Include="Views\AccessMatrix\_Matrix.cshtml" />
-    <Content Include="Views\AD_User\Index.cshtml" />
-    <Content Include="Views\Job\Index.cshtml" />
-    <Content Include="Views\MenuManagement\Index.cshtml" />
-    <Content Include="Views\MenuManagement\Menu.cshtml" />
-    <Content Include="Views\Permission\Index.cshtml" />
-    <Content Include="Views\Permission\_Matrix.cshtml" />
-    <Content Include="Views\BatchEdit\Index.cshtml" />
-    <Content Include="Views\Company\Index.cshtml" />
-    <Content Include="Views\JobType\Index.cshtml" />
-    <Content Include="Views\Question\Index.cshtml" />
-    <Content Include="Views\QuestionType\Index.cshtml" />
-    <Content Include="Views\Location\Index.cshtml" />
-    <Content Include="Views\Zone\Index.cshtml" />
-    <Content Include="Views\UserType\Index.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ConfirmEmailSent.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\OTP4EmailVerification.cshtml" />
+    <Content Include="Views\Account\OTP4PhoneVerification.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RequestEmailVerification.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendSecurityCode.cshtml" />
+    <Content Include="Views\Account\TOTPEmailVerification4Registration.cshtml" />
+    <Content Include="Views\Account\VerifySecurityCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\PermissionCreate.cshtml" />
+    <Content Include="Views\Admin\PermissionDetails.cshtml" />
+    <Content Include="Views\Admin\PermissionEdit.cshtml" />
+    <Content Include="Views\Admin\PermissionIndex.cshtml" />
+    <Content Include="Views\Admin\RoleCreate.cshtml" />
+    <Content Include="Views\Admin\RoleDetails.cshtml" />
+    <Content Include="Views\Admin\RoleEdit.cshtml" />
+    <Content Include="Views\Admin\RoleIndex.cshtml" />
+    <Content Include="Views\Admin\UserCreate.cshtml" />
+    <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Admin\UserEdit.cshtml" />
+    <Content Include="Views\Admin\_AddPermission2PermissionsTable4Role.cshtml" />
+    <Content Include="Views\Admin\_AddRole4Permission.cshtml" />
+    <Content Include="Views\Admin\_AddUserToUsersTable4Role.cshtml" />
+    <Content Include="Views\Admin\_ListEditableUserRoleTable.cshtml" />
+    <Content Include="Views\Admin\_ListParamTable.cshtml" />
+    <Content Include="Views\Admin\_ListPermissions.cshtml" />
+    <Content Include="Views\Admin\_ListPermissionsTable.cshtml" />
+    <Content Include="Views\Admin\_ListRolesTable4Permission.cshtml" />
+    <Content Include="Views\Admin\_ListUserRoleTable.cshtml" />
+    <Content Include="Views\Admin\_ListUsersTable4Role.cshtml" />
+    <Content Include="Views\Admin\_ListUserTable.cshtml" />
+    <Content Include="Views\Admin\_userDetails.cshtml" />
+    <Content Include="Views\Admin\_userDetailsEdit.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Unauthorised\Error.cshtml" />
+    <Content Include="Views\Unauthorised\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

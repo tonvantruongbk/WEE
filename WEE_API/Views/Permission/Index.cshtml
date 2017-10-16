@@ -1,9 +1,10 @@
 ﻿
 @using WEE_API.Models
+@using WEE_API.RBAC
 @using WEE_API.ViewModel
 @{
     ViewBag.Title = "Permission";
-    var ViewDT = new ViewDataDictionary<AD_User>();
+    var ViewDT = new ViewDataDictionary<ApplicationUser>();
 }
 @section PageStyles
 {
@@ -24,26 +25,20 @@
         </div>
         <div class="portlet-body">
             <table id="DataTableAD_User"
-                   class=" compact table table-bordered table-hover table-header-fixed no-footer order-column"
+                   class="compact table table-bordered table-hover table-header-fixed no-footer order-column"
                    data-orders='[[0, "asc"]]'
                    data-select="true"
                    data-dom="rtl">
                 <thead>
                     <tr>
-                        <th data-filter_type="auto_complete" data-data="UserID" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                            @(ModelMetadata.FromLambdaExpression(x => x.UserID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserID, ViewDT).PropertyName)
+                        <th data-filter_type="auto_complete" data-data="Id" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.Id, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Id, ViewDT).PropertyName)
                         </th>
-                        <th data-filter_type="auto_complete" data-data="Password" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                            @(ModelMetadata.FromLambdaExpression(x => x.Password, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Password, ViewDT).PropertyName)
-                        </th>
-                        <th data-filter_type="auto_complete" data-data="Title" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                            @(ModelMetadata.FromLambdaExpression(x => x.Title, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Title, ViewDT).PropertyName)
+                        <th data-filter_type="auto_complete" data-data="PhoneNumber" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                            @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).PropertyName)
                         </th>
                         <th data-filter_type="auto_complete" data-data="UserName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                             @(ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).PropertyName)
-                        </th>
-                        <th data-filter_type="auto_complete" data-data="PositionTitle" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                            @(ModelMetadata.FromLambdaExpression(x => x.PositionTitle, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PositionTitle, ViewDT).PropertyName)
                         </th>
                         <th data-filter_type="auto_complete" data-data="Email" data-type="string" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
                             @(ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).PropertyName)
@@ -90,9 +85,9 @@
 {
     Controller = "Permission",
     TableID = "DataTableAD_User",
-    FieldID = "UserID",
+    FieldID = "Id",
     ButtonPlaceID = "actions",
-    Ydacf = ""//"HeaderFilter"
+    Ydacf = "HeaderFilter"
 })
 
     <script>
@@ -100,7 +95,7 @@
         tableForPermission.on('select',
             function(e, dt, type, indexes) {
                 if (type === 'row') {
-                    var data = tableForPermission.rows(indexes).data().pluck('UserID')[0];
+                    var data = tableForPermission.rows(indexes).data().pluck('Id')[0];
                     ViewAccessMatrix(data);
                 }
             });
