@@ -21,7 +21,7 @@ namespace WEE_API.Controllers
 
         public JsonResult List()
         {
-            var model = db.AD_Menu.OrderBy(a=>a.MenuSort).Select(a => new
+            var model = db.AD_Menu.OrderBy(a => a.MenuSort).Select(a => new
             {
                 id = a.MenuID,
                 name = a.MenuText,
@@ -42,27 +42,35 @@ namespace WEE_API.Controllers
         [HttpPost]
         public JsonResult SaveData(string json)
         {
-            var data = new JavaScriptSerializer().Deserialize<List<MenuViewModel>>(json);
-            if (data.Count == 0)
-            {
-                var tmp = new JavaScriptSerializer().Deserialize<MenuViewModel>(json);
-                data.Add(tmp);
-            }
             try
             {
-                foreach (var menuViewModel in data)
+                var data = new JavaScriptSerializer().Deserialize<List<MenuViewModel>>(json);
+                if (data.Count == 0)
                 {
-                    var entity = db.AD_Menu.FirstOrDefault(a => a.MenuID == menuViewModel.Id);
-                    if (entity != null)
+                    var menuViewModel = new JavaScriptSerializer().Deserialize<MenuViewModel>(json);
+                    var entity = new AD_Menu();
+                    entity.MenuID = menuViewModel.Id;
+                    entity.MenuParentID = menuViewModel._parentId;
+                    entity.MenuText = menuViewModel.name;
+                    entity.MenuIcon = menuViewModel.iconCls;
+                    entity.URLAction = menuViewModel.action;
+                    entity.MenuSort = menuViewModel.order;
+                    db.AD_Menu.Add(entity);
+                }
+                else
+                {
+                    foreach (var menuViewModel in data)
                     {
-                        entity.MenuParentID = menuViewModel._parentId;
-                        entity.MenuText = menuViewModel.name;
-                        entity.MenuIcon = menuViewModel.iconCls;
-                        entity.URLAction = menuViewModel.action;
-                        entity.MenuSort = menuViewModel.order;
-
-                        db.Entry(entity).State = EntityState.Modified;
-
+                        var entity = db.AD_Menu.FirstOrDefault(a => a.MenuID == menuViewModel.Id);
+                        if (entity != null)
+                        {
+                            entity.MenuParentID = menuViewModel._parentId;
+                            entity.MenuText = menuViewModel.name;
+                            entity.MenuIcon = menuViewModel.iconCls;
+                            entity.URLAction = menuViewModel.action;
+                            entity.MenuSort = menuViewModel.order;
+                            db.Entry(entity).State = EntityState.Modified;
+                        }
                     }
                 }
                 db.SaveChanges();
@@ -72,7 +80,6 @@ namespace WEE_API.Controllers
             {
                 return null;
             }
-
         }
 
         protected override void Dispose(bool disposing)

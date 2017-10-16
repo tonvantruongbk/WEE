@@ -17,6 +17,7 @@
         </div>
         <div class="portlet-body">
             <div style="margin: 5px 0;">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="Add()">Add</a>
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">Edit</a>
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">Save</a>
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">Cancel</a>
@@ -134,8 +135,33 @@
                     top: e.pageY
                 });
         }
-
+        function Add()
+        {
+            var node = $('#tg').treegrid('getSelected');
+            if (node) {
+                $('#tg').treegrid('insert', {
+                    before: node.id,
+                    data: {
+                        id: 38,
+                        name: 'name38'
+                    }
+                });
+            }
+        }
         function append() {
+
+            // if (endEditing()) {
+            //    var currentLevel = getLevel(row);
+            //    if (currentLevel === maxLeafLevel || field === 'name') {
+            //        $('#tg').treegrid('select', row.id)
+            //            .treegrid('editCell', { index: row.id, field: field });
+            //        editingId = row.id;
+            //        enableEdit(editingId);
+            //    }
+            //}
+
+
+
             var tree = $('#tg');
             var node = tree.treegrid('getSelected');
             var currentLevel = getLevel(node);
@@ -143,16 +169,22 @@
                 var children = tree.treegrid('getChildren', node.id);
                 var childrenNo = children.length;
                 childrenNo++;
+                 editingId = node.id * 10 + childrenNo;
                 tree.treegrid('append',
                     {
                         parent: node.id,
                         data: [
                             {
-                                id: node.id * 10 + childrenNo,
-                                name: 'New Task' + node.id + '.' + childrenNo
+                                id: editingId,
+                                name: '',
+                                iconCls: node.iconCls,
+                                action: node.action,
+                                order: node.order,
                             }
                         ]
                     });
+                $('#tg').treegrid('beginEdit', editingId);
+                enableEdit(editingId);
             }
         }
 
