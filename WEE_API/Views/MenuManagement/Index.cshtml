@@ -7,19 +7,16 @@
 
 }
 
-<h2>Menu Management</h2>
 
 <div class="col-md-12">
     <div class="portlet red-pink box">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-tasks"></i>Contextual Menu with Drag &amp; Drop
+                <i class="fa fa-tasks"></i>Quản trị Menu
             </div>
         </div>
         <div class="portlet-body">
-            <h2>TreeGrid Actions</h2>
-            <p>Click the buttons below to perform actions.</p>
-            <div style="margin: 20px 0;">
+            <div style="margin: 5px 0;">
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">Edit</a>
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">Save</a>
                 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">Cancel</a>
@@ -29,21 +26,21 @@
             </div>
             <table id="tg" class="easyui-treegrid" style="width:900px; height: auto;"
                    data-options="
-				iconCls: 'icon-ok',
-				rownumbers: false,
-				animate: true,
-				collapsible: true,
-				fitColumns: true,
-				url: '@Url.Action("List")',
-				method: 'get',
-				idField: 'id',
-				treeField: 'name',
-                onContextMenu: onContextMenu,
-                onDblClickCell: onDblClickCell,
-                onLoadSuccess: onLoadSuccess,
-                onAfterEdit: onAfterEdit,
-                onDrop: onDrop
-			">
+				                iconCls: 'icon-ok',
+				                rownumbers: false,
+				                animate: true,
+				                collapsible: true,
+				                fitColumns: true,
+				                url: '@Url.Action("List")',
+				                method: 'get',
+				                idField: 'id',
+				                treeField: 'name',
+                                onContextMenu: onContextMenu,
+                                onDblClickCell: onDblClickCell,
+                                onLoadSuccess: onLoadSuccess,
+                                onAfterEdit: onAfterEdit,
+                                onDrop: onDrop
+			                ">
                 <thead>
                     <tr>
                         <th data-options="field:'id',width:80,editor:'text'">Menu ID</th>

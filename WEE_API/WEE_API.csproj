@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\WEE_API.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -216,12 +217,29 @@
     <Compile Include="Controllers\AccessMatrixController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AD_UserController.cs" />
+    <Compile Include="Controllers\API\CompanyController.cs" />
+    <Compile Include="Controllers\API\CompanyJobController.cs" />
+    <Compile Include="Controllers\API\JobController.cs" />
+    <Compile Include="Controllers\API\JobTypeController.cs" />
+    <Compile Include="Controllers\API\LocationController.cs" />
+    <Compile Include="Controllers\API\QuestionController.cs" />
+    <Compile Include="Controllers\API\QuestionTypeController.cs" />
+    <Compile Include="Controllers\API\UserRatingCompanyController.cs" />
+    <Compile Include="Controllers\API\UserTypeController.cs" />
+    <Compile Include="Controllers\API\ZoneController.cs" />
     <Compile Include="Controllers\BatchEditController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\JobTypeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\MenuManagementController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionTypeController.cs" />
+    <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,7 +259,7 @@
     <Compile Include="Models\JobType.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\UserRatingCompany.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\Zone.cs" />
@@ -255,6 +273,15 @@
   <ItemGroup>
     <EmbeddedResource Include="App_Start\basic-auth.js" />
     <Content Include="App_Start\CustomSwagger.js" />
+    <Content Include="CodeTemplates\Scaffolders\SEEDGenerator.generated.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SEEDGenerator.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\Scaffolders\SEEDGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SEEDGenerator.generated.txt</LastGenOutput>
+    </Content>
     <Content Include="Content\assets\apps\css\inbox.css" />
     <Content Include="Content\assets\apps\css\inbox.min.css" />
     <Content Include="Content\assets\apps\css\ticket.css" />
@@ -4279,6 +4306,13 @@
     <Content Include="Views\Permission\Index.cshtml" />
     <Content Include="Views\Permission\_Matrix.cshtml" />
     <Content Include="Views\BatchEdit\Index.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\JobType\Index.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\QuestionType\Index.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Zone\Index.cshtml" />
+    <Content Include="Views\UserType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

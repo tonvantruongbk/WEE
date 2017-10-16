@@ -1,0 +1,178 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".generated.txt" encoding="utf-8"#>
+<#@ Assembly Name="System.Data" #>
+<#@ assembly name="System.xml" #>
+<#@ Assembly Name="EnvDTE" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#
+        var dbName = "WEE_DB2017";
+        var connectionString = "Data Source=(local);Initial Catalog=" + dbName + ";Integrated Security=True";
+        var conn = new SqlConnection(connectionString);
+        conn.Open();
+        var schema = conn.GetSchema("TABLES");
+		List<string> str = new List<string>();
+        var ds = new DataSet();
+#>
+<#
+        foreach (DataRow row in schema.Rows)
+        {
+            var tableName = row["TABLE_NAME"].ToString();
+			str.Add(tableName);
+            if (tableName != "__MigrationHistory")
+            {
+#> 
+public class <#= tableName.TrimEnd('s') #>_             
+{
+<#
+                ds = new DataSet();
+                var selectQuery = "SELECT * FROM " + tableName;
+                var comm = new SqlCommand(selectQuery, conn);
+                var da = new SqlDataAdapter(comm);
+                da.Fill(ds);
+                foreach (DataColumn dc in ds.Tables[0].Columns)
+                {
+                    var type = dc.DataType;
+                    var name = dc.ToString();
+#>
+        public <#=GetType(type) #> <#= name #> {get; set;}
+<#
+                }
+            }
+        }
+#>
+}
+
+<#
+    foreach (var sss in str)
+    {
+      #>
+	 context.<#= sss #>.RemoveRange(context.<#= sss #>.ToList()); 
+	  <#  
+    }
+	#>
+<#
+        conn.Close();
+        conn.Open(); 
+        foreach (var tableName in str)
+        {  
+                ds = new DataSet();
+                var selectQuery = "SELECT * FROM " + tableName;
+                var comm = new SqlCommand(selectQuery, conn);
+                var da = new SqlDataAdapter(comm);
+                da.Fill(ds);
+#>
+context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#>,
+<#
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    DataRow dr = ds.Tables[0].Rows[i];
+                    if (i > 0)
+                    {
+                        #> ,<#
+                    }
+#>new <#=tableName #> { <# 
+					foreach (DataColumn dc in ds.Tables[0].Columns)
+                    {
+                        var type = dc.DataType;
+                        var name = dc.ToString();
+                        if (dr[name] + "" == "")
+                        {
+#><#=name #>=null, <#
+                        }
+                        else
+                        {
+                            if (type.Name.Contains("String"))
+                            {
+#><#=name #>="<#=dr[name] #>", <#
+                            }
+                            else if (type.Name == "DateTime")
+                            {
+#><#=name #>=DateTime.Parse("<#=dr[name] #>"), <#
+                            }
+                            else
+                            {
+#><#=name #>=<#=dr[name] #>, <#
+                            } #><#
+                        }
+                    } #> }
+<#}#>
+);
+<#}#>
+
+
+<#+
+    private string Pascalize(object value)
+    {
+        var rx = new Regex(@"(?:[^a-zA-Z0-9]*)(?<first>[a-zA-Z0-9])(?<reminder>[a-zA-Z0-9]*)(?:[^a-zA-Z0-9]*)");
+        return rx.Replace(value.ToString(),
+            m => m.Groups["first"].ToString().ToUpper() + m.Groups["reminder"].ToString().ToLower());
+    }
+
+    private string GetSubNamespace()
+    {
+        var rx = new Regex(@"(?:.+Services\s)");
+        var path = Path.GetDirectoryName(Host.TemplateFile);
+        return rx.Replace(path, string.Empty).Replace("\\", ".");
+    }
+
+    private string GetType(string type)
+    {
+        var str = "";
+        if (type == "int")
+            str = "int";
+        else if (type.Contains("varchar"))
+            str = "string";
+        else if (type == "bit")
+            str = "bool";
+        else
+            str = "string";
+        return str;
+    }
+
+    private string GetType(Type type)
+    {
+        var str = "";
+        if (type == typeof(byte))
+            str = "byte";
+        else if (type == typeof(sbyte))
+            str = "sbyte";
+        else if (type == typeof(byte[]))
+            str = "byte[]";
+        else if (type == typeof(int))
+            str = "int";
+        else if (type == typeof(uint))
+            str = "uint";
+        else if (type == typeof(short))
+            str = "short";
+        else if (type == typeof(ushort))
+            str = "ushort";
+        else if (type == typeof(DateTime))
+            str = "System.DateTime";
+        else if (type == typeof(long))
+            str = "long";
+        else if (type == typeof(ulong))
+            str = "ulong";
+        else if (type == typeof(double))
+            str = "double";
+        else if (type == typeof(bool))
+            str = "bool";
+        else if (type == typeof(string))
+            str = "string";
+        else if (type == typeof(long))
+            str = "long";
+        else if (type == typeof(float))
+            str = "float";
+        else
+            str = type.FullName;
+        if (type.FullName.Contains("Nullable"))
+        {
+            str += "?";
+        }
+        return str;
+    }
+
+#>

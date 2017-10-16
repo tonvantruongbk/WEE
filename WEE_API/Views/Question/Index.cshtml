@@ -1,0 +1,41 @@
+
+@using WEE_API.Models
+@using WEE_API.ViewModel
+@{
+    ViewBag.Title = "Question";
+    var ViewDT = new ViewDataDictionary<Question>();
+}
+@section PageStyles
+{
+    <style>
+
+    </style>
+}
+
+<div class="row">
+    <table id="DataTableQuestion" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi"
+        ><thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="QuestionName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.QuestionName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.QuestionName, ViewDT).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "Question",
+        TableID = "DataTableQuestion",
+        FieldID = "QuestionID",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = "HeaderFilter"
+        //Ydacf = "DataTablePutExternalFilter"
+    })
+}

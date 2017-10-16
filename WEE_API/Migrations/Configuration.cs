@@ -16,35 +16,46 @@ namespace WEE_API.Migrations
         }
         protected override void Seed(DBContext context)
         {
-            context.AD_User_Menu.RemoveRange(context.AD_User_Menu.ToList());
-            context.AD_Menu.RemoveRange(context.AD_Menu.ToList());
-            context.AD_User.RemoveRange(context.AD_User.ToList());
+            //context.AD_User_Menu.RemoveRange(context.AD_User_Menu.ToList());
+            //context.AD_Menu.RemoveRange(context.AD_Menu.ToList());
+            //context.AD_User.RemoveRange(context.AD_User.ToList());
 
-            context.Company.RemoveRange(context.Company.ToList());
-            context.CompanyJob.RemoveRange(context.CompanyJob.ToList());
-            context.Job.RemoveRange(context.Job.ToList());
-            context.Question.RemoveRange(context.Question.ToList());
-            context.UserRatingCompany.RemoveRange(context.UserRatingCompany.ToList());
-            context.Zone.RemoveRange(context.Zone.ToList());
-            context.Location.RemoveRange(context.Location.ToList());
-            context.QuestionType.RemoveRange(context.QuestionType.ToList());
+            //context.Company.RemoveRange(context.Company.ToList());
+            //context.CompanyJob.RemoveRange(context.CompanyJob.ToList());
+            //context.Job.RemoveRange(context.Job.ToList());
+            //context.Question.RemoveRange(context.Question.ToList());
+            //context.UserRatingCompany.RemoveRange(context.UserRatingCompany.ToList());
+            //context.Zone.RemoveRange(context.Zone.ToList());
+            //context.Location.RemoveRange(context.Location.ToList());
+            //context.QuestionType.RemoveRange(context.QuestionType.ToList());
 
-            context.SaveChanges();
+            //context.SaveChanges();
 
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_AuditLog', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_History', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_AuditLog', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_History', RESEED, 1)");
 
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Company', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Job', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Question', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Zone', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Location', RESEED, 1)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('QuestionType', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Company', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Job', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Question', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Zone', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Location', RESEED, 1)");
+            //context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('QuestionType', RESEED, 1)");
 
             context.AD_User.AddOrUpdate(a => a.UserID, new AD_User { UserID = "Admin", Password = "admin" });
             context.SaveChanges();
 
             context.AD_Menu.AddOrUpdate(a => a.MenuID
+                , new AD_Menu { MenuID = 1, MenuParentID = null, MenuText = "API", URLAction = "/Swagger", MenuIcon = "fa fa-info-circle", MenuSort = 1, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 2, MenuParentID = null, MenuText = "DANH MỤC", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 2, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 3, MenuParentID = 2, MenuText = "Công ty", URLAction = "/Company", MenuIcon = "fa fa-info-circle", MenuSort = 3, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 4, MenuParentID = 2, MenuText = "Công việc", URLAction = "/Job", MenuIcon = "fa fa-info-circle", MenuSort = 4, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 5, MenuParentID = 2, MenuText = "Loại công việc", URLAction = "/JobType", MenuIcon = "fa fa-info-circle", MenuSort = 5, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 6, MenuParentID = 2, MenuText = "Câu hỏi", URLAction = "/Question", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 7, MenuParentID = 2, MenuText = "Phân loại người dùng", URLAction = "/UserType", MenuIcon = "fa fa-info-circle", MenuSort = 7, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 8, MenuParentID = 2, MenuText = "Vị trí", URLAction = "/Location", MenuIcon = "fa fa-info-circle", MenuSort = 8, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 9, MenuParentID = 2, MenuText = "Lĩnh vực", URLAction = "/Zone", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 10, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-info-circle", MenuSort = 10, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 11, MenuParentID = 2, MenuText = "Tuyển dụng", URLAction = "/CompanyJob", MenuIcon = "fa fa-info-circle", MenuSort = 11, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 30, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 31, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cog", MenuSort = 31, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 35, MenuParentID = 31, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null, }

@@ -1,0 +1,41 @@
+
+@using WEE_API.Models
+@using WEE_API.ViewModel
+@{
+    ViewBag.Title = "Location";
+    var ViewDT = new ViewDataDictionary<Location>();
+}
+@section PageStyles
+{
+    <style>
+
+    </style>
+}
+
+<div class="row">
+    <table id="DataTableLocation" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi"
+        ><thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="LocationName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.LocationName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationName, ViewDT).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "Location",
+        TableID = "DataTableLocation",
+        FieldID = "LocationID",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = "HeaderFilter"
+        //Ydacf = "DataTablePutExternalFilter"
+    })
+}

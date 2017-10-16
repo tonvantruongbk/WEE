@@ -1,0 +1,213 @@
+﻿ 
+public class AD_AuditLog_             
+{
+        public long AuditLogID {get; set;}
+        public long HistoryID {get; set;}
+        public string UserID {get; set;}
+        public string MenuName {get; set;}
+        public string EventType {get; set;}
+        public string Descriptions {get; set;}
+        public System.DateTime AccessedDateTime {get; set;}
+ 
+public class AD_History_             
+{
+        public long HistoryID {get; set;}
+        public int MenuID {get; set;}
+        public string MenuName {get; set;}
+        public string EventType {get; set;}
+        public string RecordID {get; set;}
+        public string NewValues {get; set;}
+        public string OriginalValues {get; set;}
+        public string UserID {get; set;}
+        public System.DateTime CreatedDate {get; set;}
+ 
+public class AD_Menu_             
+{
+        public int MenuID {get; set;}
+        public int MenuParentID {get; set;}
+        public string MenuText {get; set;}
+        public string URLAction {get; set;}
+        public string MenuIcon {get; set;}
+        public int MenuSort {get; set;}
+        public bool MenuSeparator {get; set;}
+        public bool CanDelete {get; set;}
+ 
+public class AD_User_Menu_             
+{
+        public string UserID {get; set;}
+        public int MenuID {get; set;}
+        public bool Read {get; set;}
+        public bool Add {get; set;}
+        public bool Edit {get; set;}
+        public bool Delete {get; set;}
+        public bool Excel_CSV {get; set;}
+        public bool PDF {get; set;}
+        public bool Print {get; set;}
+ 
+public class AD_User_             
+{
+        public string UserID {get; set;}
+        public string Password {get; set;}
+        public string Title {get; set;}
+        public string UserName {get; set;}
+        public string PositionTitle {get; set;}
+        public string Email {get; set;}
+        public string Address {get; set;}
+        public System.DateTime BirthDay {get; set;}
+        public System.DateTime Anniversary {get; set;}
+        public string OfficePhone {get; set;}
+        public string HandPhone {get; set;}
+        public string HomePhone {get; set;}
+        public string City {get; set;}
+        public string Country {get; set;}
+        public bool CanDelete {get; set;}
+ 
+public class Company_             
+{
+        public int CompanyID {get; set;}
+        public string CompanyName {get; set;}
+        public string Address {get; set;}
+        public string PhoneNumber {get; set;}
+        public string Description {get; set;}
+        public string Website {get; set;}
+        public byte[] Logo {get; set;}
+        public int ZoneID {get; set;}
+        public int LocationID {get; set;}
+        public System.Decimal AverageScore {get; set;}
+        public int TotalUserRate {get; set;}
+ 
+public class Location_             
+{
+        public int LocationID {get; set;}
+        public string LocationName {get; set;}
+ 
+public class Zone_             
+{
+        public int ZoneID {get; set;}
+        public string ZoneName {get; set;}
+ 
+public class CompanyJob_             
+{
+        public int CompanyID {get; set;}
+        public int JobID {get; set;}
+        public string JobTypeRequire {get; set;}
+ 
+public class Job_             
+{
+        public int JobID {get; set;}
+        public string JobName {get; set;}
+        public System.DateTime DateCreate {get; set;}
+        public System.DateTime DateEnd {get; set;}
+ 
+public class JobType_             
+{
+        public int JobTypeID {get; set;}
+        public string JobTypeName {get; set;}
+ 
+public class Question_             
+{
+        public int QuestionID {get; set;}
+        public string QuestionName {get; set;}
+ 
+public class QuestionType_             
+{
+        public int QuestionTypeID {get; set;}
+        public string QuestionTypeName {get; set;}
+ 
+public class UserRatingCompany_             
+{
+        public int QuestionTypeID {get; set;}
+        public int QuestionID {get; set;}
+        public int CompanyID {get; set;}
+        public string UserID {get; set;}
+        public System.Decimal Score {get; set;}
+        public bool WorkingStatus {get; set;}
+        public int WorkingType {get; set;}
+        public string Salary {get; set;}
+        public string YearOfEmployee {get; set;}
+        public string Contract {get; set;}
+ 
+public class UserType_             
+{
+        public int UserTypeID {get; set;}
+        public string UserTypeName {get; set;}
+}
+
+	 context.AD_AuditLog.RemoveRange(context.AD_AuditLog.ToList()); 
+	  	 context.AD_History.RemoveRange(context.AD_History.ToList()); 
+	  	 context.AD_Menu.RemoveRange(context.AD_Menu.ToList()); 
+	  	 context.AD_User_Menu.RemoveRange(context.AD_User_Menu.ToList()); 
+	  	 context.AD_User.RemoveRange(context.AD_User.ToList()); 
+	  	 context.Company.RemoveRange(context.Company.ToList()); 
+	  	 context.Location.RemoveRange(context.Location.ToList()); 
+	  	 context.Zone.RemoveRange(context.Zone.ToList()); 
+	  	 context.CompanyJob.RemoveRange(context.CompanyJob.ToList()); 
+	  	 context.Job.RemoveRange(context.Job.ToList()); 
+	  	 context.JobType.RemoveRange(context.JobType.ToList()); 
+	  	 context.Question.RemoveRange(context.Question.ToList()); 
+	  	 context.QuestionType.RemoveRange(context.QuestionType.ToList()); 
+	  	 context.UserRatingCompany.RemoveRange(context.UserRatingCompany.ToList()); 
+	  	 context.UserType.RemoveRange(context.UserType.ToList()); 
+	  	 context.__MigrationHistory.RemoveRange(context.__MigrationHistory.ToList()); 
+	  context.AD_AuditLogs.AddOrUpdate(a=>a.AuditLogID,
+);
+context.AD_Historys.AddOrUpdate(a=>a.HistoryID,
+);
+context.AD_Menus.AddOrUpdate(a=>a.MenuID,
+new AD_Menu { MenuID=30, MenuParentID=null, MenuText="TRỢ GIÚP", URLAction="#", MenuIcon="fa fa-info-circle", MenuSort=30, MenuSeparator=null, CanDelete=null,  }
+ ,new AD_Menu { MenuID=31, MenuParentID=null, MenuText="QUẢN TRỊ", URLAction="#", MenuIcon="fa fa-cog", MenuSort=31, MenuSeparator=null, CanDelete=null,  }
+ ,new AD_Menu { MenuID=35, MenuParentID=31, MenuText="Quản lý Menu", URLAction="/MenuManagement", MenuIcon="fa fa-user", MenuSort=35, MenuSeparator=null, CanDelete=null,  }
+ ,new AD_Menu { MenuID=36, MenuParentID=31, MenuText="Người Dùng và Phân Quyền", URLAction="/Permission", MenuIcon="fa fa-user", MenuSort=35, MenuSeparator=null, CanDelete=null,  }
+);
+context.AD_User_Menus.AddOrUpdate(a=>a.UserID,
+);
+context.AD_Users.AddOrUpdate(a=>a.UserID,
+new AD_User { UserID="Admin", Password="admin", Title=null, UserName=null, PositionTitle=null, Email=null, Address=null, BirthDay=null, Anniversary=null, OfficePhone=null, HandPhone=null, HomePhone=null, City=null, Country=null, CanDelete=null,  }
+);
+context.Companys.AddOrUpdate(a=>a.CompanyID,
+new Company { CompanyID=1, CompanyName="CodeLove", Address=null, PhoneNumber=null, Description=null, Website=null, Logo=null, ZoneID=1, LocationID=1, AverageScore=0.00, TotalUserRate=0,  }
+);
+context.Locations.AddOrUpdate(a=>a.LocationID,
+new Location { LocationID=1, LocationName="Hà Nội",  }
+ ,new Location { LocationID=2, LocationName="TP. HCM",  }
+);
+context.Zones.AddOrUpdate(a=>a.ZoneID,
+new Zone { ZoneID=1, ZoneName="C#",  }
+ ,new Zone { ZoneID=2, ZoneName="Java",  }
+);
+context.CompanyJobs.AddOrUpdate(a=>a.CompanyID,
+new CompanyJob { CompanyID=1, JobID=1, JobTypeRequire=null,  }
+ ,new CompanyJob { CompanyID=1, JobID=2, JobTypeRequire=null,  }
+);
+context.Jobs.AddOrUpdate(a=>a.JobID,
+new Job { JobID=1, JobName="Lập trình viên", DateCreate=null, DateEnd=null,  }
+ ,new Job { JobID=2, JobName="Designer", DateCreate=null, DateEnd=null,  }
+);
+context.JobTypes.AddOrUpdate(a=>a.JobTypeID,
+new JobType { JobTypeID=1, JobTypeName="C#",  }
+ ,new JobType { JobTypeID=2, JobTypeName="Java",  }
+);
+context.Questions.AddOrUpdate(a=>a.QuestionID,
+new Question { QuestionID=1, QuestionName="Nơi bạn làm việc tuân thủ pháp luật KÉM NHẤT ở lĩnh vực nào",  }
+ ,new Question { QuestionID=2, QuestionName="Bạn KHÓ có thể đàm phán nhất ở khía cạnh nào",  }
+);
+context.QuestionTypes.AddOrUpdate(a=>a.QuestionTypeID,
+new QuestionType { QuestionTypeID=1, QuestionTypeName="Cơ hội việc làm",  }
+ ,new QuestionType { QuestionTypeID=2, QuestionTypeName="Lương & Phúc lợi",  }
+ ,new QuestionType { QuestionTypeID=3, QuestionTypeName="An toàn",  }
+ ,new QuestionType { QuestionTypeID=4, QuestionTypeName="Tổ chức",  }
+ ,new QuestionType { QuestionTypeID=5, QuestionTypeName="Khác",  }
+);
+context.UserRatingCompanys.AddOrUpdate(a=>a.QuestionTypeID,
+new UserRatingCompany { QuestionTypeID=1, QuestionID=1, CompanyID=1, UserID="Admin", Score=2.00, WorkingStatus=False, WorkingType=0, Salary=null, YearOfEmployee=null, Contract=null,  }
+);
+context.UserTypes.AddOrUpdate(a=>a.UserTypeID,
+new UserType { UserTypeID=1, UserTypeName="Người đi làm",  }
+ ,new UserType { UserTypeID=2, UserTypeName="Chủ doanh nghiệp",  }
+ ,new UserType { UserTypeID=3, UserTypeName="Bên thứ ba",  }
+);
+context.__MigrationHistorys.AddOrUpdate(a=>a.MigrationId,
+new __MigrationHistory { MigrationId="201710160836099_AutomaticMigration", ContextKey="WEE_API.Migrations.Configuration", Model=System.Byte[], ProductVersion="6.1.3-40302",  }
+);
+
+
