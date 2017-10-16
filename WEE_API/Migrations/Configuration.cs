@@ -7,8 +7,6 @@ using System.Data.Entity;
 
 namespace WEE_API.Migrations
 {
-
-
     internal sealed class Configuration : DbMigrationsConfiguration<DBContext>
     {
         public Configuration()
@@ -16,10 +14,8 @@ namespace WEE_API.Migrations
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
         }
-
         protected override void Seed(DBContext context)
         {
-
             context.AD_User_Menu.RemoveRange(context.AD_User_Menu.ToList());
             context.AD_Menu.RemoveRange(context.AD_Menu.ToList());
             context.AD_User.RemoveRange(context.AD_User.ToList());
@@ -35,17 +31,18 @@ namespace WEE_API.Migrations
 
             context.SaveChanges();
 
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_AuditLog', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_History', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_AuditLog', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('AD_History', RESEED, 1)");
 
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Company', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Job', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Question', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Zone', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Location', RESEED, 0)");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('QuestionType', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Company', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Job', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Question', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Zone', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Location', RESEED, 1)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('QuestionType', RESEED, 1)");
 
             context.AD_User.AddOrUpdate(a => a.UserID, new AD_User { UserID = "Admin", Password = "admin" });
+            context.SaveChanges();
 
             context.AD_Menu.AddOrUpdate(a => a.MenuID
                 , new AD_Menu { MenuID = 30, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null, }
@@ -53,11 +50,13 @@ namespace WEE_API.Migrations
                 , new AD_Menu { MenuID = 35, MenuParentID = 31, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 36, MenuParentID = 31, MenuText = "Người Dùng và Phân Quyền", URLAction = "/Permission", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null, }
             );
+            context.SaveChanges();
 
             context.Location.AddOrUpdate(a => a.LocationID,
                    new Location { LocationID = 1, LocationName = "Hà Nội" },
                    new Location { LocationID = 2, LocationName = "TP. HCM" }
                );
+            context.SaveChanges();
 
 
             context.Job.AddOrUpdate(a => a.JobID,
@@ -116,9 +115,10 @@ namespace WEE_API.Migrations
             context.SaveChanges();
 
             context.CompanyJob.AddOrUpdate(
+                 a => new { a.CompanyID, a.JobID},
                 new CompanyJob { CompanyID = 1, JobID = 1 },
                 new CompanyJob { CompanyID = 1, JobID = 2 },
-                new CompanyJob { CompanyID = 2, JobID = 1 },
+                 new CompanyJob { CompanyID =2, JobID = 1 },
                 new CompanyJob { CompanyID = 2, JobID = 2 }
             );
             context.SaveChanges();

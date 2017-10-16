@@ -18,7 +18,6 @@ namespace WEE_API.Models
     {
         public DBContext() : base("name=DBConnectionString")
         {
-            Database.SetInitializer<DBContext>(new DropCreateDatabaseIfModelChanges<DBContext>());
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
