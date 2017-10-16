@@ -7,8 +7,10 @@ namespace WEE_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Mã lĩnh vực doanh nghiệp")]
         public int ZoneID { get; set; }
         [MaxLength(300)]
+        [Display(Name = "Tên lĩnh vực doanh nghiệp")]
         public string ZoneName { get; set; }
     }
 

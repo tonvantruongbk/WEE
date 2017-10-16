@@ -11,8 +11,10 @@ namespace WEE_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="Mã câu hỏi")]
         public int QuestionID { get; set; }
         [MaxLength(1000)]
+        [Display(Name ="Câu hỏi")]
         public string QuestionName { get; set; }
 
     }

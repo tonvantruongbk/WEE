@@ -7,9 +7,11 @@ namespace WEE_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="Mã loại công việc")]
         public int JobTypeID { get; set; }
 
         [MaxLength(300)]
+        [Display(Name ="Tên loại công việc")]
         public string JobTypeName { get; set; }
     }
 

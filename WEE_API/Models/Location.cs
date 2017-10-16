@@ -7,9 +7,12 @@ namespace WEE_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="Mã vị trí")]
         public int LocationID { get; set; }
 
         [MaxLength(100)]
+        
+        [Display(Name ="Tên vị trí")]
         public string LocationName { get; set; }
     }
 }

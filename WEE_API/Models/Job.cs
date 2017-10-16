@@ -8,6 +8,7 @@ namespace WEE_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="Mã công việc")]
         public int JobID { get; set; }
 
         [MaxLength(500)]
