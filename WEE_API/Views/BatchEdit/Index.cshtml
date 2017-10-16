@@ -1,0 +1,349 @@
+﻿@using WEE_API.Common
+@using WEE_API.Models
+@model Job
+@{
+    ViewBag.Title = "title";
+}
+@section PageStyles
+{
+    <style>
+        tr.group, tr.group:hover {
+            background-color: #ddd !important;
+            font-weight: bold;
+        }
+
+        /*td.editable {
+            background-color: red;
+        }*/
+    </style>
+}
+@Html.Partial("_Breadcrumbs", new List<string> { "QUẢN LÝ NHẬP", "NHẬP HÀNG" })
+ 
+<div class="row">
+    <table id="example" class="compact table table-bordered table-hover table-header-fixed no-footer order-column">
+        <thead>
+            <tr role="row" class="header">
+                <th class="dt-head-center">Name</th>
+                <th class="dt-head-center">Position</th>
+                <th class="dt-head-center">Office</th> 
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section scripts{
+     
+    <script>
+        var editor;
+        var output1 = {
+            data: []
+        };
+
+        $(document).ready(function() {
+
+            editor = new $.fn.dataTable.Editor({
+                table: "#example",
+                i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
+                ajax: function (method, url, d, successCallback, errorCallback) {
+                    var newvalue;
+                    $.each(d.data,function(key, value) {
+                        value.Id = key;
+                        newvalue = value;
+                    });
+                    var action = '';
+                    if (d.action === 'create') { action = '@Url.Action("Create")'; }
+                    else if (d.action === 'edit') { action = '@Url.Action("Edit")'; }
+                    else if (d.action === 'remove') {action = '@Url.Action("Delete")';}
+                    $.ajax({
+                        type: 'POST',
+                        url: action,
+                        data: newvalue,
+                        success: function(response) {
+                            if (response != undefined) {
+                                toastr.success(response.Message, "Thông báo");
+                            }
+                            successCallback({ data: newvalue });
+                        }
+                    });
+                },
+                idSrc: "Id",
+                formOptions: {
+                    inline: {
+                        submitOnBlur: true
+                    }
+                },
+                fields: [
+                    {
+                        label: "JobName",
+                        name: "JobName"
+                    }, {
+                        label: "DateCreate",
+                        name: "DateCreate"
+                    }, {
+                        label: "DateEnd:",
+                         name: "DateEnd"
+                       } 
+                ]
+            });
+
+           
+              table = $('#example').DataTable({
+                dom: 'ifrtlp',
+                ajax: {
+                    "type": "POST",
+                    "url": '@Url.Action("DataHandler")',
+                    "contentType": 'application/json; charset=utf-8',
+                    'data': function(data) { return data = JSON.stringify(data); }
+                },
+                columns: [
+                     {
+                         data: "JobName",
+                    }, {
+                        data: "DateCreate",
+                    }, {
+                        data: "DateEnd" 
+                    } 
+                ],
+                select: true,
+                order: [0, 'asc'],
+ 
+              
+            });
+ 
+
+            var buttons = new $.fn.dataTable.Buttons(table,
+                {
+                    buttons: [
+                    
+                        {
+                            extend: 'create',
+                            editor: editor
+                        }, {
+                            extend: 'edit',
+                            editor: editor
+
+                        }, {
+                            extend: 'remove',
+                            editor: editor
+                        }, {
+                            extend: 'excelHtml5',
+                            columns: ':visible',
+                            test: 'Save current page',
+                            text: '<i class="fa fa-file-excel-o editorButton"></i>EXCEL',
+                            footer: true,
+                            header: true,
+                            customize: function(xlsx) {
+                                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                var numrows = 3;
+                                var clR = $('row', sheet);
+                                //update Row
+                                clR.each(function() {
+                                    var attr = $(this).attr('r');
+                                    var ind = parseInt(attr);
+                                    ind = ind + numrows;
+                                    $(this).attr("r", ind);
+                                });
+                                // Create row before data
+                                $('row c ', sheet).each(function() {
+                                    var attr = $(this).attr('r');
+                                    var pre = attr.substring(0, 1);
+                                    var ind = parseInt(attr.substring(1, attr.length));
+                                    ind = ind + numrows;
+                                    $(this).attr("r", pre + ind);
+                                });
+
+                                function Addrow(index, data, attr) {
+                                    msg = '<row r="' + index + '">';
+                                    for (i = 0; i < data.length; i++) {
+                                        var key = data[i].key;
+                                        var value = data[i].value;
+                                        msg += '<c t="inlineStr" r="' + key + index + '" s="42">';
+                                        msg += '<is>';
+                                        msg += '<t>' + value + '</t>';
+                                        msg += '</is>';
+                                        msg += '</c>';
+                                    }
+                                    msg += '</row>';
+                                    return msg;
+                                }
+
+                                //insert
+                                var r1 = Addrow(1,
+                                    [
+                                        {
+                                            key: 'A',
+                                            value: 'bsdsb',
+
+                                        }, {
+                                            key: 'B',
+                                            value: 'sdbdsb'
+                                        }
+                                    ]);
+                                var r2 = Addrow(2,
+                                    [
+                                        {
+                                            key: 'A',
+                                            value: 'bbbb'
+                                        }, {
+                                            key: 'B',
+                                            value: ''
+                                        }
+                                    ]);
+                                var r3 = Addrow(3,
+                                    [
+                                        {
+                                            key: 'A',
+                                            value: ''
+                                        }, {
+                                            key: 'B',
+                                            value: ''
+                                        }
+                                    ]);
+                                sheet.childNodes[0].childNodes[1].innerHTML =
+                                    r1 + r2 + r3 + sheet.childNodes[0].childNodes[1].innerHTML;
+                            },
+                            exportOptions: {
+                                modifier: {
+                                    page: 'current'
+                                }
+                            }
+                        }, {
+                            extend: 'pdfHtml5',
+                            columns: ':visible',
+                            text: '<i class="fa fa-file-pdf-o editorButton"></i>PDF',
+                            footer: true,
+                            header: true,
+                            orientation: 'portrait',
+                            customize: function(doc) {
+
+                                //doc.content[1].layout = 'lightHorizontalLines';
+                                doc.content[1].layout = {
+                                    hLineWidth: function(i, node) {
+                                        return (i === 0 || i === node.table.body.length) ? 1 : .5;
+                                    },
+                                    vLineWidth: function(i, node) {
+                                        return (i === 0 || i === node.table.widths.length) ? 1 : .5;
+                                    },
+                                    hLineColor: function(i, node) {
+                                        return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';
+                                    },
+                                    vLineColor: function(i, node) {
+                                        return (i === 0 || i === node.table.widths.length) ? 'black' : 'gray';
+                                    }
+                                };
+
+                                var lastColX = null;
+                                var lastColY = null;
+                                var bod = []; // this will become our new body (an array of arrays(lines))
+                                //Loop over all lines in the table
+                                doc.content[1].table.body.forEach(function(line, i) {
+                                    //Group based on first column (ignore empty cells)
+                                    if (lastColX != line[2].text && line[2].text !== '') {
+                                        //Add line with group header
+                                        bod.push([
+                                            {
+                                                text: line[2].text,
+                                                style: 'tableHeader'
+                                            }, '', '', '', '', ''
+                                        ]);
+                                        //Update last
+                                        lastColX = line[2].text;
+                                    }
+                                    //Group based on second column (ignore empty cells) with different styling
+                                    //if (lastColY != line[1].text && line[1].text !== '') {
+                                    //    //Add line with group header
+                                    //    bod.push(['', {
+                                    //        text: line[1].text,
+                                    //        style: 'subheader'
+                                    //    }, '', '', '']);
+                                    //    //Update last
+                                    //    lastColY = line[1].text;
+                                    //}
+                                    //Add line with data except grouped data
+                                    //   if (i < doc.content[1].table.body.length - 1) {
+                                    bod.push([
+                                        {
+                                            text: line[0].text,
+                                            style: 'defaultStyle'
+                                        }, {
+                                            text: line[1].text,
+                                            style: 'defaultStyle'
+                                        }, {
+                                            text: line[2].text,
+                                            style: 'defaultStyle'
+                                        }, {
+                                            text: line[3].text,
+                                            style: 'defaultStyle'
+                                        }, {
+                                            text: line[4].text,
+                                            style: 'defaultStyle'
+                                        }, {
+                                            text: line[5].text,
+                                            style: 'defaultStyle'
+                                        }
+                                    ]);
+                                    //                         }
+                                    //                         //Make last line bold, blue and a bit larger
+                                    //                         else {
+                                    //                             bod.push(['', '',
+                                    //                                 {
+                                    //                                     text: line[2].text,
+                                    //                                     style: 'lastLine'
+                                    //                                 },
+                                    //                                 {
+                                    //                                     text: line[3].text,
+                                    //                                     style: 'lastLine'
+                                    //                                 },
+                                    //                                 {
+                                    //                                     text: line[4].text,
+                                    //                                     style: 'lastLine'
+                                    //                                 }
+                                    //                             ]);
+                                    //                         }
+                                });
+                                //Overwrite the old table body with the new one.
+                                doc.content[1].table.headerRows = 1;
+                                doc.content[1].table.widths = [100, '*', 80, 30, 50, 40];
+                                doc.content[1].table.body = bod;
+
+                                var rowCount = document.getElementById("example").rows.length;
+                                for (var i = 0; i < rowCount; i++) {
+                                    if (doc.content[1].table.body[i]!=undefined) {
+                                        doc.content[1].table.body[i][5].alignment = 'right';
+                                    }
+                                };
+
+                                doc.styles = {
+                                    subheader: {
+                                        fontSize: 12,
+                                        bold: true,
+                                        color: 'black'
+                                    },
+                                    tableHeader: {
+                                        bold: true,
+                                        fontSize: 12,
+                                        color: 'black'
+                                    },
+                                    lastLine: {
+                                        bold: true,
+                                        fontSize: 11,
+                                        color: 'blue'
+                                    },
+                                    defaultStyle: {
+                                        fontSize: 10,
+                                        color: 'black'
+                                    }
+                                };
+                            }
+                        }, {
+                            extend: 'print',
+                            columns: ':visible',
+                           text: '<i class="fa fa-print editorButton"></i>Print',
+                            autoPrint: true
+                        }
+                    ]
+                }).container().appendTo($('#buttons'));
+        });
+
+    </script>
+}
