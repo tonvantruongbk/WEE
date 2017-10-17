@@ -7,11 +7,8 @@
 }
 @section PageStyles
 {
-    <style>
-
-    </style>
 }
-
+ 
 <div class="row">
     <table id="DataTableCompany" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"
@@ -38,10 +35,10 @@
                   <th data-filter_type="" data-data="Logo" data-type="byte[]" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).PropertyName)
                   </th>
-                  <th data-filter_type="range_number_slider" data-data="ZoneID" data-type="int" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  <th data-filter_type="auto_complete" data-data="Zone.ZoneName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.ZoneID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.ZoneID, ViewDT).PropertyName)
                   </th>
-                  <th data-filter_type="range_number_slider" data-data="LocationID" data-type="int" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  <th data-filter_type="auto_complete" data-data="Location.LocationName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).PropertyName)
                   </th>
                   <th data-filter_type="" data-data="AverageScore" data-type="System.Decimal" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
@@ -49,13 +46,7 @@
                   </th>
                   <th data-filter_type="range_number_slider" data-data="TotalUserRate" data-type="int" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="" data-data="Zone" data-type="WEE_API.Models.Zone" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Zone, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Zone, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="" data-data="Location" data-type="WEE_API.Models.Location" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Location, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Location, ViewDT).PropertyName)
-                  </th>
+                  </th> 
             </tr>
         </thead>
     </table>

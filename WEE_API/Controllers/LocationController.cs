@@ -72,6 +72,13 @@ namespace WEE_API.Controllers
             return Json(new { Message = "Đã thêm thành công!" }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetList2Select()
+        {
+          var result =  db.Location.Select(a => new SelectizeClass {label = a.LocationName, value = a.LocationID}).ToList();
+           
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpPost]
         public JsonResult Edit(int Id, Location data)

@@ -16,10 +16,6 @@ namespace WEE_API.RBAC
 
     public class ApplicationUserRole : IdentityUserRole<int>
     {
-        public ApplicationUserRole()
-            : base()
-        { }
-
         public ApplicationRole Role { get; set; }
 
         public bool IsPermissionInRole(string _permission)

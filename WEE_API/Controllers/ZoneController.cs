@@ -98,6 +98,13 @@ namespace WEE_API.Controllers
             return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetList2Select()
+        {
+            var result = db.Zone.Select(a => new SelectizeClass { label = a.ZoneName , value = a.ZoneID  }).ToList();
+
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

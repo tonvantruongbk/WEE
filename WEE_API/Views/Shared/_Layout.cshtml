@@ -63,6 +63,7 @@
     <link href="~/Scripts/DatatablesNet/jquery.dataTables.yadcf.css" rel="stylesheet" />
     <link href="~/Scripts/DatatablesNet/yadcf-bootstrap-monkeypatch.css" rel="stylesheet" />
 
+    <link href="~/Content/Selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
 
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 
@@ -224,6 +225,7 @@
     <script src="~/Scripts/jquery-ui.js"></script>
     <script src="~/Scripts/DatatablesNet/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Scripts/DatatablesNet/jquery.dataTables.yadcf.js"></script>
+    <script src="~/Content/Selectize/js/standalone/selectize.min.js"></script>
 
     <script src="~/Scripts/CommonDatatablesEditor.js"></script>
     <script>
@@ -293,7 +295,7 @@
             }
         });
         $.fn.select2.defaults.set("width", "100%");
-
+    var path = '@(Url.Action("Index","Home").Replace("Home",""))';
     </script>
 
     @RenderSection("Scripts", required: false)

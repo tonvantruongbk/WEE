@@ -87,7 +87,9 @@ table.dataTable.display tbody > tr > .selected {
     background-color: #89e2bd !important;
     color: black !important;
 }
-
+table.dataTable.order-column tbody > tr.selected:hover> td.sorting_1 {
+    background: #d0e6dd !important;
+}
 .table-hover > tbody > tr:hover > td {
     background: #d0e6dd !important;
     cursor: pointer !important;

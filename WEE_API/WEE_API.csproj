@@ -225,6 +225,7 @@
     <Compile Include="Common\DynamicLINQ\PredicateBuilder.cs" />
     <Compile Include="Common\HtmlExtensions.cs" />
     <Compile Include="Common\JsonNetResult.cs" />
+    <Compile Include="Common\SelectizeClass.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
     <Compile Include="RBAC\RBAC_ExtendedMethods.cs" />
     <Compile Include="RBAC\RBAC_IdentityExtendedMethods.cs" />
@@ -3449,6 +3450,15 @@
     <Content Include="Content\Resources\js\editor.semanticui.min.js" />
     <Content Include="Content\Resources\js\moment-with-locales.min.js" />
     <Content Include="Content\Resources\js\table.TB_Pick.js" />
+    <Content Include="Content\Selectize\css\selectize.bootstrap2.css" />
+    <Content Include="Content\Selectize\css\selectize.bootstrap3.css" />
+    <Content Include="Content\Selectize\css\selectize.css" />
+    <Content Include="Content\Selectize\css\selectize.default.css" />
+    <Content Include="Content\Selectize\css\selectize.legacy.css" />
+    <Content Include="Content\Selectize\js\selectize.js" />
+    <Content Include="Content\Selectize\js\selectize.min.js" />
+    <Content Include="Content\Selectize\js\standalone\selectize.js" />
+    <Content Include="Content\Selectize\js\standalone\selectize.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -3832,6 +3842,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Selectize\less\selectize.less" />
+    <Content Include="Content\Selectize\less\selectize.legacy.less" />
+    <Content Include="Content\Selectize\less\selectize.default.less" />
+    <Content Include="Content\Selectize\less\selectize.bootstrap3.less" />
+    <Content Include="Content\Selectize\less\selectize.bootstrap2.less" />
+    <Content Include="Content\Selectize\less\plugins\remove_button.less" />
+    <Content Include="Content\Selectize\less\plugins\optgroup_columns.less" />
+    <Content Include="Content\Selectize\less\plugins\dropdown_header.less" />
+    <Content Include="Content\Selectize\less\plugins\drag_drop.less" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -4417,7 +4436,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15360</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:15360/</IISUrl>
+          <IISUrl>http://localhost:15361/ABC</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

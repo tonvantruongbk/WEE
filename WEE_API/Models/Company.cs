@@ -30,12 +30,12 @@ namespace WEE_API.Models
         public decimal AverageScore { get; set; }
         [Display(Name ="Số người bình chọn")]
         public int   TotalUserRate { get; set; }
-
-        [ForeignKey("ZoneID")]
-        public Zone Zone { get; set; }
-
         [ForeignKey("LocationID")]
-        public Location Location { get; set; }
+        public virtual Location Location { get; set; }
+        [ForeignKey("ZoneID")]
+        public virtual Zone Zone { get; set; }
+
+
 
     }
 }
