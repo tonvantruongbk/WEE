@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using WEE_API.Models;
 using WEE_API.ViewModel;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     public class MenuManagementController : Controller
     {

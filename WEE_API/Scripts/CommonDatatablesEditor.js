@@ -80,8 +80,6 @@ var generateFields = function (tableID, editorFor) {
         var columnData = $(th).data();
         var field = {
             label: columnData.label || $(th).html(),// Uses the th data-label value. If it doesn't exist, uses the HTML inside
-            //data: columnData.data,
-            //name: columnData.name || columnData.data,// Uses the th data-name value. If it doesn't exist, uses the data-data value   
             data: columnData.type === "selectize" ?
                 columnData.data.split(".")[0] + "ID" : columnData.data,
             name: columnData.type === "selectize" ?
@@ -99,11 +97,11 @@ var generateFields = function (tableID, editorFor) {
                 }]
             });
             break;
-            case 'byte[]':
+            case 'image':
                 field = $.extend(true, field, {
                     type: 'upload',
                     display: function (file_id) {
-                        return '<img src="' + editorForCompany.file('files', file_id).web_path + '"/>';
+                        return '<img src="' + editorForCompany.file('tableForCompany', file_id).web_path + '"/>';
                     },
                     clearText: "Xóa ản",
                     noImageText: 'Chưa có ảnh',
@@ -168,10 +166,10 @@ var generateColumns = function (tableID,editorFor) {
                   return data;
                 }
         }
-        if (columnData.type === "byte[]") {
+        if (columnData.type === "image") {
             render1 = function ( file_id ) {
                 return file_id ?
-                    '<img src="' + editorFor.file('files', file_id).web_path + '"/>' :
+                    '<img src="' + editorFor.file('tableForCompany', file_id).web_path + '"/>' :
                     null;
             }
         }

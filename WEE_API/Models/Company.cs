@@ -21,7 +21,7 @@ namespace WEE_API.Models
         [Display(Name ="Trang web")]
         public string Website { get; set; }
         [Display(Name ="Logo")]
-        public byte[] Logo { get; set; }
+        public string Logo { get; set; }
 
         [Display(Name ="Lĩnh vực doanh nghiệp")]
         public int? ZoneID { get; set; }

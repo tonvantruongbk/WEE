@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ using WEE_API.Models;
 using System.Linq.Dynamic;
 using System.Data.Entity;
 using System.IO;
+using Newtonsoft.Json;
 
 
 namespace WEE_API.Controllers
@@ -102,7 +104,7 @@ namespace WEE_API.Controllers
 
 
         [HttpPost]
-        public ActionResult UploadImage()
+        public string UploadImage()
         {
             var fileName = "";
             var path = "";
@@ -112,11 +114,16 @@ namespace WEE_API.Controllers
                 if (file != null)
                 {
                     fileName = Path.GetFileName(file.FileName);
-                    path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                    path = Path.Combine(Server.MapPath("~/Content/UPLOAD/"), fileName);
                     file.SaveAs(path);
                 }
             }
-            return Json(new { files = new { files = new { a = new { filename = fileName, web_path = path } } }, upload = new { id = "a" } }, JsonRequestBehavior.AllowGet);
+            var wpath = (new UrlHelper(this.ControllerContext.RequestContext)).Content(@"~/Content/UPLOAD/") + fileName;
+            var wpath1 = "/Content/UPLOAD/" + fileName;
+
+           
+            return "{\"files\": { \"tableForCompany\": { \""+ wpath1 + "\": { \"filename\": \"" + fileName + "\", \"web_path\": \""+wpath+"\" } } }, \"upload\": { \"id\": \""+ wpath1 + "\"}}";
+            // return Json(new { files = new { files = new { a = new { filename = fileName, web_path = wpath1 } } }, upload = new { id = wpath1 } }, JsonRequestBehavior.AllowGet);
         }
 
 

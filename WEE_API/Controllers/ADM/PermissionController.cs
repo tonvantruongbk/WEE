@@ -9,7 +9,7 @@ using WEE_API.Models;
 using WEE_API.RBAC;
 using WEE_API.ViewModel;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     public class PermissionController : Controller
     {
