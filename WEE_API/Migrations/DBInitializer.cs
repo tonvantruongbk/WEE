@@ -13,6 +13,12 @@ namespace WEE_API.Migrations
 {
     public class DBInitializer : DropCreateDatabaseIfModelChanges<DBContext>
     {
+        public override void InitializeDatabase(DBContext context)
+        {
+            context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
+                , string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+            base.InitializeDatabase(context);
+        }
 
         private readonly string c_SysAdmin = "System Administrator";
         private readonly string c_DefaultUser = "Default User";

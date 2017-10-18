@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEE_API.Models
@@ -23,19 +24,24 @@ namespace WEE_API.Models
         public byte[] Logo { get; set; }
 
         [Display(Name ="Lĩnh vực doanh nghiệp")]
-        public int ZoneID { get; set; }
+        public int? ZoneID { get; set; }
         [Display(Name ="Vị trí")]
-        public int LocationID { get; set; }
+        public int? LocationID { get; set; }
         [Display(Name ="Điểm trung bình")]
         public decimal AverageScore { get; set; }
         [Display(Name ="Số người bình chọn")]
         public int   TotalUserRate { get; set; }
+
+
+
         [ForeignKey("LocationID")]
         public virtual Location Location { get; set; }
         [ForeignKey("ZoneID")]
         public virtual Zone Zone { get; set; }
 
 
+        public virtual List<CompanyJob> ListCompanyJob { get; set; }
+        public virtual List<UserRatingCompany> ListUserRatingCompany { get; set; }
 
     }
 }
