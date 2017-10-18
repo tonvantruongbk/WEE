@@ -1,4 +1,4 @@
-
+﻿
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
@@ -8,7 +8,20 @@
 @section PageStyles
 {
 }
- 
+<div class="row">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption" style="float: right;">Tìm kiếm nâng cao</div>
+            <div class="tools">
+                <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body row" style="display: none;">
+            <div id="DataTablePutExternalFilter" class="YdacfExternalFilter">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <table id="DataTableCompany" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"

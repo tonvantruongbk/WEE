@@ -243,3 +243,10 @@ table.dataTable thead .sorting {
     width: 10em;
     float: right;
 }
+.selectize-input.input-active,
+.selectize-input.items.has-options.not-full {
+    padding: 0 12px !important;
+}
+.selectize-input{
+    padding: 6px 12px !important;
+}
