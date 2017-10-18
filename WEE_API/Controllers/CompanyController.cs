@@ -8,6 +8,7 @@ using WEE_API.Common.Datatables;
 using WEE_API.Models;
 using System.Linq.Dynamic;
 using System.Data.Entity;
+using System.IO;
 
 
 namespace WEE_API.Controllers
@@ -98,6 +99,35 @@ namespace WEE_API.Controllers
             return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
         }
 
+
+
+        [HttpPost]
+        public ActionResult UploadImage()
+        {
+            var fileName = "";
+            var path = "";
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                var file = Request.Files[i];
+                if (file != null)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                    file.SaveAs(path);
+                }
+            }
+            return Json(new { files = new { files = new { a = new { filename = fileName, web_path = path } } }, upload = new { id = "a" } }, JsonRequestBehavior.AllowGet);
+        }
+
+
+       
+
+        [HttpPost]
+        public ActionResult UploadImage1(string id)
+        {
+
+            return Json(new { Message = "Đã up thành công!" }, JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -108,4 +138,6 @@ namespace WEE_API.Controllers
             base.Dispose(disposing);
         }
     }
+
+     
 }

@@ -227,6 +227,7 @@
     <Compile Include="Common\JsonNetResult.cs" />
     <Compile Include="Common\SelectizeClass.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
+    <Compile Include="Models\TermAndCondition.cs" />
     <Compile Include="RBAC\RBAC_ExtendedMethods.cs" />
     <Compile Include="RBAC\RBAC_IdentityExtendedMethods.cs" />
     <Compile Include="Controllers\ADM\AccountController.cs" />

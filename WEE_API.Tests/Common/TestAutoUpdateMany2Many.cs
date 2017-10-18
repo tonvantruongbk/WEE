@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WEE_API.Models;
@@ -23,9 +24,8 @@ namespace WEE_API.Tests.Common
         [TestMethod]
         public void AutoJoinAndUpdateMany2Many()
         {
-            var cpn = new Company() { CompanyName = "Test 1", };
-
             var db = new DBContext();
+            var cpn = new Company() { CompanyName = "Test 2" , ListCompanyJob = new List<CompanyJob>() {new CompanyJob() {Job= new Job() {JobName = "vvvvv"} } } };
 
             db.Company.AddOrUpdate(a => a.CompanyID, cpn);
             db.SaveChanges();

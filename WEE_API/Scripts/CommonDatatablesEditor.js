@@ -75,7 +75,7 @@
 
 
 
-var generateFields = function (tableID) {
+var generateFields = function (tableID, editorFor) {
     var _prepareField = function (th) {
         var columnData = $(th).data();
         var field = {
@@ -89,14 +89,31 @@ var generateFields = function (tableID) {
             filter_delay: 500
         };
         switch (columnData.type) {
-            case 'checkbox':
+        case 'checkbox':
+            field = $.extend(true, field, {
+                type: 'checkbox',
+                separator: '|',
+                options: [{
+                    label: '',
+                    value: 1
+                }]
+            });
+            break;
+            case 'byte[]':
                 field = $.extend(true, field, {
-                    type: 'checkbox',
-                    separator: '|',
-                    options: [{
-                        label: '',
-                        value: 1
-                    }]
+                    type: 'upload',
+                    display: function (file_id) {
+                        return '<img src="' + editorForCompany.file('files', file_id).web_path + '"/>';
+                    },
+                    clearText: "Xóa ản",
+                    noImageText: 'Chưa có ảnh',
+                    ajax:  {
+                            url: path + "Company/UploadImage",
+                            type: "POST",
+                            dataType: "json",
+                            data: { id: $("input.form-control").files },
+                            success: function (res) {  }
+                    }
                 });
                 break;
             case 'DateTime':
@@ -142,13 +159,20 @@ var generateFields = function (tableID) {
     return fields;
 };
 
-var generateColumns = function (tableID) {
+var generateColumns = function (tableID,editorFor) {
     var _prepareColumn = function (th) {
         var columnData = $(th).data();
         var render1;
         if (columnData.type === "selectize") {
               render1 = function ( data, type, row, meta ) {
                   return data;
+                }
+        }
+        if (columnData.type === "byte[]") {
+            render1 = function ( file_id ) {
+                return file_id ?
+                    '<img src="' + editorFor.file('files', file_id).web_path + '"/>' :
+                    null;
             }
         }
         var column = {

@@ -13,11 +13,20 @@ namespace WEE_API.Migrations
 {
     public class DBInitializer : DropCreateDatabaseIfModelChanges<DBContext>
     {
+
         public override void InitializeDatabase(DBContext context)
         {
-            context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
-                , string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+            if (context.Database.Exists())
+            {
+                context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
+               string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+            }
             base.InitializeDatabase(context);
+            if (context.Database.Exists())
+            {
+                context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
+                    string.Format("ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+            }
         }
 
         private readonly string c_SysAdmin = "System Administrator";
@@ -45,11 +54,74 @@ namespace WEE_API.Migrations
                 , new AD_Menu { MenuID = 100, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null, }
             );
 
+            #region Location
             context.Location.AddOrUpdate(a => a.LocationID,
-                   new Location { LocationID = 1, LocationName = "Hà Nội" },
-                   new Location { LocationID = 2, LocationName = "TP. HCM" }
-               );
+                        new Location { LocationID = 1, LocationName = "An Giang" },
+                        new Location { LocationID = 2, LocationName = "Bà Rịa - Vũng Tàu" },
+                        new Location { LocationID = 3, LocationName = "Bạc Liêu" },
+                        new Location { LocationID = 4, LocationName = "Bắc Kạn" },
+                        new Location { LocationID = 5, LocationName = "Bắc Giang" },
+                        new Location { LocationID = 6, LocationName = "Bắc Ninh" },
+                        new Location { LocationID = 7, LocationName = "Bến Tre" },
+                        new Location { LocationID = 8, LocationName = "Bình Dương" },
+                        new Location { LocationID = 9, LocationName = "Bình Định" },
+                        new Location { LocationID = 10, LocationName = "Bình Phước" },
+                        new Location { LocationID = 11, LocationName = "Bình Thuận" },
+                        new Location { LocationID = 12, LocationName = "Cà Mau" },
+                        new Location { LocationID = 13, LocationName = "Cao Bằng" },
+                        new Location { LocationID = 14, LocationName = "Cần Thơ" },
+                        new Location { LocationID = 15, LocationName = "Đà Nẵng" },
+                        new Location { LocationID = 16, LocationName = "Đắk Lắk" },
+                        new Location { LocationID = 17, LocationName = "Đắk Nông" },
+                        new Location { LocationID = 18, LocationName = "Đồng Nai" },
+                        new Location { LocationID = 19, LocationName = "Đồng Tháp" },
+                        new Location { LocationID = 20, LocationName = "Điện Biên" },
+                        new Location { LocationID = 21, LocationName = "Gia Lai" },
+                        new Location { LocationID = 22, LocationName = "Hà Giang" },
+                        new Location { LocationID = 23, LocationName = "Hà Nam" },
+                        new Location { LocationID = 24, LocationName = "Hà Nội" },
+                        new Location { LocationID = 25, LocationName = "Hà Tĩnh" },
+                        new Location { LocationID = 26, LocationName = "Hải Dương" },
+                        new Location { LocationID = 27, LocationName = "Hải Phòng" },
+                        new Location { LocationID = 28, LocationName = "Hòa Bình" },
+                        new Location { LocationID = 29, LocationName = "Hậu Giang" },
+                        new Location { LocationID = 30, LocationName = "Hưng Yên" },
+                        new Location { LocationID = 31, LocationName = "Thành phố Hồ Chí Minh" },
+                        new Location { LocationID = 32, LocationName = "Khánh Hòa" },
+                        new Location { LocationID = 33, LocationName = "Kiên Giang" },
+                        new Location { LocationID = 34, LocationName = "Kon Tum" },
+                        new Location { LocationID = 35, LocationName = "Lai Châu" },
+                        new Location { LocationID = 36, LocationName = "Lào Cai" },
+                        new Location { LocationID = 37, LocationName = "Lạng Sơn" },
+                        new Location { LocationID = 38, LocationName = "Lâm Đồng" },
+                        new Location { LocationID = 39, LocationName = "Long An" },
+                        new Location { LocationID = 40, LocationName = "Nam Định" },
+                        new Location { LocationID = 41, LocationName = "Nghệ An" },
+                        new Location { LocationID = 42, LocationName = "Ninh Bình" },
+                        new Location { LocationID = 43, LocationName = "Ninh Thuận" },
+                        new Location { LocationID = 44, LocationName = "Phú Thọ" },
+                        new Location { LocationID = 45, LocationName = "Phú Yên" },
+                        new Location { LocationID = 46, LocationName = "Quảng Bình" },
+                        new Location { LocationID = 47, LocationName = "Quảng Nam" },
+                        new Location { LocationID = 48, LocationName = "Quảng Ngãi" },
+                        new Location { LocationID = 49, LocationName = "Quảng Ninh" },
+                        new Location { LocationID = 50, LocationName = "Quảng Trị" },
+                        new Location { LocationID = 51, LocationName = "Sóc Trăng" },
+                        new Location { LocationID = 52, LocationName = "Sơn La" },
+                        new Location { LocationID = 53, LocationName = "Tây Ninh" },
+                        new Location { LocationID = 54, LocationName = "Thái Bình" },
+                        new Location { LocationID = 55, LocationName = "Thái Nguyên" },
+                        new Location { LocationID = 56, LocationName = "Thanh Hóa" },
+                        new Location { LocationID = 57, LocationName = "Thừa Thiên - Huế" },
+                        new Location { LocationID = 58, LocationName = "Tiền Giang" },
+                        new Location { LocationID = 59, LocationName = "Trà Vinh" },
+                        new Location { LocationID = 60, LocationName = "Tuyên Quang" },
+                        new Location { LocationID = 61, LocationName = "Vĩnh Long" },
+                        new Location { LocationID = 62, LocationName = "Vĩnh Phúc" },
+                        new Location { LocationID = 63, LocationName = "Yên Bái" }
+                   );
 
+            #endregion
 
             context.Job.AddOrUpdate(a => a.JobID,
                     new Job { JobID = 1, JobName = "Lập trình viên" },
@@ -66,11 +138,72 @@ namespace WEE_API.Migrations
                    new Question { QuestionID = 2, QuestionName = "Bạn KHÓ có thể đàm phán nhất ở khía cạnh nào" }
                );
 
+            #region Zone
             context.Zone.AddOrUpdate(a => a.ZoneID,
-                 new Zone { ZoneID = 1, ZoneName = "C#" },
-                 new Zone { ZoneID = 2, ZoneName = "Java" }
-             );
+                     new Zone { ZoneID = 1, ZoneName = "Nhân viên kinh doanh" },
+                     new Zone { ZoneID = 2, ZoneName = "Hành chính-Văn phòng" },
+                     new Zone { ZoneID = 3, ZoneName = "Kế toán-Kiểm toán" },
+                     new Zone { ZoneID = 4, ZoneName = "Bán hàng" },
+                     new Zone { ZoneID = 5, ZoneName = "Marketing-PR" },
+                     new Zone { ZoneID = 6, ZoneName = "Tư vấn" },
+                     new Zone { ZoneID = 7, ZoneName = "KD bất động sản" },
+                     new Zone { ZoneID = 8, ZoneName = "Xây dựng" },
+                     new Zone { ZoneID = 9, ZoneName = "IT phần mềm" },
+                     new Zone { ZoneID = 10, ZoneName = "Điện-Điện tử" },
+                     new Zone { ZoneID = 11, ZoneName = "Y tế-Dược" },
+                     new Zone { ZoneID = 12, ZoneName = "Cơ khí-Chế tạo" },
+                     new Zone { ZoneID = 13, ZoneName = "Kỹ thuật" },
+                     new Zone { ZoneID = 14, ZoneName = "Kiến trúc-TK nội thất" },
+                     new Zone { ZoneID = 15, ZoneName = "Nhân sự" },
+                     new Zone { ZoneID = 16, ZoneName = "Biên-Phiên dịch" },
+                     new Zone { ZoneID = 17, ZoneName = "Giáo dục-Đào tạo" },
+                     new Zone { ZoneID = 18, ZoneName = "Quản trị kinh doanh" },
+                     new Zone { ZoneID = 19, ZoneName = "Xuất, nhập khẩu" },
+                     new Zone { ZoneID = 20, ZoneName = "IT phần cứng/mạng" },
+                     new Zone { ZoneID = 21, ZoneName = "Thiết kế-Mỹ thuật" },
+                     new Zone { ZoneID = 22, ZoneName = "Khách sạn-Nhà hàng" },
+                     new Zone { ZoneID = 23, ZoneName = "Thư ký-Trợ lý" },
+                     new Zone { ZoneID = 24, ZoneName = "Dịch vụ" },
+                     new Zone { ZoneID = 25, ZoneName = "Điện tử viễn thông" },
+                     new Zone { ZoneID = 26, ZoneName = "Thiết kế đồ hoạ web" },
+                     new Zone { ZoneID = 27, ZoneName = "Dệt may - Da giày" },
+                     new Zone { ZoneID = 28, ZoneName = "Tiếp thị-Quảng cáo" },
+                     new Zone { ZoneID = 29, ZoneName = "Thương mại điện tử" },
+                     new Zone { ZoneID = 30, ZoneName = "Vật tư-Thiết bị" },
+                     new Zone { ZoneID = 31, ZoneName = "Kỹ thuật ứng dụng" },
+                     new Zone { ZoneID = 32, ZoneName = "Báo chí-Truyền hình" },
+                     new Zone { ZoneID = 33, ZoneName = "Ngành nghề khác" },
+                     new Zone { ZoneID = 34, ZoneName = "Ngân hàng" },
+                     new Zone { ZoneID = 35, ZoneName = "Thực phẩm-Đồ uống" },
+                     new Zone { ZoneID = 36, ZoneName = "Ô tô - Xe máy" },
+                     new Zone { ZoneID = 37, ZoneName = "Du lịch" },
+                     new Zone { ZoneID = 38, ZoneName = "Thời trang" },
+                     new Zone { ZoneID = 39, ZoneName = "Vận tải" },
+                     new Zone { ZoneID = 40, ZoneName = "Bảo hiểm" },
+                     new Zone { ZoneID = 41, ZoneName = "Công nghiệp" },
+                     new Zone { ZoneID = 42, ZoneName = "Hoá học-Sinh học" },
+                     new Zone { ZoneID = 43, ZoneName = "Pháp lý" },
+                     new Zone { ZoneID = 44, ZoneName = "In ấn-Xuất bản" },
+                     new Zone { ZoneID = 45, ZoneName = "Mỹ phẩm-Trang sức" },
+                     new Zone { ZoneID = 46, ZoneName = "Nông-Lâm-Ngư nghiệp" },
+                     new Zone { ZoneID = 47, ZoneName = "Quan hệ đối ngoại" },
+                     new Zone { ZoneID = 48, ZoneName = "Tổ chức sự kiện-Quà tặng" },
+                     new Zone { ZoneID = 49, ZoneName = "Hoạch định-Dự án" },
+                     new Zone { ZoneID = 50, ZoneName = "Hàng gia dụng" },
+                     new Zone { ZoneID = 51, ZoneName = "Dầu khí-Hóa chất" },
+                     new Zone { ZoneID = 52, ZoneName = "Công nghệ cao" },
+                     new Zone { ZoneID = 53, ZoneName = "Nghệ thuật - Điện ảnh" },
+                     new Zone { ZoneID = 54, ZoneName = "Bưu chính" },
+                     new Zone { ZoneID = 55, ZoneName = "Bảo vệ" },
+                     new Zone { ZoneID = 56, ZoneName = "Game" },
+                     new Zone { ZoneID = 57, ZoneName = "Chứng khoán- Vàng" },
+                     new Zone { ZoneID = 58, ZoneName = "Hàng không" },
+                     new Zone { ZoneID = 59, ZoneName = "Đầu tư" },
+                     new Zone { ZoneID = 60, ZoneName = "Thủ công mỹ nghệ" },
+                     new Zone { ZoneID = 61, ZoneName = "Hàng hải" }
+              );
 
+            #endregion
 
             context.Company.AddOrUpdate(a => a.CompanyID,
                   new Company { CompanyID = 1, CompanyName = "CodeLove", LocationID = 1, ZoneID = 1 },

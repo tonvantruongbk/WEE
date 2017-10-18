@@ -31,7 +31,7 @@
                 submitOnBlur: true
             }
         },
-        fields: generateFields("@Model.TableID")
+        fields: generateFields("@Model.TableID","editorFor@(Model.Controller)")
     });
 
 
@@ -65,7 +65,7 @@
             extend: 'remove',
             editor: editorFor@(Model.Controller)
         }
-        
+
         @*, {
             extend: 'excelHtml5',
             columns: ':visible',
@@ -285,7 +285,7 @@
                 return JSON.stringify(data);
             }
         },
-        columns: generateColumns("@Model.TableID"),
+        columns: generateColumns("@Model.TableID",editorFor@(Model.Controller)),
         select: $("#@Model.TableID").data('select') || false,
         order: $("#@Model.TableID").data('orders') || "",
         @if (!Model.buttonExternal)
