@@ -19,7 +19,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Net.Mime;
 using Twilio.Clients;
-using WEE_API.RBAC; 
+using WEE_API.RBAC;
+using WEE_API.ViewModel;
 
 namespace WEE_API
 {

@@ -7,8 +7,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using WEE_API.Models;
 using WEE_API.RBAC;
+using WEE_API.ViewModel;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     [RBAC]
     public class AdminController : Controller

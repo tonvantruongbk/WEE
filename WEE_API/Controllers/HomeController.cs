@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     public class HomeController : Controller
     {

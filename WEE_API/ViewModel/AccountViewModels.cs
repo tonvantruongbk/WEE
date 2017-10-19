@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WEE_API.RBAC
+namespace WEE_API.ViewModel
 {
     public class ExternalLoginConfirmationViewModel
     {

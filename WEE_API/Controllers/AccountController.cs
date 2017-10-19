@@ -8,8 +8,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WEE_API.RBAC;
+using WEE_API.ViewModel;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     [Authorize]
     public class AccountController : Controller

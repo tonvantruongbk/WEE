@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using WEE_API.ViewModel;
 
 namespace WEE_API.RBAC
 {

@@ -9,7 +9,7 @@ using Microsoft.Owin.Security;
 using WEE_API.Models;
 using WEE_API.RBAC;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     [Authorize]
     public class ManageController : Controller

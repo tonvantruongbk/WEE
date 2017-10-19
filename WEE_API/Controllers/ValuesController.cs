@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

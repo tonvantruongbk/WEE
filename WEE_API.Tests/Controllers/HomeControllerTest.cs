@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WEE_API;
 using WEE_API.Controllers;
-using WEE_API.Controllers.ADM;
 
 namespace WEE_API.Tests.Controllers
 {

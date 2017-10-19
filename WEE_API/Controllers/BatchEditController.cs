@@ -6,7 +6,7 @@ using WEE_API.Common;
 using WEE_API.Common.Datatables;
 using WEE_API.Models;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     public class BatchEditController : Controller
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using WEE_API.Models;
 
-namespace WEE_API.Controllers.ADM
+namespace WEE_API.Controllers
 {
     public class AD_UserController : Controller
     {
