@@ -1,5 +1,6 @@
 ﻿@model WEE_API.ViewModel.DatatablesEditorViewModel
 <script>
+    var editorFor@(Model.Controller) = new $.fn.dataTable.Editor();
     editorFor@(Model.Controller) = new $.fn.dataTable.Editor({
         table: "#@(Model.TableID)",
         i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
@@ -31,7 +32,7 @@
                 submitOnBlur: true
             }
         },
-        fields: generateFields("@Model.TableID","editorFor@(Model.Controller)")
+        fields: generateFields("@Model.TableID",editorFor@(Model.Controller))
     });
 
 

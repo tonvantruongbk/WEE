@@ -42,6 +42,56 @@ namespace WEE_API.Common
             // compile to Func<Data, Data>
             return lambda;
         }
+        public static fileJSON GenImageJSON(string filename)
+        {
+            var fileTmp = new fileJSON()
+            {
+                files = new FileTable()
+                {
+                    files = new Dictionary<string, FileInfo>()
+                    {
+                        {filename,new FileInfo() {id = filename,web_path = filename} }
+                    }
+                },
+                upload = new FileUpload() { id = filename }
 
+            };
+            return fileTmp;
+        }
+
+
+        public static FileTable GenListImageJSON(List<string> filename)
+        {
+            var files = new FileTable { files = new Dictionary<string, FileInfo>() };
+            foreach (var name in filename)
+            {
+                files.files.Add(name, new FileInfo() { id = name, web_path = name });
+            }
+            return files;
+        }
     }
+
+    public class fileJSON
+    {
+        public FileTable files { get; set; }
+        public FileUpload upload { get; set; }
+    }
+    public class FileUpload
+    {
+        public string id { get; set; }
+    }
+    public class FileTable
+    {
+        public Dictionary<string, FileInfo> files { get; set; }
+    }
+
+    public class FileInfo
+    {
+        public string id { get; set; }
+        public string filename { get; set; }
+        public string filesize { get; set; }
+        public string web_path { get; set; }
+        public string system_path { get; set; }
+    }
+
 }

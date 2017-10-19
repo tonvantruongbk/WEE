@@ -14,4 +14,9 @@ namespace WEE_API.ViewModel
         public string ButtonPlaceID { get; set; }
         public string Ydacf { get; set; }
     }
+
+
+
+
+
 }

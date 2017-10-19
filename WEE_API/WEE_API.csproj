@@ -292,7 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_Start\basic-auth.js" />
-    <Content Include="App_Start\CustomSwagger.js" />
     <Content Include="CodeTemplates\Scaffolders\SEEDGenerator.generated.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

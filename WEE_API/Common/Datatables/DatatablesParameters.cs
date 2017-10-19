@@ -42,6 +42,8 @@ namespace WEE_API.Common.Datatables
         public List<object> yadcf_data_8 { get; set; }
         public List<object> yadcf_data_9 { get; set; }
         public List<object> yadcf_data_10 { get; set; }
+
+        public FileTable files { get; set; }
     }
 
     public class Yadcf_SourceServer

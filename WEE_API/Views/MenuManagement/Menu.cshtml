@@ -8,7 +8,7 @@ foreach (var adMenu in Model.Where(a => a.MenuParentID == parentID))
     var menu = adMenu;
     var isParrent = Model.Any(a => a.MenuParentID == menu.MenuID);
         <li class="nav-item start ">
-            <a href="@(!isParrent? adMenu.URLAction  : "javascript:;" )" class="nav-link @( !isParrent ? "":"nav-toggle")">
+            <a href="@(!isParrent? @Url.Action("",adMenu.URLAction)  : "javascript:;" )" class="nav-link @( !isParrent ? "":"nav-toggle")">
                 <i class="@adMenu.MenuIcon" aria-hidden="true"></i>
                 <span class="title">@adMenu.MenuText</span>
                 @if (isParrent)

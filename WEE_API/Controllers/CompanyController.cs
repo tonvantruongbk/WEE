@@ -14,9 +14,9 @@ using Newtonsoft.Json;
 
 
 namespace WEE_API.Controllers
-{ 
+{
     public class CompanyController : Controller
-    { 
+    {
         DBContext db = new DBContext();
         public ActionResult Index()
         {
@@ -28,7 +28,7 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Company.Include(a=>a.Location).Include(a=>a.Zone).AsQueryable();
+                var all = db.Company.Include(a => a.Location).Include(a => a.Zone).AsQueryable();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Company>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -37,7 +37,8 @@ namespace WEE_API.Controllers
                     draw = request.Draw,
                     data = finalquery.ToList(),
                     recordsFiltered = queryFiltered.Count(),
-                    recordsTotal = all.Count()
+                    recordsTotal = all.Count(),
+                    files = CommonFunction.GenListImageJSON(db.Company.Where(a=>!string.IsNullOrEmpty(a.Logo)).Select(a=>a.Logo).ToList())
                 };
                 if (request.FilterBase != null)
                 {
@@ -46,11 +47,11 @@ namespace WEE_API.Controllers
                         Type itemType = result.GetType();
                         try
                         {
-                            var field = itemType.GetProperty("yadcf_data_"+dtFilterBase.Ydacf_Number);
+                            var field = itemType.GetProperty("yadcf_data_" + dtFilterBase.Ydacf_Number);
                             if (field != null)
                             {
-                                var bbb = db.Company.Select("new ("+ dtFilterBase.Ydacf_FieldName + " as label, " + dtFilterBase.Ydacf_FieldName + " as value)");
-                                field.SetValue(result,bbb.Distinct().ToListAsync().Result);
+                                var bbb = db.Company.Select("new (" + dtFilterBase.Ydacf_FieldName + " as label, " + dtFilterBase.Ydacf_FieldName + " as value)");
+                                field.SetValue(result, bbb.Distinct().ToListAsync().Result);
                             }
                         }
                         catch (Exception)
@@ -104,7 +105,7 @@ namespace WEE_API.Controllers
 
 
         [HttpPost]
-        public string UploadImage()
+        public JsonResult UploadImage()
         {
             var fileName = "";
             var path = "";
@@ -118,16 +119,12 @@ namespace WEE_API.Controllers
                     file.SaveAs(path);
                 }
             }
-            var wpath = (new UrlHelper(this.ControllerContext.RequestContext)).Content(@"~/Content/UPLOAD/") + fileName;
-            var wpath1 = "/Content/UPLOAD/" + fileName;
+            //var wpath = (new UrlHelper(this.ControllerContext.RequestContext)).Content(@"~/Content/UPLOAD/") + fileName;
+            var wpath = "/Content/UPLOAD/" + fileName;
 
-           
-            return "{\"files\": { \"tableForCompany\": { \""+ wpath1 + "\": { \"filename\": \"" + fileName + "\", \"web_path\": \""+wpath+"\" } } }, \"upload\": { \"id\": \""+ wpath1 + "\"}}";
-            // return Json(new { files = new { files = new { a = new { filename = fileName, web_path = wpath1 } } }, upload = new { id = wpath1 } }, JsonRequestBehavior.AllowGet);
+            return Json(CommonFunction.GenImageJSON(wpath), JsonRequestBehavior.AllowGet);
         }
 
-
-       
 
         [HttpPost]
         public ActionResult UploadImage1(string id)
@@ -146,5 +143,5 @@ namespace WEE_API.Controllers
         }
     }
 
-     
+
 }
