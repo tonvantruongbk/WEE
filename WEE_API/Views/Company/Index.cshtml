@@ -17,7 +17,7 @@
     <fieldset class="name">
         <legend>Name</legend>
         <div data-editor-template="CompanyName"></div>
-        <div data-editor-template="Address"></div>
+        <div class="MultiCheckboxScroll" data-editor-template="CompanyZone[].id"></div>
     </fieldset>
     <fieldset class="office">
         <legend>Office</legend>
@@ -58,7 +58,7 @@
                 <th data-filter_type="" data-data="Logo" data-type="image" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                     @(ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).PropertyName)
                 </th>
-                <th data-filter_type="auto_complete" data-data="ListCompanyZone.ZoneID" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Lĩnh vực kinh doanh</th>
+                <th data-filter_type="auto_complete" data-data="CompanyZone[].id" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Lĩnh vực kinh doanh</th>
                 <th data-filter_type="auto_complete" data-data="Location.LocationName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                     @(ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).PropertyName)
                 </th>

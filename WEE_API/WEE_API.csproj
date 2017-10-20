@@ -277,7 +277,7 @@
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobType.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="RBAC\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\UserRatingCompany.cs" />

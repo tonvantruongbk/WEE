@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace WEE_API.Models
+namespace WEE_API.RBAC
 {
     public class IndexViewModel
     {

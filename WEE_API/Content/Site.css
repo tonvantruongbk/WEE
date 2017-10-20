@@ -281,3 +281,8 @@ table.dataTable thead .sorting {
     display: flex;
     flex-flow: row wrap;
 }
+.MultiCheckboxScroll > .DTE_Field.DTE_Field_Type_checkbox > div {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

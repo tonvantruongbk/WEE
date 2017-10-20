@@ -13,6 +13,8 @@ namespace WEE_API.Models
         [MaxLength(300)]
         [Display(Name ="Tên loại công việc")]
         public string JobTypeName { get; set; }
+
+
     }
 
 

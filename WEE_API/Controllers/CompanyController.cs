@@ -9,6 +9,7 @@ using WEE_API.Common.Datatables;
 using WEE_API.Models;
 using System.Linq.Dynamic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -28,17 +29,33 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Company.Include(a => a.Location).AsQueryable();
+                var all = db.Company
+                    .Include(a => a.Location)
+                    .Include(a => a.ListCompanyZone.Select(b => b.Zone))
+                    .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Company>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
+                var lstFinal = new List<Company>();
+                foreach (var company in finalquery.ToList())
+                {
+                    company.CompanyZone = company.ListCompanyZone.Select(a=>new MultipleCheckboxClass() {id = a.ZoneID,name = a.Zone.ZoneName}).ToList();
+                    company.ListCompanyZone = null;
+                    lstFinal.Add(company);
+                }
+                var ttt = new Dictionary<string, List<SelectizeClass>>
+                {
+                    {"CompanyZone[].id", db.Zone.Select(a => new SelectizeClass() {value = a.ZoneID, label = a.ZoneName + ""}).ToList()}
+                };
+
                 ReponseToDatatables<Company> result = new ReponseToDatatables<Company>
                 {
                     draw = request.Draw,
-                    data = finalquery.ToList(),
+                    data = lstFinal,
                     recordsFiltered = queryFiltered.Count(),
                     recordsTotal = all.Count(),
-                    files = CommonFunction.GenListImageJSON(db.Company.Where(a=>!string.IsNullOrEmpty(a.Logo)).Select(a=>a.Logo).ToList())
+                    files = CommonFunction.GenListImageJSON(db.Company.Where(a=>!string.IsNullOrEmpty(a.Logo)).Select(a=>a.Logo).ToList()),
+                    options =  ttt
                 };
                 if (request.FilterBase != null)
                 {
@@ -84,6 +101,10 @@ namespace WEE_API.Controllers
             {
                 data.CompanyID = Id;
                 db.Entry(data).State = EntityState.Modified;
+
+                db.CompanyZone.RemoveRange(db.CompanyZone.Where(b => b.CompanyID == data.CompanyID).AsEnumerable());
+                db.CompanyZone.AddRange(data.CompanyZone.Select(b=>new CompanyZone() {CompanyID = data.CompanyID, ZoneID = b.id}).ToArray());
+
                 db.SaveChanges();
                 return Json(new { Message = "Đã sửa thành công!" }, JsonRequestBehavior.AllowGet);
             }

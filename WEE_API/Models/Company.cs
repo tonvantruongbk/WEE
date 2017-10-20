@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
+using WEE_API.Common;
 
 namespace WEE_API.Models
 {
@@ -38,9 +40,12 @@ namespace WEE_API.Models
         public virtual Location Location { get; set; }
          
 
-        public virtual List<CompanyZone> ListCompanyZone { get; set; }
-        public virtual List<Job> ListJob { get; set; }
-        public virtual List<UserRatingCompany> ListUserRatingCompany { get; set; }
+        public virtual ICollection<MultipleCheckboxClass> CompanyZone { get; set; }
+        public virtual ICollection<CompanyZone> ListCompanyZone { get; set; }
+        public virtual ICollection<Job> ListJob { get; set; }
+        public virtual ICollection<UserRatingCompany> ListUserRatingCompany { get; set; }
+
+
 
     }
 }

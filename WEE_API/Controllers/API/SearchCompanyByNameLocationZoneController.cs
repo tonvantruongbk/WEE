@@ -14,14 +14,14 @@ using WEE_API.Models;
 namespace WEE_API.Controllers.API
 {
 
-    public class SearchCompanyByNameLocationController : ApiController
+    public class SearchCompanyByNameLocationZoneController : ApiController
     {
         private DBContext db = new DBContext();
 
         /// <summary>
         /// Tìm kiếm công ty theo 3 tiêu chí (tên gần đúng, chính xác mã địa điểm và mã lĩnh vực)
         /// </summary>
-        public IQueryable<Company> GetSearchCompanyByNameLocation(string name = null, int? locationId = null, int? ZoneId = null)
+        public IQueryable<Company> GetSearchCompanyByNameLocationZone(string name = null, int? locationId = null, int? ZoneId = null)
         {
             var company = db.Company.AsQueryable();
             if (name != null)

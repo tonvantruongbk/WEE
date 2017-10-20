@@ -78,23 +78,25 @@
 var generateFields = function (tableID, editorFor) {
     var _prepareField = function (th) {
         var columnData = $(th).data();
+        var colName = columnData.data;
+        if (columnData.type === "selectize") {
+            colName = columnData.data.split(".")[0] + "ID";
+        }
         var field = {
             label: columnData.label || $(th).html(),// Uses the th data-label value. If it doesn't exist, uses the HTML inside
-            data: columnData.type === "selectize" ?
-                columnData.data.split(".")[0] + "ID" : columnData.data,
-            name: columnData.type === "selectize" ?
-                columnData.data.split(".")[0] + "ID" : columnData.data,
+            data: colName,
+            name: colName,
             filter_delay: 500
         };
         switch (columnData.type) {
         case 'checkbox':
             field = $.extend(true, field, {
                 type: 'checkbox',
-                separator: '|',
-                options: [{
-                    label: '',
-                    value: 1
-                }]
+                //separator: '|',
+                //options: [{
+                //    label: '',
+                //    value: 1
+                //}]
             });
             break;
             case 'image':
@@ -133,7 +135,7 @@ var generateFields = function (tableID, editorFor) {
                         maxItems: 1,
                         load: function(query, callback) {
                             $.ajax({
-                                url: path+field.data.replace("ID","")+"/GetList2Select",
+                                url: path+field.name.replace("ID","")+"/GetList2Select",
                                 type: "GET",
                                 dataType: "json",
                                 data: { q: query },
@@ -172,6 +174,10 @@ var generateColumns = function (tableID,editorFor) {
                     '<img src="' +path+ editorFor.file('files', file_id).web_path + '" height="32" />' :
                     null;
             }
+        }
+        if (columnData.type === "checkbox") {
+            render1 = "[, ].name";
+            columnData.data = columnData.data.replace("[].id","");
         }
         var column = {
             title: $(th).html(),
@@ -231,7 +237,7 @@ var generateYdacf = function (tableID, filterMode) {
     };
     var Ydacfs = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-        if ($(th).data().listvisible === true) {
+        if ($(th).data().listvisible === true && $(th).data().type !== 'checkbox') {
             Ydacfs.push(_prepareYdacf(index, th));
         }
     });
