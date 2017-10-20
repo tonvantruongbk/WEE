@@ -13,6 +13,7 @@ namespace WEE_API.Models
         [MaxLength(100)]
         
         [Display(Name ="Tên vị trí")]
+        [Required]
         public string LocationName { get; set; }
     }
 }

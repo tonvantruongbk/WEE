@@ -25,7 +25,9 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Question.AsQueryable();
+                var all = db.Question
+                            .Include(a=>a.QuestionType)
+                            .AsQueryable();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Question>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -96,6 +98,13 @@ namespace WEE_API.Controllers
                 db.SaveChanges();
             }
             return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetList2Select()
+        {
+          var result =  db.Question.Select(a => new SelectizeClass {label = a.QuestionName, value = a.QuestionID}).ToList();
+           
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

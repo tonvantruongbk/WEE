@@ -250,3 +250,34 @@ table.dataTable thead .sorting {
 .selectize-input{
     padding: 6px 12px !important;
 }
+
+.portlet > .portlet-title > .tools > a  {
+    margin-right: 5px;
+}
+
+.portlet > .portlet-title > .caption  {
+    cursor: pointer;
+}
+
+.portlet>.portlet-title>.screenname {
+    float: left;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 21px;
+    padding: 10px 0;
+    color: #a3ff93;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.portlet>.portlet-title>.caption {
+    float: right;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 0;
+}
+#customForm {
+    display: flex;
+    flex-flow: row wrap;
+}

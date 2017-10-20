@@ -169,7 +169,7 @@ var generateColumns = function (tableID,editorFor) {
         if (columnData.type === "image") {
             render1 = function ( file_id ) {
                 return file_id ?
-                    '<img src="' +path+ editorFor.file('files', file_id).web_path + '"/>' :
+                    '<img src="' +path+ editorFor.file('files', file_id).web_path + '" height="32" />' :
                     null;
             }
         }

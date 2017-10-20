@@ -23,24 +23,23 @@ namespace WEE_API.Models
         [Display(Name ="Logo")]
         public string Logo { get; set; }
 
-        [Display(Name ="Lĩnh vực doanh nghiệp")]
-        public int? ZoneID { get; set; }
         [Display(Name ="Vị trí")]
         public int? LocationID { get; set; }
+       
         [Display(Name ="Điểm trung bình")]
-        public decimal AverageScore { get; set; }
+        public decimal? AverageScore { get; set; } 
         [Display(Name ="Số người bình chọn")]
-        public int   TotalUserRate { get; set; }
-
-
+        public int? TotalUserRate { get; set; } 
+        [Display(Name ="Tổng số việc làm")]
+        public int? TotalJobActive { get; set; }
+        
 
         [ForeignKey("LocationID")]
         public virtual Location Location { get; set; }
-        [ForeignKey("ZoneID")]
-        public virtual Zone Zone { get; set; }
+         
 
-
-        public virtual List<CompanyJob> ListCompanyJob { get; set; }
+        public virtual List<CompanyZone> ListCompanyZone { get; set; }
+        public virtual List<Job> ListJob { get; set; }
         public virtual List<UserRatingCompany> ListUserRatingCompany { get; set; }
 
     }

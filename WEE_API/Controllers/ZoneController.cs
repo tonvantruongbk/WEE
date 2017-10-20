@@ -25,7 +25,8 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Zone.AsQueryable();
+                var all = db.Zone
+                            .AsQueryable();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Zone>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -100,8 +101,8 @@ namespace WEE_API.Controllers
 
         public JsonResult GetList2Select()
         {
-            var result = db.Zone.Select(a => new SelectizeClass { label = a.ZoneName , value = a.ZoneID  }).ToList();
-
+          var result =  db.Zone.Select(a => new SelectizeClass {label = a.ZoneName, value = a.ZoneID}).ToList();
+           
             return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
 

@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEE_API.Models
 {
-    public class CompanyJob
+    public class CompanyZone
     {
         [Key]
         [Column(Order = 0)]
         [Display(Name ="Công ty")]
+        [Required]
         public int CompanyID { get; set; }
         [Key]
         [Column(Order = 1)]
-        [Display(Name ="Công việc")]
-        public int JobID { get; set; }
+        [Display(Name ="Lĩnh vực")]
+        [Required]
+        public int ZoneID { get; set; }
 
         [Display(Name = "Yêu cầu công việc")]
         [MaxLength(1000)]
@@ -22,8 +24,8 @@ namespace WEE_API.Models
         [ForeignKey("CompanyID")]
         public Company Company { get; set; }
 
-        [ForeignKey("JobID")]
-        public Job Job { get; set; }
+        [ForeignKey("ZoneID")]
+        public Zone Zone { get; set; }
     }
 
 

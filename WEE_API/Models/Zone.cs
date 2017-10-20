@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEE_API.Models
@@ -12,6 +13,9 @@ namespace WEE_API.Models
         [MaxLength(300)]
         [Display(Name = "Tên lĩnh vực doanh nghiệp")]
         public string ZoneName { get; set; }
+
+
+        public virtual List<CompanyZone> ListZoneCompany { get; set; }
     }
 
 

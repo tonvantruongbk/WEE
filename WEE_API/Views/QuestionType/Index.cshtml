@@ -2,7 +2,8 @@
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
-    ViewBag.Title = "QuestionType";
+    var screenTitle = "QuestionType";
+    ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<QuestionType>();
 }
 @section PageStyles
@@ -12,13 +13,21 @@
     </style>
 }
 
+<div id="customForm">
+<fieldset class="name">
+        <div data-editor-template="QuestionTypeName"></div>
+    </fieldset>
+</div>
+
+@Html.Partial("_ExternalFilter", screenTitle)
+
 <div class="row">
     <table id="DataTableQuestionType" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"
             data-orders='[[0, "asc"]]'
             data-select="true"
-            data-dom="fBrtlpi"
-        ><thead>
+            data-dom="fBrtlpi">
+        <thead>
             <tr>
                   <th data-filter_type="auto_complete" data-data="QuestionTypeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.QuestionTypeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.QuestionTypeName, ViewDT).PropertyName)
@@ -35,7 +44,8 @@
         FieldID = "QuestionTypeID",
         ButtonPlaceID = "buttons",
         buttonExternal = false,
-        Ydacf = "HeaderFilter"
-        //Ydacf = "DataTablePutExternalFilter"
+        //Ydacf = "HeaderFilter"
+        Ydacf = "DataTablePutExternalFilter",
+        CustomEditorFormID = "customForm"
     })
 }

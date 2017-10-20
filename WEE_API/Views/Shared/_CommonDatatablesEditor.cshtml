@@ -3,6 +3,7 @@
     var editorFor@(Model.Controller) = new $.fn.dataTable.Editor();
     editorFor@(Model.Controller) = new $.fn.dataTable.Editor({
         table: "#@(Model.TableID)",
+        template: "#@(Model.CustomEditorFormID)",
         i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
         ajax: function (method, url, d, successCallback, errorCallback) {
             var newvalue;

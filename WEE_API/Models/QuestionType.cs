@@ -12,6 +12,7 @@ namespace WEE_API.Models
         
         [MaxLength(500)]
         [Display(Name ="Loại câu hỏi")]
+        [Required]
         public string QuestionTypeName { get; set; }
     }
 }

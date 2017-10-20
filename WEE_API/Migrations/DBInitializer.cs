@@ -47,7 +47,7 @@ namespace WEE_API.Migrations
                 , new AD_Menu { MenuID = 26, MenuParentID = 2, MenuText = "Vị trí", URLAction = "/Location", MenuIcon = "fa fa-info-circle", MenuSort = 8, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 27, MenuParentID = 2, MenuText = "Lĩnh vực", URLAction = "/Zone", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 28, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-info-circle", MenuSort = 10, MenuSeparator = null, CanDelete = null, }
-                , new AD_Menu { MenuID = 29, MenuParentID = 2, MenuText = "Tuyển dụng", URLAction = "/CompanyJob", MenuIcon = "fa fa-info-circle", MenuSort = 11, MenuSeparator = null, CanDelete = null, }
+                , new AD_Menu { MenuID = 29, MenuParentID = 2, MenuText = "Tuyển dụng", URLAction = "/CompanyZone", MenuIcon = "fa fa-info-circle", MenuSort = 11, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 9, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cog", MenuSort = 31, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 91, MenuParentID = 9, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null, }
                 , new AD_Menu { MenuID = 92, MenuParentID = 9, MenuText = "Người Dùng và Phân Quyền", URLAction = "/Permission", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null, }
@@ -123,92 +123,90 @@ namespace WEE_API.Migrations
 
             #endregion
 
-            context.Job.AddOrUpdate(a => a.JobID,
-                    new Job { JobID = 1, JobName = "Lập trình viên" },
-                    new Job { JobID = 2, JobName = "Designer" }
-                );
-
+           
             context.JobType.AddOrUpdate(a => a.JobTypeID,
-                   new JobType { JobTypeID = 1, JobTypeName = "C#" },
-                   new JobType { JobTypeID = 2, JobTypeName = "Java" }
-               );
+                new JobType { JobTypeID = 1, JobTypeName = "Toàn thời gian" },
+                new JobType { JobTypeID = 2, JobTypeName = "Bán thời gian" },
+                new JobType { JobTypeID = 3, JobTypeName = "Hợp đồng" },
+                new JobType { JobTypeID = 4, JobTypeName = "Thời vụ" }
+            );
 
-            context.Question.AddOrUpdate(a => a.QuestionID,
-                   new Question { QuestionID = 1, QuestionName = "Nơi bạn làm việc tuân thủ pháp luật KÉM NHẤT ở lĩnh vực nào" },
-                   new Question { QuestionID = 2, QuestionName = "Bạn KHÓ có thể đàm phán nhất ở khía cạnh nào" }
-               );
 
             #region Zone
             context.Zone.AddOrUpdate(a => a.ZoneID,
-                     new Zone { ZoneID = 1, ZoneName = "Nhân viên kinh doanh" },
-                     new Zone { ZoneID = 2, ZoneName = "Hành chính-Văn phòng" },
-                     new Zone { ZoneID = 3, ZoneName = "Kế toán-Kiểm toán" },
-                     new Zone { ZoneID = 4, ZoneName = "Bán hàng" },
-                     new Zone { ZoneID = 5, ZoneName = "Marketing-PR" },
-                     new Zone { ZoneID = 6, ZoneName = "Tư vấn" },
-                     new Zone { ZoneID = 7, ZoneName = "KD bất động sản" },
-                     new Zone { ZoneID = 8, ZoneName = "Xây dựng" },
-                     new Zone { ZoneID = 9, ZoneName = "IT phần mềm" },
-                     new Zone { ZoneID = 10, ZoneName = "Điện-Điện tử" },
-                     new Zone { ZoneID = 11, ZoneName = "Y tế-Dược" },
-                     new Zone { ZoneID = 12, ZoneName = "Cơ khí-Chế tạo" },
-                     new Zone { ZoneID = 13, ZoneName = "Kỹ thuật" },
-                     new Zone { ZoneID = 14, ZoneName = "Kiến trúc-TK nội thất" },
-                     new Zone { ZoneID = 15, ZoneName = "Nhân sự" },
-                     new Zone { ZoneID = 16, ZoneName = "Biên-Phiên dịch" },
-                     new Zone { ZoneID = 17, ZoneName = "Giáo dục-Đào tạo" },
-                     new Zone { ZoneID = 18, ZoneName = "Quản trị kinh doanh" },
-                     new Zone { ZoneID = 19, ZoneName = "Xuất, nhập khẩu" },
-                     new Zone { ZoneID = 20, ZoneName = "IT phần cứng/mạng" },
-                     new Zone { ZoneID = 21, ZoneName = "Thiết kế-Mỹ thuật" },
-                     new Zone { ZoneID = 22, ZoneName = "Khách sạn-Nhà hàng" },
-                     new Zone { ZoneID = 23, ZoneName = "Thư ký-Trợ lý" },
-                     new Zone { ZoneID = 24, ZoneName = "Dịch vụ" },
-                     new Zone { ZoneID = 25, ZoneName = "Điện tử viễn thông" },
-                     new Zone { ZoneID = 26, ZoneName = "Thiết kế đồ hoạ web" },
-                     new Zone { ZoneID = 27, ZoneName = "Dệt may - Da giày" },
-                     new Zone { ZoneID = 28, ZoneName = "Tiếp thị-Quảng cáo" },
-                     new Zone { ZoneID = 29, ZoneName = "Thương mại điện tử" },
-                     new Zone { ZoneID = 30, ZoneName = "Vật tư-Thiết bị" },
-                     new Zone { ZoneID = 31, ZoneName = "Kỹ thuật ứng dụng" },
-                     new Zone { ZoneID = 32, ZoneName = "Báo chí-Truyền hình" },
-                     new Zone { ZoneID = 33, ZoneName = "Ngành nghề khác" },
-                     new Zone { ZoneID = 34, ZoneName = "Ngân hàng" },
-                     new Zone { ZoneID = 35, ZoneName = "Thực phẩm-Đồ uống" },
-                     new Zone { ZoneID = 36, ZoneName = "Ô tô - Xe máy" },
-                     new Zone { ZoneID = 37, ZoneName = "Du lịch" },
-                     new Zone { ZoneID = 38, ZoneName = "Thời trang" },
-                     new Zone { ZoneID = 39, ZoneName = "Vận tải" },
-                     new Zone { ZoneID = 40, ZoneName = "Bảo hiểm" },
-                     new Zone { ZoneID = 41, ZoneName = "Công nghiệp" },
-                     new Zone { ZoneID = 42, ZoneName = "Hoá học-Sinh học" },
-                     new Zone { ZoneID = 43, ZoneName = "Pháp lý" },
-                     new Zone { ZoneID = 44, ZoneName = "In ấn-Xuất bản" },
-                     new Zone { ZoneID = 45, ZoneName = "Mỹ phẩm-Trang sức" },
-                     new Zone { ZoneID = 46, ZoneName = "Nông-Lâm-Ngư nghiệp" },
-                     new Zone { ZoneID = 47, ZoneName = "Quan hệ đối ngoại" },
-                     new Zone { ZoneID = 48, ZoneName = "Tổ chức sự kiện-Quà tặng" },
-                     new Zone { ZoneID = 49, ZoneName = "Hoạch định-Dự án" },
-                     new Zone { ZoneID = 50, ZoneName = "Hàng gia dụng" },
-                     new Zone { ZoneID = 51, ZoneName = "Dầu khí-Hóa chất" },
-                     new Zone { ZoneID = 52, ZoneName = "Công nghệ cao" },
-                     new Zone { ZoneID = 53, ZoneName = "Nghệ thuật - Điện ảnh" },
-                     new Zone { ZoneID = 54, ZoneName = "Bưu chính" },
-                     new Zone { ZoneID = 55, ZoneName = "Bảo vệ" },
-                     new Zone { ZoneID = 56, ZoneName = "Game" },
-                     new Zone { ZoneID = 57, ZoneName = "Chứng khoán- Vàng" },
-                     new Zone { ZoneID = 58, ZoneName = "Hàng không" },
-                     new Zone { ZoneID = 59, ZoneName = "Đầu tư" },
-                     new Zone { ZoneID = 60, ZoneName = "Thủ công mỹ nghệ" },
-                     new Zone { ZoneID = 61, ZoneName = "Hàng hải" }
+                     new Zone { ZoneID = 1,  ZoneName = "Kế toán-Kiểm toán" },
+                     new Zone { ZoneID = 2,  ZoneName = "Bán hàng" },
+                     new Zone { ZoneID = 3,  ZoneName = "Marketing-PR" },
+                     new Zone { ZoneID = 4,  ZoneName = "Tư vấn" },
+                     new Zone { ZoneID = 5,  ZoneName = "KD bất động sản" },
+                     new Zone { ZoneID = 6,  ZoneName = "Xây dựng" },
+                     new Zone { ZoneID = 7,  ZoneName = "IT phần mềm" },
+                     new Zone { ZoneID = 8, ZoneName = "Điện-Điện tử" },
+                     new Zone { ZoneID = 9, ZoneName = "Y tế-Dược" },
+                     new Zone { ZoneID = 10, ZoneName = "Cơ khí-Chế tạo" },
+                     new Zone { ZoneID = 11, ZoneName = "Kỹ thuật" },
+                     new Zone { ZoneID = 12, ZoneName = "Kiến trúc-TK nội thất" },
+                     new Zone { ZoneID = 13, ZoneName = "Nhân sự" },
+                     new Zone { ZoneID = 14, ZoneName = "Biên-Phiên dịch" },
+                     new Zone { ZoneID = 15, ZoneName = "Giáo dục-Đào tạo" },
+                     new Zone { ZoneID = 16, ZoneName = "Quản trị kinh doanh" },
+                     new Zone { ZoneID = 17, ZoneName = "Xuất, nhập khẩu" },
+                     new Zone { ZoneID = 18, ZoneName = "IT phần cứng/mạng" },
+                     new Zone { ZoneID = 19, ZoneName = "Thiết kế-Mỹ thuật" },
+                     new Zone { ZoneID = 20, ZoneName = "Khách sạn-Nhà hàng" },
+                     new Zone { ZoneID = 21, ZoneName = "Thư ký-Trợ lý" },
+                     new Zone { ZoneID = 22, ZoneName = "Dịch vụ" },
+                     new Zone { ZoneID = 23, ZoneName = "Điện tử viễn thông" },
+                     new Zone { ZoneID = 24, ZoneName = "Thiết kế đồ hoạ web" },
+                     new Zone { ZoneID = 25, ZoneName = "Dệt may - Da giày" },
+                     new Zone { ZoneID = 26, ZoneName = "Tiếp thị-Quảng cáo" },
+                     new Zone { ZoneID = 27, ZoneName = "Thương mại điện tử" },
+                     new Zone { ZoneID = 28, ZoneName = "Vật tư-Thiết bị" },
+                     new Zone { ZoneID = 29, ZoneName = "Kỹ thuật ứng dụng" },
+                     new Zone { ZoneID = 30, ZoneName = "Báo chí-Truyền hình" },
+                     new Zone { ZoneID = 31, ZoneName = "Ngành nghề khác" },
+                     new Zone { ZoneID = 32, ZoneName = "Ngân hàng" },
+                     new Zone { ZoneID = 33, ZoneName = "Thực phẩm-Đồ uống" },
+                     new Zone { ZoneID = 34, ZoneName = "Ô tô - Xe máy" },
+                     new Zone { ZoneID = 35, ZoneName = "Du lịch" },
+                     new Zone { ZoneID = 36, ZoneName = "Thời trang" },
+                     new Zone { ZoneID = 37, ZoneName = "Vận tải" },
+                     new Zone { ZoneID = 38, ZoneName = "Bảo hiểm" },
+                     new Zone { ZoneID = 39, ZoneName = "Công nghiệp" },
+                     new Zone { ZoneID = 40, ZoneName = "Hoá học-Sinh học" },
+                     new Zone { ZoneID = 41, ZoneName = "Pháp lý" },
+                     new Zone { ZoneID = 42, ZoneName = "In ấn-Xuất bản" },
+                     new Zone { ZoneID = 43, ZoneName = "Mỹ phẩm-Trang sức" },
+                     new Zone { ZoneID = 44, ZoneName = "Nông-Lâm-Ngư nghiệp" },
+                     new Zone { ZoneID = 45, ZoneName = "Quan hệ đối ngoại" },
+                     new Zone { ZoneID = 46, ZoneName = "Tổ chức sự kiện-Quà tặng" },
+                     new Zone { ZoneID = 47, ZoneName = "Hoạch định-Dự án" },
+                     new Zone { ZoneID = 48, ZoneName = "Hàng gia dụng" },
+                     new Zone { ZoneID = 49, ZoneName = "Dầu khí-Hóa chất" },
+                     new Zone { ZoneID = 50, ZoneName = "Công nghệ cao" },
+                     new Zone { ZoneID = 51, ZoneName = "Nghệ thuật - Điện ảnh" },
+                     new Zone { ZoneID = 52, ZoneName = "Bưu chính" },
+                     new Zone { ZoneID = 53, ZoneName = "Bảo vệ" },
+                     new Zone { ZoneID = 54, ZoneName = "Game" },
+                     new Zone { ZoneID = 55, ZoneName = "Chứng khoán- Vàng" },
+                     new Zone { ZoneID = 56, ZoneName = "Hàng không" },
+                     new Zone { ZoneID = 57, ZoneName = "Đầu tư" },
+                     new Zone { ZoneID = 58, ZoneName = "Thủ công mỹ nghệ" },
+                     new Zone { ZoneID = 59, ZoneName = "Hàng hải" }
               );
 
             #endregion
 
             context.Company.AddOrUpdate(a => a.CompanyID,
-                  new Company { CompanyID = 1, CompanyName = "CodeLove", LocationID = 1, ZoneID = 1 },
-                  new Company { CompanyID = 2, CompanyName = "RunSystem", LocationID = 1, ZoneID = 1 }
+                  new Company { CompanyID = 1, CompanyName = "CodeLove", LocationID = 1 },
+                  new Company { CompanyID = 2, CompanyName = "RunSystem", LocationID = 1 }
               );
+
+            context.Job.AddOrUpdate(a => a.JobID,
+                new Job { JobID = 1, JobName = "Lập trình viên C#", CompanyID = 1, JobTypeID =1 },
+                new Job { JobID = 2, JobName = "Web Designer", CompanyID = 1, JobTypeID = 1 },
+                new Job { JobID = 3, JobName = "Phiên dịch", CompanyID = 2, JobTypeID = 1 }
+            );
 
             context.UserType.AddOrUpdate(a => a.UserTypeID,
                  new UserType { UserTypeID = 1, UserTypeName = "Người đi làm" },
@@ -226,17 +224,21 @@ namespace WEE_API.Migrations
                  new QuestionType { QuestionTypeID = 5, QuestionTypeName = "Khác" }
              );
 
+            context.Question.AddOrUpdate(a => a.QuestionID,
+                new Question { QuestionID = 1, QuestionName = "Nơi bạn làm việc tuân thủ pháp luật KÉM NHẤT ở lĩnh vực nào", QuestionTypeID = 1},
+                new Question { QuestionID = 2, QuestionName = "Bạn KHÓ có thể đàm phán nhất ở khía cạnh nào", QuestionTypeID = 1 }
+            );
 
             context.UserRatingCompany.AddOrUpdate(a => new { a.CompanyID, a.QuestionID, a.QuestionTypeID, a.UserID },
                 new UserRatingCompany { CompanyID = 1, QuestionID = 1, QuestionTypeID = 1, UserID = "Admin", Score = 2.0m }
                 );
 
-            context.CompanyJob.AddOrUpdate(
-                 a => new { a.CompanyID, a.JobID },
-                new CompanyJob { CompanyID = 1, JobID = 1 },
-                new CompanyJob { CompanyID = 1, JobID = 2 },
-                 new CompanyJob { CompanyID = 2, JobID = 1 },
-                new CompanyJob { CompanyID = 2, JobID = 2 }
+            context.CompanyZone.AddOrUpdate(
+                 a => new { a.CompanyID, a.ZoneID },
+                new CompanyZone { CompanyID = 1, ZoneID = 1 },
+                new CompanyZone { CompanyID = 1, ZoneID = 2 },
+                 new CompanyZone { CompanyID = 2, ZoneID = 1 },
+                new CompanyZone { CompanyID = 2, ZoneID = 2 }
             );
             context.SaveChanges();
 

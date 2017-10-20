@@ -35,7 +35,7 @@ namespace WEE_API.Models
         public virtual DbSet<JobType> JobType { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<UserRatingCompany> UserRatingCompany { get; set; }
-        public virtual DbSet<CompanyJob> CompanyJob { get; set; }
+        public virtual DbSet<CompanyZone> CompanyZone { get; set; }
         public virtual DbSet<Zone> Zone { get; set; }
         public virtual DbSet<QuestionType> QuestionType { get; set; }
 
@@ -49,6 +49,8 @@ namespace WEE_API.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ApplicationUser>().ToTable("USERS").Property(p => p.Id).HasColumnName("UserId");
             modelBuilder.Entity<ApplicationRole>().ToTable("ROLES").Property(p => p.Id).HasColumnName("RoleId");

@@ -227,6 +227,7 @@
     <Compile Include="Common\JsonNetResult.cs" />
     <Compile Include="Common\SelectizeClass.cs" />
     <Compile Include="Controllers\API\AccountController.cs" />
+    <Compile Include="Controllers\API\SearchCompanyByNameLocationZoneController.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
     <Compile Include="Models\TermAndCondition.cs" />
     <Compile Include="RBAC\RBAC_ExtendedMethods.cs" />
@@ -235,7 +236,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AD_UserController.cs" />
     <Compile Include="Controllers\API\CompanyController.cs" />
-    <Compile Include="Controllers\API\CompanyJobController.cs" />
     <Compile Include="Controllers\API\JobController.cs" />
     <Compile Include="Controllers\API\JobTypeController.cs" />
     <Compile Include="Controllers\API\LocationController.cs" />
@@ -272,7 +272,7 @@
     <Compile Include="Models\AD_User.cs" />
     <Compile Include="Models\AD_User_Menu.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\CompanyJob.cs" />
+    <Compile Include="Models\CompanyZone.cs" />
     <Compile Include="RBAC\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobType.cs" />
@@ -4399,6 +4399,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Unauthorised\Error.cshtml" />
     <Content Include="Views\Unauthorised\Index.cshtml" />
+    <Content Include="Views\Shared\_ExternalFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

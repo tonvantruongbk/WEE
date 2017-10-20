@@ -23,8 +23,18 @@ namespace WEE_API.Models
         [Display(Name = "Ngày kết thúc")]
         public DateTime? DateEnd { get; set; }
 
-        public virtual List<CompanyJob> ListCompanyJob { get; set; }
+        [Display(Name = "Của công ty")]
+        [Required]
+        public int CompanyID { get; set; }
 
+        [Display(Name = "Thuộc loại")]
+        [Required]
+        public int JobTypeID { get; set; }
 
+        [ForeignKey("CompanyID")]
+        public virtual Company Company { get; set; }
+
+        [ForeignKey("JobTypeID")]
+        public virtual JobType JobType { get; set; }
     }
 }

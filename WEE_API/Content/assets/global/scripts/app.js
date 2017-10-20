@@ -197,6 +197,20 @@ var App = function() {
                 el.slideDown(200);
             }
         });
+
+        $('body').on('click', '.portlet > .portlet-title > .caption', function(e) {
+            e.preventDefault();
+            var el = $(this).next().closest(".portlet").children(".portlet-body");
+            if ($(this).next().hasClass("collapse")) {
+                $(this).next().removeClass("collapse").addClass("expand");
+                $(this).next().children().removeClass("collapse").addClass("expand");
+                el.slideUp(200);
+            } else {
+                $(this).next().removeClass("expand").addClass("collapse");
+                $(this).next().children().removeClass("expand").addClass("collapse");
+                el.slideDown(200);
+            }
+        });
     };
     
     // Handlesmaterial design checkboxes
@@ -396,7 +410,7 @@ var App = function() {
             container: 'body',
             title: 'Settings'
         });
-        $('.portlet > .portlet-title > .tools > .collapse, .portlet > .portlet-title > .tools > .expand').tooltip({
+        $('.portlet > .portlet-title > .caption , .portlet > .portlet-title > .tools > .collapse, .portlet > .portlet-title > .tools > .expand').tooltip({
             trigger: 'hover',
             container: 'body',
             title: 'Collapse/Expand'

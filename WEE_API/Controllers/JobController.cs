@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Data;
 using System.Linq;
@@ -25,7 +25,9 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Job.AsQueryable();
+                var all = db.Job
+                            .Include(a=>a.JobType)
+                            .AsQueryable();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Job>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -96,6 +98,13 @@ namespace WEE_API.Controllers
                 db.SaveChanges();
             }
             return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetList2Select()
+        {
+          var result =  db.Job.Select(a => new SelectizeClass {label = a.JobName, value = a.JobID}).ToList();
+           
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

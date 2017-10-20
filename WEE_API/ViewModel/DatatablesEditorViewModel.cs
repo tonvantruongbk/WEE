@@ -13,6 +13,7 @@ namespace WEE_API.ViewModel
         public string TableID{ get; set; }
         public string ButtonPlaceID { get; set; }
         public string Ydacf { get; set; }
+        public string CustomEditorFormID { get; set; }
     }
 
 

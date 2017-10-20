@@ -2,77 +2,86 @@
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
-    ViewBag.Title = "Company";
+    var screenTitle = "Quản lý Company";
+    ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Company>();
 }
 @section PageStyles
 {
+    <style>
+       
+    </style>
 }
-<div class="row">
-    <div class="portlet box blue">
-        <div class="portlet-title">
-            <div class="caption" style="float: right;">Tìm kiếm nâng cao</div>
-            <div class="tools">
-                <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
-            </div>
-        </div>
-        <div class="portlet-body row" style="display: none;">
-            <div id="DataTablePutExternalFilter" class="YdacfExternalFilter">
-            </div>
-        </div>
-    </div>
+
+<div id="customForm">
+    <fieldset class="name">
+        <legend>Name</legend>
+        <div data-editor-template="CompanyName"></div>
+        <div data-editor-template="Address"></div>
+    </fieldset>
+    <fieldset class="office">
+        <legend>Office</legend>
+        <div data-editor-template="PhoneNumber"></div>
+        <div data-editor-template="Description"></div>
+    </fieldset>
+    <fieldset class="hr">
+        <legend>HR info</legend>
+        <div data-editor-template="Website"></div>
+        <div data-editor-template="Logo"></div>
+        <div data-editor-template="AverageScore"></div>
+    </fieldset>
 </div>
+@Html.Partial("_ExternalFilter", screenTitle)
 <div class="row">
-    <table id="DataTableCompany" 
-            class="table table-bordered table-hover table-header-fixed no-footer order-column"
-            data-orders='[[0, "asc"]]'
-            data-select="true"
-            data-dom="fBrtlpi"
-        ><thead>
+    <table id="DataTableCompany"
+           class="table table-bordered table-hover table-header-fixed no-footer order-column"
+           data-orders='[[0, "asc"]]'
+           data-select="true"
+           data-dom="fBrtlpi">
+        <thead>
             <tr>
-                  <th data-filter_type="auto_complete" data-data="CompanyName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.CompanyName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyName, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="Address" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="PhoneNumber" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="Description" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Description, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Description, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="Website" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Website, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Website, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="" data-data="Logo" data-type="image" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="Zone.ZoneName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.ZoneID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.ZoneID, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="auto_complete" data-data="Location.LocationName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="" data-data="AverageScore" data-type="System.Decimal" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.AverageScore, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AverageScore, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_number_slider" data-data="TotalUserRate" data-type="int" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).PropertyName)
-                  </th> 
+                <th data-filter_type="auto_complete" data-data="CompanyName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.CompanyName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyName, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="Address" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Address, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="PhoneNumber" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="Description" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.Description, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Description, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="Website" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.Website, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Website, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="Logo" data-type="image" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="ListCompanyZone.ZoneID" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Lĩnh vực kinh doanh</th>
+                <th data-filter_type="auto_complete" data-data="Location.LocationName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="AverageScore" data-type="System.Decimal" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.AverageScore, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AverageScore, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="range_number_slider" data-data="TotalUserRate" data-type="int" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.TotalUserRate, ViewDT).PropertyName)
+                </th>
             </tr>
         </thead>
     </table>
 </div>
 @section scripts{
     @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
-    {
-        Controller = "Company",
-        TableID = "DataTableCompany",
-        FieldID = "CompanyID",
-        ButtonPlaceID = "buttons",
-        buttonExternal = false,
-        //Ydacf = "HeaderFilter"
-        Ydacf = "DataTablePutExternalFilter"
-    })
+{
+    Controller = "Company",
+    TableID = "DataTableCompany",
+    FieldID = "CompanyID",
+    ButtonPlaceID = "buttons",
+    buttonExternal = false,
+    //Ydacf = "HeaderFilter"
+    Ydacf = "DataTablePutExternalFilter",
+    CustomEditorFormID = "customForm"
+})
 }

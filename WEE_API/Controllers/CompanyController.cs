@@ -28,7 +28,7 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Company.Include(a => a.Location).Include(a => a.Zone).AsQueryable();
+                var all = db.Company.Include(a => a.Location).AsQueryable();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Company>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

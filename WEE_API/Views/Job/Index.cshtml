@@ -1,8 +1,9 @@
-﻿
+
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
-    ViewBag.Title = "Job";
+    var screenTitle = "Job";
+    ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Job>();
 }
 @section PageStyles
@@ -12,13 +13,23 @@
     </style>
 }
 
+<div id="customForm">
+    <fieldset class="hr">
+    <div data-editor-template="JobName"></div>
+    <div data-editor-template="DateCreate"></div>
+    <div data-editor-template="DateEnd"></div>
+        </fieldset>
+</div>
+
+@Html.Partial("_ExternalFilter", screenTitle)
+
 <div class="row">
     <table id="DataTableJob" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"
             data-orders='[[0, "asc"]]'
             data-select="true"
-            data-dom="fBrtlpi"
-        ><thead>
+            data-dom="fBrtlpi">
+        <thead>
             <tr>
                   <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).PropertyName)
@@ -41,7 +52,8 @@
         FieldID = "JobID",
         ButtonPlaceID = "buttons",
         buttonExternal = false,
-        Ydacf = "HeaderFilter"
-        //Ydacf = "DataTablePutExternalFilter"
+        //Ydacf = "HeaderFilter"
+        Ydacf = "DataTablePutExternalFilter",
+        CustomEditorFormID = "customForm"
     })
 }
