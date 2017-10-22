@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WEE_API.Common;
 
 namespace WEE_API.ViewModel
 {
@@ -60,12 +61,13 @@ namespace WEE_API.ViewModel
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
-
+ 
     public class RegisterViewModel
     {
+   
         [Required]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [Display(Name = "UserName")]
+        [StringLength(15, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 6)]
+        [Display(Name = "Tên đăng nhập")]
         public string UserName { get; set; }
 
         public int Id { get; set; }
@@ -76,28 +78,33 @@ namespace WEE_API.ViewModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
+        [Display(Name = "Họ và tên")]
+        public string FullName { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "First name")]
         public string Firstname { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "Last name")]
         public string Lastname { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Nhập lại mật khẩu")]
+        [Compare("Password", ErrorMessage = CommonValidationString.Password)]
         public string ConfirmPassword { get; set; }
                 
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
-        [Display(Name = "Mobile")]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 11)]
+        [Display(Name = "Điện thoại")]
         public string Mobile { get; set; }
     }
 
@@ -109,14 +116,14 @@ namespace WEE_API.ViewModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = CommonValidationString.Password)]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -137,13 +144,13 @@ namespace WEE_API.ViewModel
         public int Id { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "Role Name")]
         public string Name { get; set; }
 
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "Role Description")]
         public string RoleDescription { get; set; }
 
@@ -157,7 +164,7 @@ namespace WEE_API.ViewModel
         public int Id { get; set; }
 
         [Required]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 6)]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
@@ -167,12 +174,12 @@ namespace WEE_API.ViewModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "First name")]
         public string Firstname { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(30, ErrorMessage = CommonValidationString.StringLengh, MinimumLength = 2)]
         [Display(Name = "Last name")]
         public string Lastname { get; set; }
 

@@ -244,7 +244,7 @@ namespace WEE_API
             {
                 using (DBContext db = new DBContext())
                 {
-                    _retVal = db.Users.Where(r => r.Inactive == false || r.Inactive == null).OrderBy(r => r.Lastname).ThenBy(r => r.Firstname).ToList();
+                    _retVal = db.Users.Where(r => r.Inactive == false || r.Inactive == null).OrderBy(r => r.FullName).ToList();
                 }
             }
             catch (Exception)
@@ -261,7 +261,7 @@ namespace WEE_API
             {
                 using (DBContext db = new DBContext())
                 {
-                    _retVal = db.Users.Where(r => r.Inactive == false || r.Inactive == null & r.Lastname == _surname).OrderBy(r => r.Lastname).ThenBy(r => r.Firstname).ToList();
+                    _retVal = db.Users.Where(r => r.Inactive == false || r.Inactive == null & r.FullName == _surname).OrderBy(r => r.FullName).ToList();
                 }
             }
             catch (Exception)
@@ -360,8 +360,7 @@ namespace WEE_API
 
                     db.Entry(_user2Modify).Entity.UserName = _user.UserName;
                     db.Entry(_user2Modify).Entity.Email = _user.Email;
-                    db.Entry(_user2Modify).Entity.Firstname = _user.Firstname;
-                    db.Entry(_user2Modify).Entity.Lastname = _user.Lastname;
+                    db.Entry(_user2Modify).Entity.FullName = _user.Lastname;
                     db.Entry(_user2Modify).Entity.LastModified = System.DateTime.Now;
                     db.Entry(_user2Modify).State = EntityState.Modified;
                     db.SaveChanges();

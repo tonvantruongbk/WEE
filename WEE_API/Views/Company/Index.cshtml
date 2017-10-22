@@ -5,6 +5,7 @@
     var screenTitle = "Quản lý Company";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Company>();
+    var filterOnHeader = "DataTablePutExternalFilter";
 }
 @section PageStyles
 {
@@ -31,7 +32,7 @@
         <div data-editor-template="AverageScore"></div>
     </fieldset>
 </div>
-@Html.Partial("_ExternalFilter", screenTitle)
+@Html.Partial("_ExternalFilter", new List<string> { screenTitle, filterOnHeader })
 <div class="row">
     <table id="DataTableCompany"
            class="table table-bordered table-hover table-header-fixed no-footer order-column"
@@ -80,8 +81,7 @@
     FieldID = "CompanyID",
     ButtonPlaceID = "buttons",
     buttonExternal = false,
-    //Ydacf = "HeaderFilter"
-    Ydacf = "DataTablePutExternalFilter",
+    Ydacf = filterOnHeader,
     CustomEditorFormID = "customForm"
 })
 }

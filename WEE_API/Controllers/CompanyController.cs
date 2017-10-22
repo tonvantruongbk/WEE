@@ -146,6 +146,12 @@ namespace WEE_API.Controllers
             return Json(CommonFunction.GenImageJSON(wpath), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetList2Select()
+        {
+            var result = db.Company.Select(a => new SelectizeClass { label = a.CompanyName, value = a.CompanyID }).ToList();
+
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult UploadImage1(string id)

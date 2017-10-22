@@ -1,0 +1,116 @@
+﻿<#@ Template Language="C#" debug="true" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="Utility.CS.ttinclude"#>
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Web.Http;
+using System.Web.Http.Description;
+using <#=        Namespace #>.Models;
+
+namespace <#=        Namespace #>.Controllers.API
+{
+  
+    public class <#=        ControllerName #>Controller : ApiController
+    {
+        private DBContext db = new DBContext();
+
+        public IQueryable<<#=  modelName #>> Get<#=  modelName #>()
+        {
+            return db.<#=  modelName #>;
+        }
+ 
+        [ResponseType(typeof(<#=  modelName #>))]
+        public IHttpActionResult Get<#=  modelName #>(int id)
+        {
+            <#=  modelName #> <#=  modelName #> = db.<#=  modelName #>.Find(id);
+            if (<#=  modelName #> == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(<#=  modelName #>);
+        }
+ 
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Put<#=  modelName #>(int id, <#=  modelName #> <#=  modelName #>)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != <#=  modelName #>.<#=  modelName #>ID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(<#=  modelName #>).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!<#=  modelName #>Exists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+ 
+        [ResponseType(typeof(<#=  modelName #>))]
+        public IHttpActionResult Post<#=  modelName #>(<#=  modelName #> <#=  modelName #>)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.<#=  modelName #>.Add(<#=  modelName #>);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = <#=  modelName #>.<#=  modelName #>ID }, <#=  modelName #>);
+        }
+ 
+        [ResponseType(typeof(<#=  modelName #>))]
+        public IHttpActionResult Delete<#=  modelName #>(int id)
+        {
+            <#=  modelName #> <#=  modelName #> = db.<#=  modelName #>.Find(id);
+            if (<#=  modelName #> == null)
+            {
+                return NotFound();
+            }
+
+            db.<#=  modelName #>.Remove(<#=  modelName #>);
+            db.SaveChanges();
+
+            return Ok(<#=  modelName #>);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool <#=  modelName #>Exists(int id)
+        {
+            return db.<#=  modelName #>.Count(e => e.<#=  modelName #>ID == id) > 0;
+        }
+    }
+}

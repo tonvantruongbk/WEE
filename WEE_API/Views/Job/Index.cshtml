@@ -5,6 +5,7 @@
     var screenTitle = "Job";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Job>();
+    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
 }
 @section PageStyles
 {
@@ -14,14 +15,16 @@
 }
 
 <div id="customForm">
-    <fieldset class="hr">
-    <div data-editor-template="JobName"></div>
-    <div data-editor-template="DateCreate"></div>
-    <div data-editor-template="DateEnd"></div>
-        </fieldset>
+    <fieldset class="name">
+        <div data-editor-template="JobName"></div>
+        <div data-editor-template="DateCreate"></div>
+        <div data-editor-template="DateEnd"></div>
+        <div data-editor-template="CompanyID"></div>
+        <div data-editor-template="JobTypeID"></div>
+    </fieldset>
 </div>
 
-@Html.Partial("_ExternalFilter", screenTitle)
+@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
 
 <div class="row">
     <table id="DataTableJob" 
@@ -40,6 +43,12 @@
                   <th data-filter_type="range_date" data-data="DateEnd" data-type="DateTime?" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).PropertyName)
                   </th>
+                  <th data-filter_type="range_number_slider" data-data="Company.CompanyName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).PropertyName)
+                  </th>
+                  <th data-filter_type="range_number_slider" data-data="JobType.JobTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).PropertyName)
+                  </th>
             </tr>
         </thead>
     </table>
@@ -52,8 +61,7 @@
         FieldID = "JobID",
         ButtonPlaceID = "buttons",
         buttonExternal = false,
-        //Ydacf = "HeaderFilter"
-        Ydacf = "DataTablePutExternalFilter",
+        Ydacf = filterOnHeader,
         CustomEditorFormID = "customForm"
     })
 }

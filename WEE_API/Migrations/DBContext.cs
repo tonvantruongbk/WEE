@@ -42,6 +42,16 @@ namespace WEE_API.Models
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
+        public virtual DbSet<WorkingStatus> WorkingStatus { get; set; }
+        public virtual DbSet<WorkingTime> WorkingTime { get; set; }
+        public virtual DbSet<JobPosition> JobPosition { get; set; }
+        public virtual DbSet<SalaryLevel> SalaryLevel { get; set; }
+        public virtual DbSet<ContractType> ContractType { get; set; }
+        public virtual DbSet<Answer> Answer { get; set; }
+        public virtual DbSet<AnswerDetail> AnswerDetail { get; set; }
+
+
+
         public DbSet<PERMISSION> PERMISSIONS { get; set; }
 
         //public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }

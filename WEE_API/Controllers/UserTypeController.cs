@@ -26,7 +26,7 @@ namespace WEE_API.Controllers
             try
             {
                 var all = db.UserType
-                            .AsQueryable();
+                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<UserType>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

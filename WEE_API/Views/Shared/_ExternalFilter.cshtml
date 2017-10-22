@@ -1,16 +1,22 @@
-﻿@model string
+﻿@model List<string>
 <div class="row">
     <div class="portlet box blue">
         <div class="portlet-title">
-            <div class="screenname">@Model</div>
-            <div class="caption">Tìm kiếm nâng cao</div>
-            <div class="tools">
-                <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
-            </div>
+            <div class="screenname">@Model[0]</div>
+            @if (Model[1] != "HeaderFilter")
+            {
+                <div class="caption">Tìm kiếm nâng cao</div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+                </div>
+            }
         </div>
-        <div class="portlet-body row" style="display: none;">
-            <div id="DataTablePutExternalFilter" class="YdacfExternalFilter">
+        @if (Model[1] != "HeaderFilter")
+        {
+            <div class="portlet-body row" style="display: none;">
+                <div id="DataTablePutExternalFilter" class="YdacfExternalFilter">
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

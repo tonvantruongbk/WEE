@@ -25,7 +25,8 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Location.AsQueryable();
+                var all = db.Location
+                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Location>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -72,13 +73,6 @@ namespace WEE_API.Controllers
             return Json(new { Message = "Đã thêm thành công!" }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetList2Select()
-        {
-          var result =  db.Location.Select(a => new SelectizeClass {label = a.LocationName, value = a.LocationID}).ToList();
-           
-            return Json(new { result }, JsonRequestBehavior.AllowGet);
-        }
-
 
         [HttpPost]
         public JsonResult Edit(int Id, Location data)
@@ -103,6 +97,13 @@ namespace WEE_API.Controllers
                 db.SaveChanges();
             }
             return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetList2Select()
+        {
+          var result =  db.Location.Select(a => new SelectizeClass {label = a.LocationName, value = a.LocationID}).ToList();
+           
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

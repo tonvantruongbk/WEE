@@ -16,6 +16,4 @@ namespace WEE_API.Models
 
 
     }
-
-
 }

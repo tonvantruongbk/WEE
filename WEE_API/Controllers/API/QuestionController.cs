@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WEE_API.Models;
@@ -16,42 +13,38 @@ namespace WEE_API.Controllers.API
     public class QuestionController : ApiController
     {
         private DBContext db = new DBContext();
-        /// <summary>
-        /// Các câu hỏi khi bắt đầu bình chọn, VD: Bạn KHÓ có thể đàm phán NHẤT ở khía cạnh nào 
-        /// </summary>
+
         public IQueryable<Question> GetQuestion()
         {
             return db.Question;
         }
-
-        // GET: api/Question/5
+ 
         [ResponseType(typeof(Question))]
         public IHttpActionResult GetQuestion(int id)
         {
-            Question question = db.Question.Find(id);
-            if (question == null)
+            Question Question = db.Question.Find(id);
+            if (Question == null)
             {
                 return NotFound();
             }
 
-            return Ok(question);
+            return Ok(Question);
         }
-
-        // PUT: api/Question/5
+ 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutQuestion(int id, Question question)
+        public IHttpActionResult PutQuestion(int id, Question Question)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != question.QuestionID)
+            if (id != Question.QuestionID)
             {
                 return BadRequest();
             }
 
-            db.Entry(question).State = EntityState.Modified;
+            db.Entry(Question).State = EntityState.Modified;
 
             try
             {
@@ -71,36 +64,34 @@ namespace WEE_API.Controllers.API
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/Question
+ 
         [ResponseType(typeof(Question))]
-        public IHttpActionResult PostQuestion(Question question)
+        public IHttpActionResult PostQuestion(Question Question)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Question.Add(question);
+            db.Question.Add(Question);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = question.QuestionID }, question);
+            return CreatedAtRoute("DefaultApi", new { id = Question.QuestionID }, Question);
         }
-
-        // DELETE: api/Question/5
+ 
         [ResponseType(typeof(Question))]
         public IHttpActionResult DeleteQuestion(int id)
         {
-            Question question = db.Question.Find(id);
-            if (question == null)
+            Question Question = db.Question.Find(id);
+            if (Question == null)
             {
                 return NotFound();
             }
 
-            db.Question.Remove(question);
+            db.Question.Remove(Question);
             db.SaveChanges();
 
-            return Ok(question);
+            return Ok(Question);
         }
 
         protected override void Dispose(bool disposing)

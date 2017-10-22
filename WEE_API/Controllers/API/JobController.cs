@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WEE_API.Models;
@@ -17,42 +14,37 @@ namespace WEE_API.Controllers.API
     {
         private DBContext db = new DBContext();
 
-        /// <summary>
-        /// Công việc, VD: Lập trình viên, Designer
-        /// </summary>
         public IQueryable<Job> GetJob()
         {
             return db.Job;
         }
-
-        // GET: api/Job/5
+ 
         [ResponseType(typeof(Job))]
         public IHttpActionResult GetJob(int id)
         {
-            Job job = db.Job.Find(id);
-            if (job == null)
+            Job Job = db.Job.Find(id);
+            if (Job == null)
             {
                 return NotFound();
             }
 
-            return Ok(job);
+            return Ok(Job);
         }
-
-        // PUT: api/Job/5
+ 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutJob(int id, Job job)
+        public IHttpActionResult PutJob(int id, Job Job)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != job.JobID)
+            if (id != Job.JobID)
             {
                 return BadRequest();
             }
 
-            db.Entry(job).State = EntityState.Modified;
+            db.Entry(Job).State = EntityState.Modified;
 
             try
             {
@@ -72,36 +64,34 @@ namespace WEE_API.Controllers.API
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/Job
+ 
         [ResponseType(typeof(Job))]
-        public IHttpActionResult PostJob(Job job)
+        public IHttpActionResult PostJob(Job Job)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Job.Add(job);
+            db.Job.Add(Job);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = job.JobID }, job);
+            return CreatedAtRoute("DefaultApi", new { id = Job.JobID }, Job);
         }
-
-        // DELETE: api/Job/5
+ 
         [ResponseType(typeof(Job))]
         public IHttpActionResult DeleteJob(int id)
         {
-            Job job = db.Job.Find(id);
-            if (job == null)
+            Job Job = db.Job.Find(id);
+            if (Job == null)
             {
                 return NotFound();
             }
 
-            db.Job.Remove(job);
+            db.Job.Remove(Job);
             db.SaveChanges();
 
-            return Ok(job);
+            return Ok(Job);
         }
 
         protected override void Dispose(bool disposing)

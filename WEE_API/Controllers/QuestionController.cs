@@ -26,8 +26,7 @@ namespace WEE_API.Controllers
             try
             {
                 var all = db.Question
-                            .Include(a=>a.QuestionType)
-                            .AsQueryable();
+                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Question>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

@@ -26,7 +26,7 @@ namespace WEE_API.Controllers
             try
             {
                 var all = db.JobType
-                            .AsQueryable();
+                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<JobType>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

@@ -5,6 +5,7 @@
     var screenTitle = "UserType";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<UserType>();
+    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
 }
 @section PageStyles
 {
@@ -14,12 +15,12 @@
 }
 
 <div id="customForm">
-<fieldset class="name">
+    <fieldset class="name">
         <div data-editor-template="UserTypeName"></div>
     </fieldset>
 </div>
 
-@Html.Partial("_ExternalFilter", screenTitle)
+@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
 
 <div class="row">
     <table id="DataTableUserType" 
@@ -44,8 +45,7 @@
         FieldID = "UserTypeID",
         ButtonPlaceID = "buttons",
         buttonExternal = false,
-        //Ydacf = "HeaderFilter"
-        Ydacf = "DataTablePutExternalFilter",
+        Ydacf = filterOnHeader,
         CustomEditorFormID = "customForm"
     })
 }

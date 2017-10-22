@@ -286,3 +286,8 @@ table.dataTable thead .sorting {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
+.page-content > .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}

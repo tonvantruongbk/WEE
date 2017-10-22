@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WEE_API.Models;
@@ -17,42 +14,37 @@ namespace WEE_API.Controllers.API
     {
         private DBContext db = new DBContext();
 
-        /// <summary>
-        /// Loại công việc, VD: C#, Java
-        /// </summary>
         public IQueryable<JobType> GetJobType()
         {
             return db.JobType;
         }
-
-        // GET: api/JobType/5
+ 
         [ResponseType(typeof(JobType))]
         public IHttpActionResult GetJobType(int id)
         {
-            JobType jobType = db.JobType.Find(id);
-            if (jobType == null)
+            JobType JobType = db.JobType.Find(id);
+            if (JobType == null)
             {
                 return NotFound();
             }
 
-            return Ok(jobType);
+            return Ok(JobType);
         }
-
-        // PUT: api/JobType/5
+ 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutJobType(int id, JobType jobType)
+        public IHttpActionResult PutJobType(int id, JobType JobType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != jobType.JobTypeID)
+            if (id != JobType.JobTypeID)
             {
                 return BadRequest();
             }
 
-            db.Entry(jobType).State = EntityState.Modified;
+            db.Entry(JobType).State = EntityState.Modified;
 
             try
             {
@@ -72,36 +64,34 @@ namespace WEE_API.Controllers.API
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/JobType
+ 
         [ResponseType(typeof(JobType))]
-        public IHttpActionResult PostJobType(JobType jobType)
+        public IHttpActionResult PostJobType(JobType JobType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.JobType.Add(jobType);
+            db.JobType.Add(JobType);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = jobType.JobTypeID }, jobType);
+            return CreatedAtRoute("DefaultApi", new { id = JobType.JobTypeID }, JobType);
         }
-
-        // DELETE: api/JobType/5
+ 
         [ResponseType(typeof(JobType))]
         public IHttpActionResult DeleteJobType(int id)
         {
-            JobType jobType = db.JobType.Find(id);
-            if (jobType == null)
+            JobType JobType = db.JobType.Find(id);
+            if (JobType == null)
             {
                 return NotFound();
             }
 
-            db.JobType.Remove(jobType);
+            db.JobType.Remove(JobType);
             db.SaveChanges();
 
-            return Ok(jobType);
+            return Ok(JobType);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,51 @@
+
+@using WEE_API.Models
+@using WEE_API.ViewModel
+@{
+    var screenTitle = "WorkingTime";
+    ViewBag.Title = screenTitle;
+    var ViewDT = new ViewDataDictionary<WorkingTime>();
+    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
+}
+@section PageStyles
+{
+    <style>
+
+    </style>
+}
+
+<div id="customForm">
+    <fieldset class="name">
+        <div data-editor-template="WorkingTimeName"></div>
+    </fieldset>
+</div>
+
+@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
+
+<div class="row">
+    <table id="DataTableWorkingTime" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi">
+        <thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="WorkingTimeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.WorkingTimeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.WorkingTimeName, ViewDT).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "WorkingTime",
+        TableID = "DataTableWorkingTime",
+        FieldID = "WorkingTimeID",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = "customForm"
+    })
+}

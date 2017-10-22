@@ -218,6 +218,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\CommonFunction.cs" />
+    <Compile Include="Common\CommonValidationString.cs" />
     <Compile Include="Common\Datatables\DatatablesParameters.cs" />
     <Compile Include="Common\Datatables\DataTablesSearchAndSort.cs" />
     <Compile Include="Common\DynamicLINQ\DynamicExpressionBuilder.cs" />
@@ -226,10 +227,33 @@
     <Compile Include="Common\HtmlExtensions.cs" />
     <Compile Include="Common\JsonNetResult.cs" />
     <Compile Include="Common\SelectizeClass.cs" />
+    <Compile Include="Controllers\AnswerCategoryController.cs" />
+    <Compile Include="Controllers\AnswerController.cs" />
+    <Compile Include="Controllers\AnswerDetailController.cs" />
     <Compile Include="Controllers\API\AccountController.cs" />
+    <Compile Include="Controllers\API\AnswerCategoryController.cs" />
+    <Compile Include="Controllers\API\AnswerController.cs" />
+    <Compile Include="Controllers\API\AnswerDetailController.cs" />
+    <Compile Include="Controllers\API\ContractTypeController.cs" />
+    <Compile Include="Controllers\API\JobPositionController.cs" />
+    <Compile Include="Controllers\API\SalaryLevelController.cs" />
     <Compile Include="Controllers\API\SearchCompanyByNameLocationZoneController.cs" />
+    <Compile Include="Controllers\API\WorkingStatusController.cs" />
+    <Compile Include="Controllers\API\WorkingTimeController.cs" />
+    <Compile Include="Controllers\ContractTypeController.cs" />
+    <Compile Include="Controllers\JobPositionController.cs" />
+    <Compile Include="Controllers\SalaryLevelController.cs" />
+    <Compile Include="Controllers\WorkingStatusController.cs" />
+    <Compile Include="Controllers\WorkingTimeController.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\AnswerDetail.cs" />
+    <Compile Include="Models\ContractType.cs" />
+    <Compile Include="Models\JobPosition.cs" />
+    <Compile Include="Models\SalaryLevel.cs" />
     <Compile Include="Models\TermAndCondition.cs" />
+    <Compile Include="Models\WorkingStatus.cs" />
+    <Compile Include="Models\WorkingTime.cs" />
     <Compile Include="RBAC\RBAC_ExtendedMethods.cs" />
     <Compile Include="RBAC\RBAC_IdentityExtendedMethods.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -241,7 +265,6 @@
     <Compile Include="Controllers\API\LocationController.cs" />
     <Compile Include="Controllers\API\QuestionController.cs" />
     <Compile Include="Controllers\API\QuestionTypeController.cs" />
-    <Compile Include="Controllers\API\UserRatingCompanyController.cs" />
     <Compile Include="Controllers\API\UserTypeController.cs" />
     <Compile Include="Controllers\API\ZoneController.cs" />
     <Compile Include="Controllers\BatchEditController.cs" />
@@ -3853,6 +3876,9 @@
     <Content Include="Content\Selectize\less\plugins\optgroup_columns.less" />
     <Content Include="Content\Selectize\less\plugins\dropdown_header.less" />
     <Content Include="Content\Selectize\less\plugins\drag_drop.less" />
+    <Content Include="CodeTemplates\Scaffolders\TableAPI\APIController.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\TableAPI\TableAPI.ps1" />
+    <Content Include="CodeTemplates\Scaffolders\TableAPI\Utility.CS.ttinclude" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -4400,6 +4426,14 @@
     <Content Include="Views\Unauthorised\Error.cshtml" />
     <Content Include="Views\Unauthorised\Index.cshtml" />
     <Content Include="Views\Shared\_ExternalFilter.cshtml" />
+    <Content Include="Views\JobPosition\Index.cshtml" />
+    <Content Include="Views\WorkingStatus\Index.cshtml" />
+    <Content Include="Views\WorkingTime\Index.cshtml" />
+    <Content Include="Views\ContractType\Index.cshtml" />
+    <Content Include="Views\SalaryLevel\Index.cshtml" />
+    <Content Include="Views\AnswerDetail\Index.cshtml" />
+    <Content Include="Views\AnswerCategory\Index.cshtml" />
+    <Content Include="Views\Answer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

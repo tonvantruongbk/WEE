@@ -1,7 +1,7 @@
 ﻿
 (function ($, DataTable) {
 
-   
+
     if (!DataTable.ext.editorFields) {
         DataTable.ext.editorFields = {};
     }
@@ -84,21 +84,21 @@ var generateFields = function (tableID, editorFor) {
         }
         var field = {
             label: columnData.label || $(th).html(),// Uses the th data-label value. If it doesn't exist, uses the HTML inside
-            data: colName,
+            //data: colName, //No need this in Editor, only needed in Columns
             name: colName,
             filter_delay: 500
         };
         switch (columnData.type) {
-        case 'checkbox':
-            field = $.extend(true, field, {
-                type: 'checkbox',
-                //separator: '|',
-                //options: [{
-                //    label: '',
-                //    value: 1
-                //}]
-            });
-            break;
+            case 'checkbox':
+                field = $.extend(true, field, {
+                    type: 'checkbox',
+                    //separator: '|',
+                    //options: [{
+                    //    label: '',
+                    //    value: 1
+                    //}]
+                });
+                break;
             case 'image':
                 field = $.extend(true, field, {
                     type: 'upload',
@@ -107,12 +107,12 @@ var generateFields = function (tableID, editorFor) {
                     },
                     clearText: "Xóa ản",
                     noImageText: 'Chưa có ảnh',
-                    ajax:  {
-                            url: path + "Company/UploadImage",
-                            type: "POST",
-                            dataType: "json",
-                            data: { id: $("input.form-control").files },
-                            success: function (res) {  }
+                    ajax: {
+                        url: path + "Company/UploadImage",
+                        type: "POST",
+                        dataType: "json",
+                        data: { id: $("input.form-control").files },
+                        success: function (res) { }
                     }
                 });
                 break;
@@ -120,7 +120,10 @@ var generateFields = function (tableID, editorFor) {
             case 'DateTime?':
                 field = $.extend(true, field, {
                     type: 'datetime',
-                    format: 'DD/MM/YYYY' 
+                   // format: 'DD/MM/YYYY',
+                    render: function (data, type, row) {
+                                return (moment(data).format("YYYY-MM-DD"));
+                    },
                 });
                 break;
             case 'selectize':
@@ -133,23 +136,23 @@ var generateFields = function (tableID, editorFor) {
                         searchField: "label",
                         preload: true,
                         maxItems: 1,
-                        load: function(query, callback) {
+                        load: function (query, callback) {
                             $.ajax({
-                                url: path+field.name.replace("ID","")+"/GetList2Select",
+                                url: path + field.name.replace("ID", "") + "/GetList2Select",
                                 type: "GET",
                                 dataType: "json",
                                 data: { q: query },
-                                error: function() { callback(); },
-                                success: function(res) { callback(res.result); }
+                                error: function () { callback(); },
+                                success: function (res) { callback(res.result); }
                             });
-                        } 
+                        }
                     }
                 });
                 break;
         };
         return field;
     };
-   
+
     var fields = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
         if ($(th).data().editvisible === true) {
@@ -159,29 +162,38 @@ var generateFields = function (tableID, editorFor) {
     return fields;
 };
 
-var generateColumns = function (tableID,editorFor) {
+var generateColumns = function (tableID, editorFor) {
     var _prepareColumn = function (th) {
         var columnData = $(th).data();
         var render1;
         if (columnData.type === "selectize") {
-              render1 = function ( data, type, row, meta ) {
-                  return data;
-                }
+            render1 = function (data, type, row, meta) {
+                return data;
+            }
         }
-        if (columnData.type === "image") {
-            render1 = function ( file_id ) {
+        else if (columnData.type === "image") {
+            render1 = function (file_id) {
                 return file_id ?
-                    '<img src="' +path+ editorFor.file('files', file_id).web_path + '" height="32" />' :
+                    '<img src="' + path + editorFor.file('files', file_id).web_path + '" height="32" />' :
                     null;
             }
         }
-        if (columnData.type === "checkbox") {
+        else if (columnData.type === "checkbox") {
             render1 = "[, ].name";
-            columnData.data = columnData.data.replace("[].id","");
+            columnData.data = columnData.data.replace("[].id", "");
         }
+        //else if (columnData.type === "Datetime" || columnData.type === "Datetime?") {
+        //    render1 = function (data, type, row) {
+        //        return (moment(data).format("YYYY-MM-DD"));
+        //    }
+        //}
         var column = {
             title: $(th).html(),
             data: columnData.data,
+            format: "yy-mm-dd",
+            //render: function (data, type, row) {
+            //            return (moment(data).format("YYYY-MM-DD"));
+            //},
             render: render1,
             'class': columnData.class || '',
             type: columnData.align || '',
@@ -227,7 +239,7 @@ var generateYdacf = function (tableID, filterMode) {
 
             $("#" + filterMode).append(
             "<div class='form-group col-md-6 col-lg-4'>" +
-            "	<label class='col-sm-5 control-label'>" + $(th).html()+"</label>" +
+            "	<label class='col-sm-5 control-label'>" + $(th).html() + "</label>" +
             "	<div class='col-sm-7'>" +
             "   <span id='" + tableID + "ExtF" + i + "'></span>" +
             "	</div>" +
@@ -237,15 +249,17 @@ var generateYdacf = function (tableID, filterMode) {
     };
     var Ydacfs = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-        if ($(th).data().listvisible === true && $(th).data().type !== 'checkbox') {
+        if ($(th).data().listvisible === true
+            //&& $(th).data().type !== 'checkbox'
+            ) {
             Ydacfs.push(_prepareYdacf(index, th));
         }
     });
     $("#" + filterMode).parent().append(
         "<div id='externaly_triggered_wrapper-controls' style='float:right;'>" +
         "	<div>" +
-          "		<input type='button' onclick='yadcf.exFilterExternallyTriggered(tableFor" + tableID.replace('DataTable','')+");' value='Tìm kiếm' class='btn btn-info'>" +
-        "		<input type='button' onclick='yadcf.exResetAllFilters(tableFor" + tableID.replace('DataTable', '') +");' value='Xóa' class='btn btn-warning'>" +
+          "		<input type='button' onclick='yadcf.exFilterExternallyTriggered(tableFor" + tableID.replace('DataTable', '') + ");' value='Tìm kiếm' class='btn btn-info'>" +
+        "		<input type='button' onclick='yadcf.exResetAllFilters(tableFor" + tableID.replace('DataTable', '') + ");' value='Xóa' class='btn btn-warning'>" +
         "	</div>" +
           "</div>"
       );

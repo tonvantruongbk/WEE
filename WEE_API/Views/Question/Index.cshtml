@@ -5,6 +5,7 @@
     var screenTitle = "Question";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Question>();
+    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
 }
 @section PageStyles
 {
@@ -14,13 +15,12 @@
 }
 
 <div id="customForm">
-<fieldset class="name">
+    <fieldset class="name">
         <div data-editor-template="QuestionName"></div>
-        <div data-editor-template="QuestionTypeID"></div>
     </fieldset>
 </div>
 
-@Html.Partial("_ExternalFilter", screenTitle)
+@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
 
 <div class="row">
     <table id="DataTableQuestion" 
@@ -32,9 +32,6 @@
             <tr>
                   <th data-filter_type="auto_complete" data-data="QuestionName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                   @(ModelMetadata.FromLambdaExpression(x => x.QuestionName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.QuestionName, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_number_slider" data-data="QuestionType.QuestionTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.QuestionTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.QuestionTypeID, ViewDT).PropertyName)
                   </th>
             </tr>
         </thead>
@@ -48,8 +45,7 @@
         FieldID = "QuestionID",
         ButtonPlaceID = "buttons",
         buttonExternal = false,
-        //Ydacf = "HeaderFilter"
-        Ydacf = "DataTablePutExternalFilter",
+        Ydacf = filterOnHeader,
         CustomEditorFormID = "customForm"
     })
 }

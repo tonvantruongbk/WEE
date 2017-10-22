@@ -56,7 +56,7 @@ namespace WEE_API.RBAC
             try
             {
                 bool Is2FAEnabled = GetConfigSettingAsBool(cKey_2FAEnabled);
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, PhoneNumber = model.Mobile, TwoFactorEnabled = Is2FAEnabled };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Firstname = model.Firstname, FullName = model.Lastname, PhoneNumber = model.Mobile, TwoFactorEnabled = Is2FAEnabled };
 
                 if (userMngr != null)
                 {

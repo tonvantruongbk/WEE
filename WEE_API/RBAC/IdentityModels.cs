@@ -39,20 +39,25 @@ namespace WEE_API.RBAC
         public DateTime LastModified { get; set; }
 
         public bool Inactive { get; set; }
-
+        public string FullName { get; set; }
         public string Firstname { get; set; }
 
         public string Lastname { get; set; }
-
-        public string Address { get; set; }
         public DateTime? BirthDay { get; set; }
-        public DateTime? Anniversary { get; set; }
-        public string OfficePhone { get; set; }
-        public string HandPhone { get; set; }
-        public string HomePhone { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public bool? CanDelete { get; set; }
+
+        [Display(Name = "Tình trạng công việc")]
+        public bool WorkingStatus { get; set; }
+        [Display(Name = "Loại hình công việc")]
+        public int WorkingType { get; set; }
+        [MaxLength(300)]
+        [Display(Name = "Mức lương")]
+        public string Salary { get; set; }
+        [MaxLength(200)]
+        [Display(Name = "Thời điểm làm việc")]
+        public string YearOfEmployee { get; set; }
+        [MaxLength(200)]
+        [Display(Name = "File hợp đồng")]
+        public string Contract { get; set; }
 
         public virtual ICollection<AD_User_Menu> AD_User_Menu { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -22,8 +24,8 @@ namespace WEE_API.Controllers.API
 {
     
 
-    [Authorize]
-    [RoutePrefix("api/Account")]
+    [System.Web.Http.Authorize]
+    [System.Web.Http.RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
@@ -54,9 +56,11 @@ namespace WEE_API.Controllers.API
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
+
+
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("UserInfo")]
+        [System.Web.Http.Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
@@ -70,7 +74,7 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/Logout
-        [Route("Logout")]
+        [System.Web.Http.Route("Logout")]
         public IHttpActionResult Logout()
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
@@ -78,7 +82,7 @@ namespace WEE_API.Controllers.API
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
-        [Route("ManageInfo")]
+        [System.Web.Http.Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
             ApplicationUser user = await UserManager.FindByIdAsync(IdentityExtensions.GetUserId<Int32>(User.Identity));
@@ -118,7 +122,7 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/ChangePassword
-        [Route("ChangePassword")]
+        [System.Web.Http.Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -138,7 +142,7 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/SetPassword
-        [Route("SetPassword")]
+        [System.Web.Http.Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -157,7 +161,7 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/AddExternalLogin
-        [Route("AddExternalLogin")]
+        [System.Web.Http.Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -195,7 +199,7 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/RemoveLogin
-        [Route("RemoveLogin")]
+        [System.Web.Http.Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -223,11 +227,34 @@ namespace WEE_API.Controllers.API
             return Ok();
         }
 
+
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("LoginReturnToken", Name= "LoginReturnToken")]
+        public string PostLoginReturnToken(LoginReturnTokenModel model)
+        {
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>( "grant_type", "password" ),
+                new KeyValuePair<string, string>( "username", model.UserName ),
+                new KeyValuePair<string, string> ( "Password", model.Password )
+            };
+            var content = new FormUrlEncodedContent(pairs);
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            using (var client = new HttpClient())
+            {
+                var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                var url = urlHelper.Action("Index", "Home", null, "http");
+                var response = client.PostAsync(url + "/Token", content).Result;
+                return response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
+
         // GET api/Account/ExternalLogin
-        [OverrideAuthentication]
+        [System.Web.Http.OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
-        [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("ExternalLogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
         {
             if (error != null)
@@ -279,8 +306,8 @@ namespace WEE_API.Controllers.API
         }
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
-        [AllowAnonymous]
-        [Route("ExternalLogins")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
         {
             IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
@@ -320,8 +347,8 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/Register
-        [AllowAnonymous]
-        [Route("Register")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -342,9 +369,9 @@ namespace WEE_API.Controllers.API
         }
 
         // POST api/Account/RegisterExternal
-        [OverrideAuthentication]
+        [System.Web.Http.OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("RegisterExternal")]
+        [System.Web.Http.Route("RegisterExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -421,6 +448,7 @@ namespace WEE_API.Controllers.API
             return null;
         }
 
+       
         private class ExternalLoginData
         {
             public string LoginProvider { get; set; }

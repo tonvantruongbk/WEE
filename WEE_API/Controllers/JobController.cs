@@ -26,8 +26,9 @@ namespace WEE_API.Controllers
             try
             {
                 var all = db.Job
+                            .Include(a=>a.Company)
                             .Include(a=>a.JobType)
-                            .AsQueryable();
+                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Job>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

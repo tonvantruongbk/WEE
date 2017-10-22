@@ -26,6 +26,10 @@ namespace WEE_API.Common.Datatables
                     string columnName = property.Name;
                     if (!string.IsNullOrEmpty(columnName))
                     {
+                        if (columnName.Contains("."))
+                        {
+                            columnName = columnName.Split('.')[0] + "ID";
+                        }
                         Type columnType = query.DynamicType(z => z[columnName]);
                         if (columnType == typeof(string))
                         {
@@ -71,6 +75,10 @@ namespace WEE_API.Common.Datatables
                     string columnName = field.Data;
                     if (columnName != null)
                     {
+                        if (columnName.Contains("."))
+                        {
+                            columnName = columnName.Split('.')[0] + "ID";
+                        }
                         Type columnType = query.DynamicType(z => z[columnName]);
 
                         if (columnType == typeof(string))
@@ -123,6 +131,10 @@ namespace WEE_API.Common.Datatables
                 string columnName = dataTablesRequest.Columns[columnNumber].Data;
                 if (columnName != null)
                 {
+                    if (columnName.Contains("."))
+                    {
+                        columnName = columnName.Split('.')[0] + "ID";
+                    }
                     var sortDirection = dataTablesRequest.Order[i].Dir;
                     if (sortDirection == DTOrderDir.ASC)
                     {
