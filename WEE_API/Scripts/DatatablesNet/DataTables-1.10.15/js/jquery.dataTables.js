@@ -5291,8 +5291,10 @@
 		}
 	
 		$.each( _fnGetUniqueThs( settings, headerCopy ), function ( i, el ) {
-			idx = _fnVisibleToColumnIndex( settings, i );
-			el.style.width = settings.aoColumns[idx].sWidth;
+		    idx = _fnVisibleToColumnIndex(settings, i);
+            if (idx !== null ) {
+                el.style.width = settings.aoColumns[idx].sWidth;
+            }
 		} );
 	
 		if ( footer ) {

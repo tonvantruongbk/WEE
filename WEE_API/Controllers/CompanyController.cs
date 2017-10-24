@@ -43,9 +43,9 @@ namespace WEE_API.Controllers
                     company.ListCompanyZone = null;
                     lstFinal.Add(company);
                 }
-                var ttt = new Dictionary<string, List<SelectizeClass>>
+                var ttt = new Dictionary<string, List<CommonModel>>
                 {
-                    {"CompanyZone[].id", db.Zone.Select(a => new SelectizeClass() {value = a.ZoneID, label = a.ZoneName + ""}).ToList()}
+                    {"CompanyZone[].id", db.Zone.Select(a => new CommonModel() {value = a.ZoneID, label = a.ZoneName + ""}).ToList()}
                 };
 
                 ReponseToDatatables<Company> result = new ReponseToDatatables<Company>
@@ -148,7 +148,7 @@ namespace WEE_API.Controllers
 
         public JsonResult GetList2Select()
         {
-            var result = db.Company.Select(a => new SelectizeClass { label = a.CompanyName, value = a.CompanyID }).ToList();
+            var result = db.Company.Select(a => new CommonModel { label = a.CompanyName, value = a.CompanyID }).ToList();
 
             return Json(new { result }, JsonRequestBehavior.AllowGet);
         }

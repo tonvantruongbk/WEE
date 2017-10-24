@@ -4,8 +4,10 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using System.Web.Mvc;
@@ -15,6 +17,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using WEE_API.Providers;
 using WEE_API.RBAC;
 using WEE_API.Results;
@@ -22,7 +25,7 @@ using WEE_API.ViewModel;
 
 namespace WEE_API.Controllers.API
 {
-    
+
 
     [System.Web.Http.Authorize]
     [System.Web.Http.RoutePrefix("api/Account")]
@@ -132,7 +135,7 @@ namespace WEE_API.Controllers.API
 
             IdentityResult result = await UserManager.ChangePasswordAsync(IdentityExtensions.GetUserId<Int32>(User.Identity), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -229,9 +232,10 @@ namespace WEE_API.Controllers.API
 
 
         [System.Web.Http.AllowAnonymous]
-        [System.Web.Http.Route("LoginReturnToken", Name= "LoginReturnToken")]
-        public string PostLoginReturnToken(LoginReturnTokenModel model)
+        [System.Web.Http.Route("LoginReturnToken", Name = "LoginReturnToken")]
+        public HttpResponseMessage PostLoginReturnToken(LoginReturnTokenModel model)
         {
+            var result = "";
             var pairs = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>( "grant_type", "password" ),
@@ -245,8 +249,11 @@ namespace WEE_API.Controllers.API
                 var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
                 var url = urlHelper.Action("Index", "Home", null, "http");
                 var response = client.PostAsync(url + "/Token", content).Result;
-                return response.Content.ReadAsStringAsync().Result;
+                result = response.Content.ReadAsStringAsync().Result;
             }
+            HttpResponseMessage postLoginReturnToken = Request.CreateResponse(HttpStatusCode.OK);
+            postLoginReturnToken.Content = new StringContent(result, Encoding.UTF8, "application/json");
+            return postLoginReturnToken;
         }
 
 
@@ -288,8 +295,8 @@ namespace WEE_API.Controllers.API
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
@@ -396,7 +403,7 @@ namespace WEE_API.Controllers.API
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
@@ -448,7 +455,7 @@ namespace WEE_API.Controllers.API
             return null;
         }
 
-       
+
         private class ExternalLoginData
         {
             public string LoginProvider { get; set; }
@@ -520,5 +527,5 @@ namespace WEE_API.Controllers.API
 
         #endregion
     }
-     
+
 }

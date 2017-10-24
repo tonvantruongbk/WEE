@@ -226,7 +226,7 @@
     <Compile Include="Common\DynamicLINQ\PredicateBuilder.cs" />
     <Compile Include="Common\HtmlExtensions.cs" />
     <Compile Include="Common\JsonNetResult.cs" />
-    <Compile Include="Common\SelectizeClass.cs" />
+    <Compile Include="Common\CommonModel.cs" />
     <Compile Include="Controllers\AnswerCategoryController.cs" />
     <Compile Include="Controllers\AnswerController.cs" />
     <Compile Include="Controllers\AnswerDetailController.cs" />
@@ -3487,6 +3487,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\UPLOAD\logo-adc.jpg" />
+    <Content Include="Content\UPLOAD\1476158725_hai_an.PNG" />
+    <Content Include="Content\UPLOAD\amc.png" />
+    <Content Include="Content\UPLOAD\funtap.png" />
+    <Content Include="Content\UPLOAD\hoasao.png" />
+    <Content Include="Content\UPLOAD\logomamanbebe.jpg" />
+    <Content Include="Content\UPLOAD\minhphuc.png" />
+    <Content Include="Content\UPLOAD\thvina.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -4439,7 +4447,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\apps\img\" />
     <Folder Include="Content\Resources\sql\" />
-    <Folder Include="Content\UPLOAD\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

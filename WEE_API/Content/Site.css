@@ -87,9 +87,11 @@ table.dataTable.display tbody > tr > .selected {
     background-color: #89e2bd !important;
     color: black !important;
 }
-table.dataTable.order-column tbody > tr.selected:hover> td.sorting_1 {
+
+table.dataTable.order-column tbody > tr.selected:hover > td.sorting_1 {
     background: #d0e6dd !important;
 }
+
 .table-hover > tbody > tr:hover > td {
     background: #d0e6dd !important;
     cursor: pointer !important;
@@ -137,7 +139,7 @@ tr.filter td {
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
-    width: 250px !important;
+    /*width: 250px !important;*/
     margin-top: 5px;
 }
 
@@ -235,6 +237,7 @@ table.dataTable thead .sorting {
 .portlet > .portlet-title > .caption {
     padding: 10px 0 !important;
 }
+
 .captionSearchCollapse {
     display: inline-block;
     font-size: 18px;
@@ -243,23 +246,25 @@ table.dataTable thead .sorting {
     width: 10em;
     float: right;
 }
+
 .selectize-input.input-active,
 .selectize-input.items.has-options.not-full {
     padding: 0 12px !important;
 }
-.selectize-input{
+
+.selectize-input {
     padding: 6px 12px !important;
 }
 
-.portlet > .portlet-title > .tools > a  {
+.portlet > .portlet-title > .tools > a {
     margin-right: 5px;
 }
 
-.portlet > .portlet-title > .caption  {
+.portlet > .portlet-title > .caption {
     cursor: pointer;
 }
 
-.portlet>.portlet-title>.screenname {
+.portlet > .portlet-title > .screenname {
     float: left;
     display: inline-block;
     font-size: 24px;
@@ -270,24 +275,25 @@ table.dataTable thead .sorting {
     text-transform: uppercase;
 }
 
-.portlet>.portlet-title>.caption {
+.portlet > .portlet-title > .caption {
     float: right;
     display: inline-block;
     font-size: 18px;
     line-height: 18px;
     padding: 10px 0;
 }
+
 #customForm {
     display: flex;
     flex-flow: row wrap;
 }
+
 .MultiCheckboxScroll > .DTE_Field.DTE_Field_Type_checkbox > div {
     height: 200px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.page-content > .row {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
+.portlet.box.blue {
+    margin-right: -30px !important;
 }

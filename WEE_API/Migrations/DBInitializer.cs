@@ -212,15 +212,43 @@ namespace WEE_API.Migrations
             #endregion
 
             context.Company.AddOrUpdate(a => a.CompanyID,
-                  new Company { CompanyID = 1, CompanyName = "CodeLove", LocationID = 1 },
-                  new Company { CompanyID = 2, CompanyName = "RunSystem", LocationID = 1 }
-              );
+  new Company { CompanyID = 1, CompanyName = "Công ty cổ phần đầu tư TH Vina", Address = "Số 66, phố Dịch Vọng, phường Dịch Vọng, quận Cầu Giấy, thành phố Hà Nội, Việt Nam", PhoneNumber = null, Description = null, Website = "http://thvina.net/", Logo = "/Content/UPLOAD/thvina.jpg", LocationID = 24, AverageScore = 2.2m, TotalUserRate = 0, TotalJobActive = null, }
+   , new Company { CompanyID = 2, CompanyName = "Công ty TNHH XNK Cầu Nối Việt", Address = "Tầng 6, tòa nhà 6a, Ngõ 639, Đường Hoàng Hoa Thám, Ba Đình, Hà Nội", PhoneNumber = null, Description = "Công ty TNHH XNK Cầu Nối Việt là nhà nhập khẩu và phân phối chuyên nghiệp các thương hiệu hàng đầu thế giới phục vụ cho nhu cầu của bà mẹ và trẻ em tại Việt Nam. Với tốc độ tăng trưởng nhanh chóng, hiện nay chúng tôi phục vụ khách hàng thông qua 10 showroom tại các trung tâm thương mại cao cấp nhất ở Hà Nội và TP Hồ Chí Minh, cùng với hàng trăm đại lý là các cửa hàng mẹ bé trên toàn quốc.  Trải qua quãng thời gian từ khi khởi nghiệp tới nay, Cầu Nối Việt đã khẳng định được uy tín của mình trước khách hàng và đối tác bằng đội ngũ nhân viên trẻ, có trình độ, năng động sáng tạo và đầy nhiệt huyết. Công ty luôn quan tâm xây dựng văn hóa doanh nghiệp hiện đại, nỗ lực tạo dựng một môi trường làm việc hòa đồng, gắn kết, phát triển trên cơ sở hỗ trợ lẫn nhau, giúp đội ngũ cán bộ nhân viên bộc lộ và phát huy đối đa thế mạnh của cá nhân mình.  Cầu Nối Việt luôn coi trọng việc tuyển dụng và đào tạo các nhân viên có năng lực. Khi gia nhập đại gia đình Cầu Nối Việt các ứng viên sẽ được tham gia các khóa huấn luyện, được tư vẫn hỗ trợ về các kĩ năng nghiệp vụ chuyên môn để có thể phát triển sự nghiệp thành công và gắn bó lâu dài với công ty.", Website = "https://www.mamanbebe.com.vn", Logo = "/Content/UPLOAD/logomamanbebe.jpg", LocationID = 24, AverageScore = null, TotalUserRate = 12, TotalJobActive = null, }
+   , new Company { CompanyID = 3, CompanyName = "Tập Đoàn Hoa Sao", Address = "Tầng 3- Tòa nhà Trung Yên 1 - Số 1 Vũ Phạm Hàm - Yên Hòa - Cầu Giấy - Hà Nội", PhoneNumber = null, Description = "Tổng quan về công ty  Được thành lập vào năm 2006, sau 11 năm thành lập, Hoa Sao đã trở thành doanh nghiệp hàng đầu tại Việt Nam trong lĩnh vực Contact Center và BPO với quy mô 4000 nhân viên làm việc trên 10 chi nhánh, phủ sóng từ: Hà Nội, Thái Nguyên, Điện Biên Vĩnh Phúc, Hải Phòng cho đến Đà Nẵng, Buôn Mê Thuật và Thành phố Hồ Chí Minh.  Vào cuối năm 2016, Hoa Sao bước sang một trang mới khi hợp tác cùng Tập đoàn số 1 về Contact Center tại Nhật Bản – BellSystem 24 tạo ra liên minh cung cấp dịch vụ Chăm sóc khách hàng mới mang tầm vóc quốc tế với tên gọi BellSystem24-Hoa Sao.  Với sự phát triển từ quy mô đến bề sâu chất lượng, Hoa Sao đã nhiều lần được ghi nhận là một đơn vị cung cấp dịch vụ uy tín và đón nhận nhiều giải thưởng lớn như: Top 40 Doanh nghiệp BPO, IT & KPO hàng đầu Việt Nam, xếp hạng bởi VINASA – Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam; giải thưởng Thương hiệu mạnh năm 2014 do Thời báo Kinh tế Việt Nam bình chọn cùng nhiều giải thưởng uy tín khác.  Hoa Sao tự hào khi trở thành đơn vị cung cấp dịch vụ cho hàng trăm thương hiệu top đầu tại Việt Nam như: Viettel, VTV, Vietjet Air, VinGroup, Vietin Bank...và là đối tác lâu dài của những tập đoàn hàng đầu quốc tế như BMW, Uber...  Môi trường làm việc và văn hóa doanh nghiệp  Khi gia nhập vào ngôi nhà chung Hoa Sao, bạn không chỉ được làm việc trong môi trường hội nhập quốc tế, phong cách làm việc chuyên nghiệp, bài bản mà còn có cơ hội nâng cao kiến thức, kỹ năng, các mối quan hệ xã hội để phát triển toàn diện.  Với chiến lược, lấy con người làm yếu tố chủ lực để phát triển, Hoa Sao liên tục tổ chức các hoạt động đào tạo nội bộ với các chuyên gia trong và ngoài ngoài để đội ngũ nhân viên được nâng cao kỹ năng, kiến thức.   Không dừng lại đó, người Hoa Sao còn được tham gia các hoạt động văn hóa, team building để tăng động lực đồng thời gắn kết thành viên trong toàn Công ty như: cuộc thi “I Love My Voice”, Hoa Sao Day, tổ chức sinh nhật, hoạt động kỷ niệm các ngày lễ...   Mỗi cá nhân tại Hoa Sao dù ở cấp bậc, vị trí nào cũng luôn được ghi nhận những đóng góp, nỗ lực của mình bằng các hoạt động vinh danh thiết thực như: Person of Month, Person of Year...  Khi dịch vụ CSKH cùng các Contact Center trở thành xu hướng và yếu tố cạnh tranh thúc đẩy sự phát triển cho các thương hiệu thì làm việc tại Bellsystem24-HoaSao – Tập đoàn BPO quốc tế hàng đầu tại Việt Nam sẽ mở ra cho bạn những cơ hội tuyệt vời để phát triển và thành công trong sự nghiệp của mình. Trở thành người Hoa Sao bạn còn có cợ hội để được thể hiện và chứng tỏ khả năng, được ghi nhận và thăng tiến, được quan tâm và chia sẻ.", Website = "http://hoasao.vn", Logo = "/Content/UPLOAD/hoasao.png", LocationID = 24, AverageScore = 3.2m, TotalUserRate = 0, TotalJobActive = null, }
+   , new Company { CompanyID = 4, CompanyName = "Công ty TNHH Minh Phúc (MP Telecom)", Address = "Số 36-38A Trần Văn Dư, P.13, Quận Tân Bình, Tp. HCM", PhoneNumber = null, Description = "Công ty TNHH Minh Phúc (MP Telecom) là công ty hàng đầu tại Việt Nam chuyên cung cấp các dịch vụ và giải pháp Contact Center, Đào tạo và Cung ứng nhân lực, VAS và BPO (Business Process Outsourcing) tại Việt Nam. Được thành lập từ năm 2002, MP Telecom đã không ngừng lớn mạnh cả về quy mô tổ chức lẫn chất lượng dịch vụ. Hiện nay chúng tôi có hơn 2.000 nhân viên trên 3 miền Bắc, Trung, Nam. MP Telecom là công ty đầu tiên trong lĩnh vực BPO tại Việt Nam được nhận chứng chỉ quản lý chất lượng ISO 9001:2008 và Hệ thống quản lý an ninh thông tin ISO/IEC 27001:2005. Kinh nghiệm dạn dày của chúng tôi được thể hiện qua rất nhiều dự án đã và đang hợp tác với các Khách hàng lớn như: Mobifone, VinaPhone, Viettel, BIDV, ANZ, VPBank, Ocean Bank, Bảo Việt, VTV Cab, Toto, Trần Anh, Mai Linh, Truyền hình An Viên, Acecook, EVN…   ", Website = "www.mptelecom.com.vn", Logo = "/Content/UPLOAD/minhphuc.png", LocationID = 31, AverageScore =2.00m, TotalUserRate = 0, TotalJobActive = null, }
+   , new Company { CompanyID = 5, CompanyName = "Công ty cổ phần Funtap", Address = "P803, tầng 8, tòa nhà Toyota, 315 Trường Chinh, Thanh Xuân, Hà Nộii", PhoneNumber = null, Description = "Công ty Cổ phần Funtap (Website: funtap.vn) Được thành lập đầu năm 2013 bởi đội ngũ kỹ sư giàu nhiệt huyết và kinh nghiệm trong lĩnh vực dịch vụ Internet và giải trí trên nền tảng di động. FunTap là ngôi nhà tập hợp người trẻ yêu công nghệ, cá tính với khát khao mang đến cho cộng đồng người tiêu dùng Việt Nam các sản phẩm giải trí online đột phá và sáng tạo. Tại FunTap, chúng tôi tôn trọng sự khác biệt và sự bình đẳng của từng cá nhân. Đó là nền tảng cơ bản giúp chúng tôi luôn mang đến cho khách hàng sự trải nghiệm dịch vụ hoàn hảo. Làm việc tại Funtap, bạn có cơ hội được tiếp xúc với đội ngũ chuyên gia công nghệ hàng đầu, được tham gia vào các dự án với khách hàng quốc tế và trong nước. Môi trường làm việc trẻ và năng động, chế độ đãi ngộ xứng đáng và có nhiều cơ hội phát triển kỹ năng nghề nghiệp.", Website = "http://corp.funtap.vn/", Logo = "/Content/UPLOAD/funtap.png", LocationID = 24, AverageScore = 3.00m, TotalUserRate = 14, TotalJobActive = null, }
+   , new Company { CompanyID = 6, CompanyName = "Công ty TNHH Đầu tư và Kỹ thuật Hải An", Address = "257 Liên Chiểu - Đà Nẵng", PhoneNumber = null, Description = "NHÀ THẦU CHUYÊN NGHIỆP VỀ HỆ THỐNG ĐIỀU HÒA chuyên thiết kế, cung cấp, tư vấn lắp đặt hệ thống điều hòa", Website = "www.mallcenter.vn", Logo = "/Content/UPLOAD/1476158725_hai_an.PNG", LocationID = 15, AverageScore = 3.00m, TotalUserRate = 5, TotalJobActive = null, }
+   , new Company { CompanyID = 7, CompanyName = "Công ty cổ phần kỹ nghệ kingtech", Address = "263 đường La Dương, Dương Nội, Hà Đông, Hà Nội", PhoneNumber = null, Description = null, Website = "http://kingtech.vn/", Logo = "/Content/UPLOAD/amc.png", LocationID = 24, AverageScore = 4.50m, TotalUserRate = 2, TotalJobActive = null, }
+   , new Company { CompanyID = 8, CompanyName = "Công ty cổ phần Nhựa Á Đông", Address = "CN: 38A, Le Van Huan street, 13 ward, Tan Binh, HCM, Viet Nam. , Trụ sở : 27 Lại Yên, Hoài Đức, Hà Nội", PhoneNumber = null, Description = "Công ty Cổ phần Nhựa Á Đông là một trong những doanh nghiệp sản xuất, kinh doanh và xuất nhập khẩu hàng đầu ở Việt Nam hiện nay. Công ty chuyên sản xuất hạt phụ gia dùng trong ngành nhựa gồm Hợp chất CaCO3 (CALMAST), Hạt nhựa màu (COLMAST) và Hạt phụ gia chức năng (ADDMAST). Với định hướng phát triển dài hạn chúng tôi không ngừng cải tiến chất lượng, mở rộng sản xuất, để sản phẩm đáp ứng yêu cầu ngày càng cao của khách hàng về chất lượng, số lượng và giá thành cạnh tranh, Nhựa Á Đông đã có 2 nhà máy với các dây chuyền sản xuất hiện đại đạt công suất khoảng 60 ngàn tấn/năm kể từ năm 2012. Bên cạnh đó các dự án tăng trưởng nhà máy và đầu tư công nghệ hiện đại cũng liên tục được thực hiện nên công suất nhà máy cũng được tăng lên qua từng thời kỳ. ", Website = "adcplastic.com", Logo = "/Content/UPLOAD/logo-adc.jpg", LocationID = 31, AverageScore = 4.00m, TotalUserRate = 3, TotalJobActive = null, }
+  );
 
             context.Job.AddOrUpdate(a => a.JobID,
-                new Job { JobID = 1, JobName = "Lập trình viên C#", CompanyID = 1, JobTypeID =1 },
-                new Job { JobID = 2, JobName = "Web Designer", CompanyID = 1, JobTypeID = 1 },
-                new Job { JobID = 3, JobName = "Phiên dịch", CompanyID = 2, JobTypeID = 1 }
-            );
+  new Job { JobID = 1, JobName = " Trưởng Phòng Nhân Sự", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
+   , new Job { JobID = 2, JobName = "Nhân Viên Viết Bài Quảng Cáo", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
+   , new Job { JobID = 3, JobName = "Nhân viên bán hàng tại Aeon Mall Bình Tân", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 2, }
+   , new Job { JobID = 4, JobName = "Digital Marketing Senior Staff", DateCreate = DateTime.Parse("10/03/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 2, JobTypeID = 1, }
+   , new Job { JobID = 5, JobName = "Nhân Viên Tư Vấn Dịch Vụ Quảng Cáo", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 1, JobTypeID = 2, }
+   , new Job { JobID = 6, JobName = "Nhân Viên Khai Thác Thị Trường", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 3, }
+   , new Job { JobID = 7, JobName = "Nhân Viên Khảo Sát Sản Phẩm - Giờ Hành Chính", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 1, }
+   , new Job { JobID = 8, JobName = "Nhân Viên Chăm Sóc Khách Hàng Mạng Viettel Tại Kđt Resco Phạm Văn Đồng", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 2, }
+   , new Job { JobID = 9, JobName = "Telesales Mỹ Phẩm (Ba Đình, Hà Nội)", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 3, }
+   , new Job { JobID = 10, JobName = "SV trự tổng đài yêu cầu NGHE - HIỂU tiếng Anh", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 5, }
+   , new Job { JobID = 11, JobName = "Nhân Viên Đặc Lịch Hẹn Khách Hàng - Làm Việc Quận Tân Bình", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 4, }
+   , new Job { JobID = 12, JobName = "Nhân Viên Thiết Kế Sản Phẩm Internet", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 5, JobTypeID = 1, }
+   , new Job { JobID = 13, JobName = "Vận Hành Game (Quản Lý Sản Phẩm)", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("10/11/2017"), CompanyID = 5, JobTypeID = 2, }
+   , new Job { JobID = 14, JobName = "Nhân Viên Tìm Và Đánh Giá Game", DateCreate = null, DateEnd = null, CompanyID = 5, JobTypeID = 4, }
+   , new Job { JobID = 15, JobName = "Nhân viên lắp đặt điều hòa - Mức lương hấp dẫn", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 6, JobTypeID = 1, }
+   , new Job { JobID = 16, JobName = "Chỉ Huy Trưởng Công Trường Lương 15-20 Triệu / tháng", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
+   , new Job { JobID = 17, JobName = "Nhân Viên Kĩ Thuật Điện Thoại Di Động", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 3, }
+   , new Job { JobID = 18, JobName = "Kỹ Sư Cơ Điện Khu Vực Miền Bắc", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
+   , new Job { JobID = 19, JobName = "Chuyên viên xuất nhập khẩu", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
+   , new Job { JobID = 20, JobName = "Nhân Viên Kỹ Thuật- Mức Lương: 7-10 Triệu / Tháng", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 3, }
+   , new Job { JobID = 21, JobName = "Thợ hàn Tig, Mig (lương 7-10 triệu)", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
+   , new Job { JobID = 22, JobName = "Kế Toán Tổng Hợp", DateCreate = null, DateEnd = null, CompanyID = 8, JobTypeID = 1, }
+   , new Job { JobID = 23, JobName = "Nhân Viên Bảo Vệ .", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 5, }
+   , new Job { JobID = 24, JobName = "Công Nhân Sản Xuất Tại Nhà Máy Hoài Đức", DateCreate = DateTime.Parse("08/03/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 3, }
+   , new Job { JobID = 25, JobName = "Nhân Viên Kinh Doanh (Lương 10-15 Triệu)", DateCreate = DateTime.Parse("07/12/2017"), DateEnd = null, CompanyID = 8, JobTypeID = 2, }
+  );
 
             context.UserType.AddOrUpdate(a => a.UserTypeID,
                  new UserType { UserTypeID = 1, UserTypeName = "Người đi làm" },
@@ -374,7 +402,7 @@ namespace WEE_API.Migrations
             var user = new ApplicationUser { UserName = "Admin", Email = "admin@somedomain.com",  FullName = "System Administrator", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
 
             ApplicationUserManager UserManager = new ApplicationUserManager(new ApplicationUserStore(context));
-            var result = UserManager.Create(user, "Admin");
+            var result = UserManager.Create(user, "Admin123");
 
             if (result.Succeeded)
             {
@@ -385,7 +413,7 @@ namespace WEE_API.Migrations
 
             //Create Default User...
             user = new ApplicationUser { UserName = "User", Email = "defaultuser@somedomain.com",  FullName = "Default User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
-            result = UserManager.Create(user, "User");
+            result = UserManager.Create(user, "User123");
 
             if (result.Succeeded)
             {
@@ -395,7 +423,7 @@ namespace WEE_API.Migrations
 
             //Create User with NO Roles...
             user = new ApplicationUser { UserName = "Guest", Email = "guest@somedomain.com", FullName = "Guest User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
-            result = UserManager.Create(user, "Guest");
+            result = UserManager.Create(user, "Guest123");
 
 
             base.Seed(context);

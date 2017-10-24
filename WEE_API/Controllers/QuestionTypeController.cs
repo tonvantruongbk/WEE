@@ -101,7 +101,7 @@ namespace WEE_API.Controllers
 
         public JsonResult GetList2Select()
         {
-          var result =  db.QuestionType.Select(a => new SelectizeClass {label = a.QuestionTypeName, value = a.QuestionTypeID}).ToList();
+          var result =  db.QuestionType.Select(a => new CommonModel {label = a.QuestionTypeName, value = a.QuestionTypeID}).ToList();
            
             return Json(new { result }, JsonRequestBehavior.AllowGet);
         }

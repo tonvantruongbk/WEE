@@ -120,9 +120,9 @@ var generateFields = function (tableID, editorFor) {
             case 'DateTime?':
                 field = $.extend(true, field, {
                     type: 'datetime',
-                   // format: 'DD/MM/YYYY',
+                    // format: 'DD/MM/YYYY',
                     render: function (data, type, row) {
-                                return (moment(data).format("YYYY-MM-DD"));
+                        return (moment(data).format("YYYY-MM-DD"));
                     },
                 });
                 break;
@@ -174,7 +174,7 @@ var generateColumns = function (tableID, editorFor) {
         else if (columnData.type === "image") {
             render1 = function (file_id) {
                 return file_id ?
-                    '<img src="' + path + editorFor.file('files', file_id).web_path + '" height="32" />' :
+                    '<img src="' + path + editorFor.file('files', file_id).web_path + '" height="64" />' :
                     null;
             }
         }
@@ -248,11 +248,11 @@ var generateYdacf = function (tableID, filterMode) {
         return field;
     };
     var Ydacfs = [];
+    var iii = 0;
     $("#" + tableID).find('thead th').each(function (index, th) {
-        if ($(th).data().listvisible === true
-            //&& $(th).data().type !== 'checkbox'
-            ) {
-            Ydacfs.push(_prepareYdacf(index, th));
+        if ($(th).data().listvisible === true) {
+            Ydacfs.push(_prepareYdacf(iii, th));
+            iii++;;
         }
     });
     $("#" + filterMode).parent().append(
@@ -270,12 +270,12 @@ var generateYdacf = function (tableID, filterMode) {
 var generateFilterBase = function (tableID) {
     var FilterBases = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-        if ($(th).data().listvisible === true) {
-            FilterBases.push({
-                Ydacf_number: index,
-                Ydacf_FieldName: $(th).data().data
-            });
-        }
+        //if ($(th).data().listvisible === true) {
+        FilterBases.push({
+            Ydacf_number: index,
+            Ydacf_FieldName: $(th).data().data
+        });
+        //}
     });
     return FilterBases;
 };

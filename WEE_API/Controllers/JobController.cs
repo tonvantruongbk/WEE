@@ -11,9 +11,9 @@ using System.Data.Entity;
 
 
 namespace WEE_API.Controllers
-{ 
+{
     public class JobController : Controller
-    { 
+    {
         DBContext db = new DBContext();
         public ActionResult Index()
         {
@@ -25,9 +25,14 @@ namespace WEE_API.Controllers
         {
             try
             {
-                var all = db.Job
-                            .Include(a=>a.Company)
-                            .Include(a=>a.JobType)
+                long id = 0;
+                if (!string.IsNullOrEmpty(Session["CompanyID"] + ""))
+                {
+                    id = Convert.ToInt64(Session["CompanyID"] + "");
+                }
+                var all = db.Job.Where(a => a.CompanyID == id )
+                            .Include(a => a.Company)
+                            .Include(a => a.JobType)
                             .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Job>;
@@ -46,11 +51,11 @@ namespace WEE_API.Controllers
                         Type itemType = result.GetType();
                         try
                         {
-                            var field = itemType.GetProperty("yadcf_data_"+dtFilterBase.Ydacf_Number);
+                            var field = itemType.GetProperty("yadcf_data_" + dtFilterBase.Ydacf_Number);
                             if (field != null)
                             {
-                                var bbb = db.Job.Select("new ("+ dtFilterBase.Ydacf_FieldName + " as label, " + dtFilterBase.Ydacf_FieldName + " as value)");
-                                field.SetValue(result,bbb.Distinct().ToListAsync().Result);
+                                var bbb = db.Job.Select("new (" + dtFilterBase.Ydacf_FieldName + " as label, " + dtFilterBase.Ydacf_FieldName + " as value)");
+                                field.SetValue(result, bbb.Distinct().ToListAsync().Result);
                             }
                         }
                         catch (Exception)
@@ -103,9 +108,15 @@ namespace WEE_API.Controllers
 
         public JsonResult GetList2Select()
         {
-          var result =  db.Job.Select(a => new SelectizeClass {label = a.JobName, value = a.JobID}).ToList();
-           
+            var result = db.Job.Select(a => new CommonModel { label = a.JobName, value = a.JobID }).ToList();
+
             return Json(new { result }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void SetParrent(int id)
+        {
+            Session["CompanyID"] = id;
         }
 
         protected override void Dispose(bool disposing)

@@ -183,10 +183,10 @@ namespace WEE_API
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = RBAC_ExtendedMethods.GetConfigSettingAsInt(RBAC_ExtendedMethods.cKey_PasswordRequiredLength, 6),
-                RequireNonLetterOrDigit = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireNonLetterOrDigit, true),
-                RequireDigit = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireDigit, true),
-                RequireLowercase = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireLowercase, true),
-                RequireUppercase = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireUppercase, true),
+                RequireNonLetterOrDigit = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireNonLetterOrDigit, false),
+                RequireDigit = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireDigit, false),
+                RequireLowercase = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireLowercase, false),
+                RequireUppercase = RBAC_ExtendedMethods.GetConfigSettingAsBool(RBAC_ExtendedMethods.cKey_PasswordRequireUppercase, false),
             };
 
             // Configure user lockout defaults          

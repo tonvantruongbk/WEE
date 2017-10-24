@@ -1,9 +1,9 @@
-﻿@model List<string>
-<div class="row">
+﻿@model WEE_API.Common.ExternalFilterSettings 
+<div class="row col-sm-12">
     <div class="portlet box blue">
         <div class="portlet-title">
-            <div class="screenname">@Model[0]</div>
-            @if (Model[1] != "HeaderFilter")
+            <div class="@(Model.FilterTitleClass??"screenname")" id="TableName@(Model.FilterTitleBox)">@Model.ScreenTitle</div>
+            @if (Model.FilterOn != "HeaderFilter")
             {
                 <div class="caption">Tìm kiếm nâng cao</div>
                 <div class="tools">
@@ -11,7 +11,7 @@
                 </div>
             }
         </div>
-        @if (Model[1] != "HeaderFilter")
+        @if (Model.FilterOn != "HeaderFilter")
         {
             <div class="portlet-body row" style="display: none;">
                 <div id="DataTablePutExternalFilter" class="YdacfExternalFilter">

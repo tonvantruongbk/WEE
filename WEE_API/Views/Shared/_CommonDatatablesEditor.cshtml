@@ -3,7 +3,10 @@
     var editorFor@(Model.Controller) = new $.fn.dataTable.Editor();
     editorFor@(Model.Controller) = new $.fn.dataTable.Editor({
         table: "#@(Model.TableID)",
-        template: "#@(Model.CustomEditorFormID)",
+        @if (!string.IsNullOrEmpty(Model.CustomEditorFormID))
+        {
+        @:template: "#@Model.CustomEditorFormID",
+        }
         i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
         ajax: function (method, url, d, successCallback, errorCallback) {
             var newvalue;
@@ -290,6 +293,8 @@
         columns: generateColumns("@Model.TableID",editorFor@(Model.Controller)),
         select: $("#@Model.TableID").data('select') || false,
         order: $("#@Model.TableID").data('orders') || "",
+        scrollX: true,
+        sWidth: "300",
         @if (!Model.buttonExternal)
         {
             @Html.Raw("buttons: cbuttons ,")
@@ -395,6 +400,10 @@
         //    ,{ externally_triggered: true }
         //);
     });
+
+    $('#@(Model.TableID) tbody').on( 'dblclick', 'tr', function () {
+        editorFor@(Model.Controller).buttons("Lưu lại").edit(this);
+    } );
 
     @if(Model.buttonExternal){
       @Html.Raw(  "var buttons = new $.fn.dataTable.Buttons(tableFor" +Model.Controller+","+
