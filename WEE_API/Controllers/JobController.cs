@@ -26,14 +26,19 @@ namespace WEE_API.Controllers
             try
             {
                 long id = 0;
+                var all = db.Job
+                    .Include(a => a.Company)
+                    .Include(a => a.JobType)
+                    .AsNoTracking();
                 if (!string.IsNullOrEmpty(Session["CompanyID"] + ""))
                 {
                     id = Convert.ToInt64(Session["CompanyID"] + "");
+
+                    all = db.Job.Where(a => a.CompanyID == id)
+                        .Include(a => a.Company)
+                        .Include(a => a.JobType)
+                        .AsNoTracking();
                 }
-                var all = db.Job.Where(a => a.CompanyID == id )
-                            .Include(a => a.Company)
-                            .Include(a => a.JobType)
-                            .AsNoTracking();
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<Job>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);

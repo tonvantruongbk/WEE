@@ -1,8 +1,9 @@
-
+﻿
+@using WEE_API.Common
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
-    var screenTitle = "ContractType";
+    var screenTitle = "Loại hợp đồng";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<ContractType>();
     var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
@@ -20,22 +21,23 @@
     </fieldset>
 </div>
 
-@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
-
 <div class="row">
-    <table id="DataTableContractType" 
-            class="table table-bordered table-hover table-header-fixed no-footer order-column"
-            data-orders='[[0, "asc"]]'
-            data-select="true"
-            data-dom="fBrtlpi">
-        <thead>
+    <div class="col-sm-6">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader })
+        <table id="DataTableContractType" 
+               class="table table-bordered table-hover table-header-fixed no-footer order-column"
+               data-orders='[[0, "asc"]]'
+               data-select="true"
+               data-dom="fBrtlpi">
+            <thead>
             <tr>
-                  <th data-filter_type="auto_complete" data-data="ContractTypeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.ContractTypeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.ContractTypeName, ViewDT).PropertyName)
-                  </th>
+                <th data-filter_type="auto_complete" data-data="ContractTypeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.ContractTypeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.ContractTypeName, ViewDT).PropertyName)
+                </th>
             </tr>
-        </thead>
-    </table>
+            </thead>
+        </table>
+    </div>
 </div>
 @section scripts{
     @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()

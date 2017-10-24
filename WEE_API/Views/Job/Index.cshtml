@@ -1,8 +1,9 @@
-
+﻿
+@using WEE_API.Common
 @using WEE_API.Models
 @using WEE_API.ViewModel
 @{
-    var screenTitle = "Job";
+    var screenTitle = "Công việc";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Job>();
     var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
@@ -10,7 +11,6 @@
 @section PageStyles
 {
     <style>
-
     </style>
 }
 
@@ -24,44 +24,45 @@
     </fieldset>
 </div>
 
-@Html.Partial("_ExternalFilter", new List<string> {screenTitle, filterOnHeader})
-
 <div class="row">
-    <table id="DataTableJob" 
-            class="table table-bordered table-hover table-header-fixed no-footer order-column"
-            data-orders='[[0, "asc"]]'
-            data-select="true"
-            data-dom="fBrtlpi">
-        <thead>
-            <tr>
-                  <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_date" data-data="DateCreate" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_date" data-data="DateEnd" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_number_slider" data-data="Company.CompanyName" data-type="selectize" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).PropertyName)
-                  </th>
-                  <th data-filter_type="range_number_slider" data-data="JobType.JobTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                  @(ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).PropertyName)
-                  </th>
-            </tr>
-        </thead>
-    </table>
+    <div class="col-sm-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader })
+        <table id="DataTableJob"
+               class="table table-bordered table-hover table-header-fixed no-footer order-column"
+               data-orders='[[0, "asc"]]'
+               data-select="true"
+               data-dom="fBrtlpi">
+            <thead>
+                <tr>
+                    <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="range_date" data-data="DateCreate" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="range_date" data-data="DateEnd" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="range_number_slider" data-data="Company.CompanyName" data-type="selectize" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="range_number_slider" data-data="JobType.JobTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).PropertyName)
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 </div>
 @section scripts{
     @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
-    {
-        Controller = "Job",
-        TableID = "DataTableJob",
-        FieldID = "JobID",
-        ButtonPlaceID = "buttons",
-        buttonExternal = false,
-        Ydacf = filterOnHeader,
-        CustomEditorFormID = "customForm"
-    })
+{
+    Controller = "Job",
+    TableID = "DataTableJob",
+    FieldID = "JobID",
+    ButtonPlaceID = "buttons",
+    buttonExternal = false,
+    Ydacf = filterOnHeader,
+    CustomEditorFormID = "customForm"
+})
 }

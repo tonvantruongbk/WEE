@@ -175,6 +175,10 @@ var generateColumns = function (tableID, editorFor) {
     var _prepareColumn = function (th) {
         var columnData = $(th).data();
         var render1;
+        var visible1 = true;
+        if (columnData.listvisible === false) {
+            visible1 = false;
+        }
         if (columnData.type === "selectize") {
             render1 = function (data, type, row, meta) {
                 return data;
@@ -197,17 +201,18 @@ var generateColumns = function (tableID, editorFor) {
             render: render1,
             class: columnData.class || '',
             type: columnData.align || '',
+            visible: visible1,
             sortable: columnData.sortable || true
         };
         return column;
     };
     var columns = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-        if ($(th).data().listvisible === true) {
+        //if ($(th).data().listvisible === true) {
             columns.push(_prepareColumn(th));
-        } else {
+        //} else {
             $(th).removeAttr("style").hide();
-        }
+        //}
     });
     return columns;
 };
