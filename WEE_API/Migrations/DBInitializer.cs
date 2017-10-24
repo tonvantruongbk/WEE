@@ -272,10 +272,45 @@ namespace WEE_API.Migrations
 
             context.CompanyZone.AddOrUpdate(
                  a => new { a.CompanyID, a.ZoneID },
-                new CompanyZone { CompanyID = 1, ZoneID = 1 },
-                new CompanyZone { CompanyID = 1, ZoneID = 2 },
-                 new CompanyZone { CompanyID = 2, ZoneID = 1 },
-                new CompanyZone { CompanyID = 2, ZoneID = 2 }
+                new CompanyZone { CompanyID = 1, ZoneID = 4, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 1, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 1, ZoneID = 8, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 1, ZoneID = 11, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 2, ZoneID = 3, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 2, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 2, ZoneID = 18, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 2, ZoneID = 29, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 3, ZoneID = 13, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 3, ZoneID = 27, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 3, ZoneID = 8, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 3, ZoneID = 9, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 4, ZoneID = 7, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 4, ZoneID = 18, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 4, ZoneID = 29, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 4, ZoneID = 13, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 8, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 11, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 3, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 7, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 2, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 6, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 5, ZoneID = 4, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 11, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 3, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 7, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 2, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 6, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 6, ZoneID = 4, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 7, ZoneID = 18, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 7, ZoneID = 29, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 7, ZoneID = 13, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 9, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 10, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 8, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 6, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 3, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 7, JobTypeRequire = null, }
+                 , new CompanyZone { CompanyID = 8, ZoneID = 2, JobTypeRequire = null, }
             );
 
 
