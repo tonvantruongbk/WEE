@@ -16,7 +16,6 @@ namespace WEE_API.Models
         public string ZoneName { get; set; }
 
 
-        [JsonIgnore]
         public virtual ICollection<CompanyZone> ListZoneCompany { get; set; }
     }
 

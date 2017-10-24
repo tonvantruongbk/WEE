@@ -402,9 +402,9 @@
     });
 
     $('#@(Model.TableID) tbody').on( 'dblclick', 'tr', function () {
-        //editorFor@(Model.Controller).buttons("Lưu lại").edit(this);
+        editorFor@(Model.Controller).buttons("Lưu lại").edit(this);
 
-        editorFor@(Model.Controller).buttons(
+        @*editorFor@(Model.Controller).buttons(
         {
             sExtends: "edit",
                 formButtons: [
@@ -416,7 +416,7 @@
                     className: "cancel"
                 }
             ]
-        }).edit(this);
+        }).edit(this);*@
     } );
 
     @if(Model.buttonExternal){

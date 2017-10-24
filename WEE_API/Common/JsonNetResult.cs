@@ -19,7 +19,7 @@ namespace WEE_API.Common
         {
             SerializerSettings = new JsonSerializerSettings
             {
-              //  DateFormatString = "dd'/'MM'/'yyyy HH':'mm':'ss",
+                DateFormatString = "dd'/'MM'/'yyyy",
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
                 DateFormatHandling = DateFormatHandling.IsoDateFormat,
                 Formatting = Formatting.Indented,

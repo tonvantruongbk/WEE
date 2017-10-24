@@ -302,3 +302,6 @@ table.dataTable thead .sorting {
     overflow-x: auto;
     overflow-y: scroll;
 }
+textarea {
+    height: 120px !important;
+}

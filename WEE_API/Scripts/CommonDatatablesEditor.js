@@ -121,10 +121,10 @@ var generateFields = function (tableID, editorFor) {
             case 'DateTime?':
                 field = $.extend(true, field, {
                     type: 'datetime',
-                    // format: 'DD/MM/YYYY',
-                    render: function (data, type, row) {
-                        return (moment(data).format("YYYY-MM-DD"));
-                    },
+                    format: 'DD/MM/YYYY',
+                    //render: function (data, type, row) {
+                    //    return (moment(data).format("YYYY-MM-DD"));
+                    //},
                 });
                 break;
             case 'selectize':
@@ -191,18 +191,9 @@ var generateColumns = function (tableID, editorFor) {
             render1 = "[, ].name";
             columnData.data = columnData.data.replace("[].id", "");
         }
-        //else if (columnData.type === "Datetime" || columnData.type === "Datetime?") {
-        //    render1 = function (data, type, row) {
-        //        return (moment(data).format("YYYY-MM-DD"));
-        //    }
-        //}
         var column = {
             title: $(th).html(),
             data: columnData.data,
-            format: "yy-mm-dd",
-            //render: function (data, type, row) {
-            //            return (moment(data).format("YYYY-MM-DD"));
-            //},
             render: render1,
             class: columnData.class || '',
             type: columnData.align || '',
@@ -224,7 +215,6 @@ var generateColumns = function (tableID, editorFor) {
 var generateYdacf = function (tableID, filterMode) {
     var _prepareYdacf = function (i, th) {
         var ydacfData = $(th).data();
-
         var field = {
             column_number: i,
             filter_type: ydacfData.filter_type || 'auto_complete',

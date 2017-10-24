@@ -38,17 +38,12 @@ namespace WEE_API.Models
         
 
         [ForeignKey("LocationID")]
-        [JsonIgnore]
         public virtual Location Location { get; set; }
 
 
-        [JsonIgnore]
         public virtual ICollection<MultipleCheckboxClass> CompanyZone { get; set; }
-        [JsonIgnore]
         public virtual ICollection<CompanyZone> ListCompanyZone { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Job> ListJob { get; set; }
-        [JsonIgnore]
         public virtual ICollection<UserRatingCompany> ListUserRatingCompany { get; set; }
 
 

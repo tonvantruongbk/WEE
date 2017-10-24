@@ -33,11 +33,9 @@ namespace WEE_API.Models
         public int JobTypeID { get; set; }
 
         [ForeignKey("CompanyID")]
-        [JsonIgnore]
         public virtual Company Company { get; set; }
 
         [ForeignKey("JobTypeID")]
-        [JsonIgnore]
         public virtual JobType JobType { get; set; }
     }
 }
