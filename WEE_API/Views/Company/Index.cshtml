@@ -23,7 +23,6 @@
             color: #ffef64;
             font-weight: bold;
         }
-         
     </style>
 }
 
@@ -95,7 +94,7 @@
                class="table table-bordered table-hover table-header-fixed no-footer order-column"
                data-orders='[[0, "asc"]]'
                data-select="true"
-               data-dom="Brtlp">
+               data-dom="fBrtlp">
             <thead>
                 <tr>
                     <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
@@ -166,5 +165,12 @@
                 var cRow = tableForCompany.row(':eq(0)', { page: 'current' });
                 cRow.select(); 
             });
+
+    
+        //tableForCompany.column(1).visible(false, false);
+        //tableForCompany.column(2).visible(false, false);
+        
+        //tableForCompany.columns.adjust().draw(false);
+         
     </script>
 }

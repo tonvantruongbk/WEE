@@ -17,6 +17,7 @@ namespace WEE_API.Controllers
         DBContext db = new DBContext();
         public ActionResult Index()
         {
+            Session["CompanyID"] = null;
             return View();
         }
 

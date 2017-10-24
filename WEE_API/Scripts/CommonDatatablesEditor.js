@@ -201,17 +201,17 @@ var generateColumns = function (tableID, editorFor) {
             render: render1,
             class: columnData.class || '',
             type: columnData.align || '',
-            visible: visible1,
+            visible: visible1, 
             sortable: columnData.sortable || true
         };
         return column;
     };
     var columns = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-        //if ($(th).data().listvisible === true) {
+       // if ($(th).data().listvisible === true) {
             columns.push(_prepareColumn(th));
         //} else {
-            $(th).removeAttr("style").hide();
+        //    $(th).removeAttr("style").hide();
         //}
     });
     return columns;

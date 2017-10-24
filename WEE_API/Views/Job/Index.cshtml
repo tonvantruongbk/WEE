@@ -33,23 +33,23 @@
                data-select="true"
                data-dom="fBrtlpi">
             <thead>
-                <tr>
-                    <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).PropertyName)
-                    </th>
-                    <th data-filter_type="range_date" data-data="DateCreate" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).PropertyName)
-                    </th>
-                    <th data-filter_type="range_date" data-data="DateEnd" data-type="DateTime?" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).PropertyName)
-                    </th>
-                    <th data-filter_type="range_number_slider" data-data="Company.CompanyName" data-type="selectize" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).PropertyName)
-                    </th>
-                    <th data-filter_type="range_number_slider" data-data="JobType.JobTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).PropertyName)
-                    </th>
-                </tr>
+            <tr>
+                <th data-filter_type="range_number_slider" data-data="Company.CompanyName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.CompanyID, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="JobName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobName, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="range_date" data-data="DateCreate" data-type="DateTime?" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateCreate, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="range_date" data-data="DateEnd" data-type="DateTime?" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.DateEnd, ViewDT).PropertyName)
+                </th>
+                <th data-filter_type="range_number_slider" data-data="JobType.JobTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.JobTypeID, ViewDT).PropertyName)
+                </th>
+            </tr>
             </thead>
         </table>
     </div>
