@@ -402,7 +402,21 @@
     });
 
     $('#@(Model.TableID) tbody').on( 'dblclick', 'tr', function () {
-        editorFor@(Model.Controller).buttons("Lưu lại").edit(this);
+        //editorFor@(Model.Controller).buttons("Lưu lại").edit(this);
+
+        editorFor@(Model.Controller).buttons(
+        {
+            sExtends: "edit",
+                formButtons: [
+                {
+                    label: 'Lưu lại',
+                    fn: function () {
+                        this.submit();
+                    },
+                    className: "cancel"
+                }
+            ]
+        }).edit(this);
     } );
 
     @if(Model.buttonExternal){

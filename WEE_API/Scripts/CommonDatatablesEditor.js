@@ -89,21 +89,22 @@ var generateFields = function (tableID, editorFor) {
             filter_delay: 500
         };
         switch (columnData.type) {
+            case 'textarea':
+                field = $.extend(true, field, {
+                    type: 'textarea',
+                });
+                break;
             case 'checkbox':
                 field = $.extend(true, field, {
                     type: 'checkbox',
-                    //separator: '|',
-                    //options: [{
-                    //    label: '',
-                    //    value: 1
-                    //}]
+                    className: "multiCheckboxLimitHeight" 
                 });
                 break;
             case 'image':
                 field = $.extend(true, field, {
                     type: 'upload',
                     display: function (file_id) {
-                        return '<img src="' + path + editorFor.file('files', file_id).web_path + '"/>';
+                        return '<img src="' + path + trimStart('/', editorFor.file('files', file_id).web_path) + '"/>';
                     },
                     clearText: "Xóa ản",
                     noImageText: 'Chưa có ảnh',
@@ -161,7 +162,15 @@ var generateFields = function (tableID, editorFor) {
     });
     return fields;
 };
+function trimStart(character, string) {
+    var startIndex = 0;
 
+    while (string[startIndex] === character) {
+        startIndex++;
+    }
+
+    return string.substr(startIndex);
+}
 var generateColumns = function (tableID, editorFor) {
     var _prepareColumn = function (th) {
         var columnData = $(th).data();
@@ -174,7 +183,7 @@ var generateColumns = function (tableID, editorFor) {
         else if (columnData.type === "image") {
             render1 = function (file_id) {
                 return file_id ?
-                    '<img src="' + path + editorFor.file('files', file_id).web_path + '" height="64" />' :
+                    '<img src="' + path + trimStart('/', editorFor.file('files', file_id).web_path) + '" height="64" />' :
                     null;
             }
         }
@@ -195,7 +204,7 @@ var generateColumns = function (tableID, editorFor) {
             //            return (moment(data).format("YYYY-MM-DD"));
             //},
             render: render1,
-            'class': columnData.class || '',
+            class: columnData.class || '',
             type: columnData.align || '',
             sortable: columnData.sortable || true
         };

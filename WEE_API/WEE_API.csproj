@@ -238,6 +238,7 @@
     <Compile Include="Controllers\API\JobPositionController.cs" />
     <Compile Include="Controllers\API\SalaryLevelController.cs" />
     <Compile Include="Controllers\API\SearchCompanyByNameLocationZoneController.cs" />
+    <Compile Include="Controllers\API\UserRatingCompanyController.cs" />
     <Compile Include="Controllers\API\WorkingStatusController.cs" />
     <Compile Include="Controllers\API\WorkingTimeController.cs" />
     <Compile Include="Controllers\ContractTypeController.cs" />

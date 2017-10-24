@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace WEE_API.Models
 {
@@ -46,12 +47,16 @@ namespace WEE_API.Models
 
 
         [ForeignKey("CompanyID")]
+        [JsonIgnore]
         public Company Company { get; set; } 
         [ForeignKey("QuestionID")]
+        [JsonIgnore]
         public Question Question { get; set; }
         [ForeignKey("AnswerID")]
+        [JsonIgnore]
         public Answer Answer { get; set; }
         [ForeignKey("UserID")]
+        [JsonIgnore]
         public AD_User AD_User { get; set; }
 
     }

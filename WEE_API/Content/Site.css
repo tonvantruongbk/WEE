@@ -297,3 +297,8 @@ table.dataTable thead .sorting {
 .portlet.box.blue {
     margin-right: -30px !important;
 }
+.multiCheckboxLimitHeight > div {
+    height: 200px;
+    overflow-x: auto;
+    overflow-y: scroll;
+}

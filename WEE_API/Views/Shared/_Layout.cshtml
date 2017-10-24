@@ -296,8 +296,7 @@
         });
         $.fn.select2.defaults.set("width", "100%");
 
-        var path = "@( Url.Action("Index", "Home").TrimEnd('/'))";
-        //console.log("@(Request.Url.Authority.TrimEnd('/') + Url.Action("Index", "Home").TrimEnd('/'))");
+        var path = "@(Url.Action("Index", "Home"))";
     </script>
 
     @RenderSection("Scripts", required: false)
