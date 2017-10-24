@@ -1,0 +1,170 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output extension="cshtml" #>
+<#@ assembly name="System.ComponentModel.DataAnnotations" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="MultiUtility.CS.ttinclude"#>
+@using <#= Namespace #>.Common
+@using <#= Namespace #>.Models
+@using <#= Namespace  #>.ViewModel
+@{
+    var screenTitle = "<#= ControllerName#>";
+    var screenTitle1 = "<#= modelName2#>";
+    ViewBag.Title = screenTitle;
+    var ViewDT = new ViewDataDictionary<<#= modelName  #>>();
+    var ViewDT1 = new ViewDataDictionary<<#= modelName2  #>>();
+    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
+    var filterOnHeader1 = "HeaderFilter"; //"DataTablePutExternalFilter";
+}
+@section PageStyles
+{
+    <style>
+        
+    </style>
+}
+ 
+<div id="customForm">
+    <fieldset class="name">
+<#foreach (var p in ListProperties){#>
+        <div data-editor-template="<#= p.Name#>"></div>
+<#}#>
+    </fieldset>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-8 col-md-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = "<#= ControllerName  #>" })
+    <table id="DataTable<#= ControllerName  #>" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi">
+        <thead>
+            <tr>
+<#foreach (var p in ListAllProperties)
+    {
+        var ftype = "";
+        if (GetType(p.Type).Contains("Date"))
+        {
+            ftype = "range_date";
+        } else if (GetType(p.Type).Contains("int"))
+        {
+            ftype = "range_number_slider";
+        } else if (GetType(p.Type).Contains("string"))
+        {
+            ftype = "auto_complete";
+        }
+        string pName ="";
+        string selectizeType =null;
+        if(p.Name.Contains("ID") && p.Name != primaryKey){
+            selectizeType = "selectize";
+            pName = p.Name.Replace("ID","");
+            pName = pName+"."+pName+"Name";
+        }
+        else{
+            pName  = p.Name;
+        }
+#>                  <th data-filter_type="<#= ftype #>" data-data="<#= pName #>" data-type="<#= selectizeType??GetType(p.Type)#>" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.<#= p.Name#>, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.<#= p.Name#>, ViewDT).PropertyName)
+                  </th>
+<#}#>
+            </tr>
+        </thead>
+    </table>
+</div>
+    <div class="col-lg-4 col-md-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle1, FilterOn = filterOnHeader1, FilterTitleBox = "<#= modelName2  #>" , FilterTitleClass = "customTitleCss" })
+    <table id="DataTable<#= modelName2  #>" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="Brtlp">
+        <thead>
+            <tr>
+<#foreach (var p in ListAllProperties2)
+    {
+        var ftype = "";
+        if (GetType(p.Type).Contains("Date"))
+        {
+            ftype = "range_date";
+        } else if (GetType(p.Type).Contains("int"))
+        {
+            ftype = "range_number_slider";
+        } else if (GetType(p.Type).Contains("string"))
+        {
+            ftype = "auto_complete";
+        }
+        string pName ="";
+        string selectizeType =null;
+        if(p.Name.Contains("ID") && p.Name != primaryKey2){
+            selectizeType = "selectize";
+            pName = p.Name.Replace("ID","");
+            pName = pName+"."+pName+"Name";
+        }
+        else{
+            pName  = p.Name;
+        }
+#>                  <th data-filter_type="<#= ftype #>" data-data="<#= pName #>" data-type="<#= selectizeType??GetType(p.Type)#>" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.<#= p.Name#>, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.<#= p.Name#>, ViewDT1).PropertyName)
+                  </th>
+<#}#>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "<#= ControllerName #>",
+        TableID = "DataTable<#= ControllerName  #>",
+        FieldID = "<#= primaryKey#>",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = "customForm"
+    })
+
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "<#= modelName2 #>",
+        TableID = "DataTable<#= modelName2  #>",
+        FieldID = "<#= primaryKey2 #>",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = "customForm"
+    })
+
+    <script>
+        editorFor<#= modelName2  #>.on('initCreate', function (e, type) {
+            editorFor<#= modelName2  #>.field('<#= ControllerName  #>ID').set(tableFor<#= ControllerName  #>.row('.selected').data().<#= ControllerName  #>ID);
+        });
+
+        tableFor<#= ControllerName  #>.on('select', function (e, dt, type, indexes) {
+            if (type === 'row') {
+                var data = tableFor<#= ControllerName  #>.rows(indexes).data().pluck('<#= ControllerName  #>ID')[0];
+                $("#TableName<#= modelName2  #>").html(tableFor<#= ControllerName  #>.row(indexes).data().<#= ControllerName  #>Name);
+                if (data != undefined || data !== null) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SetParrent", "<#= modelName2  #>")/' + data,
+                        success: function () { 
+                            tableFor<#= modelName2  #>.ajax.reload();
+                        }
+                    });
+                }
+            }
+        });
+        $('#DataTable<#= ControllerName  #>')
+            .on('init.dt', function () {
+                var cRow = tableFor<#= ControllerName  #>.row(':eq(0)', { page: 'current' });
+                cRow.select(); 
+            }); 
+         
+    </script>
+}

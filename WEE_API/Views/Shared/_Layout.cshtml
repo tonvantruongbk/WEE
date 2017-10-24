@@ -9,7 +9,7 @@
     <meta content="Preview page of Metronic Admin Theme #1 for blank page layout" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    @*<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />*@
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css") " rel="stylesheet" type="text/css" />
     @*<link href="@Url.Content("~/Content/assets/global/plugins/bootstrap/css/bootstrap.min.css" )" rel="stylesheet" type="text/css" />*@
@@ -65,10 +65,7 @@
 
     <link href="~/Content/Selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
 
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <style>
-        table { width:100%; }
-    </style>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" /> 
 </head>
 <!-- END HEAD -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -79,7 +76,7 @@
             <div class="page-header-inner ">
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="">
+                    <a href="@Url.Action("Index","Home")">
                         <img src="@Url.Content("~/Content/assets/layouts/layout/img/logo.png")" alt="logo" class="logo-default" />
                     </a>
                     <div class="menu-toggler sidebar-toggler">
@@ -278,7 +275,7 @@
             searching: true,
             ordering: true,
             orderCellsTop: true,
-            autoWidth: true,
+            autoWidth: false,
             retrieve: false,
             responsive: true,
             processing: true,
@@ -290,12 +287,13 @@
             },
             lengthMenu: [
                 [5, 10, 15, 20, 30, 50, 100], [5, 10, 15, 20, 30, 50, 100]
-            ],
+            ], 
             fixedHeader: {
                 header: true,
                 headerOffset: fixedHeaderOffset
             }
         });
+         
         $.fn.select2.defaults.set("width", "100%");
 
         var path = "@(Url.Action("Index", "Home"))";

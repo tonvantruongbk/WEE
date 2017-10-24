@@ -4,40 +4,62 @@
 @using WEE_API.ViewModel
 @{
     var screenTitle = "Câu trả lời";
+    var screenTitle1 = "Chi tiết";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<Answer>();
-    var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
+    var ViewDT1 = new ViewDataDictionary<AnswerDetail>();
+    var filterOnHeader = "DataTablePutExternalFilter";
+    var filterOnHeader1 = "HeaderFilter"; //"DataTablePutExternalFilter";
 }
 @section PageStyles
 {
     <style>
-
     </style>
 }
-
+ 
 <div id="customForm">
     <fieldset class="name">
         <div data-editor-template="AnswerName"></div>
     </fieldset>
 </div>
 
+
 <div class="row">
-    <div class="col-sm-6">
-        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader })
-        <table id="DataTableAnswer"
-               class="table table-bordered table-hover table-header-fixed no-footer order-column"
-               data-orders='[[0, "asc"]]'
-               data-select="true"
-               data-dom="fBrtlpi">
-            <thead>
-                <tr>
-                    <th data-filter_type="auto_complete" data-data="AnswerName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.AnswerName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AnswerName, ViewDT).PropertyName)
-                    </th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+    <div class="col-lg-6 col-md-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = "Answer" })
+    <table id="DataTableAnswer" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi">
+        <thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="AnswerName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.AnswerName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AnswerName, ViewDT).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+    <div class="col-lg-6 col-md-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle1, FilterOn = filterOnHeader1, FilterTitleBox = "AnswerDetail" , FilterTitleClass = "customTitleCss" })
+    <table id="DataTableAnswerDetail" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlp">
+        <thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="AnswerDetailName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.AnswerDetailName, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AnswerDetailName, ViewDT1).PropertyName)
+                  </th>
+                  <th data-filter_type="range_number_slider" data-data="Answer.AnswerName" data-type="selectize" data-class="" data-align="" data-listvisible="false" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.AnswerID, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.AnswerID, ViewDT1).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
 </div>
 @section scripts{
     @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
@@ -50,4 +72,43 @@
         Ydacf = filterOnHeader,
         CustomEditorFormID = "customForm"
     })
+
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "AnswerDetail",
+        TableID = "DataTableAnswerDetail",
+        FieldID = "AnswerDetailID",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = ""
+    })
+
+    <script>
+        editorForAnswerDetail.on('initCreate', function (e, type) {
+            editorForAnswerDetail.field('AnswerID').set(tableForAnswer.row('.selected').data().AnswerID);
+        });
+
+        tableForAnswer.on('select', function (e, dt, type, indexes) {
+            if (type === 'row') {
+                var data = tableForAnswer.rows(indexes).data().pluck('AnswerID')[0];
+                $("#TableNameAnswerDetail").html(tableForAnswer.row(indexes).data().AnswerName);
+                if (data != undefined || data !== null) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SetParrent", "AnswerDetail")/' + data,
+                        success: function () { 
+                            tableForAnswerDetail.ajax.reload();
+                        }
+                    });
+                }
+            }
+        });
+        $('#DataTableAnswer')
+            .on('init.dt', function () {
+                var cRow = tableForAnswer.row(':eq(0)', { page: 'current' });
+                cRow.select(); 
+            }); 
+         
+    </script>
 }

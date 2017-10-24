@@ -1,0 +1,164 @@
+﻿<#@ template Language="C#" HostSpecific="True"  #>
+<#@ assembly name="System.ComponentModel.DataAnnotations" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ assembly name="System.Core" #>
+<#@ Assembly Name="EnvDTE" #>
+<#@ Assembly Name="EnvDTE80" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="EnvDTE80" #>
+<#@ import namespace="System.Linq" #>
+<#
+    var modelType = (CodeType)Model.ModelType; 
+    var modelName = modelType.Name; 
+
+      var modelType2 = (CodeType)Model.ModelType2; 
+    var modelName2 = modelType2.Name; 
+
+
+    var Namespace = Model.Namespace;
+    var ControllerName = "";
+    if (Model.ControllerName != null)
+    {
+          ControllerName = Model.ControllerName;
+    }
+    else
+    {
+          ControllerName = modelName;
+    }
+    var ListProperties = modelType.VisibleMembers().OfType<CodeProperty>().ToList();
+    var ListProperties2 = modelType2.VisibleMembers().OfType<CodeProperty>().ToList();
+    var ListAllProperties = modelType.VisibleMembers().OfType<CodeProperty>().ToList();   
+    var ListAllProperties2 = modelType2.VisibleMembers().OfType<CodeProperty>().ToList();   
+    var propertiesV2 = modelType.VisibleMembers().OfType<CodeProperty2>();
+    var propertiesV22 = modelType2.VisibleMembers().OfType<CodeProperty2>();
+    //List<CodeProperty> pkeys = new List<CodeProperty>();
+    //foreach(var pk in Model.PrimaryKey.Split(",")) {
+        //pkeys.Add(ListProperties.FirstOrDefault(x => x.Name == pk));
+    //}
+
+    var pkey = ListProperties.FirstOrDefault(x => x.Name == Model.PrimaryKey);    
+    var pkey2 = ListProperties2.FirstOrDefault(x => x.Name == Model.PrimaryKey2);    
+    var primaryKey = "";
+    var primaryKey2 = "";
+    var primaryKeyType = "";
+    var primaryKeyType2 = "";
+    if (pkey != null)
+    {
+        //if (pkey.Split(",").Count()> 0)
+        //{
+            ////TODO
+            //primaryKey = pkey.Name;
+		    //primaryKeyType = pkey.Type.AsString;
+        //}
+        //else
+        //{
+            primaryKey = pkey.Name;
+	        primaryKeyType = pkey.Type.AsString;
+       // }
+    }
+
+     if (pkey2 != null)
+    {
+        //if (pkey.Split(",").Count()> 0)
+        //{
+            ////TODO
+            //primaryKey = pkey.Name;
+		    //primaryKeyType = pkey.Type.AsString;
+        //}
+        //else
+        //{
+            primaryKey2 = pkey2.Name;
+	        primaryKeyType2 = pkey2.Type.AsString;
+       // }
+    }
+
+    var ListNavigationProperties = new List<CodeProperty>();
+    var ListNavigationProperties2 = new List<CodeProperty>();
+    foreach(var nav in propertiesV2) {
+        if(nav.OverrideKind.ToString() == "vsCMOverrideKindVirtual"){
+            ListNavigationProperties.Add((CodeProperty)nav);
+        }
+    }
+     foreach(var nav in propertiesV22) {
+        if(nav.OverrideKind.ToString() == "vsCMOverrideKindVirtual"){
+            ListNavigationProperties2.Add((CodeProperty)nav);
+        }
+    }
+    ListProperties = ListProperties.Where(xy => !ListNavigationProperties.Contains(xy) && xy != pkey).ToList();
+    ListProperties2 = ListProperties2.Where(xy => !ListNavigationProperties2.Contains(xy) && xy != pkey2).ToList();
+    ListAllProperties = ListProperties.Where(xy => !ListNavigationProperties.Contains(xy)).ToList();
+    ListAllProperties2 = ListProperties2.Where(xy => !ListNavigationProperties2.Contains(xy)).ToList();
+#>
+<#+
+    //type = GetType(property.Type); 
+    //typeName = GetTypeName(property.Type);
+
+    string GetType(EnvDTE.CodeTypeRef type)
+    {
+        string str = "";
+        if (type.UnderlyingTypeIs<byte>())
+            str = "byte";
+        else if (type.UnderlyingTypeIs<sbyte>())
+            str = "sbyte";
+        else if (type.UnderlyingTypeIs<byte[]>())
+            str = "byte[]";
+        else if (type.UnderlyingTypeIs<int>())
+            str = "int";
+        else if (type.UnderlyingTypeIs<uint>())
+            str = "uint";
+        else if (type.UnderlyingTypeIs<short>())
+            str = "short";
+        else if (type.UnderlyingTypeIs<ushort>())
+            str = "ushort";
+        else if (type.UnderlyingTypeIs<DateTime>())
+            str = "DateTime";
+        else if (type.UnderlyingTypeIs<long>())
+            str = "long";
+        else if (type.UnderlyingTypeIs<ulong>())
+            str = "ulong";
+        else if (type.UnderlyingTypeIs<double>())
+            str = "double";
+        else if (type.UnderlyingTypeIs<bool>())
+            str = "bool";
+        else if (type.UnderlyingTypeIs<string>())
+            str = "string";
+        else if (type.UnderlyingTypeIs<long>())
+            str = "long";
+        else if (type.UnderlyingTypeIs<float>())
+            str = "float";
+        else
+            str = type.AsFullName.ToString();
+        if(type.AsFullName.ToString().Contains("Nullable"))
+        {
+            str+="?";
+        }
+        return str;
+    }
+
+    string GetTypeName(EnvDTE.CodeTypeRef type)
+    {  
+        string str = type.AsFullName.ToString();
+        return str;
+    }
+
+    bool isType(string _type)
+    {
+        if( _type == "byte" ) return true;
+        if( _type == "sbyte" ) return true;
+        if( _type == "int" ) return true;
+        if( _type == "uint" ) return true;
+        if( _type == "short" ) return true;
+        if( _type == "ushort" ) return true;
+        if( _type == "DateTime" ) return true;
+        if( _type == "long" ) return true;
+        if( _type == "ulong" ) return true;
+        if( _type == "double" ) return true;
+        if( _type == "bool" ) return true;
+        if( _type == "string" ) return true;
+        if( _type == "long" ) return true;
+        return false;
+    }
+ #>

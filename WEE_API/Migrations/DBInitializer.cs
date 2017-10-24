@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
@@ -37,32 +38,32 @@ namespace WEE_API.Migrations
             context.AD_User.AddOrUpdate(a => a.UserID, new AD_User { UserID = "Admin", Password = "admin" });
 
             context.AD_Menu.AddOrUpdate(a => a.MenuID
-                , new AD_Menu { MenuID = 1, MenuParentID = null, MenuText = "API", URLAction = "/Swagger", MenuIcon = "fa fa-info-circle", MenuSort = 1, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 2, MenuParentID = null, MenuText = "DANH MỤC", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 2, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 201, MenuParentID = 2, MenuText = "Công ty", URLAction = "/Company", MenuIcon = "fa fa-info-circle", MenuSort = 3, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 202, MenuParentID = 2, MenuText = "Công việc", URLAction = "/Job", MenuIcon = "fa fa-info-circle", MenuSort = 4, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 203, MenuParentID = 2, MenuText = "Loại công việc", URLAction = "/JobType", MenuIcon = "fa fa-info-circle", MenuSort = 5, MenuSeparator = null, CanDelete = null }
-               
-                , new AD_Menu { MenuID = 206, MenuParentID = 2, MenuText = "Phân loại người dùng", URLAction = "/UserType", MenuIcon = "fa fa-info-circle", MenuSort = 7, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 207, MenuParentID = 2, MenuText = "Vị trí", URLAction = "/Location", MenuIcon = "fa fa-info-circle", MenuSort = 8, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 208, MenuParentID = 2, MenuText = "Lĩnh vực", URLAction = "/Zone", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 1, MenuParentID = null, MenuText = "BẢNG TỔNG KẾT", URLAction = "/Home", MenuIcon = "fa fa-home", MenuSort = 1, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 2, MenuParentID = null, MenuText = "DANH MỤC", URLAction = "#", MenuIcon = "fa fa-tasks", MenuSort = 2, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 201, MenuParentID = 2, MenuText = "Công ty & Công việc", URLAction = "/Company", MenuIcon = "fa fa-building", MenuSort = 3, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 202, MenuParentID = 2, MenuText = "Công việc đang tuyển dụng", URLAction = "/Job", MenuIcon = "fa fa-commenting-o", MenuSort = 4, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 203, MenuParentID = 2, MenuText = "Loại công việc", URLAction = "/JobType", MenuIcon = "fa fa-sticky-note", MenuSort = 5, MenuSeparator = null, CanDelete = null }
 
-                , new AD_Menu { MenuID = 209, MenuParentID = 2, MenuText = "Vị trí công việc", URLAction = "/JobPosition", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 210, MenuParentID = 2, MenuText = "Mức thu nhập", URLAction = "/SalaryLevel", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 211, MenuParentID = 2, MenuText = "Thời gian làm việc", URLAction = "/WorkingTime", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 212, MenuParentID = 2, MenuText = "Hợp đồng lao động", URLAction = "/ContractType", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 213, MenuParentID = 2, MenuText = "Tình trạng việc làm", URLAction = "/WorkingStatus", MenuIcon = "fa fa-info-circle", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 214, MenuParentID = 2, MenuText = "Câu hỏi", URLAction = "/Question", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 206, MenuParentID = 2, MenuText = "Phân loại người sử dụng", URLAction = "/UserType", MenuIcon = "fa fa-university", MenuSort = 7, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 207, MenuParentID = 2, MenuText = "Địa điểm", URLAction = "/Location", MenuIcon = "fa fa-map", MenuSort = 8, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 208, MenuParentID = 2, MenuText = "Lĩnh vực doanh nghiệp", URLAction = "/Zone", MenuIcon = "fa fa-th-list", MenuSort = 9, MenuSeparator = null, CanDelete = null }
 
-                , new AD_Menu { MenuID = 215, MenuParentID = 2, MenuText = "Nhóm câu trả lời", URLAction = "/Answer", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 216, MenuParentID = 2, MenuText = "Chi tiết câu trả lời", URLAction = "/AnswerDetail", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 209, MenuParentID = 2, MenuText = "Vị trí công việc", URLAction = "/JobPosition", MenuIcon = "fa fa-list-ol", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 210, MenuParentID = 2, MenuText = "Mức thu nhập", URLAction = "/SalaryLevel", MenuIcon = "fa fa-credit-card", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 211, MenuParentID = 2, MenuText = "Thời gian làm việc", URLAction = "/WorkingTime", MenuIcon = "fa fa-clock-o", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 212, MenuParentID = 2, MenuText = "Hợp đồng lao động", URLAction = "/ContractType", MenuIcon = "fa fa-paperclip", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 213, MenuParentID = 2, MenuText = "Tình trạng việc làm", URLAction = "/WorkingStatus", MenuIcon = "fa fa-briefcase", MenuSort = 9, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 214, MenuParentID = 2, MenuText = "Quản lý Câu hỏi", URLAction = "/Question", MenuIcon = "fa fa-question", MenuSort = 6, MenuSeparator = null, CanDelete = null }
 
-                , new AD_Menu { MenuID = 230, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-info-circle", MenuSort = 10, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 231, MenuParentID = 2, MenuText = "Tuyển dụng", URLAction = "/CompanyZone", MenuIcon = "fa fa-info-circle", MenuSort = 11, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 9, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cog", MenuSort = 31, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 91, MenuParentID = 9, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 215, MenuParentID = 2, MenuText = "Quản lý Câu trả lời", URLAction = "/Answer", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 216, MenuParentID = 2, MenuText = "Chi tiết câu trả lời", URLAction = "/AnswerDetail", MenuIcon = "fa fa-asterisk", MenuSort = 6, MenuSeparator = null, CanDelete = null }
+
+                , new AD_Menu { MenuID = 230, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-puzzle-piece", MenuSort = 10, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 9, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cogs", MenuSort = 31, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 91, MenuParentID = 9, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-sitemap", MenuSort = 35, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 92, MenuParentID = 9, MenuText = "Người Dùng và Phân Quyền", URLAction = "/Permission", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 100, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-info-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 1000, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-question-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 2000, MenuParentID = null, MenuText = "API", URLAction = "/Swagger", MenuIcon = "fa fa-info-circle", MenuSort = 2000, MenuSeparator = null, CanDelete = null }
             );
 
             #region Location
@@ -134,7 +135,7 @@ namespace WEE_API.Migrations
 
             #endregion
 
-           
+
             context.JobType.AddOrUpdate(a => a.JobTypeID,
                 new JobType { JobTypeID = 1, JobTypeName = "Toàn thời gian" },
                 new JobType { JobTypeID = 2, JobTypeName = "Bán thời gian" },
@@ -148,13 +149,13 @@ namespace WEE_API.Migrations
 
             #region Zone
             context.Zone.AddOrUpdate(a => a.ZoneID,
-                     new Zone { ZoneID = 1,  ZoneName = "Kế toán-Kiểm toán" },
-                     new Zone { ZoneID = 2,  ZoneName = "Bán hàng" },
-                     new Zone { ZoneID = 3,  ZoneName = "Marketing-PR" },
-                     new Zone { ZoneID = 4,  ZoneName = "Tư vấn" },
-                     new Zone { ZoneID = 5,  ZoneName = "KD bất động sản" },
-                     new Zone { ZoneID = 6,  ZoneName = "Xây dựng" },
-                     new Zone { ZoneID = 7,  ZoneName = "IT phần mềm" },
+                     new Zone { ZoneID = 1, ZoneName = "Kế toán-Kiểm toán" },
+                     new Zone { ZoneID = 2, ZoneName = "Bán hàng" },
+                     new Zone { ZoneID = 3, ZoneName = "Marketing-PR" },
+                     new Zone { ZoneID = 4, ZoneName = "Tư vấn" },
+                     new Zone { ZoneID = 5, ZoneName = "KD bất động sản" },
+                     new Zone { ZoneID = 6, ZoneName = "Xây dựng" },
+                     new Zone { ZoneID = 7, ZoneName = "IT phần mềm" },
                      new Zone { ZoneID = 8, ZoneName = "Điện-Điện tử" },
                      new Zone { ZoneID = 9, ZoneName = "Y tế-Dược" },
                      new Zone { ZoneID = 10, ZoneName = "Cơ khí-Chế tạo" },
@@ -215,7 +216,7 @@ namespace WEE_API.Migrations
   new Company { CompanyID = 1, CompanyName = "Công ty cổ phần đầu tư TH Vina", Address = "Số 66, phố Dịch Vọng, phường Dịch Vọng, quận Cầu Giấy, thành phố Hà Nội, Việt Nam", PhoneNumber = null, Description = null, Website = "http://thvina.net/", Logo = "/Content/UPLOAD/thvina.jpg", LocationID = 24, AverageScore = 2.2m, TotalUserRate = 0, TotalJobActive = null, }
    , new Company { CompanyID = 2, CompanyName = "Công ty TNHH XNK Cầu Nối Việt", Address = "Tầng 6, tòa nhà 6a, Ngõ 639, Đường Hoàng Hoa Thám, Ba Đình, Hà Nội", PhoneNumber = null, Description = "Công ty TNHH XNK Cầu Nối Việt là nhà nhập khẩu và phân phối chuyên nghiệp các thương hiệu hàng đầu thế giới phục vụ cho nhu cầu của bà mẹ và trẻ em tại Việt Nam. Với tốc độ tăng trưởng nhanh chóng, hiện nay chúng tôi phục vụ khách hàng thông qua 10 showroom tại các trung tâm thương mại cao cấp nhất ở Hà Nội và TP Hồ Chí Minh, cùng với hàng trăm đại lý là các cửa hàng mẹ bé trên toàn quốc.  Trải qua quãng thời gian từ khi khởi nghiệp tới nay, Cầu Nối Việt đã khẳng định được uy tín của mình trước khách hàng và đối tác bằng đội ngũ nhân viên trẻ, có trình độ, năng động sáng tạo và đầy nhiệt huyết. Công ty luôn quan tâm xây dựng văn hóa doanh nghiệp hiện đại, nỗ lực tạo dựng một môi trường làm việc hòa đồng, gắn kết, phát triển trên cơ sở hỗ trợ lẫn nhau, giúp đội ngũ cán bộ nhân viên bộc lộ và phát huy đối đa thế mạnh của cá nhân mình.  Cầu Nối Việt luôn coi trọng việc tuyển dụng và đào tạo các nhân viên có năng lực. Khi gia nhập đại gia đình Cầu Nối Việt các ứng viên sẽ được tham gia các khóa huấn luyện, được tư vẫn hỗ trợ về các kĩ năng nghiệp vụ chuyên môn để có thể phát triển sự nghiệp thành công và gắn bó lâu dài với công ty.", Website = "https://www.mamanbebe.com.vn", Logo = "/Content/UPLOAD/logomamanbebe.jpg", LocationID = 24, AverageScore = null, TotalUserRate = 12, TotalJobActive = null, }
    , new Company { CompanyID = 3, CompanyName = "Tập Đoàn Hoa Sao", Address = "Tầng 3- Tòa nhà Trung Yên 1 - Số 1 Vũ Phạm Hàm - Yên Hòa - Cầu Giấy - Hà Nội", PhoneNumber = null, Description = "Tổng quan về công ty  Được thành lập vào năm 2006, sau 11 năm thành lập, Hoa Sao đã trở thành doanh nghiệp hàng đầu tại Việt Nam trong lĩnh vực Contact Center và BPO với quy mô 4000 nhân viên làm việc trên 10 chi nhánh, phủ sóng từ: Hà Nội, Thái Nguyên, Điện Biên Vĩnh Phúc, Hải Phòng cho đến Đà Nẵng, Buôn Mê Thuật và Thành phố Hồ Chí Minh.  Vào cuối năm 2016, Hoa Sao bước sang một trang mới khi hợp tác cùng Tập đoàn số 1 về Contact Center tại Nhật Bản – BellSystem 24 tạo ra liên minh cung cấp dịch vụ Chăm sóc khách hàng mới mang tầm vóc quốc tế với tên gọi BellSystem24-Hoa Sao.  Với sự phát triển từ quy mô đến bề sâu chất lượng, Hoa Sao đã nhiều lần được ghi nhận là một đơn vị cung cấp dịch vụ uy tín và đón nhận nhiều giải thưởng lớn như: Top 40 Doanh nghiệp BPO, IT & KPO hàng đầu Việt Nam, xếp hạng bởi VINASA – Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam; giải thưởng Thương hiệu mạnh năm 2014 do Thời báo Kinh tế Việt Nam bình chọn cùng nhiều giải thưởng uy tín khác.  Hoa Sao tự hào khi trở thành đơn vị cung cấp dịch vụ cho hàng trăm thương hiệu top đầu tại Việt Nam như: Viettel, VTV, Vietjet Air, VinGroup, Vietin Bank...và là đối tác lâu dài của những tập đoàn hàng đầu quốc tế như BMW, Uber...  Môi trường làm việc và văn hóa doanh nghiệp  Khi gia nhập vào ngôi nhà chung Hoa Sao, bạn không chỉ được làm việc trong môi trường hội nhập quốc tế, phong cách làm việc chuyên nghiệp, bài bản mà còn có cơ hội nâng cao kiến thức, kỹ năng, các mối quan hệ xã hội để phát triển toàn diện.  Với chiến lược, lấy con người làm yếu tố chủ lực để phát triển, Hoa Sao liên tục tổ chức các hoạt động đào tạo nội bộ với các chuyên gia trong và ngoài ngoài để đội ngũ nhân viên được nâng cao kỹ năng, kiến thức.   Không dừng lại đó, người Hoa Sao còn được tham gia các hoạt động văn hóa, team building để tăng động lực đồng thời gắn kết thành viên trong toàn Công ty như: cuộc thi “I Love My Voice”, Hoa Sao Day, tổ chức sinh nhật, hoạt động kỷ niệm các ngày lễ...   Mỗi cá nhân tại Hoa Sao dù ở cấp bậc, vị trí nào cũng luôn được ghi nhận những đóng góp, nỗ lực của mình bằng các hoạt động vinh danh thiết thực như: Person of Month, Person of Year...  Khi dịch vụ CSKH cùng các Contact Center trở thành xu hướng và yếu tố cạnh tranh thúc đẩy sự phát triển cho các thương hiệu thì làm việc tại Bellsystem24-HoaSao – Tập đoàn BPO quốc tế hàng đầu tại Việt Nam sẽ mở ra cho bạn những cơ hội tuyệt vời để phát triển và thành công trong sự nghiệp của mình. Trở thành người Hoa Sao bạn còn có cợ hội để được thể hiện và chứng tỏ khả năng, được ghi nhận và thăng tiến, được quan tâm và chia sẻ.", Website = "http://hoasao.vn", Logo = "/Content/UPLOAD/hoasao.png", LocationID = 24, AverageScore = 3.2m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 4, CompanyName = "Công ty TNHH Minh Phúc (MP Telecom)", Address = "Số 36-38A Trần Văn Dư, P.13, Quận Tân Bình, Tp. HCM", PhoneNumber = null, Description = "Công ty TNHH Minh Phúc (MP Telecom) là công ty hàng đầu tại Việt Nam chuyên cung cấp các dịch vụ và giải pháp Contact Center, Đào tạo và Cung ứng nhân lực, VAS và BPO (Business Process Outsourcing) tại Việt Nam. Được thành lập từ năm 2002, MP Telecom đã không ngừng lớn mạnh cả về quy mô tổ chức lẫn chất lượng dịch vụ. Hiện nay chúng tôi có hơn 2.000 nhân viên trên 3 miền Bắc, Trung, Nam. MP Telecom là công ty đầu tiên trong lĩnh vực BPO tại Việt Nam được nhận chứng chỉ quản lý chất lượng ISO 9001:2008 và Hệ thống quản lý an ninh thông tin ISO/IEC 27001:2005. Kinh nghiệm dạn dày của chúng tôi được thể hiện qua rất nhiều dự án đã và đang hợp tác với các Khách hàng lớn như: Mobifone, VinaPhone, Viettel, BIDV, ANZ, VPBank, Ocean Bank, Bảo Việt, VTV Cab, Toto, Trần Anh, Mai Linh, Truyền hình An Viên, Acecook, EVN…   ", Website = "www.mptelecom.com.vn", Logo = "/Content/UPLOAD/minhphuc.png", LocationID = 31, AverageScore =2.00m, TotalUserRate = 0, TotalJobActive = null, }
+   , new Company { CompanyID = 4, CompanyName = "Công ty TNHH Minh Phúc (MP Telecom)", Address = "Số 36-38A Trần Văn Dư, P.13, Quận Tân Bình, Tp. HCM", PhoneNumber = null, Description = "Công ty TNHH Minh Phúc (MP Telecom) là công ty hàng đầu tại Việt Nam chuyên cung cấp các dịch vụ và giải pháp Contact Center, Đào tạo và Cung ứng nhân lực, VAS và BPO (Business Process Outsourcing) tại Việt Nam. Được thành lập từ năm 2002, MP Telecom đã không ngừng lớn mạnh cả về quy mô tổ chức lẫn chất lượng dịch vụ. Hiện nay chúng tôi có hơn 2.000 nhân viên trên 3 miền Bắc, Trung, Nam. MP Telecom là công ty đầu tiên trong lĩnh vực BPO tại Việt Nam được nhận chứng chỉ quản lý chất lượng ISO 9001:2008 và Hệ thống quản lý an ninh thông tin ISO/IEC 27001:2005. Kinh nghiệm dạn dày của chúng tôi được thể hiện qua rất nhiều dự án đã và đang hợp tác với các Khách hàng lớn như: Mobifone, VinaPhone, Viettel, BIDV, ANZ, VPBank, Ocean Bank, Bảo Việt, VTV Cab, Toto, Trần Anh, Mai Linh, Truyền hình An Viên, Acecook, EVN…   ", Website = "www.mptelecom.com.vn", Logo = "/Content/UPLOAD/minhphuc.png", LocationID = 31, AverageScore = 2.00m, TotalUserRate = 0, TotalJobActive = null, }
    , new Company { CompanyID = 5, CompanyName = "Công ty cổ phần Funtap", Address = "P803, tầng 8, tòa nhà Toyota, 315 Trường Chinh, Thanh Xuân, Hà Nộii", PhoneNumber = null, Description = "Công ty Cổ phần Funtap (Website: funtap.vn) Được thành lập đầu năm 2013 bởi đội ngũ kỹ sư giàu nhiệt huyết và kinh nghiệm trong lĩnh vực dịch vụ Internet và giải trí trên nền tảng di động. FunTap là ngôi nhà tập hợp người trẻ yêu công nghệ, cá tính với khát khao mang đến cho cộng đồng người tiêu dùng Việt Nam các sản phẩm giải trí online đột phá và sáng tạo. Tại FunTap, chúng tôi tôn trọng sự khác biệt và sự bình đẳng của từng cá nhân. Đó là nền tảng cơ bản giúp chúng tôi luôn mang đến cho khách hàng sự trải nghiệm dịch vụ hoàn hảo. Làm việc tại Funtap, bạn có cơ hội được tiếp xúc với đội ngũ chuyên gia công nghệ hàng đầu, được tham gia vào các dự án với khách hàng quốc tế và trong nước. Môi trường làm việc trẻ và năng động, chế độ đãi ngộ xứng đáng và có nhiều cơ hội phát triển kỹ năng nghề nghiệp.", Website = "http://corp.funtap.vn/", Logo = "/Content/UPLOAD/funtap.png", LocationID = 24, AverageScore = 3.00m, TotalUserRate = 14, TotalJobActive = null, }
    , new Company { CompanyID = 6, CompanyName = "Công ty TNHH Đầu tư và Kỹ thuật Hải An", Address = "257 Liên Chiểu - Đà Nẵng", PhoneNumber = null, Description = "NHÀ THẦU CHUYÊN NGHIỆP VỀ HỆ THỐNG ĐIỀU HÒA chuyên thiết kế, cung cấp, tư vấn lắp đặt hệ thống điều hòa", Website = "www.mallcenter.vn", Logo = "/Content/UPLOAD/1476158725_hai_an.PNG", LocationID = 15, AverageScore = 3.00m, TotalUserRate = 5, TotalJobActive = null, }
    , new Company { CompanyID = 7, CompanyName = "Công ty cổ phần kỹ nghệ kingtech", Address = "263 đường La Dương, Dương Nội, Hà Đông, Hà Nội", PhoneNumber = null, Description = null, Website = "http://kingtech.vn/", Logo = "/Content/UPLOAD/amc.png", LocationID = 24, AverageScore = 4.50m, TotalUserRate = 2, TotalJobActive = null, }
@@ -434,7 +435,7 @@ namespace WEE_API.Migrations
             }
 
             //Create User...
-            var user = new ApplicationUser { UserName = "Admin", Email = "admin@somedomain.com",  FullName = "System Administrator", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            var user = new ApplicationUser { UserName = "Admin", Email = "admin@somedomain.com", FullName = "System Administrator", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
 
             ApplicationUserManager UserManager = new ApplicationUserManager(new ApplicationUserStore(context));
             var result = UserManager.Create(user, "Admin123");
@@ -447,7 +448,7 @@ namespace WEE_API.Migrations
 
 
             //Create Default User...
-            user = new ApplicationUser { UserName = "User", Email = "defaultuser@somedomain.com",  FullName = "Default User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            user = new ApplicationUser { UserName = "User", Email = "defaultuser@somedomain.com", FullName = "Default User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
             result = UserManager.Create(user, "User123");
 
             if (result.Succeeded)
@@ -461,8 +462,6 @@ namespace WEE_API.Migrations
             result = UserManager.Create(user, "Guest123");
 
 
-            base.Seed(context);
-
             //Create a permission...
             PERMISSION _permission = new PERMISSION { PermissionDescription = "Home-Reports" };
             ApplicationRoleManager.AddPermission(_permission);
@@ -471,7 +470,15 @@ namespace WEE_API.Migrations
             ApplicationRoleManager.AddPermission2Role(context.Roles.First(p => p.Name == c_DefaultUser).Id, context.PERMISSIONS.First().PermissionId);
 
 
-
+            context.Users.AddOrUpdate(a => a.Id,
+               new ApplicationUser { Id = 4, LastModified = DateTime.ParseExact("10/24/2017 12:53:49", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "phuc1@gmail.com", EmailConfirmed = false, PasswordHash = "AHSxpyVD/LhXx+wROzLouxmJROg7v5fjbdJcZhKIjVDuqyvGsoyQCrSLIJ/VssPPBA==", SecurityStamp = "70a1c37c-add0-4736-987b-6f852f678981", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "phuc1@gmail.com", }
+             , new ApplicationUser { Id = 5, LastModified = DateTime.ParseExact("10/24/2017 13:06:05", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "quang123@gmail.com", EmailConfirmed = false, PasswordHash = "AKLfDOXp25spagDRViHDMs0fVB1i0qJPwZSLzGiW90NvushSC9Mp2es+2zmZ2qTBkw==", SecurityStamp = "2fa525bd-7ee9-41ea-8479-2535d04b9836", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "quang123@gmail.com", }
+             , new ApplicationUser { Id = 6, LastModified = DateTime.ParseExact("10/24/2017 19:08:07", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "Tonvantruongbk@gmail.com", EmailConfirmed = false, PasswordHash = "AD7b6pIoqkdmk/mnytkM0BCRuQwyF0bKXh9w1mCsHiXm4Y/wuPFKTml0xCY6nPUHAg==", SecurityStamp = "1a7c2a01-78ca-4d6f-9658-e18c0b1921c8", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "Tonvantruongbk@gmail.com", }
+             , new ApplicationUser { Id = 7, LastModified = DateTime.ParseExact("10/24/2017 20:15:49", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "tonvantruongbk1@gmail.com", EmailConfirmed = false, PasswordHash = "AOFsxTSc4ihT0J0IZBY4AeQHoL3T+mytaZUuUhnQrfBM9AYrDK4rzZGUyQLa+OPtdg==", SecurityStamp = "eb18b5b9-36d6-452d-a480-55d854e68305", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "tonvantruongbk1@gmail.com", }
+             , new ApplicationUser { Id = 8, LastModified = DateTime.ParseExact("10/24/2017 21:12:55", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "a@gmail.com", EmailConfirmed = false, PasswordHash = "AJuEIIzDksyk4WqCRZN+eNv9qgIoUvx+I3MhC5iP+lTk7vJJDtNx0Xwgxg53kYuynQ==", SecurityStamp = "605b1453-4aaf-4621-907e-b6978128931a", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "a@gmail.com", }
+                , new ApplicationUser { Id = 9, LastModified = DateTime.ParseExact("10/24/2017 21:57:09", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), Inactive = false, FullName = null, Firstname = null, Lastname = null, BirthDay = null, WorkingStatus = false, WorkingType = 0, Salary = null, YearOfEmployee = null, Contract = null, Email = "vana@gmail.com", EmailConfirmed = false, PasswordHash = "AN+0tg/InhHiexqL9kyascAKllmHrGSddErvN6TVxNViso0JkG0QnhHcoc4h02o8aA==", SecurityStamp = "799e27ce-99d3-4b16-8c4a-cfa5f0c352c5", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEndDateUtc = null, LockoutEnabled = true, AccessFailedCount = 0, UserName = "vana@gmail.com", }
+            );
+            context.SaveChanges();
 
             base.Seed(context);
         }

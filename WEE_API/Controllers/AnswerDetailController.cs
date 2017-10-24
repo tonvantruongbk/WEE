@@ -17,6 +17,7 @@ namespace WEE_API.Controllers
         DBContext db = new DBContext();
         public ActionResult Index()
         {
+            Session["AnswerID"] = null;
             return View();
         }
 
@@ -25,9 +26,17 @@ namespace WEE_API.Controllers
         {
             try
             {
+                long id = 0;
                 var all = db.AnswerDetail
                             .Include(a=>a.Answer)
                             .AsNoTracking();
+                if (!string.IsNullOrEmpty(Session["AnswerID"] + ""))
+                {
+                    id = Convert.ToInt64(Session["AnswerID"] + "");
+                    all = db.AnswerDetail.Where(a => a.AnswerID == id)
+                            .Include(a=>a.Answer)
+                        .AsNoTracking();
+                }
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<AnswerDetail>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -91,7 +100,7 @@ namespace WEE_API.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            AnswerDetail entity = db.AnswerDetail.FirstOrDefault(a => a.AnswerDetailID == id);
+            AnswerDetail entity = db.AnswerDetail.FirstOrDefault(a => a.AnswerID == id);
             if (entity != null)
             {
                 db.AnswerDetail.Remove(entity);
@@ -106,7 +115,11 @@ namespace WEE_API.Controllers
            
             return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        public void SetParrent(int id)
+        {
+            Session["AnswerID"] = id;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -22,7 +22,6 @@ namespace WEE_API.Models
         public int AnswerID { get; set; }
 
         [ForeignKey("AnswerID")]
-        [JsonIgnore]
         public virtual Answer Answer { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using WEE_API.Common;
@@ -32,10 +33,11 @@ namespace WEE_API.Models
         [Display(Name ="Điểm trung bình")]
         public decimal? AverageScore { get; set; } 
         [Display(Name ="Số người bình chọn")]
-        public int? TotalUserRate { get; set; } 
+        public int? TotalUserRate { get; set; }
+
         [Display(Name ="Tổng số việc làm")]
         public int? TotalJobActive { get; set; }
-        
+
 
         [ForeignKey("LocationID")]
         public virtual Location Location { get; set; }

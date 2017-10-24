@@ -29,11 +29,7 @@
                 }, conf.attr || {}))
                 .appendTo(container);
 
-            conf._input.selectize($.extend({
-                //valueField: 'value', 
-                //labelField: 'label',
-                //searchField: 'label' 
-            }, conf.opts));
+            conf._input.selectize($.extend({}, conf.opts));
 
             conf._selectize = conf._input[0].selectize;
 
@@ -106,7 +102,7 @@ var generateFields = function (tableID, editorFor) {
                     display: function (file_id) {
                         return '<img src="' + path + trimStart('/', editorFor.file('files', file_id).web_path) + '"/>';
                     },
-                    clearText: "Xóa ản",
+                    clearText: "Xóa ảnh",
                     noImageText: 'Chưa có ảnh',
                     ajax: {
                         url: path + "Company/UploadImage",
@@ -164,11 +160,9 @@ var generateFields = function (tableID, editorFor) {
 };
 function trimStart(character, string) {
     var startIndex = 0;
-
     while (string[startIndex] === character) {
         startIndex++;
     }
-
     return string.substr(startIndex);
 }
 var generateColumns = function (tableID, editorFor) {
@@ -187,7 +181,7 @@ var generateColumns = function (tableID, editorFor) {
         else if (columnData.type === "image") {
             render1 = function (file_id) {
                 return file_id ?
-                    '<img src="' + path + trimStart('/', editorFor.file('files', file_id).web_path) + '" height="64" />' :
+                    '<img src="' + path + trimStart('/', editorFor.file('files', file_id).web_path) + '" height="32" />' :
                     null;
             }
         }
@@ -208,11 +202,7 @@ var generateColumns = function (tableID, editorFor) {
     };
     var columns = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-       // if ($(th).data().listvisible === true) {
             columns.push(_prepareColumn(th));
-        //} else {
-        //    $(th).removeAttr("style").hide();
-        //}
     });
     return columns;
 };

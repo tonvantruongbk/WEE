@@ -1,0 +1,142 @@
+﻿<#@ Template Language="C#" debug="true" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="MultiUtility.CS.ttinclude"#>
+using System;
+using System.Data;
+using System.Linq;
+using System.Web.Mvc;
+using <#=        Namespace #>.Common;
+using <#=        Namespace #>.Common.Datatables;
+using <#=        Namespace #>.Models;
+using System.Linq.Dynamic;
+using System.Data.Entity;
+
+
+namespace <#=        Namespace #>.Controllers
+{ 
+    public class <#=        modelName2 #>Controller : Controller
+    { 
+        DBContext db = new DBContext();
+        public ActionResult Index()
+        {
+            Session["<#=        ControllerName #>ID"] = null;
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult DataHandler(DatatablesRequest request)
+        {
+            try
+            {
+                long id = 0;
+                var all = db.<#=        modelName2 #>
+<#    foreach (var p in ListNavigationProperties2){#>
+                            .Include(a=>a.<#=            p.Name.Replace("ID","") #>)
+<#    }#>
+                            .AsNoTracking();
+                if (!string.IsNullOrEmpty(Session["<#=        ControllerName #>ID"] + ""))
+                {
+                    id = Convert.ToInt64(Session["<#=        ControllerName #>ID"] + "");
+                    all = db.<#=        modelName2 #>.Where(a => a.<#=        ControllerName #>ID == id)
+<#    foreach (var p in ListNavigationProperties2){#>
+                            .Include(a=>a.<#=            p.Name.Replace("ID","") #>)
+<#    }#>
+                        .AsNoTracking();
+                }
+                var queryFiltered = all.SearchForDataTables(request);
+                queryFiltered = queryFiltered.Sort(request) as IQueryable<<#=        modelName2 #>>;
+                var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
+                ReponseToDatatables<<#=        modelName2 #>> result = new ReponseToDatatables<<#=        modelName2 #>>
+                {
+                    draw = request.Draw,
+                    data = finalquery.ToList(),
+                    recordsFiltered = queryFiltered.Count(),
+                    recordsTotal = all.Count()
+                };
+                if (request.FilterBase != null)
+                {
+                    foreach (var dtFilterBase in request.FilterBase)
+                    {
+                        Type itemType = result.GetType();
+                        try
+                        {
+                            var field = itemType.GetProperty("yadcf_data_"+dtFilterBase.Ydacf_Number);
+                            if (field != null)
+                            {
+                                var bbb = db.<#=        modelName2 #>.Select("new ("+ dtFilterBase.Ydacf_FieldName + " as label, " + dtFilterBase.Ydacf_FieldName + " as value)");
+                                field.SetValue(result,bbb.Distinct().ToListAsync().Result);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+                    }
+                }
+                return new JsonNetResult { Data = result };
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Create(<#=        modelName2 #> data)
+        {
+            db.<#=        modelName2 #>.Add(data);
+            db.SaveChanges();
+            return Json(new { Message = "Đã thêm thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult Edit(<#=        primaryKeyType2 #> Id, <#=        modelName2 #> data)
+        {
+            if (data != null)
+            {
+                data.<#=        primaryKey2 #> = Id;
+                db.Entry(data).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json(new { Message = "Đã sửa thành công!" }, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult Delete(<#=        primaryKeyType2 #> id)
+        {
+            <#=        modelName2 #> entity = db.<#=        modelName2 #>.FirstOrDefault(a => a.<#=        primaryKey #> == id);
+            if (entity != null)
+            {
+                db.<#=        modelName2 #>.Remove(entity);
+                db.SaveChanges();
+            }
+            return Json(new { Message = "Đã xóa thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetList2Select()
+        {
+          var result =  db.<#=        modelName2 #>.Select(a => new CommonModel {label = a.<#=        modelName2 #>Name, value = a.<#=        modelName2 #>ID}).ToList();
+           
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public void SetParrent(int id)
+        {
+            Session["<#=        ControllerName #>ID"] = id;
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+                db = null;
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

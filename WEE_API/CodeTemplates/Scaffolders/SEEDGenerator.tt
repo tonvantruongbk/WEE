@@ -10,7 +10,7 @@
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#
         var dbName = "WEE_DB2017";
-        var connectionString = "Data Source=(local);Initial Catalog=" + dbName + ";Integrated Security=True";
+        var connectionString = "Data Source=118.70.117.56;Initial Catalog=WEE_DB2017;User Id=sa; password=cosmic1234$;";
         var conn = new SqlConnection(connectionString);
         conn.Open();
         var schema = conn.GetSchema("TABLES");
@@ -91,12 +91,19 @@ context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#
                             }
                             else if (type.Name == "DateTime")
                             {
-#><#=name #>=DateTime.Parse("<#=dr[name] #>"), <#
+#><#=name #>=DateTime.ParseExact("<#=dr[name] #>", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), <#
                             }
                             else
                             {
-#><#=name #>=<#=dr[name] #>, <#
-                            } #><#
+                        if (dr[name]+""=="True" || dr[name]+""=="False")
+                        {
+#><#=   name #>=<#=   (dr[name]+"").ToLower() #>, <#
+                        }
+                        else
+                        {
+#><#=   name #>=<#=   dr[name] #>, <#
+                        }
+} #><#
                         }
                     } #> }
 <#}#>

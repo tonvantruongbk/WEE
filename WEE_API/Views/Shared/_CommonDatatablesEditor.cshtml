@@ -6,7 +6,7 @@
         @if (!string.IsNullOrEmpty(Model.CustomEditorFormID))
         {
         @:template: "#@Model.CustomEditorFormID",
-        }
+                }
         i18n: @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/languageEditor.json"))),
         ajax: function (method, url, d, successCallback, errorCallback) {
             var newvalue;
@@ -39,7 +39,18 @@
         fields: generateFields("@Model.TableID",editorFor@(Model.Controller))
     });
 
-
+    var openVals@(Model.Controller);
+    editorFor@(Model.Controller)
+        .on('open', function() {
+            // Store the values of the fields on open
+            openVals@(Model.Controller) = JSON.stringify(editorFor@(Model.Controller).get());
+        })
+        .on('preBlur', function(e) {
+            // On close, check if the values have changed and ask for closing confirmation if they have
+            if ( openVals@(Model.Controller) !== JSON.stringify(editorFor@(Model.Controller).get())) {
+                return confirm( 'Các thay đổi chưa được lưu. Bạn có thực sự muốn thoát không?' );
+            }
+        });
     var cbuttons = [
         @*{
                     text: 'submit',
@@ -293,8 +304,7 @@
         columns: generateColumns("@Model.TableID",editorFor@(Model.Controller)),
         select: $("#@Model.TableID").data('select') || false,
         order: $("#@Model.TableID").data('orders') || "",
-        scrollX: true,
-        sWidth: "300",
+        //scrollX: "100%",
         @if (!Model.buttonExternal)
         {
             @Html.Raw("buttons: cbuttons ,")
@@ -417,7 +427,7 @@
                 }
             ]
         }).edit(this);*@
-    } );
+    });
 
     @if(Model.buttonExternal){
       @Html.Raw(  "var buttons = new $.fn.dataTable.Buttons(tableFor" +Model.Controller+","+
@@ -429,7 +439,7 @@
 
     @if (Model.Ydacf== "HeaderFilter")
     {
-        @Html.Raw("yadcf.init(tableFor"+Model.Controller+", generateYdacf(\""+Model.TableID+"\",\"HeaderFilter\"))")
+        @Html.Raw("yadcf.init(tableFor" + Model.Controller + ", generateYdacf(\"" + Model.TableID + "\",\"HeaderFilter\"))")
     }
     else
     {

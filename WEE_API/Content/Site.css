@@ -305,3 +305,19 @@ table.dataTable thead .sorting {
 textarea {
     height: 120px !important;
 }
+/*fix header not match body when ScrollX=true and AutoWith=True*/
+/*table { width:100%; }*/ 
+
+.customTitleCss {
+    float: left;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 1.2em;
+    padding: 10px 0;
+    color: #ffef64;
+    font-weight: bold;
+}
+.dataTables_scroll
+{
+    overflow:auto;
+}
