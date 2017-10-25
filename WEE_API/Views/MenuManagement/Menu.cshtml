@@ -41,9 +41,9 @@ foreach (var adMenu in Model.Where(a => a.MenuParentID == parentID))
                 </div>
             </li>
             <!-- END SIDEBAR TOGGLER BUTTON -->
-            <li class="heading">
+            @*<li class="heading">
                 <h3 class="uppercase">CHỨC NĂNG PHẦN MỀM</h3>
-            </li>
+            </li>*@
             @GetSubMenus(Model, null)
         </ul>
         <!-- END SIDEBAR MENU -->

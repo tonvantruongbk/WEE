@@ -49,10 +49,11 @@ namespace WEE_API.Models
         public virtual DbSet<ContractType> ContractType { get; set; }
         public virtual DbSet<Answer> Answer { get; set; }
         public virtual DbSet<AnswerDetail> AnswerDetail { get; set; }
+        public virtual DbSet<TermAndCondition> TermAndCondition { get; set; }
 
 
 
-        public DbSet<PERMISSION> PERMISSIONS { get; set; }
+        public DbSet<PERMISSION> PERMISSIONS { get; set; } 
 
         //public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 

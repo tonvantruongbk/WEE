@@ -1,0 +1,64 @@
+﻿
+@using WEE_API.Common
+@using WEE_API.Models
+@using WEE_API.ViewModel
+@{
+    var screenTitle = "Điều khoản sử dụng";
+    ViewBag.Title = screenTitle;
+    var ViewDT = new ViewDataDictionary<TermAndCondition>();
+    var filterOnHeader = "HeaderFilter1"; //"DataTablePutExternalFilter";
+}
+@section PageStyles
+{
+    <link href="//cdn.quilljs.com/1.2.4/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.2.4/quill.bubble.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.2.4/quill.core.css" rel="stylesheet">
+    <style>
+        div.DTE_Action_Edit {
+            left: 1em;
+            right: 1em;
+            margin-left: 0;
+            width: auto;
+        }
+    </style>
+}
+
+<div id="customForm">
+    <fieldset class="name">
+        <div data-editor-template="Agreement"></div>
+    </fieldset>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = screenTitle })
+        <table id="DataTableTermAndCondition"
+               class="table table-bordered table-hover table-header-fixed no-footer order-column"
+               data-orders='[[0, "asc"]]'
+               data-select="true"
+               data-dom="Brtlp">
+            <thead>
+                <tr>
+                    <th data-filter_type="auto_complete" data-data="Agreement" data-type="quill" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.Agreement, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Agreement, ViewDT).PropertyName)
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script src="//cdn.quilljs.com/1.3.3/quill.min.js"></script>
+    <script src="~/Scripts/DatatablesNet/FieldTypeQuill.js"></script>
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+{
+    Controller = "TermAndCondition",
+    TableID = "DataTableTermAndCondition",
+    FieldID = "Id",
+    ButtonPlaceID = "buttons",
+    buttonExternal = false,
+    Ydacf = filterOnHeader,
+    CustomEditorFormID = ""
+})
+}

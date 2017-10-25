@@ -279,7 +279,7 @@ namespace WEE_API
                 using (DBContext db = new DBContext())
                 {
                     ApplicationUser _user = GetUser(db, _userId);
-                    if (_user.Roles.Where(p => p.RoleId == _roleId).Count() == 0)
+                    if (!_user.Roles.Any(p => p.RoleId == _roleId))
                     {
                         //_user.UserRoles.Add(_role);
 

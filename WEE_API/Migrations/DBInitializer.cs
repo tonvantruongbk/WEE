@@ -43,22 +43,21 @@ namespace WEE_API.Migrations
                 , new AD_Menu { MenuID = 201, MenuParentID = 2, MenuText = "Công ty & Công việc", URLAction = "/Company", MenuIcon = "fa fa-building", MenuSort = 3, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 202, MenuParentID = 2, MenuText = "Công việc đang tuyển dụng", URLAction = "/Job", MenuIcon = "fa fa-commenting-o", MenuSort = 4, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 203, MenuParentID = 2, MenuText = "Loại công việc", URLAction = "/JobType", MenuIcon = "fa fa-sticky-note", MenuSort = 5, MenuSeparator = null, CanDelete = null }
-
                 , new AD_Menu { MenuID = 206, MenuParentID = 2, MenuText = "Phân loại người sử dụng", URLAction = "/UserType", MenuIcon = "fa fa-university", MenuSort = 7, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 207, MenuParentID = 2, MenuText = "Địa điểm", URLAction = "/Location", MenuIcon = "fa fa-map", MenuSort = 8, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 208, MenuParentID = 2, MenuText = "Lĩnh vực doanh nghiệp", URLAction = "/Zone", MenuIcon = "fa fa-th-list", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-
                 , new AD_Menu { MenuID = 209, MenuParentID = 2, MenuText = "Vị trí công việc", URLAction = "/JobPosition", MenuIcon = "fa fa-list-ol", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 210, MenuParentID = 2, MenuText = "Mức thu nhập", URLAction = "/SalaryLevel", MenuIcon = "fa fa-credit-card", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 211, MenuParentID = 2, MenuText = "Thời gian làm việc", URLAction = "/WorkingTime", MenuIcon = "fa fa-clock-o", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 212, MenuParentID = 2, MenuText = "Hợp đồng lao động", URLAction = "/ContractType", MenuIcon = "fa fa-paperclip", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 213, MenuParentID = 2, MenuText = "Tình trạng việc làm", URLAction = "/WorkingStatus", MenuIcon = "fa fa-briefcase", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 214, MenuParentID = 2, MenuText = "Quản lý Câu hỏi", URLAction = "/Question", MenuIcon = "fa fa-question", MenuSort = 6, MenuSeparator = null, CanDelete = null }
-
                 , new AD_Menu { MenuID = 215, MenuParentID = 2, MenuText = "Quản lý Câu trả lời", URLAction = "/Answer", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 216, MenuParentID = 2, MenuText = "Chi tiết câu trả lời", URLAction = "/AnswerDetail", MenuIcon = "fa fa-asterisk", MenuSort = 6, MenuSeparator = null, CanDelete = null }
-
                 , new AD_Menu { MenuID = 230, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-puzzle-piece", MenuSort = 10, MenuSeparator = null, CanDelete = null }
+               
+                , new AD_Menu { MenuID = 231, MenuParentID = 2, MenuText = "Điều khoản sử dụng", URLAction = "/TermAndCondition", MenuIcon = "fa fa-book", MenuSort = 10, MenuSeparator = null, CanDelete = null }
+
                 , new AD_Menu { MenuID = 9, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cogs", MenuSort = 31, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 91, MenuParentID = 9, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-sitemap", MenuSort = 35, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 92, MenuParentID = 9, MenuText = "Người Dùng và Phân Quyền", URLAction = "/Permission", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null }
@@ -412,6 +411,9 @@ namespace WEE_API.Migrations
                 new AnswerDetail { AnswerDetailID = 25, AnswerID = 5, AnswerDetailName = "Tự do phản biện" }
             );
 
+            context.TermAndCondition.AddOrUpdate(a => a.Id,
+            new TermAndCondition { Id = 1, Agreement = "<p class=\"ql - align - center\"><span class=\"ql - size - large\" style=\"color: rgb(230, 0, 0); \">Thỏa thuận sử dụng</span></p><p><strong>1. Điều khoản chung</strong></p><p>Chào mừng bạn đến website WEE&nbsp;( sau đây gọi tắt là website). Website này và những dịch vụ trên website được xây dựng và thuộc sở hữu của Công ty TNHH Tư Vấn Thiết Kế Phần Mềm. Việc bạn sử dụng website và các dịch vụ của website đồng nghĩa với việc bạn đã đồng ý với những thoả thuận dưới đây (Thoả thuận sử dụng dịch vụ ). Nếu bạn không đồng ý, xin vui lòng không sử dụng website và những dịch vụ của website.</p><p>Chúng tôi có thể sẽ thay đổi hoặc điều chỉnh Thoả thuận sử dụng dịch vụ. Bạn nên thường xuyên xem Thoả thuận sử dụng dịch vụ mỗi khi vào website. Nếu bạn tiếp tục sử dụng website và những dịch vụ sau khi chúng tôi đã điều chỉnh tức là bạn đã đồng ý với Thoả thuận sử dụng dịch vụ mới của chúng tôi.</p><p><strong>2. Dịch vụ và trách nhiệm của chúng tôi</strong></p><p>Dịch vụ của chúng tôi là những dịch vụ được ghi trên website này (sau đây gọi tắt là dịch vụ).</p><p>Bạn đồng ý rằng chúng tôi có quyền, và không cần thông báo trước, điều chỉnh những dịch vụ.</p><p>Bạn cũng đồng ý rằng chúng tôi có quyền điều chỉnh hoặc xoá những thông tin mà bạn cung cấp cho chúng tôi để bảo đảm những thông tin được đăng ký phù hợp với Quy định của website.</p><p>Bạn đồng ý rằng chúng tôi sẽ không chịu trách nhiệm cho những thiệt hại do sự thiếu hoặc không chính xác của thông tin trên website, bao gồm những hậu quả trực tiếp, gián tiếp, ngẫu nhiên, hoặc phát sinh từ việc bạn truy cập hoăc sử dụng thông tin trên website. Vì vậy, bạn hoàn toàn chịu trách nhiệm cho những hậu quả của việc sử dụng website.</p><p>Bạn hiểu và đồng ý rằng các thông tin về tên truy cập và mật khẩu phải được giữ bí mật, và phải thông báo ngay cho chúng tôi nếu bạn nghi ngờ rằng mật khẩu của mình đã bị tiết lộ.</p><p>Bạn đồng ý rằng chúng tôi có quyền ngăn chặn tạm thời hoặc lâu dài sự truy cập và sử dụng website của bạn nếu như bạn có hành động gây hại đến website hoặc vi phạm Thoả thuận sử dụng dịch vụ</p><p><strong>3. Trách nhiệm và nghĩa vụ của bạn</strong></p><p>Bạn cần đồng ý với Thoả thuận sử dụng dịch vụ, cam kết cung cấp thông tin chính xác khi đăng ký và chịu hoàn toàn trách nhiệm về những thông tin này.</p><p>Bạn chịu trách nhiệm bảo vệ mật khẩu truy cập, và trách nhiệm của việc đăng nhập bằng mật khẩu của bạn, do hoặc không do bạn trực tiếp đăng nhập.</p><p><strong>4. Giới hạn độ tuổi</strong></p><p>Mọi người đều có thể truy cập website này. Tuy nhiên, nếu bạn muốn đăng ký thành viên để đưa thông tin lên website, bạn phải ít nhất 18 tuổi và có đủ khả năng chịu trách nhiệm về hành vi của mình.</p><p><strong>5. Sử dụng nội dung trên website</strong></p><p>Nội dung trên website này có thể được xem và in ra hoặc gửi cho người khác. Bạn không thể sửa đổi, bán hoặc chuyển nhượng thương mại bất kỳ thông tin gì từ website này.</p><p><strong>6. Đăng kí thành viên</strong></p><p>Đăng kí thành viên hoàn toàn miễn phí.</p><p>Chúng tôi có quyền từ chối đưa thông tin lên website nếu như chúng tôi cảm thấy thông tin do bạn cung cấp không có sự tin cậy. Bạn có thể đăng ký lại sau 2 ngày nếu như bạn không thấy thông tin đăng ký của bạn trên website.</p><p>Mỗi thành viên chỉ được có tối đa một đăng ký. Nếu thành viên vi phạm quy định, chúng tôi sẽ xóa đăng ký của thành viên đó.</p><p><strong>7. Cập nhật thông tin thành viên</strong></p><p>Thành viên chịu trách nhiệm tự cập nhật thông tin của mình. Thành viên sử dụng tên truy cập và mật khẩu khi đăng ký để cập nhật thông tin và hình ảnh qua bằng cách nhấn menu \"Cập nhật thông tin\" trên website. Thành viên cũng có thể tự xoá đăng ký của mình nếu muốn.</p>",  }
+            );
 
             context.SaveChanges();
 
@@ -435,10 +437,10 @@ namespace WEE_API.Migrations
             }
 
             //Create User...
-            var user = new ApplicationUser { UserName = "Admin", Email = "admin@somedomain.com", FullName = "System Administrator", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            var user = new ApplicationUser { Id = 1, UserName = "admin", Email = "admin@somedomain.com", FullName = "System Administrator", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
 
             ApplicationUserManager UserManager = new ApplicationUserManager(new ApplicationUserStore(context));
-            var result = UserManager.Create(user, "Admin123");
+            var result = UserManager.Create(user, "admin123");
 
             if (result.Succeeded)
             {
@@ -448,8 +450,8 @@ namespace WEE_API.Migrations
 
 
             //Create Default User...
-            user = new ApplicationUser { UserName = "User", Email = "defaultuser@somedomain.com", FullName = "Default User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
-            result = UserManager.Create(user, "User123");
+            user = new ApplicationUser { Id = 2, UserName = "user", Email = "defaultuser@somedomain.com", FullName = "Default User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            result = UserManager.Create(user, "user123");
 
             if (result.Succeeded)
             {
@@ -458,8 +460,10 @@ namespace WEE_API.Migrations
             }
 
             //Create User with NO Roles...
-            user = new ApplicationUser { UserName = "Guest", Email = "guest@somedomain.com", FullName = "Guest User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
-            result = UserManager.Create(user, "Guest123");
+            user = new ApplicationUser {Id = 3, UserName = "guest", Email = "guest@somedomain.com", FullName = "Guest User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            result = UserManager.Create(user, "guest123");
+
+            context.SaveChanges();
 
 
             //Create a permission...

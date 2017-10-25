@@ -79,7 +79,7 @@ param(
 			-TemplateFolders $TemplateFolders -Project $Project  -CodeLanguage $CodeLanguage -Force:$Force -Verbose 
 
 		Add-ProjectItemViaTemplate $outputPathController2 -Template Controller2 `
-			-Model @{  ModelType = $foundModelType ; ModelType2 = $foundModelType2 ; RelatedEntities = $relatedEntities; PrimaryKey = $primaryKey; PrimaryKey2 = $primaryKey2; Namespace = $namespace ; ControllerName = $ControlerName; } `
+			-Model @{  ModelType = $foundModelType ; ModelType2 = $foundModelType2 ; RelatedEntities = $relatedEntities; PrimaryKey = $primaryKey; PrimaryKey2 = $primaryKey2; Namespace = $namespace ; ControllerName =$ControlerName;} `
 			-SuccessMessage "    Đã Gen Xong file {0}" `
 			-TemplateFolders $TemplateFolders -Project $Project  -CodeLanguage $CodeLanguage -Force:$Force -Verbose 
 

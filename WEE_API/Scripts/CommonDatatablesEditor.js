@@ -82,18 +82,18 @@ var generateFields = function (tableID, editorFor) {
             label: columnData.label || $(th).html(),// Uses the th data-label value. If it doesn't exist, uses the HTML inside
             //data: colName, //No need this in Editor, only needed in Columns
             name: colName,
+            //type: columnData.type,
             filter_delay: 500
         };
         switch (columnData.type) {
-            case 'textarea':
+            case 'quill':
                 field = $.extend(true, field, {
-                    type: 'textarea',
+                    type: 'quill',
                 });
                 break;
             case 'checkbox':
                 field = $.extend(true, field, {
-                    type: 'checkbox',
-                    className: "multiCheckboxLimitHeight" 
+                    className: "multiCheckboxLimitHeight"
                 });
                 break;
             case 'image':
@@ -125,7 +125,6 @@ var generateFields = function (tableID, editorFor) {
                 break;
             case 'selectize':
                 field = $.extend(true, field, {
-                    type: 'selectize',
                     opts: {
                         sortField: "value",
                         valueField: "value",
@@ -195,14 +194,14 @@ var generateColumns = function (tableID, editorFor) {
             render: render1,
             class: columnData.class || '',
             type: columnData.align || '',
-            visible: visible1, 
+            visible: visible1,
             sortable: columnData.sortable || true
         };
         return column;
     };
     var columns = [];
     $("#" + tableID).find('thead th').each(function (index, th) {
-            columns.push(_prepareColumn(th));
+        columns.push(_prepareColumn(th));
     });
     return columns;
 };

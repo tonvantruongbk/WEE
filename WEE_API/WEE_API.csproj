@@ -243,6 +243,7 @@
     <Compile Include="Controllers\ContractTypeController.cs" />
     <Compile Include="Controllers\JobPositionController.cs" />
     <Compile Include="Controllers\SalaryLevelController.cs" />
+    <Compile Include="Controllers\TermAndConditionController.cs" />
     <Compile Include="Controllers\WorkingStatusController.cs" />
     <Compile Include="Controllers\WorkingTimeController.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
@@ -310,6 +311,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\DashBoardViewModel.cs" />
     <Compile Include="ViewModel\DatatablesEditorViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
   </ItemGroup>
@@ -5137,6 +5139,7 @@
     <Content Include="Scripts\DatatablesNet\Editor-1.6.3\js\editor.jqueryui.js" />
     <Content Include="Scripts\DatatablesNet\Editor-1.6.3\js\editor.jqueryui.min.js" />
     <Content Include="Scripts\DatatablesNet\example.html" />
+    <Content Include="Scripts\DatatablesNet\FieldTypeQuill.js" />
     <Content Include="Scripts\DatatablesNet\FixedColumns-3.2.2\css\fixedColumns.bootstrap.css" />
     <Content Include="Scripts\DatatablesNet\FixedColumns-3.2.2\css\fixedColumns.bootstrap.min.css" />
     <Content Include="Scripts\DatatablesNet\FixedColumns-3.2.2\css\fixedColumns.dataTables.css" />
@@ -5806,7 +5809,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login3.cshtml" />
     <Content Include="Views\Account\OTP4EmailVerification.cshtml" />
     <Content Include="Views\Account\OTP4PhoneVerification.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -5858,6 +5861,9 @@
     <Content Include="Views\SalaryLevel\Index.cshtml" />
     <Content Include="Views\AnswerDetail\Index.cshtml" />
     <Content Include="Views\Answer\Index.cshtml" />
+    <Content Include="Views\TermAndCondition\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

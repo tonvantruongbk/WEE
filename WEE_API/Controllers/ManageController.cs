@@ -218,7 +218,7 @@ namespace WEE_API.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
-            ViewBag.RequiredLength = RBAC_ExtendedMethods.GetConfigSettingAsInt(RBAC_ExtendedMethods.cKey_PasswordRequiredLength, 6);
+            ViewBag.RequiredLength = RBAC_ExtendedMethods.GetConfigSettingAsInt(RBAC_ExtendedMethods.cKey_PasswordRequiredLength,6);
             return View();
         }
 

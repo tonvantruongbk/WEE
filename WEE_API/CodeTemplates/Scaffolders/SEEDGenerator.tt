@@ -1,4 +1,4 @@
-<#@ template debug="true" hostSpecific="true" #>
+﻿<#@ template debug="true" hostSpecific="true" #>
 <#@ output extension=".generated.txt" encoding="utf-8"#>
 <#@ Assembly Name="System.Data" #>
 <#@ assembly name="System.xml" #>
@@ -8,6 +8,7 @@
 <#@ import namespace="System.Data.SqlClient" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Text" #>
 <#
         var dbName = "WEE_DB2017";
         var connectionString = "Data Source=118.70.117.56;Initial Catalog=WEE_DB2017;User Id=sa; password=cosmic1234$;";
@@ -69,8 +70,8 @@ context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#
 <#
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    DataRow dr = ds.Tables[0].Rows[i];
-                    if (i > 0)
+                    DataRow dr = ds.Tables[0].Rows[i]; 
+            if (i > 0)
                     {
                         #> ,<#
                     }
@@ -78,7 +79,7 @@ context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#
 					foreach (DataColumn dc in ds.Tables[0].Columns)
                     {
                         var type = dc.DataType;
-                        var name = dc.ToString();
+                        var name = dc.ToString(); 
                         if (dr[name] + "" == "")
                         {
 #><#=name #>=null, <#
@@ -91,7 +92,7 @@ context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#
                             }
                             else if (type.Name == "DateTime")
                             {
-#><#=name #>=DateTime.ParseExact("<#=dr[name] #>", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), <#
+#><#=name #>=DateTime.ParseExact("<#= dr[name] #>", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), <#
                             }
                             else
                             {
@@ -101,7 +102,7 @@ context.<#=tableName #>s.AddOrUpdate(a=>a.<#=ds.Tables[0].Columns[0].ToString()#
                         }
                         else
                         {
-#><#=   name #>=<#=   dr[name] #>, <#
+#><#=   name #>=<#=  (dr[name]+"") #>, <#
                         }
 } #><#
                         }
