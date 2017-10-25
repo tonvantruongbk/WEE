@@ -13,10 +13,7 @@ namespace WEE_API.Controllers
         {
             var model = new AD_User();
             var id = "admin";
-            if (id != null)
-            {
-                model = db.AD_User.Where(a => a.UserID == id).FirstOrDefault();
-            }
+            model = db.AD_User.FirstOrDefault(a => a.UserID == id);
             return View(model);        
         }       
         [HttpPost]

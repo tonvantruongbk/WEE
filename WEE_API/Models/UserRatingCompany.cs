@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using WEE_API.RBAC;
 
 namespace WEE_API.Models
 {
@@ -23,7 +24,7 @@ namespace WEE_API.Models
         [Key]
         [Column(Order = 3)]
         [Display(Name ="Người bình chọn")]
-        public string UserID { get; set; }
+        public int UserID { get; set; }
 
        
         [Display(Name = "chi tiết trả lời")]
@@ -57,7 +58,7 @@ namespace WEE_API.Models
         public Answer Answer { get; set; }
         [ForeignKey("UserID")]
         [JsonIgnore]
-        public AD_User AD_User { get; set; }
+        public ApplicationUser Users { get; set; }
 
     }
 }

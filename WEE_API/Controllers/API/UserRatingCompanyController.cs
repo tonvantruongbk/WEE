@@ -51,6 +51,16 @@ namespace WEE_API.Controllers.API
 
             db.Entry(userRatingCompany).State = EntityState.Modified;
 
+            var urc = db.UserRatingCompany.Where(a => a.CompanyID == userRatingCompany.CompanyID).Select(a => a.Score ?? 0m).Average();
+
+            var cpn = db.Company.FirstOrDefault(a => a.CompanyID == userRatingCompany.CompanyID);
+            if (cpn != null)
+            {
+                cpn.AverageScore = urc;
+            }
+
+            db.Entry(cpn).State = EntityState.Modified;
+
             try
             {
                 db.SaveChanges();
@@ -80,6 +90,16 @@ namespace WEE_API.Controllers.API
             }
 
             db.UserRatingCompany.Add(userRatingCompany);
+
+            var urc = db.UserRatingCompany.Where(a => a.CompanyID == userRatingCompany.CompanyID).Select(a => a.Score).Average();
+
+            var cpn = db.Company.FirstOrDefault(a => a.CompanyID == userRatingCompany.CompanyID);
+            if (cpn != null)
+            {
+                cpn.TotalUserRate += 1;
+                cpn.AverageScore = urc ?? 0;
+                db.Entry(cpn).State = EntityState.Modified;
+            }
 
             try
             {

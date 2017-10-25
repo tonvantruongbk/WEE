@@ -1,0 +1,78 @@
+@using WEE_API.Common
+@using WEE_API.RBAC
+@using WEE_API.ViewModel
+@{
+    var screenTitle = "Users";
+    ViewBag.Title = screenTitle;
+    var ViewDT = new ViewDataDictionary<ApplicationUser>();
+    var filterOnHeader = "DataTablePutExternalFilter";
+}
+@section PageStyles
+{
+    <style>
+    </style>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = screenTitle })
+        <table id="DataTableUsers"
+               class="table table-bordered table-hover table-header-fixed no-footer order-column"
+               data-orders='[[0, "asc"]]'
+               data-select="true"
+               data-dom="fBrtlpi">
+            <thead>
+                <tr>
+                    <th data-filter_type="auto_complete" data-data="FullName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.FullName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.FullName, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="auto_complete" data-data="UserName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="" data-data="Roles" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.Roles, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Roles, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="auto_complete" data-data="Email" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="" data-data="EmailConfirmed" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.EmailConfirmed, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.EmailConfirmed, ViewDT).PropertyName)
+                    </th>
+
+                    <th data-filter_type="auto_complete" data-data="PhoneNumber" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="" data-data="PhoneNumberConfirmed" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumberConfirmed, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumberConfirmed, ViewDT).PropertyName)
+                    </th>
+                    <th data-filter_type="" data-data="TwoFactorEnabled" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.TwoFactorEnabled, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.TwoFactorEnabled, ViewDT).PropertyName)
+                    </th>
+
+                    <th data-filter_type="" data-data="LockoutEnabled" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.LockoutEnabled, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LockoutEnabled, ViewDT).PropertyName)
+                    </th>
+
+
+
+                    <th data-filter_type="" data-data="Inactive" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.Inactive, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Inactive, ViewDT).PropertyName)
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section scripts{
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+{
+    Controller = "Users",
+    TableID = "DataTableUsers",
+    FieldID = "Id",
+    ButtonPlaceID = "buttons",
+    buttonExternal = false,
+    Ydacf = filterOnHeader,
+    CustomEditorFormID = ""
+})
+}

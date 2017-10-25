@@ -244,6 +244,7 @@
     <Compile Include="Controllers\JobPositionController.cs" />
     <Compile Include="Controllers\SalaryLevelController.cs" />
     <Compile Include="Controllers\TermAndConditionController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkingStatusController.cs" />
     <Compile Include="Controllers\WorkingTimeController.cs" />
     <Compile Include="Migrations\DBInitializer.cs" />
@@ -5864,6 +5865,7 @@
     <Content Include="Views\TermAndCondition\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
