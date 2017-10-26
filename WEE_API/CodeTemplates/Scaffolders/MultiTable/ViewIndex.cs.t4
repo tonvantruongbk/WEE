@@ -36,7 +36,7 @@
 
 
 <div class="row">
-    <div class="col-lg-8 col-md-12">
+    <div class="col-lg-3 col-sm-12">
         @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = "<#= ControllerName  #>" })
     <table id="DataTable<#= ControllerName  #>" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"
@@ -76,7 +76,7 @@
         </thead>
     </table>
 </div>
-    <div class="col-lg-4 col-md-12">
+    <div class="col-lg-9 col-sm-12">
         @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle1, FilterOn = filterOnHeader1, FilterTitleBox = "<#= modelName2  #>" , FilterTitleClass = "customTitleCss" })
     <table id="DataTable<#= modelName2  #>" 
             class="table table-bordered table-hover table-header-fixed no-footer order-column"

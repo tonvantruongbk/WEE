@@ -33,22 +33,22 @@ namespace WEE_API.Models
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Job> Job { get; set; }
         public virtual DbSet<JobType> JobType { get; set; }
-        public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<UserRatingCompany> UserRatingCompany { get; set; }
         public virtual DbSet<CompanyZone> CompanyZone { get; set; }
         public virtual DbSet<Zone> Zone { get; set; }
+
         public virtual DbSet<QuestionType> QuestionType { get; set; }
+        public virtual DbSet<Question> Question { get; set; }
+        public virtual DbSet<Answer> Answer { get; set; }
+        public virtual DbSet<AnswerDetail> AnswerDetail { get; set; }
 
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
-
         public virtual DbSet<WorkingStatus> WorkingStatus { get; set; }
         public virtual DbSet<WorkingTime> WorkingTime { get; set; }
         public virtual DbSet<JobPosition> JobPosition { get; set; }
         public virtual DbSet<SalaryLevel> SalaryLevel { get; set; }
         public virtual DbSet<ContractType> ContractType { get; set; }
-        public virtual DbSet<Answer> Answer { get; set; }
-        public virtual DbSet<AnswerDetail> AnswerDetail { get; set; }
         public virtual DbSet<TermAndCondition> TermAndCondition { get; set; }
 
 

@@ -18,6 +18,6 @@ namespace WEE_API.Models
         public string AnswerName { get; set; }
 
 
-        public  virtual  ICollection<AnswerDetail> ListAnswerDetail { get; set; }
+        public virtual ICollection<AnswerDetail> ListAnswerDetail { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace WEE_API.Tests.Common
         [TestMethod]
         public void AutoJoinAndUpdateOne2Many()
         {
-         
             var db = new DBContext();
+            db.Database.Delete();
 
            var a =  db.Company.ToList(); 
         }

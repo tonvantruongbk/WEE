@@ -51,86 +51,87 @@ namespace WEE_API.Migrations
                 , new AD_Menu { MenuID = 211, MenuParentID = 2, MenuText = "Thời gian làm việc", URLAction = "/WorkingTime", MenuIcon = "fa fa-clock-o", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 212, MenuParentID = 2, MenuText = "Hợp đồng lao động", URLAction = "/ContractType", MenuIcon = "fa fa-paperclip", MenuSort = 9, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 213, MenuParentID = 2, MenuText = "Tình trạng việc làm", URLAction = "/WorkingStatus", MenuIcon = "fa fa-briefcase", MenuSort = 9, MenuSeparator = null, CanDelete = null }
-                , new AD_Menu { MenuID = 214, MenuParentID = 2, MenuText = "Quản lý Câu hỏi", URLAction = "/Question", MenuIcon = "fa fa-question", MenuSort = 6, MenuSeparator = null, CanDelete = null }
+                , new AD_Menu { MenuID = 214, MenuParentID = 2, MenuText = "Quản lý Câu hỏi", URLAction = "/QuestionType", MenuIcon = "fa fa-question", MenuSort = 6, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 215, MenuParentID = 2, MenuText = "Quản lý Câu trả lời", URLAction = "/Answer", MenuIcon = "fa fa-info-circle", MenuSort = 6, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 216, MenuParentID = 2, MenuText = "Chi tiết câu trả lời", URLAction = "/AnswerDetail", MenuIcon = "fa fa-asterisk", MenuSort = 6, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 230, MenuParentID = 2, MenuText = "Người dùng Bình chọn", URLAction = "/UserRatingCompany", MenuIcon = "fa fa-puzzle-piece", MenuSort = 10, MenuSeparator = null, CanDelete = null }
-               
                 , new AD_Menu { MenuID = 231, MenuParentID = 2, MenuText = "Điều khoản sử dụng", URLAction = "/TermAndCondition", MenuIcon = "fa fa-book", MenuSort = 10, MenuSeparator = null, CanDelete = null }
 
                 , new AD_Menu { MenuID = 9, MenuParentID = null, MenuText = "QUẢN TRỊ", URLAction = "#", MenuIcon = "fa fa-cogs", MenuSort = 31, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 91, MenuParentID = 9, MenuText = "Quản lý Menu", URLAction = "/MenuManagement", MenuIcon = "fa fa-sitemap", MenuSort = 35, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 92, MenuParentID = 9, MenuText = "Người Dùng và Phân Quyền", URLAction = "/Permission", MenuIcon = "fa fa-user", MenuSort = 35, MenuSeparator = null, CanDelete = null }
                 , new AD_Menu { MenuID = 1000, MenuParentID = null, MenuText = "TRỢ GIÚP", URLAction = "#", MenuIcon = "fa fa-question-circle", MenuSort = 30, MenuSeparator = null, CanDelete = null }
+
                 , new AD_Menu { MenuID = 2000, MenuParentID = null, MenuText = "API", URLAction = "/Swagger", MenuIcon = "fa fa-info-circle", MenuSort = 2000, MenuSeparator = null, CanDelete = null }
             );
 
             #region Location
+
             context.Location.AddOrUpdate(a => a.LocationID,
-                        new Location { LocationID = 1, LocationName = "An Giang" },
-                        new Location { LocationID = 2, LocationName = "Bà Rịa - Vũng Tàu" },
-                        new Location { LocationID = 3, LocationName = "Bạc Liêu" },
-                        new Location { LocationID = 4, LocationName = "Bắc Kạn" },
-                        new Location { LocationID = 5, LocationName = "Bắc Giang" },
-                        new Location { LocationID = 6, LocationName = "Bắc Ninh" },
-                        new Location { LocationID = 7, LocationName = "Bến Tre" },
-                        new Location { LocationID = 8, LocationName = "Bình Dương" },
-                        new Location { LocationID = 9, LocationName = "Bình Định" },
-                        new Location { LocationID = 10, LocationName = "Bình Phước" },
-                        new Location { LocationID = 11, LocationName = "Bình Thuận" },
-                        new Location { LocationID = 12, LocationName = "Cà Mau" },
-                        new Location { LocationID = 13, LocationName = "Cao Bằng" },
-                        new Location { LocationID = 14, LocationName = "Cần Thơ" },
-                        new Location { LocationID = 15, LocationName = "Đà Nẵng" },
-                        new Location { LocationID = 16, LocationName = "Đắk Lắk" },
-                        new Location { LocationID = 17, LocationName = "Đắk Nông" },
-                        new Location { LocationID = 18, LocationName = "Đồng Nai" },
-                        new Location { LocationID = 19, LocationName = "Đồng Tháp" },
-                        new Location { LocationID = 20, LocationName = "Điện Biên" },
-                        new Location { LocationID = 21, LocationName = "Gia Lai" },
-                        new Location { LocationID = 22, LocationName = "Hà Giang" },
-                        new Location { LocationID = 23, LocationName = "Hà Nam" },
-                        new Location { LocationID = 24, LocationName = "Hà Nội" },
-                        new Location { LocationID = 25, LocationName = "Hà Tĩnh" },
-                        new Location { LocationID = 26, LocationName = "Hải Dương" },
-                        new Location { LocationID = 27, LocationName = "Hải Phòng" },
-                        new Location { LocationID = 28, LocationName = "Hòa Bình" },
-                        new Location { LocationID = 29, LocationName = "Hậu Giang" },
-                        new Location { LocationID = 30, LocationName = "Hưng Yên" },
-                        new Location { LocationID = 31, LocationName = "Thành phố Hồ Chí Minh" },
-                        new Location { LocationID = 32, LocationName = "Khánh Hòa" },
-                        new Location { LocationID = 33, LocationName = "Kiên Giang" },
-                        new Location { LocationID = 34, LocationName = "Kon Tum" },
-                        new Location { LocationID = 35, LocationName = "Lai Châu" },
-                        new Location { LocationID = 36, LocationName = "Lào Cai" },
-                        new Location { LocationID = 37, LocationName = "Lạng Sơn" },
-                        new Location { LocationID = 38, LocationName = "Lâm Đồng" },
-                        new Location { LocationID = 39, LocationName = "Long An" },
-                        new Location { LocationID = 40, LocationName = "Nam Định" },
-                        new Location { LocationID = 41, LocationName = "Nghệ An" },
-                        new Location { LocationID = 42, LocationName = "Ninh Bình" },
-                        new Location { LocationID = 43, LocationName = "Ninh Thuận" },
-                        new Location { LocationID = 44, LocationName = "Phú Thọ" },
-                        new Location { LocationID = 45, LocationName = "Phú Yên" },
-                        new Location { LocationID = 46, LocationName = "Quảng Bình" },
-                        new Location { LocationID = 47, LocationName = "Quảng Nam" },
-                        new Location { LocationID = 48, LocationName = "Quảng Ngãi" },
-                        new Location { LocationID = 49, LocationName = "Quảng Ninh" },
-                        new Location { LocationID = 50, LocationName = "Quảng Trị" },
-                        new Location { LocationID = 51, LocationName = "Sóc Trăng" },
-                        new Location { LocationID = 52, LocationName = "Sơn La" },
-                        new Location { LocationID = 53, LocationName = "Tây Ninh" },
-                        new Location { LocationID = 54, LocationName = "Thái Bình" },
-                        new Location { LocationID = 55, LocationName = "Thái Nguyên" },
-                        new Location { LocationID = 56, LocationName = "Thanh Hóa" },
-                        new Location { LocationID = 57, LocationName = "Thừa Thiên - Huế" },
-                        new Location { LocationID = 58, LocationName = "Tiền Giang" },
-                        new Location { LocationID = 59, LocationName = "Trà Vinh" },
-                        new Location { LocationID = 60, LocationName = "Tuyên Quang" },
-                        new Location { LocationID = 61, LocationName = "Vĩnh Long" },
-                        new Location { LocationID = 62, LocationName = "Vĩnh Phúc" },
-                        new Location { LocationID = 63, LocationName = "Yên Bái" }
-                   );
+                new Location { LocationID = 1, LocationName = "An Giang" },
+                new Location { LocationID = 2, LocationName = "Bà Rịa - Vũng Tàu" },
+                new Location { LocationID = 3, LocationName = "Bạc Liêu" },
+                new Location { LocationID = 4, LocationName = "Bắc Kạn" },
+                new Location { LocationID = 5, LocationName = "Bắc Giang" },
+                new Location { LocationID = 6, LocationName = "Bắc Ninh" },
+                new Location { LocationID = 7, LocationName = "Bến Tre" },
+                new Location { LocationID = 8, LocationName = "Bình Dương" },
+                new Location { LocationID = 9, LocationName = "Bình Định" },
+                new Location { LocationID = 10, LocationName = "Bình Phước" },
+                new Location { LocationID = 11, LocationName = "Bình Thuận" },
+                new Location { LocationID = 12, LocationName = "Cà Mau" },
+                new Location { LocationID = 13, LocationName = "Cao Bằng" },
+                new Location { LocationID = 14, LocationName = "Cần Thơ" },
+                new Location { LocationID = 15, LocationName = "Đà Nẵng" },
+                new Location { LocationID = 16, LocationName = "Đắk Lắk" },
+                new Location { LocationID = 17, LocationName = "Đắk Nông" },
+                new Location { LocationID = 18, LocationName = "Đồng Nai" },
+                new Location { LocationID = 19, LocationName = "Đồng Tháp" },
+                new Location { LocationID = 20, LocationName = "Điện Biên" },
+                new Location { LocationID = 21, LocationName = "Gia Lai" },
+                new Location { LocationID = 22, LocationName = "Hà Giang" },
+                new Location { LocationID = 23, LocationName = "Hà Nam" },
+                new Location { LocationID = 24, LocationName = "Hà Nội" },
+                new Location { LocationID = 25, LocationName = "Hà Tĩnh" },
+                new Location { LocationID = 26, LocationName = "Hải Dương" },
+                new Location { LocationID = 27, LocationName = "Hải Phòng" },
+                new Location { LocationID = 28, LocationName = "Hòa Bình" },
+                new Location { LocationID = 29, LocationName = "Hậu Giang" },
+                new Location { LocationID = 30, LocationName = "Hưng Yên" },
+                new Location { LocationID = 31, LocationName = "Thành phố Hồ Chí Minh" },
+                new Location { LocationID = 32, LocationName = "Khánh Hòa" },
+                new Location { LocationID = 33, LocationName = "Kiên Giang" },
+                new Location { LocationID = 34, LocationName = "Kon Tum" },
+                new Location { LocationID = 35, LocationName = "Lai Châu" },
+                new Location { LocationID = 36, LocationName = "Lào Cai" },
+                new Location { LocationID = 37, LocationName = "Lạng Sơn" },
+                new Location { LocationID = 38, LocationName = "Lâm Đồng" },
+                new Location { LocationID = 39, LocationName = "Long An" },
+                new Location { LocationID = 40, LocationName = "Nam Định" },
+                new Location { LocationID = 41, LocationName = "Nghệ An" },
+                new Location { LocationID = 42, LocationName = "Ninh Bình" },
+                new Location { LocationID = 43, LocationName = "Ninh Thuận" },
+                new Location { LocationID = 44, LocationName = "Phú Thọ" },
+                new Location { LocationID = 45, LocationName = "Phú Yên" },
+                new Location { LocationID = 46, LocationName = "Quảng Bình" },
+                new Location { LocationID = 47, LocationName = "Quảng Nam" },
+                new Location { LocationID = 48, LocationName = "Quảng Ngãi" },
+                new Location { LocationID = 49, LocationName = "Quảng Ninh" },
+                new Location { LocationID = 50, LocationName = "Quảng Trị" },
+                new Location { LocationID = 51, LocationName = "Sóc Trăng" },
+                new Location { LocationID = 52, LocationName = "Sơn La" },
+                new Location { LocationID = 53, LocationName = "Tây Ninh" },
+                new Location { LocationID = 54, LocationName = "Thái Bình" },
+                new Location { LocationID = 55, LocationName = "Thái Nguyên" },
+                new Location { LocationID = 56, LocationName = "Thanh Hóa" },
+                new Location { LocationID = 57, LocationName = "Thừa Thiên - Huế" },
+                new Location { LocationID = 58, LocationName = "Tiền Giang" },
+                new Location { LocationID = 59, LocationName = "Trà Vinh" },
+                new Location { LocationID = 60, LocationName = "Tuyên Quang" },
+                new Location { LocationID = 61, LocationName = "Vĩnh Long" },
+                new Location { LocationID = 62, LocationName = "Vĩnh Phúc" },
+                new Location { LocationID = 63, LocationName = "Yên Bái" }
+            );
 
             #endregion
 
@@ -147,127 +148,118 @@ namespace WEE_API.Migrations
 
 
             #region Zone
+
             context.Zone.AddOrUpdate(a => a.ZoneID,
-                     new Zone { ZoneID = 1, ZoneName = "Kế toán-Kiểm toán" },
-                     new Zone { ZoneID = 2, ZoneName = "Bán hàng" },
-                     new Zone { ZoneID = 3, ZoneName = "Marketing-PR" },
-                     new Zone { ZoneID = 4, ZoneName = "Tư vấn" },
-                     new Zone { ZoneID = 5, ZoneName = "KD bất động sản" },
-                     new Zone { ZoneID = 6, ZoneName = "Xây dựng" },
-                     new Zone { ZoneID = 7, ZoneName = "IT phần mềm" },
-                     new Zone { ZoneID = 8, ZoneName = "Điện-Điện tử" },
-                     new Zone { ZoneID = 9, ZoneName = "Y tế-Dược" },
-                     new Zone { ZoneID = 10, ZoneName = "Cơ khí-Chế tạo" },
-                     new Zone { ZoneID = 11, ZoneName = "Kỹ thuật" },
-                     new Zone { ZoneID = 12, ZoneName = "Kiến trúc-TK nội thất" },
-                     new Zone { ZoneID = 13, ZoneName = "Nhân sự" },
-                     new Zone { ZoneID = 14, ZoneName = "Biên-Phiên dịch" },
-                     new Zone { ZoneID = 15, ZoneName = "Giáo dục-Đào tạo" },
-                     new Zone { ZoneID = 16, ZoneName = "Quản trị kinh doanh" },
-                     new Zone { ZoneID = 17, ZoneName = "Xuất, nhập khẩu" },
-                     new Zone { ZoneID = 18, ZoneName = "IT phần cứng/mạng" },
-                     new Zone { ZoneID = 19, ZoneName = "Thiết kế-Mỹ thuật" },
-                     new Zone { ZoneID = 20, ZoneName = "Khách sạn-Nhà hàng" },
-                     new Zone { ZoneID = 21, ZoneName = "Thư ký-Trợ lý" },
-                     new Zone { ZoneID = 22, ZoneName = "Dịch vụ" },
-                     new Zone { ZoneID = 23, ZoneName = "Điện tử viễn thông" },
-                     new Zone { ZoneID = 24, ZoneName = "Thiết kế đồ hoạ web" },
-                     new Zone { ZoneID = 25, ZoneName = "Dệt may - Da giày" },
-                     new Zone { ZoneID = 26, ZoneName = "Tiếp thị-Quảng cáo" },
-                     new Zone { ZoneID = 27, ZoneName = "Thương mại điện tử" },
-                     new Zone { ZoneID = 28, ZoneName = "Vật tư-Thiết bị" },
-                     new Zone { ZoneID = 29, ZoneName = "Kỹ thuật ứng dụng" },
-                     new Zone { ZoneID = 30, ZoneName = "Báo chí-Truyền hình" },
-                     new Zone { ZoneID = 31, ZoneName = "Ngành nghề khác" },
-                     new Zone { ZoneID = 32, ZoneName = "Ngân hàng" },
-                     new Zone { ZoneID = 33, ZoneName = "Thực phẩm-Đồ uống" },
-                     new Zone { ZoneID = 34, ZoneName = "Ô tô - Xe máy" },
-                     new Zone { ZoneID = 35, ZoneName = "Du lịch" },
-                     new Zone { ZoneID = 36, ZoneName = "Thời trang" },
-                     new Zone { ZoneID = 37, ZoneName = "Vận tải" },
-                     new Zone { ZoneID = 38, ZoneName = "Bảo hiểm" },
-                     new Zone { ZoneID = 39, ZoneName = "Công nghiệp" },
-                     new Zone { ZoneID = 40, ZoneName = "Hoá học-Sinh học" },
-                     new Zone { ZoneID = 41, ZoneName = "Pháp lý" },
-                     new Zone { ZoneID = 42, ZoneName = "In ấn-Xuất bản" },
-                     new Zone { ZoneID = 43, ZoneName = "Mỹ phẩm-Trang sức" },
-                     new Zone { ZoneID = 44, ZoneName = "Nông-Lâm-Ngư nghiệp" },
-                     new Zone { ZoneID = 45, ZoneName = "Quan hệ đối ngoại" },
-                     new Zone { ZoneID = 46, ZoneName = "Tổ chức sự kiện-Quà tặng" },
-                     new Zone { ZoneID = 47, ZoneName = "Hoạch định-Dự án" },
-                     new Zone { ZoneID = 48, ZoneName = "Hàng gia dụng" },
-                     new Zone { ZoneID = 49, ZoneName = "Dầu khí-Hóa chất" },
-                     new Zone { ZoneID = 50, ZoneName = "Công nghệ cao" },
-                     new Zone { ZoneID = 51, ZoneName = "Nghệ thuật - Điện ảnh" },
-                     new Zone { ZoneID = 52, ZoneName = "Bưu chính" },
-                     new Zone { ZoneID = 53, ZoneName = "Bảo vệ" },
-                     new Zone { ZoneID = 54, ZoneName = "Game" },
-                     new Zone { ZoneID = 55, ZoneName = "Chứng khoán- Vàng" },
-                     new Zone { ZoneID = 56, ZoneName = "Hàng không" },
-                     new Zone { ZoneID = 57, ZoneName = "Đầu tư" },
-                     new Zone { ZoneID = 58, ZoneName = "Thủ công mỹ nghệ" },
-                     new Zone { ZoneID = 59, ZoneName = "Hàng hải" }
-              );
+                new Zone { ZoneID = 1, ZoneName = "Kế toán-Kiểm toán" },
+                new Zone { ZoneID = 2, ZoneName = "Bán hàng" },
+                new Zone { ZoneID = 3, ZoneName = "Marketing-PR" },
+                new Zone { ZoneID = 4, ZoneName = "Tư vấn" },
+                new Zone { ZoneID = 5, ZoneName = "KD bất động sản" },
+                new Zone { ZoneID = 6, ZoneName = "Xây dựng" },
+                new Zone { ZoneID = 7, ZoneName = "IT phần mềm" },
+                new Zone { ZoneID = 8, ZoneName = "Điện-Điện tử" },
+                new Zone { ZoneID = 9, ZoneName = "Y tế-Dược" },
+                new Zone { ZoneID = 10, ZoneName = "Cơ khí-Chế tạo" },
+                new Zone { ZoneID = 11, ZoneName = "Kỹ thuật" },
+                new Zone { ZoneID = 12, ZoneName = "Kiến trúc-TK nội thất" },
+                new Zone { ZoneID = 13, ZoneName = "Nhân sự" },
+                new Zone { ZoneID = 14, ZoneName = "Biên-Phiên dịch" },
+                new Zone { ZoneID = 15, ZoneName = "Giáo dục-Đào tạo" },
+                new Zone { ZoneID = 16, ZoneName = "Quản trị kinh doanh" },
+                new Zone { ZoneID = 17, ZoneName = "Xuất, nhập khẩu" },
+                new Zone { ZoneID = 18, ZoneName = "IT phần cứng/mạng" },
+                new Zone { ZoneID = 19, ZoneName = "Thiết kế-Mỹ thuật" },
+                new Zone { ZoneID = 20, ZoneName = "Khách sạn-Nhà hàng" },
+                new Zone { ZoneID = 21, ZoneName = "Thư ký-Trợ lý" },
+                new Zone { ZoneID = 22, ZoneName = "Dịch vụ" },
+                new Zone { ZoneID = 23, ZoneName = "Điện tử viễn thông" },
+                new Zone { ZoneID = 24, ZoneName = "Thiết kế đồ hoạ web" },
+                new Zone { ZoneID = 25, ZoneName = "Dệt may - Da giày" },
+                new Zone { ZoneID = 26, ZoneName = "Tiếp thị-Quảng cáo" },
+                new Zone { ZoneID = 27, ZoneName = "Thương mại điện tử" },
+                new Zone { ZoneID = 28, ZoneName = "Vật tư-Thiết bị" },
+                new Zone { ZoneID = 29, ZoneName = "Kỹ thuật ứng dụng" },
+                new Zone { ZoneID = 30, ZoneName = "Báo chí-Truyền hình" },
+                new Zone { ZoneID = 31, ZoneName = "Ngành nghề khác" },
+                new Zone { ZoneID = 32, ZoneName = "Ngân hàng" },
+                new Zone { ZoneID = 33, ZoneName = "Thực phẩm-Đồ uống" },
+                new Zone { ZoneID = 34, ZoneName = "Ô tô - Xe máy" },
+                new Zone { ZoneID = 35, ZoneName = "Du lịch" },
+                new Zone { ZoneID = 36, ZoneName = "Thời trang" },
+                new Zone { ZoneID = 37, ZoneName = "Vận tải" },
+                new Zone { ZoneID = 38, ZoneName = "Bảo hiểm" },
+                new Zone { ZoneID = 39, ZoneName = "Công nghiệp" },
+                new Zone { ZoneID = 40, ZoneName = "Hoá học-Sinh học" },
+                new Zone { ZoneID = 41, ZoneName = "Pháp lý" },
+                new Zone { ZoneID = 42, ZoneName = "In ấn-Xuất bản" },
+                new Zone { ZoneID = 43, ZoneName = "Mỹ phẩm-Trang sức" },
+                new Zone { ZoneID = 44, ZoneName = "Nông-Lâm-Ngư nghiệp" },
+                new Zone { ZoneID = 45, ZoneName = "Quan hệ đối ngoại" },
+                new Zone { ZoneID = 46, ZoneName = "Tổ chức sự kiện-Quà tặng" },
+                new Zone { ZoneID = 47, ZoneName = "Hoạch định-Dự án" },
+                new Zone { ZoneID = 48, ZoneName = "Hàng gia dụng" },
+                new Zone { ZoneID = 49, ZoneName = "Dầu khí-Hóa chất" },
+                new Zone { ZoneID = 50, ZoneName = "Công nghệ cao" },
+                new Zone { ZoneID = 51, ZoneName = "Nghệ thuật - Điện ảnh" },
+                new Zone { ZoneID = 52, ZoneName = "Bưu chính" },
+                new Zone { ZoneID = 53, ZoneName = "Bảo vệ" },
+                new Zone { ZoneID = 54, ZoneName = "Game" },
+                new Zone { ZoneID = 55, ZoneName = "Chứng khoán- Vàng" },
+                new Zone { ZoneID = 56, ZoneName = "Hàng không" },
+                new Zone { ZoneID = 57, ZoneName = "Đầu tư" },
+                new Zone { ZoneID = 58, ZoneName = "Thủ công mỹ nghệ" },
+                new Zone { ZoneID = 59, ZoneName = "Hàng hải" }
+            );
 
             #endregion
 
             context.Company.AddOrUpdate(a => a.CompanyID,
-  new Company { CompanyID = 1, CompanyName = "Công ty cổ phần đầu tư TH Vina", Address = "Số 66, phố Dịch Vọng, phường Dịch Vọng, quận Cầu Giấy, thành phố Hà Nội, Việt Nam", PhoneNumber = null, Description = null, Website = "http://thvina.net/", Logo = "/Content/UPLOAD/thvina.jpg", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 2, CompanyName = "Công ty TNHH XNK Cầu Nối Việt", Address = "Tầng 6, tòa nhà 6a, Ngõ 639, Đường Hoàng Hoa Thám, Ba Đình, Hà Nội", PhoneNumber = null, Description = "Công ty TNHH XNK Cầu Nối Việt là nhà nhập khẩu và phân phối chuyên nghiệp các thương hiệu hàng đầu thế giới phục vụ cho nhu cầu của bà mẹ và trẻ em tại Việt Nam. Với tốc độ tăng trưởng nhanh chóng, hiện nay chúng tôi phục vụ khách hàng thông qua 10 showroom tại các trung tâm thương mại cao cấp nhất ở Hà Nội và TP Hồ Chí Minh, cùng với hàng trăm đại lý là các cửa hàng mẹ bé trên toàn quốc.  Trải qua quãng thời gian từ khi khởi nghiệp tới nay, Cầu Nối Việt đã khẳng định được uy tín của mình trước khách hàng và đối tác bằng đội ngũ nhân viên trẻ, có trình độ, năng động sáng tạo và đầy nhiệt huyết. Công ty luôn quan tâm xây dựng văn hóa doanh nghiệp hiện đại, nỗ lực tạo dựng một môi trường làm việc hòa đồng, gắn kết, phát triển trên cơ sở hỗ trợ lẫn nhau, giúp đội ngũ cán bộ nhân viên bộc lộ và phát huy đối đa thế mạnh của cá nhân mình.  Cầu Nối Việt luôn coi trọng việc tuyển dụng và đào tạo các nhân viên có năng lực. Khi gia nhập đại gia đình Cầu Nối Việt các ứng viên sẽ được tham gia các khóa huấn luyện, được tư vẫn hỗ trợ về các kĩ năng nghiệp vụ chuyên môn để có thể phát triển sự nghiệp thành công và gắn bó lâu dài với công ty.", Website = "https://www.mamanbebe.com.vn", Logo = "/Content/UPLOAD/logomamanbebe.jpg", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 3, CompanyName = "Tập Đoàn Hoa Sao", Address = "Tầng 3- Tòa nhà Trung Yên 1 - Số 1 Vũ Phạm Hàm - Yên Hòa - Cầu Giấy - Hà Nội", PhoneNumber = null, Description = "Tổng quan về công ty  Được thành lập vào năm 2006, sau 11 năm thành lập, Hoa Sao đã trở thành doanh nghiệp hàng đầu tại Việt Nam trong lĩnh vực Contact Center và BPO với quy mô 4000 nhân viên làm việc trên 10 chi nhánh, phủ sóng từ: Hà Nội, Thái Nguyên, Điện Biên Vĩnh Phúc, Hải Phòng cho đến Đà Nẵng, Buôn Mê Thuật và Thành phố Hồ Chí Minh.  Vào cuối năm 2016, Hoa Sao bước sang một trang mới khi hợp tác cùng Tập đoàn số 1 về Contact Center tại Nhật Bản – BellSystem 24 tạo ra liên minh cung cấp dịch vụ Chăm sóc khách hàng mới mang tầm vóc quốc tế với tên gọi BellSystem24-Hoa Sao.  Với sự phát triển từ quy mô đến bề sâu chất lượng, Hoa Sao đã nhiều lần được ghi nhận là một đơn vị cung cấp dịch vụ uy tín và đón nhận nhiều giải thưởng lớn như: Top 40 Doanh nghiệp BPO, IT & KPO hàng đầu Việt Nam, xếp hạng bởi VINASA – Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam; giải thưởng Thương hiệu mạnh năm 2014 do Thời báo Kinh tế Việt Nam bình chọn cùng nhiều giải thưởng uy tín khác.  Hoa Sao tự hào khi trở thành đơn vị cung cấp dịch vụ cho hàng trăm thương hiệu top đầu tại Việt Nam như: Viettel, VTV, Vietjet Air, VinGroup, Vietin Bank...và là đối tác lâu dài của những tập đoàn hàng đầu quốc tế như BMW, Uber...  Môi trường làm việc và văn hóa doanh nghiệp  Khi gia nhập vào ngôi nhà chung Hoa Sao, bạn không chỉ được làm việc trong môi trường hội nhập quốc tế, phong cách làm việc chuyên nghiệp, bài bản mà còn có cơ hội nâng cao kiến thức, kỹ năng, các mối quan hệ xã hội để phát triển toàn diện.  Với chiến lược, lấy con người làm yếu tố chủ lực để phát triển, Hoa Sao liên tục tổ chức các hoạt động đào tạo nội bộ với các chuyên gia trong và ngoài ngoài để đội ngũ nhân viên được nâng cao kỹ năng, kiến thức.   Không dừng lại đó, người Hoa Sao còn được tham gia các hoạt động văn hóa, team building để tăng động lực đồng thời gắn kết thành viên trong toàn Công ty như: cuộc thi “I Love My Voice”, Hoa Sao Day, tổ chức sinh nhật, hoạt động kỷ niệm các ngày lễ...   Mỗi cá nhân tại Hoa Sao dù ở cấp bậc, vị trí nào cũng luôn được ghi nhận những đóng góp, nỗ lực của mình bằng các hoạt động vinh danh thiết thực như: Person of Month, Person of Year...  Khi dịch vụ CSKH cùng các Contact Center trở thành xu hướng và yếu tố cạnh tranh thúc đẩy sự phát triển cho các thương hiệu thì làm việc tại Bellsystem24-HoaSao – Tập đoàn BPO quốc tế hàng đầu tại Việt Nam sẽ mở ra cho bạn những cơ hội tuyệt vời để phát triển và thành công trong sự nghiệp của mình. Trở thành người Hoa Sao bạn còn có cợ hội để được thể hiện và chứng tỏ khả năng, được ghi nhận và thăng tiến, được quan tâm và chia sẻ.", Website = "http://hoasao.vn", Logo = "/Content/UPLOAD/hoasao.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 4, CompanyName = "Công ty TNHH Minh Phúc (MP Telecom)", Address = "Số 36-38A Trần Văn Dư, P.13, Quận Tân Bình, Tp. HCM", PhoneNumber = null, Description = "Công ty TNHH Minh Phúc (MP Telecom) là công ty hàng đầu tại Việt Nam chuyên cung cấp các dịch vụ và giải pháp Contact Center, Đào tạo và Cung ứng nhân lực, VAS và BPO (Business Process Outsourcing) tại Việt Nam. Được thành lập từ năm 2002, MP Telecom đã không ngừng lớn mạnh cả về quy mô tổ chức lẫn chất lượng dịch vụ. Hiện nay chúng tôi có hơn 2.000 nhân viên trên 3 miền Bắc, Trung, Nam. MP Telecom là công ty đầu tiên trong lĩnh vực BPO tại Việt Nam được nhận chứng chỉ quản lý chất lượng ISO 9001:2008 và Hệ thống quản lý an ninh thông tin ISO/IEC 27001:2005. Kinh nghiệm dạn dày của chúng tôi được thể hiện qua rất nhiều dự án đã và đang hợp tác với các Khách hàng lớn như: Mobifone, VinaPhone, Viettel, BIDV, ANZ, VPBank, Ocean Bank, Bảo Việt, VTV Cab, Toto, Trần Anh, Mai Linh, Truyền hình An Viên, Acecook, EVN…   ", Website = "www.mptelecom.com.vn", Logo = "/Content/UPLOAD/minhphuc.png", LocationID = 31, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 5, CompanyName = "Công ty cổ phần Funtap", Address = "P803, tầng 8, tòa nhà Toyota, 315 Trường Chinh, Thanh Xuân, Hà Nộii", PhoneNumber = null, Description = "Công ty Cổ phần Funtap (Website: funtap.vn) Được thành lập đầu năm 2013 bởi đội ngũ kỹ sư giàu nhiệt huyết và kinh nghiệm trong lĩnh vực dịch vụ Internet và giải trí trên nền tảng di động. FunTap là ngôi nhà tập hợp người trẻ yêu công nghệ, cá tính với khát khao mang đến cho cộng đồng người tiêu dùng Việt Nam các sản phẩm giải trí online đột phá và sáng tạo. Tại FunTap, chúng tôi tôn trọng sự khác biệt và sự bình đẳng của từng cá nhân. Đó là nền tảng cơ bản giúp chúng tôi luôn mang đến cho khách hàng sự trải nghiệm dịch vụ hoàn hảo. Làm việc tại Funtap, bạn có cơ hội được tiếp xúc với đội ngũ chuyên gia công nghệ hàng đầu, được tham gia vào các dự án với khách hàng quốc tế và trong nước. Môi trường làm việc trẻ và năng động, chế độ đãi ngộ xứng đáng và có nhiều cơ hội phát triển kỹ năng nghề nghiệp.", Website = "http://corp.funtap.vn/", Logo = "/Content/UPLOAD/funtap.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 6, CompanyName = "Công ty TNHH Đầu tư và Kỹ thuật Hải An", Address = "257 Liên Chiểu - Đà Nẵng", PhoneNumber = null, Description = "NHÀ THẦU CHUYÊN NGHIỆP VỀ HỆ THỐNG ĐIỀU HÒA chuyên thiết kế, cung cấp, tư vấn lắp đặt hệ thống điều hòa", Website = "www.mallcenter.vn", Logo = "/Content/UPLOAD/1476158725_hai_an.PNG", LocationID = 15, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 7, CompanyName = "Công ty cổ phần kỹ nghệ kingtech", Address = "263 đường La Dương, Dương Nội, Hà Đông, Hà Nội", PhoneNumber = null, Description = null, Website = "http://kingtech.vn/", Logo = "/Content/UPLOAD/amc.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-   , new Company { CompanyID = 8, CompanyName = "Công ty cổ phần Nhựa Á Đông", Address = "CN: 38A, Le Van Huan street, 13 ward, Tan Binh, HCM, Viet Nam. , Trụ sở : 27 Lại Yên, Hoài Đức, Hà Nội", PhoneNumber = null, Description = "Công ty Cổ phần Nhựa Á Đông là một trong những doanh nghiệp sản xuất, kinh doanh và xuất nhập khẩu hàng đầu ở Việt Nam hiện nay. Công ty chuyên sản xuất hạt phụ gia dùng trong ngành nhựa gồm Hợp chất CaCO3 (CALMAST), Hạt nhựa màu (COLMAST) và Hạt phụ gia chức năng (ADDMAST). Với định hướng phát triển dài hạn chúng tôi không ngừng cải tiến chất lượng, mở rộng sản xuất, để sản phẩm đáp ứng yêu cầu ngày càng cao của khách hàng về chất lượng, số lượng và giá thành cạnh tranh, Nhựa Á Đông đã có 2 nhà máy với các dây chuyền sản xuất hiện đại đạt công suất khoảng 60 ngàn tấn/năm kể từ năm 2012. Bên cạnh đó các dự án tăng trưởng nhà máy và đầu tư công nghệ hiện đại cũng liên tục được thực hiện nên công suất nhà máy cũng được tăng lên qua từng thời kỳ. ", Website = "adcplastic.com", Logo = "/Content/UPLOAD/logo-adc.jpg", LocationID = 31, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
-  );
+               new Company { CompanyID = 1, CompanyName = "Công ty cổ phần đầu tư TH Vina", Address = "Số 66, phố Dịch Vọng, phường Dịch Vọng, quận Cầu Giấy, thành phố Hà Nội, Việt Nam", PhoneNumber = null, Description = null, Website = "http://thvina.net/", Logo = "/Content/UPLOAD/thvina.jpg", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 2, CompanyName = "Công ty TNHH XNK Cầu Nối Việt", Address = "Tầng 6, tòa nhà 6a, Ngõ 639, Đường Hoàng Hoa Thám, Ba Đình, Hà Nội", PhoneNumber = null, Description = "Công ty TNHH XNK Cầu Nối Việt là nhà nhập khẩu và phân phối chuyên nghiệp các thương hiệu hàng đầu thế giới phục vụ cho nhu cầu của bà mẹ và trẻ em tại Việt Nam. Với tốc độ tăng trưởng nhanh chóng, hiện nay chúng tôi phục vụ khách hàng thông qua 10 showroom tại các trung tâm thương mại cao cấp nhất ở Hà Nội và TP Hồ Chí Minh, cùng với hàng trăm đại lý là các cửa hàng mẹ bé trên toàn quốc.  Trải qua quãng thời gian từ khi khởi nghiệp tới nay, Cầu Nối Việt đã khẳng định được uy tín của mình trước khách hàng và đối tác bằng đội ngũ nhân viên trẻ, có trình độ, năng động sáng tạo và đầy nhiệt huyết. Công ty luôn quan tâm xây dựng văn hóa doanh nghiệp hiện đại, nỗ lực tạo dựng một môi trường làm việc hòa đồng, gắn kết, phát triển trên cơ sở hỗ trợ lẫn nhau, giúp đội ngũ cán bộ nhân viên bộc lộ và phát huy đối đa thế mạnh của cá nhân mình.  Cầu Nối Việt luôn coi trọng việc tuyển dụng và đào tạo các nhân viên có năng lực. Khi gia nhập đại gia đình Cầu Nối Việt các ứng viên sẽ được tham gia các khóa huấn luyện, được tư vẫn hỗ trợ về các kĩ năng nghiệp vụ chuyên môn để có thể phát triển sự nghiệp thành công và gắn bó lâu dài với công ty.", Website = "https://www.mamanbebe.com.vn", Logo = "/Content/UPLOAD/logomamanbebe.jpg", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 3, CompanyName = "Tập Đoàn Hoa Sao", Address = "Tầng 3- Tòa nhà Trung Yên 1 - Số 1 Vũ Phạm Hàm - Yên Hòa - Cầu Giấy - Hà Nội", PhoneNumber = null, Description = "Tổng quan về công ty  Được thành lập vào năm 2006, sau 11 năm thành lập, Hoa Sao đã trở thành doanh nghiệp hàng đầu tại Việt Nam trong lĩnh vực Contact Center và BPO với quy mô 4000 nhân viên làm việc trên 10 chi nhánh, phủ sóng từ: Hà Nội, Thái Nguyên, Điện Biên Vĩnh Phúc, Hải Phòng cho đến Đà Nẵng, Buôn Mê Thuật và Thành phố Hồ Chí Minh.  Vào cuối năm 2016, Hoa Sao bước sang một trang mới khi hợp tác cùng Tập đoàn số 1 về Contact Center tại Nhật Bản – BellSystem 24 tạo ra liên minh cung cấp dịch vụ Chăm sóc khách hàng mới mang tầm vóc quốc tế với tên gọi BellSystem24-Hoa Sao.  Với sự phát triển từ quy mô đến bề sâu chất lượng, Hoa Sao đã nhiều lần được ghi nhận là một đơn vị cung cấp dịch vụ uy tín và đón nhận nhiều giải thưởng lớn như: Top 40 Doanh nghiệp BPO, IT & KPO hàng đầu Việt Nam, xếp hạng bởi VINASA – Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam; giải thưởng Thương hiệu mạnh năm 2014 do Thời báo Kinh tế Việt Nam bình chọn cùng nhiều giải thưởng uy tín khác.  Hoa Sao tự hào khi trở thành đơn vị cung cấp dịch vụ cho hàng trăm thương hiệu top đầu tại Việt Nam như: Viettel, VTV, Vietjet Air, VinGroup, Vietin Bank...và là đối tác lâu dài của những tập đoàn hàng đầu quốc tế như BMW, Uber...  Môi trường làm việc và văn hóa doanh nghiệp  Khi gia nhập vào ngôi nhà chung Hoa Sao, bạn không chỉ được làm việc trong môi trường hội nhập quốc tế, phong cách làm việc chuyên nghiệp, bài bản mà còn có cơ hội nâng cao kiến thức, kỹ năng, các mối quan hệ xã hội để phát triển toàn diện.  Với chiến lược, lấy con người làm yếu tố chủ lực để phát triển, Hoa Sao liên tục tổ chức các hoạt động đào tạo nội bộ với các chuyên gia trong và ngoài ngoài để đội ngũ nhân viên được nâng cao kỹ năng, kiến thức.   Không dừng lại đó, người Hoa Sao còn được tham gia các hoạt động văn hóa, team building để tăng động lực đồng thời gắn kết thành viên trong toàn Công ty như: cuộc thi “I Love My Voice”, Hoa Sao Day, tổ chức sinh nhật, hoạt động kỷ niệm các ngày lễ...   Mỗi cá nhân tại Hoa Sao dù ở cấp bậc, vị trí nào cũng luôn được ghi nhận những đóng góp, nỗ lực của mình bằng các hoạt động vinh danh thiết thực như: Person of Month, Person of Year...  Khi dịch vụ CSKH cùng các Contact Center trở thành xu hướng và yếu tố cạnh tranh thúc đẩy sự phát triển cho các thương hiệu thì làm việc tại Bellsystem24-HoaSao – Tập đoàn BPO quốc tế hàng đầu tại Việt Nam sẽ mở ra cho bạn những cơ hội tuyệt vời để phát triển và thành công trong sự nghiệp của mình. Trở thành người Hoa Sao bạn còn có cợ hội để được thể hiện và chứng tỏ khả năng, được ghi nhận và thăng tiến, được quan tâm và chia sẻ.", Website = "http://hoasao.vn", Logo = "/Content/UPLOAD/hoasao.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 4, CompanyName = "Công ty TNHH Minh Phúc (MP Telecom)", Address = "Số 36-38A Trần Văn Dư, P.13, Quận Tân Bình, Tp. HCM", PhoneNumber = null, Description = "Công ty TNHH Minh Phúc (MP Telecom) là công ty hàng đầu tại Việt Nam chuyên cung cấp các dịch vụ và giải pháp Contact Center, Đào tạo và Cung ứng nhân lực, VAS và BPO (Business Process Outsourcing) tại Việt Nam. Được thành lập từ năm 2002, MP Telecom đã không ngừng lớn mạnh cả về quy mô tổ chức lẫn chất lượng dịch vụ. Hiện nay chúng tôi có hơn 2.000 nhân viên trên 3 miền Bắc, Trung, Nam. MP Telecom là công ty đầu tiên trong lĩnh vực BPO tại Việt Nam được nhận chứng chỉ quản lý chất lượng ISO 9001:2008 và Hệ thống quản lý an ninh thông tin ISO/IEC 27001:2005. Kinh nghiệm dạn dày của chúng tôi được thể hiện qua rất nhiều dự án đã và đang hợp tác với các Khách hàng lớn như: Mobifone, VinaPhone, Viettel, BIDV, ANZ, VPBank, Ocean Bank, Bảo Việt, VTV Cab, Toto, Trần Anh, Mai Linh, Truyền hình An Viên, Acecook, EVN…   ", Website = "www.mptelecom.com.vn", Logo = "/Content/UPLOAD/minhphuc.png", LocationID = 31, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 5, CompanyName = "Công ty cổ phần Funtap", Address = "P803, tầng 8, tòa nhà Toyota, 315 Trường Chinh, Thanh Xuân, Hà Nộii", PhoneNumber = null, Description = "Công ty Cổ phần Funtap (Website: funtap.vn) Được thành lập đầu năm 2013 bởi đội ngũ kỹ sư giàu nhiệt huyết và kinh nghiệm trong lĩnh vực dịch vụ Internet và giải trí trên nền tảng di động. FunTap là ngôi nhà tập hợp người trẻ yêu công nghệ, cá tính với khát khao mang đến cho cộng đồng người tiêu dùng Việt Nam các sản phẩm giải trí online đột phá và sáng tạo. Tại FunTap, chúng tôi tôn trọng sự khác biệt và sự bình đẳng của từng cá nhân. Đó là nền tảng cơ bản giúp chúng tôi luôn mang đến cho khách hàng sự trải nghiệm dịch vụ hoàn hảo. Làm việc tại Funtap, bạn có cơ hội được tiếp xúc với đội ngũ chuyên gia công nghệ hàng đầu, được tham gia vào các dự án với khách hàng quốc tế và trong nước. Môi trường làm việc trẻ và năng động, chế độ đãi ngộ xứng đáng và có nhiều cơ hội phát triển kỹ năng nghề nghiệp.", Website = "http://corp.funtap.vn/", Logo = "/Content/UPLOAD/funtap.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 6, CompanyName = "Công ty TNHH Đầu tư và Kỹ thuật Hải An", Address = "257 Liên Chiểu - Đà Nẵng", PhoneNumber = null, Description = "NHÀ THẦU CHUYÊN NGHIỆP VỀ HỆ THỐNG ĐIỀU HÒA chuyên thiết kế, cung cấp, tư vấn lắp đặt hệ thống điều hòa", Website = "www.mallcenter.vn", Logo = "/Content/UPLOAD/1476158725_hai_an.PNG", LocationID = 15, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 7, CompanyName = "Công ty cổ phần kỹ nghệ kingtech", Address = "263 đường La Dương, Dương Nội, Hà Đông, Hà Nội", PhoneNumber = null, Description = null, Website = "http://kingtech.vn/", Logo = "/Content/UPLOAD/amc.png", LocationID = 24, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+               , new Company { CompanyID = 8, CompanyName = "Công ty cổ phần Nhựa Á Đông", Address = "CN: 38A, Le Van Huan street, 13 ward, Tan Binh, HCM, Viet Nam. , Trụ sở : 27 Lại Yên, Hoài Đức, Hà Nội", PhoneNumber = null, Description = "Công ty Cổ phần Nhựa Á Đông là một trong những doanh nghiệp sản xuất, kinh doanh và xuất nhập khẩu hàng đầu ở Việt Nam hiện nay. Công ty chuyên sản xuất hạt phụ gia dùng trong ngành nhựa gồm Hợp chất CaCO3 (CALMAST), Hạt nhựa màu (COLMAST) và Hạt phụ gia chức năng (ADDMAST). Với định hướng phát triển dài hạn chúng tôi không ngừng cải tiến chất lượng, mở rộng sản xuất, để sản phẩm đáp ứng yêu cầu ngày càng cao của khách hàng về chất lượng, số lượng và giá thành cạnh tranh, Nhựa Á Đông đã có 2 nhà máy với các dây chuyền sản xuất hiện đại đạt công suất khoảng 60 ngàn tấn/năm kể từ năm 2012. Bên cạnh đó các dự án tăng trưởng nhà máy và đầu tư công nghệ hiện đại cũng liên tục được thực hiện nên công suất nhà máy cũng được tăng lên qua từng thời kỳ. ", Website = "adcplastic.com", Logo = "/Content/UPLOAD/logo-adc.jpg", LocationID = 31, AverageScore = 0m, TotalUserRate = 0, TotalJobActive = null, }
+            );
 
             context.Job.AddOrUpdate(a => a.JobID,
-  new Job { JobID = 1, JobName = " Trưởng Phòng Nhân Sự", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
-   , new Job { JobID = 2, JobName = "Nhân Viên Viết Bài Quảng Cáo", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
-   , new Job { JobID = 3, JobName = "Nhân viên bán hàng tại Aeon Mall Bình Tân", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 2, }
-   , new Job { JobID = 4, JobName = "Digital Marketing Senior Staff", DateCreate = DateTime.Parse("10/03/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 2, JobTypeID = 1, }
-   , new Job { JobID = 5, JobName = "Nhân Viên Tư Vấn Dịch Vụ Quảng Cáo", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 1, JobTypeID = 2, }
-   , new Job { JobID = 6, JobName = "Nhân Viên Khai Thác Thị Trường", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 3, }
-   , new Job { JobID = 7, JobName = "Nhân Viên Khảo Sát Sản Phẩm - Giờ Hành Chính", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 1, }
-   , new Job { JobID = 8, JobName = "Nhân Viên Chăm Sóc Khách Hàng Mạng Viettel Tại Kđt Resco Phạm Văn Đồng", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 2, }
-   , new Job { JobID = 9, JobName = "Telesales Mỹ Phẩm (Ba Đình, Hà Nội)", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 3, }
-   , new Job { JobID = 10, JobName = "SV trự tổng đài yêu cầu NGHE - HIỂU tiếng Anh", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 5, }
-   , new Job { JobID = 11, JobName = "Nhân Viên Đặc Lịch Hẹn Khách Hàng - Làm Việc Quận Tân Bình", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 4, }
-   , new Job { JobID = 12, JobName = "Nhân Viên Thiết Kế Sản Phẩm Internet", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 5, JobTypeID = 1, }
-   , new Job { JobID = 13, JobName = "Vận Hành Game (Quản Lý Sản Phẩm)", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("10/11/2017"), CompanyID = 5, JobTypeID = 2, }
-   , new Job { JobID = 14, JobName = "Nhân Viên Tìm Và Đánh Giá Game", DateCreate = null, DateEnd = null, CompanyID = 5, JobTypeID = 4, }
-   , new Job { JobID = 15, JobName = "Nhân viên lắp đặt điều hòa - Mức lương hấp dẫn", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 6, JobTypeID = 1, }
-   , new Job { JobID = 16, JobName = "Chỉ Huy Trưởng Công Trường Lương 15-20 Triệu / tháng", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
-   , new Job { JobID = 17, JobName = "Nhân Viên Kĩ Thuật Điện Thoại Di Động", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 3, }
-   , new Job { JobID = 18, JobName = "Kỹ Sư Cơ Điện Khu Vực Miền Bắc", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
-   , new Job { JobID = 19, JobName = "Chuyên viên xuất nhập khẩu", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
-   , new Job { JobID = 20, JobName = "Nhân Viên Kỹ Thuật- Mức Lương: 7-10 Triệu / Tháng", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 3, }
-   , new Job { JobID = 21, JobName = "Thợ hàn Tig, Mig (lương 7-10 triệu)", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
-   , new Job { JobID = 22, JobName = "Kế Toán Tổng Hợp", DateCreate = null, DateEnd = null, CompanyID = 8, JobTypeID = 1, }
-   , new Job { JobID = 23, JobName = "Nhân Viên Bảo Vệ .", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 5, }
-   , new Job { JobID = 24, JobName = "Công Nhân Sản Xuất Tại Nhà Máy Hoài Đức", DateCreate = DateTime.Parse("08/03/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 3, }
-   , new Job { JobID = 25, JobName = "Nhân Viên Kinh Doanh (Lương 10-15 Triệu)", DateCreate = DateTime.Parse("07/12/2017"), DateEnd = null, CompanyID = 8, JobTypeID = 2, }
-  );
+                new Job { JobID = 1, JobName = " Trưởng Phòng Nhân Sự", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
+                , new Job { JobID = 2, JobName = "Nhân Viên Viết Bài Quảng Cáo", DateCreate = null, DateEnd = null, CompanyID = 1, JobTypeID = 1, }
+                , new Job { JobID = 3, JobName = "Nhân viên bán hàng tại Aeon Mall Bình Tân", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 2, }
+                , new Job { JobID = 4, JobName = "Digital Marketing Senior Staff", DateCreate = DateTime.Parse("10/03/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 2, JobTypeID = 1, }
+                , new Job { JobID = 5, JobName = "Nhân Viên Tư Vấn Dịch Vụ Quảng Cáo", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 1, JobTypeID = 2, }
+                , new Job { JobID = 6, JobName = "Nhân Viên Khai Thác Thị Trường", DateCreate = null, DateEnd = null, CompanyID = 2, JobTypeID = 3, }
+                , new Job { JobID = 7, JobName = "Nhân Viên Khảo Sát Sản Phẩm - Giờ Hành Chính", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 1, }
+                , new Job { JobID = 8, JobName = "Nhân Viên Chăm Sóc Khách Hàng Mạng Viettel Tại Kđt Resco Phạm Văn Đồng", DateCreate = null, DateEnd = null, CompanyID = 4, JobTypeID = 2, }
+                , new Job { JobID = 9, JobName = "Telesales Mỹ Phẩm (Ba Đình, Hà Nội)", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 3, }
+                , new Job { JobID = 10, JobName = "SV trự tổng đài yêu cầu NGHE - HIỂU tiếng Anh", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 5, }
+                , new Job { JobID = 11, JobName = "Nhân Viên Đặc Lịch Hẹn Khách Hàng - Làm Việc Quận Tân Bình", DateCreate = null, DateEnd = null, CompanyID = 3, JobTypeID = 4, }
+                , new Job { JobID = 12, JobName = "Nhân Viên Thiết Kế Sản Phẩm Internet", DateCreate = DateTime.Parse("10/04/2017"), DateEnd = DateTime.Parse("10/12/2017"), CompanyID = 5, JobTypeID = 1, }
+                , new Job { JobID = 13, JobName = "Vận Hành Game (Quản Lý Sản Phẩm)", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("10/11/2017"), CompanyID = 5, JobTypeID = 2, }
+                , new Job { JobID = 14, JobName = "Nhân Viên Tìm Và Đánh Giá Game", DateCreate = null, DateEnd = null, CompanyID = 5, JobTypeID = 4, }
+                , new Job { JobID = 15, JobName = "Nhân viên lắp đặt điều hòa - Mức lương hấp dẫn", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 6, JobTypeID = 1, }
+                , new Job { JobID = 16, JobName = "Chỉ Huy Trưởng Công Trường Lương 15-20 Triệu / tháng", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
+                , new Job { JobID = 17, JobName = "Nhân Viên Kĩ Thuật Điện Thoại Di Động", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 3, }
+                , new Job { JobID = 18, JobName = "Kỹ Sư Cơ Điện Khu Vực Miền Bắc", DateCreate = null, DateEnd = null, CompanyID = 6, JobTypeID = 1, }
+                , new Job { JobID = 19, JobName = "Chuyên viên xuất nhập khẩu", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
+                , new Job { JobID = 20, JobName = "Nhân Viên Kỹ Thuật- Mức Lương: 7-10 Triệu / Tháng", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 3, }
+                , new Job { JobID = 21, JobName = "Thợ hàn Tig, Mig (lương 7-10 triệu)", DateCreate = null, DateEnd = null, CompanyID = 7, JobTypeID = 1, }
+                , new Job { JobID = 22, JobName = "Kế Toán Tổng Hợp", DateCreate = null, DateEnd = null, CompanyID = 8, JobTypeID = 1, }
+                , new Job { JobID = 23, JobName = "Nhân Viên Bảo Vệ .", DateCreate = DateTime.Parse("10/01/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 5, }
+                , new Job { JobID = 24, JobName = "Công Nhân Sản Xuất Tại Nhà Máy Hoài Đức", DateCreate = DateTime.Parse("08/03/2017"), DateEnd = DateTime.Parse("12/12/2017"), CompanyID = 8, JobTypeID = 3, }
+                , new Job { JobID = 25, JobName = "Nhân Viên Kinh Doanh (Lương 10-15 Triệu)", DateCreate = DateTime.Parse("07/12/2017"), DateEnd = null, CompanyID = 8, JobTypeID = 2, }
+            );
 
             context.UserType.AddOrUpdate(a => a.UserTypeID,
-                 new UserType { UserTypeID = 1, UserTypeName = "Người đi làm" },
-                 new UserType { UserTypeID = 2, UserTypeName = "Chủ doanh nghiệp" },
-                 new UserType { UserTypeID = 3, UserTypeName = "Bên thứ ba" }
-             );
-
-
-
-            context.QuestionType.AddOrUpdate(a => a.QuestionTypeID,
-                 new QuestionType { QuestionTypeID = 1, QuestionTypeName = "Cơ hội việc làm" },
-                 new QuestionType { QuestionTypeID = 2, QuestionTypeName = "Lương & Phúc lợi" },
-                 new QuestionType { QuestionTypeID = 3, QuestionTypeName = "An toàn" },
-                 new QuestionType { QuestionTypeID = 4, QuestionTypeName = "Tổ chức" },
-                 new QuestionType { QuestionTypeID = 5, QuestionTypeName = "Khác" }
-             );
-
+                new UserType { UserTypeID = 1, UserTypeName = "Người đi làm" },
+                new UserType { UserTypeID = 2, UserTypeName = "Chủ doanh nghiệp" },
+                new UserType { UserTypeID = 3, UserTypeName = "Bên thứ ba" }
+            );
+             
             context.CompanyZone.AddOrUpdate(
-                 a => new { a.CompanyID, a.ZoneID },
+                a => new { a.CompanyID, a.ZoneID },
                 new CompanyZone { CompanyID = 1, ZoneID = 4, JobTypeRequire = null, }
                 , new CompanyZone { CompanyID = 1, ZoneID = 7, JobTypeRequire = null, }
                 , new CompanyZone { CompanyID = 1, ZoneID = 8, JobTypeRequire = null, }
@@ -276,37 +268,37 @@ namespace WEE_API.Migrations
                 , new CompanyZone { CompanyID = 2, ZoneID = 7, JobTypeRequire = null, }
                 , new CompanyZone { CompanyID = 2, ZoneID = 18, JobTypeRequire = null, }
                 , new CompanyZone { CompanyID = 2, ZoneID = 29, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 3, ZoneID = 13, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 3, ZoneID = 27, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 3, ZoneID = 8, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 3, ZoneID = 9, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 4, ZoneID = 7, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 4, ZoneID = 18, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 4, ZoneID = 29, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 4, ZoneID = 13, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 8, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 11, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 3, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 7, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 2, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 6, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 5, ZoneID = 4, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 11, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 3, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 7, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 2, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 6, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 6, ZoneID = 4, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 7, ZoneID = 18, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 7, ZoneID = 29, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 7, ZoneID = 13, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 9, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 10, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 8, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 6, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 3, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 7, JobTypeRequire = null, }
-                 , new CompanyZone { CompanyID = 8, ZoneID = 2, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 3, ZoneID = 13, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 3, ZoneID = 27, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 3, ZoneID = 8, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 3, ZoneID = 9, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 4, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 4, ZoneID = 18, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 4, ZoneID = 29, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 4, ZoneID = 13, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 8, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 11, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 3, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 2, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 6, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 5, ZoneID = 4, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 11, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 3, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 2, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 6, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 6, ZoneID = 4, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 7, ZoneID = 18, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 7, ZoneID = 29, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 7, ZoneID = 13, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 9, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 10, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 8, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 6, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 3, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 7, JobTypeRequire = null, }
+                , new CompanyZone { CompanyID = 8, ZoneID = 2, JobTypeRequire = null, }
             );
 
 
@@ -362,11 +354,18 @@ namespace WEE_API.Migrations
                 new SalaryLevel { SalaryLevelID = 7, SalaryLevelName = "Trên 50 triệu VNĐ" }
             );
 
+            context.QuestionType.AddOrUpdate(a => a.QuestionTypeID,
+                new QuestionType { QuestionTypeID = 1, QuestionTypeName = "Loại câu hỏi từ 1-3 sao (Kém)" },
+                new QuestionType { QuestionTypeID = 2, QuestionTypeName = "Loại câu hỏi từ 4-5 sao (Tốt)" }
+            );
 
             context.Question.AddOrUpdate(a => a.QuestionID,
-                new Question { QuestionID = 1, QuestionName = "Trong số 05 khía cạnh dưới đây, ở khía cạnh nào bạn thấy QUYỀN của mình bị vi phạm nhiều nhất?" },
-                new Question { QuestionID = 2, QuestionName = "Trong số 05 khía cạnh dưới đây, ở khía cạnh nào bạn thấy khó ĐÀM PHÁN với chủ sử  dụng lao động nhất?" },
-                new Question { QuestionID = 3, QuestionName = "Trong số 05 khía cạnh dưới đây, ở khía cạnh nào bạn thấy thiếu MINH BẠCH nhất?" }
+                new Question { QuestionID = 1, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào bạn thấy QUYỀN của mình bị vi phạm nhiều nhất?", QuestionTypeID = 1 },
+                new Question { QuestionID = 2, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào bạn thấy khó ĐÀM PHÁN với chủ sử  dụng lao động nhất?", QuestionTypeID = 1 },
+                new Question { QuestionID = 3, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào bạn thấy thiếu MINH BẠCH nhất?", QuestionTypeID = 1 },
+                new Question { QuestionID = 4, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào bạn cảm thấy Quyền của mình VI PHẠM ÍT nhất? ", QuestionTypeID = 2 },
+                new Question { QuestionID = 5, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào bạn cảm thấy DỄ ĐÀM PHÁN nhất?", QuestionTypeID = 2 },
+                new Question { QuestionID = 6, QuestionName = "Trong năm khía cạnh dưới đây, ở khía cạnh nào quy định RÕ RÀNG nhất? ", QuestionTypeID = 2 }
             );
 
             context.Answer.AddOrUpdate(a => a.AnswerID,
@@ -408,7 +407,7 @@ namespace WEE_API.Migrations
             );
 
             context.TermAndCondition.AddOrUpdate(a => a.Id,
-            new TermAndCondition { Id = 1, Agreement = "<p class=\"ql - align - center\"><span class=\"ql - size - large\" style=\"color: rgb(230, 0, 0); \">Thỏa thuận sử dụng</span></p><p><strong>1. Điều khoản chung</strong></p><p>Chào mừng bạn đến website WEE&nbsp;( sau đây gọi tắt là website). Website này và những dịch vụ trên website được xây dựng và thuộc sở hữu của Công ty TNHH Tư Vấn Thiết Kế Phần Mềm. Việc bạn sử dụng website và các dịch vụ của website đồng nghĩa với việc bạn đã đồng ý với những thoả thuận dưới đây (Thoả thuận sử dụng dịch vụ ). Nếu bạn không đồng ý, xin vui lòng không sử dụng website và những dịch vụ của website.</p><p>Chúng tôi có thể sẽ thay đổi hoặc điều chỉnh Thoả thuận sử dụng dịch vụ. Bạn nên thường xuyên xem Thoả thuận sử dụng dịch vụ mỗi khi vào website. Nếu bạn tiếp tục sử dụng website và những dịch vụ sau khi chúng tôi đã điều chỉnh tức là bạn đã đồng ý với Thoả thuận sử dụng dịch vụ mới của chúng tôi.</p><p><strong>2. Dịch vụ và trách nhiệm của chúng tôi</strong></p><p>Dịch vụ của chúng tôi là những dịch vụ được ghi trên website này (sau đây gọi tắt là dịch vụ).</p><p>Bạn đồng ý rằng chúng tôi có quyền, và không cần thông báo trước, điều chỉnh những dịch vụ.</p><p>Bạn cũng đồng ý rằng chúng tôi có quyền điều chỉnh hoặc xoá những thông tin mà bạn cung cấp cho chúng tôi để bảo đảm những thông tin được đăng ký phù hợp với Quy định của website.</p><p>Bạn đồng ý rằng chúng tôi sẽ không chịu trách nhiệm cho những thiệt hại do sự thiếu hoặc không chính xác của thông tin trên website, bao gồm những hậu quả trực tiếp, gián tiếp, ngẫu nhiên, hoặc phát sinh từ việc bạn truy cập hoăc sử dụng thông tin trên website. Vì vậy, bạn hoàn toàn chịu trách nhiệm cho những hậu quả của việc sử dụng website.</p><p>Bạn hiểu và đồng ý rằng các thông tin về tên truy cập và mật khẩu phải được giữ bí mật, và phải thông báo ngay cho chúng tôi nếu bạn nghi ngờ rằng mật khẩu của mình đã bị tiết lộ.</p><p>Bạn đồng ý rằng chúng tôi có quyền ngăn chặn tạm thời hoặc lâu dài sự truy cập và sử dụng website của bạn nếu như bạn có hành động gây hại đến website hoặc vi phạm Thoả thuận sử dụng dịch vụ</p><p><strong>3. Trách nhiệm và nghĩa vụ của bạn</strong></p><p>Bạn cần đồng ý với Thoả thuận sử dụng dịch vụ, cam kết cung cấp thông tin chính xác khi đăng ký và chịu hoàn toàn trách nhiệm về những thông tin này.</p><p>Bạn chịu trách nhiệm bảo vệ mật khẩu truy cập, và trách nhiệm của việc đăng nhập bằng mật khẩu của bạn, do hoặc không do bạn trực tiếp đăng nhập.</p><p><strong>4. Giới hạn độ tuổi</strong></p><p>Mọi người đều có thể truy cập website này. Tuy nhiên, nếu bạn muốn đăng ký thành viên để đưa thông tin lên website, bạn phải ít nhất 18 tuổi và có đủ khả năng chịu trách nhiệm về hành vi của mình.</p><p><strong>5. Sử dụng nội dung trên website</strong></p><p>Nội dung trên website này có thể được xem và in ra hoặc gửi cho người khác. Bạn không thể sửa đổi, bán hoặc chuyển nhượng thương mại bất kỳ thông tin gì từ website này.</p><p><strong>6. Đăng kí thành viên</strong></p><p>Đăng kí thành viên hoàn toàn miễn phí.</p><p>Chúng tôi có quyền từ chối đưa thông tin lên website nếu như chúng tôi cảm thấy thông tin do bạn cung cấp không có sự tin cậy. Bạn có thể đăng ký lại sau 2 ngày nếu như bạn không thấy thông tin đăng ký của bạn trên website.</p><p>Mỗi thành viên chỉ được có tối đa một đăng ký. Nếu thành viên vi phạm quy định, chúng tôi sẽ xóa đăng ký của thành viên đó.</p><p><strong>7. Cập nhật thông tin thành viên</strong></p><p>Thành viên chịu trách nhiệm tự cập nhật thông tin của mình. Thành viên sử dụng tên truy cập và mật khẩu khi đăng ký để cập nhật thông tin và hình ảnh qua bằng cách nhấn menu \"Cập nhật thông tin\" trên website. Thành viên cũng có thể tự xoá đăng ký của mình nếu muốn.</p>",  }
+            new TermAndCondition { Id = 1, Agreement = "<p class=\"ql - align - center\"><span class=\"ql - size - large\" style=\"color: rgb(230, 0, 0); \">Thỏa thuận sử dụng</span></p><p><strong>1. Điều khoản chung</strong></p><p>Chào mừng bạn đến website WEE&nbsp;( sau đây gọi tắt là website). Website này và những dịch vụ trên website được xây dựng và thuộc sở hữu của Công ty TNHH Tư Vấn Thiết Kế Phần Mềm. Việc bạn sử dụng website và các dịch vụ của website đồng nghĩa với việc bạn đã đồng ý với những thoả thuận dưới đây (Thoả thuận sử dụng dịch vụ ). Nếu bạn không đồng ý, xin vui lòng không sử dụng website và những dịch vụ của website.</p><p>Chúng tôi có thể sẽ thay đổi hoặc điều chỉnh Thoả thuận sử dụng dịch vụ. Bạn nên thường xuyên xem Thoả thuận sử dụng dịch vụ mỗi khi vào website. Nếu bạn tiếp tục sử dụng website và những dịch vụ sau khi chúng tôi đã điều chỉnh tức là bạn đã đồng ý với Thoả thuận sử dụng dịch vụ mới của chúng tôi.</p><p><strong>2. Dịch vụ và trách nhiệm của chúng tôi</strong></p><p>Dịch vụ của chúng tôi là những dịch vụ được ghi trên website này (sau đây gọi tắt là dịch vụ).</p><p>Bạn đồng ý rằng chúng tôi có quyền, và không cần thông báo trước, điều chỉnh những dịch vụ.</p><p>Bạn cũng đồng ý rằng chúng tôi có quyền điều chỉnh hoặc xoá những thông tin mà bạn cung cấp cho chúng tôi để bảo đảm những thông tin được đăng ký phù hợp với Quy định của website.</p><p>Bạn đồng ý rằng chúng tôi sẽ không chịu trách nhiệm cho những thiệt hại do sự thiếu hoặc không chính xác của thông tin trên website, bao gồm những hậu quả trực tiếp, gián tiếp, ngẫu nhiên, hoặc phát sinh từ việc bạn truy cập hoăc sử dụng thông tin trên website. Vì vậy, bạn hoàn toàn chịu trách nhiệm cho những hậu quả của việc sử dụng website.</p><p>Bạn hiểu và đồng ý rằng các thông tin về tên truy cập và mật khẩu phải được giữ bí mật, và phải thông báo ngay cho chúng tôi nếu bạn nghi ngờ rằng mật khẩu của mình đã bị tiết lộ.</p><p>Bạn đồng ý rằng chúng tôi có quyền ngăn chặn tạm thời hoặc lâu dài sự truy cập và sử dụng website của bạn nếu như bạn có hành động gây hại đến website hoặc vi phạm Thoả thuận sử dụng dịch vụ</p><p><strong>3. Trách nhiệm và nghĩa vụ của bạn</strong></p><p>Bạn cần đồng ý với Thoả thuận sử dụng dịch vụ, cam kết cung cấp thông tin chính xác khi đăng ký và chịu hoàn toàn trách nhiệm về những thông tin này.</p><p>Bạn chịu trách nhiệm bảo vệ mật khẩu truy cập, và trách nhiệm của việc đăng nhập bằng mật khẩu của bạn, do hoặc không do bạn trực tiếp đăng nhập.</p><p><strong>4. Giới hạn độ tuổi</strong></p><p>Mọi người đều có thể truy cập website này. Tuy nhiên, nếu bạn muốn đăng ký thành viên để đưa thông tin lên website, bạn phải ít nhất 18 tuổi và có đủ khả năng chịu trách nhiệm về hành vi của mình.</p><p><strong>5. Sử dụng nội dung trên website</strong></p><p>Nội dung trên website này có thể được xem và in ra hoặc gửi cho người khác. Bạn không thể sửa đổi, bán hoặc chuyển nhượng thương mại bất kỳ thông tin gì từ website này.</p><p><strong>6. Đăng kí thành viên</strong></p><p>Đăng kí thành viên hoàn toàn miễn phí.</p><p>Chúng tôi có quyền từ chối đưa thông tin lên website nếu như chúng tôi cảm thấy thông tin do bạn cung cấp không có sự tin cậy. Bạn có thể đăng ký lại sau 2 ngày nếu như bạn không thấy thông tin đăng ký của bạn trên website.</p><p>Mỗi thành viên chỉ được có tối đa một đăng ký. Nếu thành viên vi phạm quy định, chúng tôi sẽ xóa đăng ký của thành viên đó.</p><p><strong>7. Cập nhật thông tin thành viên</strong></p><p>Thành viên chịu trách nhiệm tự cập nhật thông tin của mình. Thành viên sử dụng tên truy cập và mật khẩu khi đăng ký để cập nhật thông tin và hình ảnh qua bằng cách nhấn menu \"Cập nhật thông tin\" trên website. Thành viên cũng có thể tự xoá đăng ký của mình nếu muốn.</p>", }
             );
 
             context.SaveChanges();
@@ -456,7 +455,7 @@ namespace WEE_API.Migrations
             }
 
             //Create User with NO Roles...
-            user = new ApplicationUser {Id = 3, UserName = "guest", Email = "guest@somedomain.com", FullName = "Guest User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
+            user = new ApplicationUser { Id = 3, UserName = "guest", Email = "guest@somedomain.com", FullName = "Guest User", LastModified = DateTime.Now, Inactive = false, EmailConfirmed = true };
             result = UserManager.Create(user, "guest123");
 
             context.SaveChanges();

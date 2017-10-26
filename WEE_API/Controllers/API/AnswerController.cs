@@ -16,7 +16,7 @@ namespace WEE_API.Controllers.API
 
         public IQueryable<Answer> GetAnswer()
         {
-            return db.Answer;
+            return db.Answer.Include(a=>a.ListAnswerDetail);
         }
  
         [ResponseType(typeof(Answer))]

@@ -16,5 +16,12 @@ namespace WEE_API.Models
         [MaxLength(1000)]
         [Display(Name ="Câu hỏi")]
         public string QuestionName { get; set; }
+
+        [Display(Name ="Loại câu hỏi")]
+        public int QuestionTypeID { get; set; }
+
+        [ForeignKey("QuestionTypeID")]
+        public virtual QuestionType QuestionType { get; set; }
+
     }
 }

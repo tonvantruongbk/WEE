@@ -236,6 +236,7 @@
     <Compile Include="Controllers\API\ContractTypeController.cs" />
     <Compile Include="Controllers\API\JobPositionController.cs" />
     <Compile Include="Controllers\API\SalaryLevelController.cs" />
+    <Compile Include="Controllers\API\PrepareRatingController.cs" />
     <Compile Include="Controllers\API\SearchCompanyByNameLocationZoneController.cs" />
     <Compile Include="Controllers\API\UserRatingCompanyController.cs" />
     <Compile Include="Controllers\API\WorkingStatusController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Models\AnswerDetail.cs" />
     <Compile Include="Models\ContractType.cs" />
     <Compile Include="Models\JobPosition.cs" />
+    <Compile Include="Models\PrepareRating.cs" />
     <Compile Include="Models\SalaryLevel.cs" />
     <Compile Include="Models\TermAndCondition.cs" />
     <Compile Include="Models\WorkingStatus.cs" />

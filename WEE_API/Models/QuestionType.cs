@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEE_API.Models
@@ -10,9 +11,11 @@ namespace WEE_API.Models
         [Display(Name ="Mã loại câu hỏi")]
         public int QuestionTypeID { get; set; }
         
-        [MaxLength(500)]
+        [MaxLength(100)]
         [Display(Name ="Loại câu hỏi")]
         [Required]
         public string QuestionTypeName { get; set; }
+
+       public virtual ICollection<Question> ListQuestion { get; set; }
     }
 }
