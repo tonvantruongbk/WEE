@@ -229,7 +229,8 @@
 
     <script src="~/Scripts/CommonDatatablesEditor.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function ()
+        {
             var url = window.location;
             var menu = $('.page-sidebar-menu li a[href="' + url.pathname.replace('/Index', '') + '"]');
             menu.parent().addClass('active').addClass('open');
@@ -237,6 +238,14 @@
             menu.parent().parent().parent().children().find('span.arrow').addClass('open');
         });
 
+        toastr.options = {
+            "debug": false,
+            "positionClass": "toast-bottom-left",
+            "fadeIn": 300,
+            "fadeOut": 1000,
+            "timeOut": 5000,
+            "extendedTimeOut": 1000
+        }
 
         var fixedHeaderOffset = 0;
         if (App.getViewPort().width < App.getResponsiveBreakpoint('md')) {

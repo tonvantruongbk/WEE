@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WEE_API.Common;
 using WEE_API.Models;
 
 namespace WEE_API.RBAC
@@ -45,21 +46,9 @@ namespace WEE_API.RBAC
         public string Lastname { get; set; }
         public DateTime? BirthDay { get; set; }
 
-        [Display(Name = "Tình trạng công việc")]
-        public bool WorkingStatus { get; set; }
-        [Display(Name = "Loại hình công việc")]
-        public int WorkingType { get; set; }
-        [MaxLength(300)]
-        [Display(Name = "Mức lương")]
-        public string Salary { get; set; }
-        [MaxLength(200)]
-        [Display(Name = "Thời điểm làm việc")]
-        public string YearOfEmployee { get; set; }
-        [MaxLength(200)]
-        [Display(Name = "File hợp đồng")]
-        public string Contract { get; set; }
 
         public virtual ICollection<AD_User_Menu> AD_User_Menu { get; set; }
+        public virtual ICollection<MultipleCheckboxClass> UserRole { get; set; }
 
         public ApplicationUser()
         {
@@ -172,7 +161,24 @@ namespace WEE_API.RBAC
         [StringLength(50)]
         public string PermissionDescription { get; set; }
 
-        public virtual List<ApplicationRole> ROLES { get; set; }
+
+        public virtual ICollection<ApplicationRole> ROLES { get; set; }
+    }
+
+     public class PermissionRole
+    {
+        [Key]
+        [Column(Order = 0)]
+        public int RoleId { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int PermissionId { get; set; }
+
+        [ForeignKey("RoleId")]
+        public virtual  ApplicationRole  Role { get; set; }
+        [ForeignKey("PermissionId")]
+        public virtual PERMISSION Permission { get; set; }
+
     }
 
     #region TOTP4Email  

@@ -86,13 +86,26 @@ var generateFields = function (tableID, editorFor) {
             filter_delay: 500
         };
         switch (columnData.type) {
-            case 'quill':
+        case 'quill':
+            field = $.extend(true, field, {
+                type: 'quill',
+            });
+            break;
+            case 'textarea':
                 field = $.extend(true, field, {
-                    type: 'quill',
+                    type: 'textarea',
                 });
                 break;
             case 'checkbox':
                 field = $.extend(true, field, {
+                    type: 'checkbox',
+                    separator: "|", options: [
+                        { label: '', value: 'true' }]
+                });
+                break;
+            case 'mcheckbox':
+                field = $.extend(true, field, {
+                    type: 'checkbox',
                     className: "multiCheckboxLimitHeight"
                 });
                 break;
@@ -125,6 +138,7 @@ var generateFields = function (tableID, editorFor) {
                 break;
             case 'selectize':
                 field = $.extend(true, field, {
+                    type:'selectize',
                     opts: {
                         sortField: "value",
                         valueField: "value",
@@ -184,7 +198,7 @@ var generateColumns = function (tableID, editorFor) {
                     null;
             }
         }
-        else if (columnData.type === "checkbox") {
+        else if (columnData.type === "mcheckbox") {
             render1 = "[, ].name";
             columnData.data = columnData.data.replace("[].id", "");
         }

@@ -1,4 +1,4 @@
-@using WEE_API.Common
+﻿@using WEE_API.Common
 @using WEE_API.RBAC
 @using WEE_API.ViewModel
 @{
@@ -29,8 +29,7 @@
                     <th data-filter_type="auto_complete" data-data="UserName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                         @(ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT).PropertyName)
                     </th>
-                    <th data-filter_type="" data-data="Roles" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.Roles, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Roles, ViewDT).PropertyName)
+                    <th data-filter_type="" data-data="UserRole[].id" data-type="mcheckbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Thuộc nhóm quyền
                     </th>
                     <th data-filter_type="auto_complete" data-data="Email" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                         @(ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT).PropertyName)

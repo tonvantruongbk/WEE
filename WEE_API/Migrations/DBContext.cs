@@ -51,11 +51,9 @@ namespace WEE_API.Models
         public virtual DbSet<ContractType> ContractType { get; set; }
         public virtual DbSet<TermAndCondition> TermAndCondition { get; set; }
 
-
-
         public DbSet<PERMISSION> PERMISSIONS { get; set; } 
-
-        //public DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+        public DbSet<ApplicationUserRole> UserRoles { get; set; }
+        public DbSet<PermissionRole> PermissionRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -67,16 +65,16 @@ namespace WEE_API.Models
             modelBuilder.Entity<ApplicationRole>().ToTable("ROLES").Property(p => p.Id).HasColumnName("RoleId");
             modelBuilder.Entity<ApplicationUserRole>().ToTable("LNK_USER_ROLE");
 
-            modelBuilder.Entity<ApplicationRole>().
-                HasMany(c => c.PERMISSIONS).
-                WithMany(p => p.ROLES).
-                Map(
-                    m =>
-                    {
-                        m.MapLeftKey("RoleId");
-                        m.MapRightKey("PermissionId");
-                        m.ToTable("LNK_ROLE_PERMISSION");
-                    });
+            //modelBuilder.Entity<ApplicationRole>().
+            //    HasMany(c => c.PERMISSIONS).
+            //    WithMany(p => p.ROLES).
+            //    Map(
+            //        m =>
+            //        {
+            //            m.MapLeftKey("RoleId");
+            //            m.MapRightKey("PermissionId");
+            //            m.ToTable("LNK_ROLE_PERMISSION");
+            //        });
         }
 
         public static DBContext Create()

@@ -55,7 +55,7 @@ namespace WEE_API.Controllers
                     company.ListCompanyZone = null;
                     lstFinal.Add(company);
                 }
-                var ttt = new Dictionary<string, List<CommonModel>>
+                var CompanyZoneOptions = new Dictionary<string, List<CommonModel>>
                 {
                     {"CompanyZone[].id", db.Zone.Select(a => new CommonModel() {value = a.ZoneID, label = a.ZoneName + ""}).ToList()}
                 };
@@ -66,7 +66,7 @@ namespace WEE_API.Controllers
                     recordsFiltered = queryFiltered.Count(),
                     recordsTotal = all.Count(),
                     files = CommonFunction.GenListImageJSON(db.Company.Where(a => !string.IsNullOrEmpty(a.Logo)).Select(a => a.Logo).ToList()),
-                    options =  ttt
+                    options = CompanyZoneOptions
                 };
                 if (request.FilterBase != null)
                 {

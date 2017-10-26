@@ -14,7 +14,12 @@
 @section PageStyles
 {
     <style>
-        
+        div.DTE_Action_Edit {
+            left: 1em;
+            right: 1em;
+            margin-left: 0;
+            width: auto;
+        }
     </style>
 }
 
@@ -65,7 +70,7 @@
                     <th data-filter_type="" data-data="Logo" data-type="image" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                         @(ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Logo, ViewDT).PropertyName)
                     </th>
-                    <th data-filter_type="auto_complete" data-data="CompanyZone[].id" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Lĩnh vực kinh doanh</th>
+                    <th data-filter_type="auto_complete" data-data="CompanyZone[].id" data-type="mcheckbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">Lĩnh vực kinh doanh</th>
                     <th data-filter_type="auto_complete" data-data="Location.LocationName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                         @(ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LocationID, ViewDT).PropertyName)
                     </th>

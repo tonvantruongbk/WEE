@@ -26,7 +26,23 @@ namespace WEE_API.Models
         [Display(Name ="Người bình chọn")]
         public int UserID { get; set; }
 
-       
+
+        [Display(Name = "Tình trạng công việc")]
+        public bool WorkingStatus { get; set; }
+        [Display(Name = "Loại hình công việc")]
+        public int WorkingType { get; set; }
+        [MaxLength(300)]
+        [Display(Name = "Mức lương")]
+        public string Salary { get; set; }
+        [MaxLength(200)]
+        [Display(Name = "Thời điểm làm việc")]
+        public string YearOfEmployee { get; set; }
+        [MaxLength(200)]
+        [Display(Name = "File hợp đồng")]
+        public string Contract { get; set; }
+
+
+
         [Display(Name = "chi tiết trả lời")]
         public int AnswerDetailID { get; set; }
 
