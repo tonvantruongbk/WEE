@@ -19,17 +19,32 @@ namespace WEE_API.Controllers
         DBContext db = new DBContext();
         public ActionResult Index()
         {
+            Session["UserTypeID"] = null;
             return View();
         }
-
+        [HttpPost]
+        public void SetParrent(int id)
+        {
+            Session["UserTypeID"] = id;
+        }
         [HttpPost]
         public JsonResult DataHandler(DatatablesRequest request)
         {
             try
             {
+                long id = 0;
                 var all = db.Users
-                    .Include(a => a.Roles.Select(b=>b.Role))
+                    .Include(a => a.Roles.Select(b => b.Role))
                     .AsNoTracking();
+                if (!string.IsNullOrEmpty(Session["UserTypeID"] + ""))
+                {
+                    id = Convert.ToInt64(Session["UserTypeID"] + "");
+                    all = db.Users.Include(a => a.UserType)
+                        .Include(a => a.Roles.Select(b => b.Role))
+                        .Where(a => a.UserType.UserTypeID == id)
+                        .AsNoTracking();
+                }
+
                 var queryFiltered = all.SearchForDataTables(request);
                 queryFiltered = queryFiltered.Sort(request) as IQueryable<ApplicationUser>;
                 var finalquery = queryFiltered.Skip(request.Start).Take(request.Length);
@@ -99,8 +114,13 @@ namespace WEE_API.Controllers
             {
                 data.Id = Id;
                 db.Entry(data).State = EntityState.Modified;
+
+
                 db.UserRoles.RemoveRange(db.UserRoles.Where(b => b.UserId == data.Id).AsEnumerable());
-                db.UserRoles.AddRange(data.UserRole.Select(b => new ApplicationUserRole() { UserId = data.Id, RoleId = b.id }).ToArray());
+                if (data.UserRole != null)
+                {
+                    db.UserRoles.AddRange(data.UserRole.Select(b => new ApplicationUserRole() { UserId = data.Id, RoleId = b.id }).ToArray());
+                }
                 db.SaveChanges();
                 return Json(new { Message = "Đã sửa thành công!" }, JsonRequestBehavior.AllowGet);
             }

@@ -46,6 +46,11 @@ namespace WEE_API.RBAC
         public string Lastname { get; set; }
         public DateTime? BirthDay { get; set; }
 
+        public int? UserTypeID { get; set; }
+
+        [ForeignKey("UserTypeID")]
+        public virtual UserType UserType { get; set; }
+
 
         public virtual ICollection<AD_User_Menu> AD_User_Menu { get; set; }
         public virtual ICollection<MultipleCheckboxClass> UserRole { get; set; }

@@ -1,52 +1,144 @@
 ﻿
 @using WEE_API.Common
 @using WEE_API.Models
+@using WEE_API.RBAC
 @using WEE_API.ViewModel
 @{
-    var screenTitle = "Kiểu người dùng";
+    var screenTitle = "UserType";
+    var screenTitle1 = "Users";
     ViewBag.Title = screenTitle;
     var ViewDT = new ViewDataDictionary<UserType>();
+    var ViewDT1 = new ViewDataDictionary<ApplicationUser>();
     var filterOnHeader = "HeaderFilter"; //"DataTablePutExternalFilter";
+    var filterOnHeader1 = "HeaderFilter"; //"DataTablePutExternalFilter";
 }
 @section PageStyles
 {
     <style>
+        
     </style>
 }
-
+ 
 <div id="customForm">
     <fieldset class="name">
         <div data-editor-template="UserTypeName"></div>
     </fieldset>
 </div>
 
+
 <div class="row">
-    <div class="col-sm-6">
-        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader })
-        <table id="DataTableUserType"
-               class="table table-bordered table-hover table-header-fixed no-footer order-column"
-               data-orders='[[0, "asc"]]'
-               data-select="true"
-               data-dom="fBrtlpi">
-            <thead>
-                <tr>
-                    <th data-filter_type="auto_complete" data-data="UserTypeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
-                        @(ModelMetadata.FromLambdaExpression(x => x.UserTypeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserTypeName, ViewDT).PropertyName)
-                    </th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+    <div class="col-lg-3 col-sm-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle, FilterOn = filterOnHeader, FilterTitleBox = "UserType" })
+    <table id="DataTableUserType" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="fBrtlpi">
+        <thead>
+            <tr>
+                  <th data-filter_type="auto_complete" data-data="UserTypeName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                  @(ModelMetadata.FromLambdaExpression(x => x.UserTypeName, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserTypeName, ViewDT).PropertyName)
+                  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+    <div class="col-lg-9 col-sm-12">
+        @Html.Partial("_ExternalFilter", new ExternalFilterSettings { ScreenTitle = screenTitle1, FilterOn = filterOnHeader1, FilterTitleBox = "Users" , FilterTitleClass = "customTitleCss" })
+    <table id="DataTableUsers" 
+            class="table table-bordered table-hover table-header-fixed no-footer order-column"
+            data-orders='[[0, "asc"]]'
+            data-select="true"
+            data-dom="Brtlp">
+        <thead>
+            <tr>
+                <th data-filter_type="auto_complete" data-data="FullName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.FullName, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.FullName, ViewDT1).PropertyName)
+                </th>
+                <th data-filter_type="auto_complete" data-data="UserName" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserName, ViewDT1).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="UserRole[].id" data-type="mcheckbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    Thuộc nhóm quyền
+                </th>
+                <th data-filter_type="auto_complete" data-data="Email" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Email, ViewDT1).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="EmailConfirmed" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.EmailConfirmed, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.EmailConfirmed, ViewDT1).PropertyName)
+                </th>
+
+                <th data-filter_type="auto_complete" data-data="PhoneNumber" data-type="string" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumber, ViewDT1).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="PhoneNumberConfirmed" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.PhoneNumberConfirmed, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.PhoneNumberConfirmed, ViewDT1).PropertyName)
+                </th>
+                <th data-filter_type="" data-data="TwoFactorEnabled" data-type="checkbox" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.TwoFactorEnabled, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.TwoFactorEnabled, ViewDT1).PropertyName)
+                </th>
+
+                <th data-filter_type="" data-data="LockoutEnabled" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.LockoutEnabled, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.LockoutEnabled, ViewDT1).PropertyName)
+                </th>
+
+                <th data-filter_type="" data-data="UserType.UserTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                    @(ModelMetadata.FromLambdaExpression(x => x.UserTypeID, ViewDT1).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserTypeID, ViewDT1).PropertyName)
+                </th>
+
+            </tr>
+        </thead>
+    </table>
+</div>
 </div>
 @section scripts{
     @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
-{
-    Controller = "UserType",
-    TableID = "DataTableUserType",
-    FieldID = "UserTypeID",
-    ButtonPlaceID = "buttons",
-    buttonExternal = false,
-    Ydacf = filterOnHeader,
-    CustomEditorFormID = "customForm"
-})
+    {
+        Controller = "UserType",
+        TableID = "DataTableUserType",
+        FieldID = "UserTypeID",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = ""
+    })
+
+    @Html.Partial("_CommonDatatablesEditor", new DatatablesEditorViewModel()
+    {
+        Controller = "Users",
+        TableID = "DataTableUsers",
+        FieldID = "Id",
+        ButtonPlaceID = "buttons",
+        buttonExternal = false,
+        Ydacf = filterOnHeader,
+        CustomEditorFormID = ""
+    })
+
+    <script>
+        editorForUsers.on('initCreate', function (e, type) {
+            editorForUsers.field('UserTypeID').set(tableForUserType.row('.selected').data().UserTypeID);
+        });
+
+        tableForUserType.on('select', function (e, dt, type, indexes) {
+            if (type === 'row') {
+                var data = tableForUserType.rows(indexes).data().pluck('UserTypeID')[0];
+                $("#TableNameUsers").html(tableForUserType.row(indexes).data().UserTypeName);
+                if (data != undefined || data !== null) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SetParrent", "Users")/' + data,
+                        success: function () { 
+                            tableForUsers.ajax.reload();
+                        }
+                    });
+                }
+            }
+        });
+        $('#DataTableUserType')
+            .on('init.dt', function () {
+                var cRow = tableForUserType.row(':eq(0)', { page: 'current' });
+                cRow.select(); 
+            }); 
+         
+    </script>
 }

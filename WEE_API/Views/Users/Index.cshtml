@@ -57,7 +57,9 @@
                     <th data-filter_type="" data-data="Inactive" data-type="bool" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
                         @(ModelMetadata.FromLambdaExpression(x => x.Inactive, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.Inactive, ViewDT).PropertyName)
                     </th>
-
+                    <th data-filter_type="" data-data="UserType.UserTypeName" data-type="selectize" data-class="" data-align="" data-listvisible="true" data-editvisible="true">
+                        @(ModelMetadata.FromLambdaExpression(x => x.UserTypeID, ViewDT).DisplayName ?? ModelMetadata.FromLambdaExpression(x => x.UserTypeID, ViewDT).PropertyName)
+                    </th>
                 </tr>
             </thead>
         </table>

@@ -23,6 +23,14 @@ namespace WEE_API.Models
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
+
+        public DBContext(string connectionString) : base(connectionString)
+        {
+            Database.SetInitializer(new DBInitializer());
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+        }
+
         public virtual DbSet<AD_AuditLog> AD_AuditLog { get; set; }
         public virtual DbSet<AD_History> AD_History { get; set; }
         public virtual DbSet<AD_Menu> AD_Menu { get; set; }
