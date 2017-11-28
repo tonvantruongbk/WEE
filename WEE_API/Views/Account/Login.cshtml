@@ -1,144 +1,70 @@
-﻿@using WEE_API.ViewModel
-@model LoginViewModel
+﻿@using WEE_API.Models
+@using WEE_API.RBAC
+@using WEE_API.ViewModel
+@model WEE_API.ViewModel.LoginViewModel
 @{
     ViewBag.Title = "Log In";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<!-- BEGIN LOGIN FORM -->
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-title">
-        <span class="form-title">Chào mừng bạn.</span>
-        <span class="form-subtitle">WEE ở đây để trợ giúp bạn.</span>
+<div>
+    <br />
+    <table>
+        <td><img src="~/Content/Images/login.png" /></td>
+        <td class="rbac-formtitle">@ViewBag.Title<p class="rbac-formtitlesub">Use a local account to access this site</p></td>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()           
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, "Username", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log In" class="btn btn-default" />
+                    </div>
+                </div>
+                //<p>
+                //    @Html.ActionLink("Register as a new user", "Register")
+                //</p>
+                //Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>
+            }
+        </section>
     </div>
-    <div class="alert alert-danger display-hide">
-        <button class="close" data-close="alert"></button>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, "Username", new { @class = "control-label visible-ie8 visible-ie9" })
-        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control form-control-solid placeholder-no-fix", placeholder = "Tên đăng nhập" })
-        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "control-label visible-ie8 visible-ie9" })
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-solid placeholder-no-fix", placeholder = "Mật khẩu" })
-        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-actions">
-        <div class="pull-left">
-            <label class="rememberme mt-checkbox mt-checkbox-outline">
-                @Html.CheckBoxFor(m => m.RememberMe) Ghi nhớ đăng nhập của tôi
-                <span></span>
-            </label>
-        </div>
-        <div class="pull-right forget-password-block">
-            <a href="javascript:;" id="forget-password" class="forget-password">Quên mật khẩu?</a>
-        </div>
-    </div>
-    <div class="form-actions">
-        <button type="submit" class="btn red btn-block uppercase">Đăng nhập</button>
-    </div>
-
-    <div class="login-options">
-        <h4 class="pull-left">Hoặc đăng nhập với</h4>
-        <ul class="social-icons pull-right">
-            <li>
-                <a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
-            </li>
-            <li>
-                <a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
-            </li>
-            <li>
-                <a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
-            </li>
-            <li>
-                <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="create-account">
-        <p>
-            <a href="javascript:;" class="btn-primary btn" id="register-btn">Create an account</a>
-        </p>
-    </div>
-}
-<!-- END LOGIN FORM -->
-<!-- BEGIN FORGOT PASSWORD FORM -->
-<form class="forget-form" action="index.html" method="post">
-    <div class="form-title">
-        <span class="form-title">Forget Password ?</span>
-        <span class="form-subtitle">Enter your e-mail to reset it.</span>
-    </div>
-    <div class="form-group">
-        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" />
-    </div>
-    <div class="form-actions">
-        <button type="button" id="back-btn" class="btn btn-default">Back</button>
-        <button type="submit" class="btn btn-primary uppercase pull-right">Submit</button>
-    </div>
-</form>
-<!-- END FORGOT PASSWORD FORM -->
-<!-- BEGIN REGISTRATION FORM -->
-<form class="register-form" action="index.html" method="post">
-    <div class="form-title">
-        <span class="form-title">Sign Up</span>
-    </div>
-    <p class="hint"> Enter your personal details below: </p>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Full Name</label>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
-    </div>
-    <div class="form-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Email</label>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
-    </div>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Address</label>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address" />
-    </div>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">City/Town</label>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city" />
-    </div>
-    <p class="hint"> Enter your account details below: </p>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Username</label>
-        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" />
-    </div>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Password</label>
-        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" />
-    </div>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" />
-    </div>
-    <div class="form-group margin-top-20 margin-bottom-20">
-        <label class="mt-checkbox mt-checkbox-outline">
-            <input type="checkbox" name="tnc" /> I agree to the
-            <a href="javascript:;">Terms of Service </a>
-            <span></span>
-        </label>
-        <div id="register_tnc_error"> </div>
-    </div>
-    <div class="form-actions">
-        <button type="button" id="register-back-btn" class="btn btn-default">Back</button>
-        <button type="submit" id="register-submit-btn" class="btn red uppercase pull-right">Submit</button>
-    </div>
-</form>
-<!-- END REGISTRATION FORM -->
-@*<div class="row">
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
-    </div>*@
+</div>
 
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/jqueryval")
 }

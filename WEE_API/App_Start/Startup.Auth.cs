@@ -81,15 +81,15 @@ namespace WEE_API
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "652655608217005",
+                appSecret: "cef829c5ac41d996fa02b2718c8ca53a");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "620707964195-1t1iq2c60s8n1g6m7bqv4liuvfja5g0n.apps.googleusercontent.com",
+                ClientSecret = "709rD1fckWr4VHNRhqkeWsog"
+            });
         }
     }
 }

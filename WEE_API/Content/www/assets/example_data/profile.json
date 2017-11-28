@@ -1,0 +1,145 @@
+{
+    "user": {
+        "name": "Nguyễn Thị Hoa",
+        "location": "Hoàn Kiếm, Hà Nội",
+        "about": "Câu danh ngôn ưu thích của tôi là: Mọi người sẽ quên rất nhanh việc bạn làm nhưng họ sẽ nhớ rất lâu bạn đã làm nó tốt thế nào.",
+        "email": "hoalt@viettravel.com",
+        "phone": "0975-998-342",
+        "image": "./assets/images/profile/200x200ProfilePic.png",
+        "website": "https://viettravel.com"
+    },
+    "following": [
+        {
+            "name": "Nhân Viên Kinh Doanh",
+            "image": "./assets/images/profile/NhanHoa.gif",
+            "about": "Công ty TNHH Phần Mềm Nhân Hòa. Địa chỉ: 32 Võ Văn Dũng, Đống Đa, Hà Nội",
+            "inverse_relation": true
+        },
+        {
+            "name": "Nhân Viên Marketing Online",
+            "image": "./assets/images/profile/AnViet.jpg",
+            "about": "Phòng khám An Việt. Số 1 Lô 1, Ngõ 217 La Thành, Ô Chợ Dừa, Đống Đa, Hà Nội",
+            "inverse_relation": false
+        },
+        {
+            "name": "Trưởng Nhóm Marketing",
+            "image": "./assets/images/profile/PhucAnh.png",
+            "about": "Công ty máy tính Phúc Anh. Số 15 - Xã Đàn - Phương Liên - Đống Đa - Hà Nội",
+            "inverse_relation": true
+        },
+        {
+            "name": "Nhân Viên Kế Toán",
+            "image": "./assets/images/profile/HC.png",
+            "about": "Công ty TNHH thương mại VHC. 399 Phạm Văn Đồng, Xuân Đỉnh, Bắc Từ Liêm, Hà Nội",
+            "inverse_relation": true
+        },
+        {
+            "name": "Nhân Viên Tư Vấn Tuyển Sinh",
+            "image": "./assets/images/profile/ITPlus.png",
+            "about": "ITPlus Academy - Viện CNTT - ĐHQG Hà Nội",
+            "inverse_relation": false
+        },
+        {
+            "name": "Biên Tập Viên Nội Dung Website",
+            "image": "./assets/images/profile/HighLand.png",
+            "about": "Công ty cổ phần bất động sản HGI. Tầng 3, tòa HH2-Bắc Hà, đường Tố Hữu, Phường Nhân Chính, Quận Thanh Xuân, Hà Nội",
+            "inverse_relation": false
+        },
+        {
+            "name": "Kỹ Thuật Presale Cloud",
+            "image": "./assets/images/profile/FPT.jpg",
+            "about": "Công ty TNHH MTV Viễn thông Quốc tế FPT. Tòa Nhà FPT, đường Tân Thuận, KCX Tân Thuận Q7, TpHCM - Chi nhánh: Tầng 12A - TNR 54A Nguyễn Chí Thanh, Đống Đa, Hà Nội.",
+            "inverse_relation": true
+        }
+    ],
+    "followers": [
+          {
+            "name": "Công ty TNHH MTV Viễn thông Quốc tế FPT",
+            "image":  "./assets/images/profile/FPT.jpg",
+            "about": "Tầng 12A - TNR 54A Nguyễn Chí Thanh, Đống Đa, Hà Nội.",
+            "inverse_relation": true
+        },
+        {
+            "name": "ITPlus Academy - Viện CNTT - ĐHQG Hà Nội",
+            "image": "./assets/images/profile/ITPlus.png",
+            "about": "Viện CNTT - ĐHQG Hà Nội",
+            "inverse_relation": false
+        },
+        {
+            "name": "Công ty TNHH thương mại VHC",
+            "image": "./assets/images/profile/HC.png",
+            "about": "399 Phạm Văn Đồng, Xuân Đỉnh, Bắc Từ Liêm, Hà Nội",
+            "inverse_relation": false
+        },
+        {
+            "name": "Công ty máy tính Phúc Anh",
+            "image": "./assets/images/profile/PhucAnh.png",
+            "about": "Số 15 - Xã Đàn - Phương Liên - Đống Đa - Hà Nội",
+            "inverse_relation": true
+        },
+        {
+            "name": "Phòng khám An Việt",
+            "image":  "./assets/images/profile/AnViet.jpg",
+            "about": "Số 1 Lô 1, Ngõ 217 La Thành, Ô Chợ Dừa, Đống Đa, Hà Nội",
+            "inverse_relation": true
+        }
+    ],
+    "posts":[
+      {
+        "image": "./assets/images/profile/posts/500x500profile1.png",
+        "description": "Xin phép ace cho em giới thiệu Bình Liêu quê em",
+        "likes": 52,
+        "comments": 5,
+        "liked": true,
+        "date": "17/11/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile2.jpg",
+        "description": "Sushi giải ngố",
+        "likes": 11,
+        "comments": 3,
+        "liked": false,
+        "date": "14/11/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile3.jpg",
+        "description": "Nghề nghiệp nào phù hợp với tính cách của bạn?",
+        "likes": 221,
+        "comments": 11,
+        "liked": true,
+        "date": "10/10/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile4.jpg",
+        "description": "#Nhóc",
+        "likes": 20,
+        "comments": 1,
+        "liked": false,
+        "date": "02/10/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile5.jpg",
+        "description": "Những người bạn gặp trên đường đời sẽ ảnh hưởng đến cuộc sống của bạn. It’s game night with the #Cavaliers ! #StriveForGreatness",
+        "likes": 99,
+        "comments": 101,
+        "liked": true,
+        "date": "22/9/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile6.jpg",
+        "description": "Congratulations! ",
+        "likes": 32,
+        "comments": 7,
+        "liked": false,
+        "date": "10/9/2016"
+      },
+      {
+        "image": "./assets/images/profile/posts/500x500profile7.jpg",
+        "description": "I want to fly like an eagle, To the sea Fly like an eagle, Let my spirit carry me I want to fly, Fly right into the future ",
+        "likes": 10,
+        "comments": 9,
+        "liked": false,
+        "date": "9/9/2016"
+      }
+    ]
+}

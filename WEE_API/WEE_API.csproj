@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -139,6 +141,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -152,6 +158,10 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -4858,6 +4868,102 @@
     <Content Include="Content\UPLOAD\logomamanbebe.jpg" />
     <Content Include="Content\UPLOAD\minhphuc.png" />
     <Content Include="Content\UPLOAD\thvina.jpg" />
+    <Content Include="Content\www\assets\fonts\ionicons.svg" />
+    <Content Include="Content\www\assets\icon\favicon.ico" />
+    <Content Include="Content\www\assets\images\ads\banner-illustration.png" />
+    <Content Include="Content\www\assets\images\ads\instertitial-illustration.png" />
+    <Content Include="Content\www\assets\images\feed\500x333HydroflightSports.png" />
+    <Content Include="Content\www\assets\images\feed\500x333paddleboarding.png" />
+    <Content Include="Content\www\assets\images\feed\500x333Parasailing.png" />
+    <Content Include="Content\www\assets\images\feed\500x333Skimboarding.png" />
+    <Content Include="Content\www\assets\images\feed\500x333Waterpolo.png" />
+    <Content Include="Content\www\assets\images\header_logo_white.png" />
+    <Content Include="Content\www\assets\images\listing\200x200basquet.png" />
+    <Content Include="Content\www\assets\images\listing\200x200boxeo.png" />
+    <Content Include="Content\www\assets\images\listing\200x200crossfit.png" />
+    <Content Include="Content\www\assets\images\listing\200x200futbol.png" />
+    <Content Include="Content\www\assets\images\listing\200x200running.png" />
+    <Content Include="Content\www\assets\images\listing\200x200swimming.png" />
+    <Content Include="Content\www\assets\images\listing\200x200yoga.png" />
+    <Content Include="Content\www\assets\images\listing\300x300AirSports.png" />
+    <Content Include="Content\www\assets\images\listing\300x300AthleticSports.png" />
+    <Content Include="Content\www\assets\images\listing\300x300BeachSports.png" />
+    <Content Include="Content\www\assets\images\listing\300x300CombatSports.png" />
+    <Content Include="Content\www\assets\images\listing\300x300ExtremeSports.png" />
+    <Content Include="Content\www\assets\images\listing\300x300WaterSports.png" />
+    <Content Include="Content\www\assets\images\listing\600x300banner1.png" />
+    <Content Include="Content\www\assets\images\lists\200x200BritishOpen.png" />
+    <Content Include="Content\www\assets\images\lists\200x200EventCrossfit.png" />
+    <Content Include="Content\www\assets\images\lists\200x200EventUSOpen.png" />
+    <Content Include="Content\www\assets\images\lists\200x200FIFA.png" />
+    <Content Include="Content\www\assets\images\lists\200x200TBT.png" />
+    <Content Include="Content\www\assets\images\logo_white.png" />
+    <Content Include="Content\www\assets\images\maps\place-1.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-2.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-3.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-4.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-5.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-6.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-7.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-8.jpg" />
+    <Content Include="Content\www\assets\images\maps\place-9.jpg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification1.jpeg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification2.png" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification3.jpg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification4.jpeg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification5.jpg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification6.jpg" />
+    <Content Include="Content\www\assets\images\notifications\100x100Notification7.jpg" />
+    <Content Include="Content\www\assets\images\pin.min.png" />
+    <Content Include="Content\www\assets\images\pin.png" />
+    <Content Include="Content\www\assets\images\pin.svg" />
+    <Content Include="Content\www\assets\images\profile\200x200jordan.png" />
+    <Content Include="Content\www\assets\images\profile\200x200kobe.png" />
+    <Content Include="Content\www\assets\images\profile\200x200manny.png" />
+    <Content Include="Content\www\assets\images\profile\200x200manu.png" />
+    <Content Include="Content\www\assets\images\profile\200x200maria.png" />
+    <Content Include="Content\www\assets\images\profile\200x200messi.png" />
+    <Content Include="Content\www\assets\images\profile\200x200nadal.png" />
+    <Content Include="Content\www\assets\images\profile\200x200neymar.png" />
+    <Content Include="Content\www\assets\images\profile\200x200novak.png" />
+    <Content Include="Content\www\assets\images\profile\200x200ProfilePic.png" />
+    <Content Include="Content\www\assets\images\profile\200x200ronaldo.png" />
+    <Content Include="Content\www\assets\images\profile\200x200serena.png" />
+    <Content Include="Content\www\assets\images\profile\200x200suarez.png" />
+    <Content Include="Content\www\assets\images\profile\200x200wade.png" />
+    <Content Include="Content\www\assets\images\profile\AnViet.jpg" />
+    <Content Include="Content\www\assets\images\profile\FPT.jpg" />
+    <Content Include="Content\www\assets\images\profile\HC.PNG" />
+    <Content Include="Content\www\assets\images\profile\HighLand.png" />
+    <Content Include="Content\www\assets\images\profile\ITPlus.png" />
+    <Content Include="Content\www\assets\images\profile\NhanHoa.gif" />
+    <Content Include="Content\www\assets\images\profile\PhucAnh.png" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile1.png" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile2.jpg" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile3.jpg" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile4.jpg" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile5.jpg" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile6.jpg" />
+    <Content Include="Content\www\assets\images\profile\posts\500x500profile7.jpg" />
+    <Content Include="Content\www\assets\images\slide-1-img.png" />
+    <Content Include="Content\www\assets\images\slide-2-img.png" />
+    <Content Include="Content\www\assets\images\slide-3-img.png" />
+    <Content Include="Content\www\assets\images\slide-4-img.png" />
+    <Content Include="Content\www\assets\images\video-playlist\big_buck_bunny.png" />
+    <Content Include="Content\www\assets\images\video-playlist\earth_seen_from_iss.png" />
+    <Content Include="Content\www\assets\images\video-playlist\elephants_dream.png" />
+    <Content Include="Content\www\assets\to-user.jpg" />
+    <Content Include="Content\www\assets\user.jpg" />
+    <Content Include="Content\www\assets\videos\big_buck_bunny.mp4" />
+    <Content Include="Content\www\assets\videos\elephants_dream.mp4" />
+    <Content Include="Content\www\build\0.js" />
+    <Content Include="Content\www\build\main.css" />
+    <Content Include="Content\www\build\main.js" />
+    <Content Include="Content\www\build\polyfills.js" />
+    <Content Include="Content\www\build\sw-toolbox.js" />
+    <Content Include="Content\www\build\vendor.js" />
+    <Content Include="Content\www\index.html" />
+    <Content Include="Content\www\service-worker.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -5310,6 +5416,46 @@
     <Content Include="Content\assets\global\plugins\amcharts\amstockcharts\plugins\export\README.md" />
     <Content Include="Content\assets\global\plugins\amcharts\amstockcharts\plugins\responsive\readme.md" />
     <Content Include="Content\assets\global\plugins\amcharts\amstockcharts\plugins\responsive\responsive.min.js.map" />
+    <Content Include="Content\www\assets\example_data\feed.json" />
+    <Content Include="Content\www\assets\example_data\listing.json" />
+    <Content Include="Content\www\assets\example_data\lists.json" />
+    <Content Include="Content\www\assets\example_data\notifications.json" />
+    <Content Include="Content\www\assets\example_data\profile.json" />
+    <Content Include="Content\www\assets\example_data\schedule.json" />
+    <Content Include="Content\www\assets\example_data\social_integrations.json" />
+    <Content Include="Content\www\assets\fonts\ionicons.eot" />
+    <Content Include="Content\www\assets\fonts\ionicons.scss" />
+    <Content Include="Content\www\assets\fonts\ionicons.ttf" />
+    <Content Include="Content\www\assets\fonts\ionicons.woff" />
+    <Content Include="Content\www\assets\fonts\ionicons.woff2" />
+    <Content Include="Content\www\assets\fonts\noto-sans-bold.ttf" />
+    <Content Include="Content\www\assets\fonts\noto-sans-bold.woff" />
+    <Content Include="Content\www\assets\fonts\noto-sans-regular.ttf" />
+    <Content Include="Content\www\assets\fonts\noto-sans-regular.woff" />
+    <Content Include="Content\www\assets\fonts\noto-sans.scss" />
+    <Content Include="Content\www\assets\fonts\roboto-bold.ttf" />
+    <Content Include="Content\www\assets\fonts\roboto-bold.woff" />
+    <Content Include="Content\www\assets\fonts\roboto-bold.woff2" />
+    <Content Include="Content\www\assets\fonts\roboto-light.ttf" />
+    <Content Include="Content\www\assets\fonts\roboto-light.woff" />
+    <Content Include="Content\www\assets\fonts\roboto-light.woff2" />
+    <Content Include="Content\www\assets\fonts\roboto-medium.ttf" />
+    <Content Include="Content\www\assets\fonts\roboto-medium.woff" />
+    <Content Include="Content\www\assets\fonts\roboto-medium.woff2" />
+    <Content Include="Content\www\assets\fonts\roboto-regular.ttf" />
+    <Content Include="Content\www\assets\fonts\roboto-regular.woff" />
+    <Content Include="Content\www\assets\fonts\roboto-regular.woff2" />
+    <Content Include="Content\www\assets\fonts\roboto.scss" />
+    <Content Include="Content\www\assets\i18n\ar.json" />
+    <Content Include="Content\www\assets\i18n\en.json" />
+    <Content Include="Content\www\assets\i18n\es.json" />
+    <Content Include="Content\www\assets\manifest.json" />
+    <Content Include="Content\www\assets\mock\msg-list.json" />
+    <Content Include="Content\www\build\0.js.map" />
+    <Content Include="Content\www\build\main.css.map" />
+    <Content Include="Content\www\build\main.js.map" />
+    <Content Include="Content\www\build\vendor.js.map" />
+    <Content Include="Content\www\manifest.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -5812,7 +5958,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login3.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\OTP4EmailVerification.cshtml" />
     <Content Include="Views\Account\OTP4PhoneVerification.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -5865,7 +6011,7 @@
     <Content Include="Views\AnswerDetail\Index.cshtml" />
     <Content Include="Views\Answer\Index.cshtml" />
     <Content Include="Views\TermAndCondition\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login1.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
@@ -5875,6 +6021,7 @@
     <Folder Include="Content\Resources\sql\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -5889,11 +6036,15 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-easyui-1.5.2\themes\material\images\Thumbs.db" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\www\assets\i18n\store.module.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -5907,7 +6058,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15360</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:15361/ABC</IISUrl>
+          <IISUrl>http://localhost:16361/ABC</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

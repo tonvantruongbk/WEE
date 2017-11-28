@@ -1,0 +1,89 @@
+{
+  "array":[
+    {
+      "messageId":"1",
+      "userId":"140000198202211138",
+      "userName":"Trang",
+      "userImgUrl":"./assets/to-user.jpg",
+      "toUserId":"210000198410281948",
+      "toUserName":"Hoa",
+      "userAvatar":"./assets/user.jpg",
+      "time":1488349800000,
+      "message":"Chào Hoa, cảm xúc của bạn trong ngày đầu ở nơi làm việc mới như thế nào ?",
+      "status":"success"
+
+    },
+    {
+      "messageId":"2",
+      "userId":"210000198410281948",
+      "userName":"Hoa",
+      "userImgUrl":"./assets/user.jpg",
+      "toUserId":"140000198202211138",
+      "toUserName":"Trang",
+      "userAvatar":"./assets/to-user.jpg",
+      "time":1491034800000,
+      "message":"Em rất thích môi trường làm việc mới này. Em nghĩ là mình sẽ cố gắng để thích nghi nhanh nhất với môi trường làm việc mới..",
+      "status":"success"
+    },
+    {
+      "messageId":"3",
+      "userId":"140000198202211138",
+      "userName":"Trang",
+      "userImgUrl":"./assets/to-user.jpg",
+      "toUserId":"210000198410281948",
+      "toUserName":"Hoa",
+      "userAvatar":"./assets/user.jpg",
+      "time":1491034920000,
+      "message":"Bạn nghĩ sao về vị trí công việc mà mình vừa nhận được? Đó có phải một vị trí phù hợp và bạn thích nó không ?",
+      "status":"success"
+    },
+    {
+      "messageId":"4",
+      "userId":"210000198410281948",
+      "userName":"Hoa",
+      "userImgUrl":"./assets/user.jpg",
+      "toUserId":"140000198202211138",
+      "toUserName":"Trang",
+      "userAvatar":"./assets/to-user.jpg",
+      "time":1491036720000,
+      "message":"Em nghĩ là mình có phần may mắn khi vượt qua được vòng phỏng vấn và được nhận vào vị trí này với mức lương khá.",
+      "status":"success"
+    },
+    {
+      "messageId":"5",
+      "userId":"140000198202211138",
+      "userName":"Hoa",
+      "userImgUrl":"./assets/to-user.jpg",
+      "toUserId":"210000198410281948",
+      "toUserName":"Trang",
+      "userAvatar":"./assets/user.jpg",
+      "time":1491108720000,
+      "message":"Rất vui mừng khi nghe thấy bạn hài lòng với công việc và vị trí hiện tại. Đồng nghiệp ở đấy vui tính chứ?",
+      "status":"success"
+    },
+    {
+      "messageId":"6",
+      "userId":"210000198410281948",
+      "userName":"Trang",
+      "userImgUrl":"./assets/user.jpg",
+      "toUserId":"140000198202211138",
+      "toUserName":"Hoa",
+      "userAvatar":"./assets/to-user.jpg",
+      "time":1491231120000,
+      "message":"Vâng tất nhiên rồi, em được ưu ái chọn một chỗ ngồi gần cửa sổ có rất nhiều chậu cây cảnh xinh xắn.",
+      "status":"success"
+    },
+    {
+      "messageId":"7",
+      "userId":"140000198202211138",
+      "userName":"Trang",
+      "userImgUrl":"./assets/to-user.jpg",
+      "toUserId":"210000198410281948",
+      "toUserName":"Hoa",
+      "userAvatar":"./assets/user.jpg",
+      "time":1491331150000,
+      "message":"Cám ơn Hoa đã trao đổi, chúc bạn một ngày làm việc vui vẻ!",
+      "status":"success"
+    }
+  ]
+}
